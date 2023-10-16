@@ -48,7 +48,7 @@ public class Constants {
 	public static final String GTIN = "GTIN";
 	public static final String MPN = "MPN";
 	public static final String NAME = "NAME";
-	public static final String DESC = "DESCS";
+	public static final String DESCRIPTION = "DESCRIPTION";
 	public static final String TYPE_ID = "TYPE_ID";
 	public static final String TYPE = "TYPE";
 	public static final String URL = "URL";

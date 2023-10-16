@@ -1,6 +1,6 @@
 package com.brijframework.production.cust.entities;
 import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID;
-import static com.brijframework.production.contants.Constants.DESC;
+import static com.brijframework.production.contants.Constants.DESCRIPTION;
 import static com.brijframework.production.contants.Constants.EOCUST_COUNT_FREQ;
 import static com.brijframework.production.contants.Constants.NAME;
 import static com.brijframework.production.contants.Constants.TYPE_ID;
@@ -22,7 +22,7 @@ public class EOCustCountFreq extends EOCustObject{
 	@Column(name = NAME)
 	public String name;
 	
-	@Column(name = DESC)
+	@Column(name = DESCRIPTION)
 	public String desc;
 	
 	@Column(name = TYPE_ID)

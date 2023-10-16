@@ -27,7 +27,7 @@ public class EOGlobalCategory extends EOEntityObject {
 	@Column(name = NAME)
 	private String name;
 
-	@Column(name = DESC)
+	@Column(name = DESCRIPTION)
 	private String desc;
 
 	@Column(name = TYPE_ID)

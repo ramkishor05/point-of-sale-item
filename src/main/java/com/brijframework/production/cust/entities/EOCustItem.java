@@ -1,6 +1,6 @@
 package com.brijframework.production.cust.entities;
 
-import static com.brijframework.production.contants.Constants.DESC;
+import static com.brijframework.production.contants.Constants.DESCRIPTION;
 import static com.brijframework.production.contants.Constants.IDEN_NO;
 import static com.brijframework.production.contants.Constants.LOGO_URL;
 import static com.brijframework.production.contants.Constants.NAME;
@@ -27,8 +27,8 @@ public abstract class EOCustItem extends EOCustObject{
 	@Column(name=LOGO_URL)
 	private String logoUrl;
 	
-	@Column(name=DESC)
-	private String desc;
+	@Column(name=DESCRIPTION)
+	private String description;
 	
 	@Column(name=TYPE_ID)
 	private String typeId;
@@ -60,12 +60,12 @@ public abstract class EOCustItem extends EOCustObject{
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getTypeId() {

@@ -3,6 +3,7 @@ package com.brijframework.production;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -104,11 +105,11 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
     	
     	eoGlobalCategoryGroupJson.forEach(eoGlobalCategoryGroup->{
     		EOGlobalCategoryGroup findGlobalCategoryGroup = glbCategoryGroupRepository.findByTypeId(eoGlobalCategoryGroup.getTypeId()).orElse(eoGlobalCategoryGroup);
+    		BeanUtils.copyProperties(eoGlobalCategoryGroup, findGlobalCategoryGroup);
     		findGlobalCategoryGroup.setRecordState(DataStatus.ACTIVETED.getStatus());
     		EOGlobalCategoryGroup eoGlobalCategoryGroupSave= glbCategoryGroupRepository.save(findGlobalCategoryGroup);
     		eoGlobalCategoryGroup.setId(eoGlobalCategoryGroupSave.getId());
     	});
-    	
     	List<EOGlobalCategory> eoGlobalCategoryJson = instance.getAll(EOGlobalCategory.class);
     	
     	eoGlobalCategoryJson.forEach(eoGlobalCategory->{
@@ -122,11 +123,11 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
     	List<EOGlobalUnitGroup> eoGlobalUnitGroupsJson = instance.getAll(EOGlobalUnitGroup.class);
     	
     	eoGlobalUnitGroupsJson.forEach(eoGlobalUnitGroup->{
-    		if(glbUnitGroupRepository.countByTypeId(eoGlobalUnitGroup.getTypeId())==0) {
-    			eoGlobalUnitGroup.setRecordState(DataStatus.ACTIVETED.getStatus());
-	    		EOGlobalUnitGroup eoGlobalUnitGroupSave= glbUnitGroupRepository.save(eoGlobalUnitGroup);
-	    		eoGlobalUnitGroup.setId(eoGlobalUnitGroupSave.getId());
-    		}
+    		EOGlobalUnitGroup findGlobalUnitGroup = glbUnitGroupRepository.findByTypeId(eoGlobalUnitGroup.getTypeId()).orElse(eoGlobalUnitGroup);
+    		BeanUtils.copyProperties(eoGlobalUnitGroup, findGlobalUnitGroup);
+    		findGlobalUnitGroup.setRecordState(DataStatus.ACTIVETED.getStatus());
+    		EOGlobalUnitGroup eoGlobalUnitGroupSave= glbUnitGroupRepository.save(findGlobalUnitGroup);
+    		eoGlobalUnitGroup.setId(eoGlobalUnitGroupSave.getId());
     	});
     	
 

@@ -1,6 +1,6 @@
 package com.brijframework.production.global.entities;
 
-import static com.brijframework.production.contants.Constants.DISPLAY_NAME;
+import static com.brijframework.production.contants.Constants.*;
 import static com.brijframework.production.contants.Constants.EOGLOBAL_UNIT_GROUP;
 import static com.brijframework.production.contants.Constants.LONG_DESC;
 import static com.brijframework.production.contants.Constants.NAME;
@@ -36,11 +36,8 @@ public class EOGlobalUnitGroup extends EOEntityObject {
 	@Column(name=NAME)
 	public String name;
 	
-	@Column(name=SHORT_DESC)
-	public String shortDesc;
-	
-	@Column(name=LONG_DESC)
-	public String longDesc;
+	@Column(name=DESCRIPTION)
+	public String description;
 	
 	@Column(name=DISPLAY_NAME)
 	public String displayName;
@@ -64,20 +61,12 @@ public class EOGlobalUnitGroup extends EOEntityObject {
 		this.name = name;
 	}
 
-	public String getShortDesc() {
-		return shortDesc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setShortDesc(String shortDesc) {
-		this.shortDesc = shortDesc;
-	}
-
-	public String getLongDesc() {
-		return longDesc;
-	}
-
-	public void setLongDesc(String longDesc) {
-		this.longDesc = longDesc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getDisplayName() {

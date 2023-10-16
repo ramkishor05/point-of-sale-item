@@ -1,6 +1,6 @@
 package com.brijframework.production.cust.entities;
 import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID;
-import static com.brijframework.production.contants.Constants.DESC;
+import static com.brijframework.production.contants.Constants.DESCRIPTION;
 import static com.brijframework.production.contants.Constants.EOCUST_CATEGORY;
 import static com.brijframework.production.contants.Constants.GLB_IMG_ID;
 import static com.brijframework.production.contants.Constants.GROUP_ID;
@@ -31,7 +31,7 @@ public class EOCustCategory extends EOCustObject{
 	@Column(name = NAME)
 	private String name;
 
-	@Column(name = DESC)
+	@Column(name = DESCRIPTION)
 	private String description;
 
 	@Column(name = TYPE_ID)

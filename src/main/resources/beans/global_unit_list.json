@@ -8,8 +8,8 @@
 			"name": "GlobalUnit",
 			"properties": {
 				"typeId": "TSP",
-				"shortDesc": "Tsp",
-				"longDesc": "Tsp",
+				"name": "Tsp",
+				"description": "Tsp",
 				"displayName": "Volume ( Tsp }",
 				"unitGroup": "LK@GlobalUnitGroup_Fluid"
 			}
@@ -20,8 +20,8 @@
 			"name": "GlobalUnit",
 			"properties": {
 				"typeId": "TBSP",
-				"shortDesc": "Tbsp",
-				"longDesc": "Tbsp",
+				"name": "Tbsp",
+				"description": "Tbsp",
 				"displayName": "Volume ( Tbsp }",
 				"unitGroup": "LK@GlobalUnitGroup_Fluid"
 			}
@@ -32,8 +32,8 @@
 			"name": "GlobalUnit",
 			"properties": {
 				"typeId": "PINT",
-				"shortDesc": "Pt",
-				"longDesc": "Pint",
+				"name": "Pt",
+				"description": "Pint",
 				"displayName": "Volume ( Pint }",
 				"unitGroup": "LK@GlobalUnitGroup_Fluid"
 			}
@@ -44,8 +44,8 @@
 			"name": "GlobalUnit",
 			"properties": {
 				"typeId": "QUART",
-				"shortDesc": "Qrt",
-				"longDesc": "Quart",
+				"name": "Qrt",
+				"description": "Quart",
 				"displayName": "Volume ( Quart }",
 				"unitGroup": "LK@GlobalUnitGroup_Fluid"
 			}
@@ -56,8 +56,8 @@
 			"name": "GlobalUnit",
 			"properties": {
 				"typeId": "GALLON",
-				"shortDesc": "Gl",
-				"longDesc": "Gallon",
+				"name": "Gl",
+				"description": "Gallon",
 				"displayName": "Volume ( Gallon }",
 				"unitGroup": "LK@GlobalUnitGroup_Fluid"
 			}
@@ -68,8 +68,8 @@
 			"name": "GlobalUnit",
 			"properties": {
 				"typeId": "KILOGRAM",
-				"shortDesc": "K G",
-				"longDesc": "Kilo Gram",
+				"name": "K G",
+				"description": "Kilo Gram",
 				"displayName": " Weight ( Gallon }",
 				"unitGroup": "LK@GlobalUnitGroup_Solid"
 			}
@@ -80,8 +80,8 @@
 			"name": "GlobalUnit",
 			"properties": {
 				"typeId": "GRAM",
-				"shortDesc": "Gr",
-				"longDesc": "Gram",
+				"name": "Gr",
+				"description": "Gram",
 				"displayName": " Weight ( Gram }",
 				"unitGroup": "LK@GlobalUnitGroup_Solid"
 			}

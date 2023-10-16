@@ -1,6 +1,6 @@
 package com.brijframework.production.global.entities;
 
-import static com.brijframework.production.contants.Constants.DESC;
+import static com.brijframework.production.contants.Constants.DESCRIPTION;
 import static com.brijframework.production.contants.Constants.IDEN_NO;
 import static com.brijframework.production.contants.Constants.LOGO_URL;
 import static com.brijframework.production.contants.Constants.NAME;
@@ -29,7 +29,7 @@ public abstract class EOGlobalItem extends EOEntityObject{
 	@Column(name=LOGO_URL)
 	private String logoUrl;
 	
-	@Column(name=DESC)
+	@Column(name=DESCRIPTION)
 	private String desc;
 	
 	@Column(name=TYPE_ID)

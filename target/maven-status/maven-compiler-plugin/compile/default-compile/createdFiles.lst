@@ -5,6 +5,7 @@ com\brijframework\production\schema\factories\JsonSchemaObject.class
 com\brijframework\production\global\dto\UIGlobalCountFreq.class
 com\brijframework\production\global\mapper\impl\GlobalCategoryMapperImpl.class
 com\brijframework\production\cust\mapper\CustCategoryMapper.class
+META-INF\maven\com.brijframework\project-brijframework-production\pom.xml
 com\brijframework\production\dto\UIProductRecipe.class
 com\brijframework\production\cust\controller\CustUnitController.class
 com\brijframework\production\cust\service\CustUnitService.class
@@ -62,7 +63,6 @@ com\brijframework\production\cust\entities\EOCustObject.class
 com\brijframework\production\cust\rest\CustProductRetailSaleRequest.class
 com\brijframework\production\global\mapper\GlobalCategoryGroupMapper.class
 com\brijframework\production\global\mapper\impl\GlobalCountFreqMapperImpl.class
-com\brijframework\production\schema\factories\JsonSchemaMetaFactory$1.class
 com\brijframework\production\global\entities\EOGlobalManufacturer.class
 com\brijframework\production\cust\repository\CustProductSaleRepository.class
 com\brijframework\production\global\rest\GlobalCategoryResponse.class
@@ -100,12 +100,14 @@ com\brijframework\production\cust\mapper\impl\CustProductionAppMapperImpl.class
 com\brijframework\production\global\mapper\impl\GlobalCategoryResponseMapperImpl.class
 com\brijframework\production\cust\mapper\CustCategoryRequestMapper.class
 com\brijframework\production\cust\rest\CustCountFreqResponse.class
+com\brijframework\production\schema\factories\JsonSchemaFile.class
 com\brijframework\production\cust\repository\CustProductRepository.class
 com\brijframework\production\cust\mapper\impl\CustCountFreqRequestMapperImpl.class
 com\brijframework\production\cust\mapper\impl\CustProductRequestMapperImpl.class
 com\brijframework\production\cust\mapper\impl\CustCountFreqResponseMapperImpl.class
 com\brijframework\production\cust\repository\CustCategoryRepository.class
 com\brijframework\production\global\mapper\impl\GlobalCountFreqResponseMapperImpl.class
+META-INF\maven\com.brijframework\project-brijframework-production\pom.properties
 com\brijframework\production\cust\repository\CustUnitRepository.class
 com\brijframework\production\global\mapper\impl\GlobalCategoryGroupMapperImpl.class
 com\brijframework\production\mapper\e2e\CustCategoryGroupGlobalCategoryGroupMapper.class
@@ -145,6 +147,7 @@ com\brijframework\production\cust\mapper\CustCountFreqRequestMapper.class
 com\brijframework\production\cust\mapper\impl\CustCategoryGroupMapperImpl.class
 com\brijframework\production\cust\mapper\impl\CustUnitMapperImpl.class
 com\brijframework\production\dto\UIManufacturer.class
+META-INF\MANIFEST.MF
 com\brijframework\production\cust\entities\EOCustProductCountFreq.class
 com\brijframework\production\cust\mapper\impl\CustCategoryRequestMapperImpl.class
 com\brijframework\production\ProductionMainApp.class

@@ -7,9 +7,9 @@ public class UIGlobalUnitGroup implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public long id;
 	public String typeId;
-	public String shortDesc;
-	public String longDesc;
-	public String friendlyName;
+	public String description;
+	public String name;
+	public String displayName;
 
 	public long getId() {
 		return id;
@@ -27,28 +27,29 @@ public class UIGlobalUnitGroup implements Serializable {
 		this.typeId = typeId;
 	}
 
-	public String getShortDesc() {
-		return shortDesc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setShortDesc(String shortDesc) {
-		this.shortDesc = shortDesc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public String getLongDesc() {
-		return longDesc;
+	public String getName() {
+		return name;
 	}
 
-	public void setLongDesc(String longDesc) {
-		this.longDesc = longDesc;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getFriendlyName() {
-		return friendlyName;
+	public String getDisplayName() {
+		return displayName;
 	}
 
-	public void setFriendlyName(String friendlyName) {
-		this.friendlyName = friendlyName;
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
 	}
+
 
 }

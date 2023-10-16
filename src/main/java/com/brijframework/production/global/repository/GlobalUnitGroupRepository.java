@@ -1,5 +1,7 @@
 package com.brijframework.production.global.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,8 @@ public interface GlobalUnitGroupRepository extends JpaRepository<EOGlobalUnitGro
 	EOGlobalUnitGroup findAllByTypeId(String typeId);
 
 	int countByTypeId(String typeId);
+
+	Optional<EOGlobalUnitGroup> findByTypeId(String typeId);
 
 
 }

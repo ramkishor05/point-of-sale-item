@@ -1,0 +1,28 @@
+{
+	"id": "GlobalUnitGroup",
+	"order": 5,
+	"objects": [
+		{
+			"id": "GlobalUnitGroup_Fluid",
+			"type": "com.brijframework.production.global.entities.EOGlobalUnitGroup",
+			"name": "GlobalUnitGroup",
+			"properties": {
+				"typeId": "FLUID",
+				"name": "Fluid",
+				"description": "Fluid",
+				"displayName": "Volume ( Fluid }"
+			}
+		},
+		{
+			"id": "GlobalUnitGroup_Solid",
+			"type": "com.brijframework.production.global.entities.EOGlobalUnitGroup",
+			"name": "GlobalUnitGroup",
+			"properties": {
+				"typeId": "SOLID",
+				"name": "Solid",
+				"description": "Solid",
+				"displayName": "Weight ( Solid }"
+			}
+		}
+	]
+}

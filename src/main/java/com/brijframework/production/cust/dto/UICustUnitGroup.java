@@ -6,9 +6,9 @@ public class UICustUnitGroup {
 
 	public String typeId;
 	
-	public String shortDesc;
+	public String description;
 	
-	public String longDesc;
+	public String name;
 	
 	public String displayName;
 
@@ -28,20 +28,20 @@ public class UICustUnitGroup {
 		this.typeId = typeId;
 	}
 
-	public String getShortDesc() {
-		return shortDesc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setShortDesc(String shortDesc) {
-		this.shortDesc = shortDesc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public String getLongDesc() {
-		return longDesc;
+	public String getName() {
+		return name;
 	}
 
-	public void setLongDesc(String longDesc) {
-		this.longDesc = longDesc;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getDisplayName() {

@@ -34,10 +34,7 @@ public class EOCustUnitGroup extends EOCustObject {
 	public String name;
 	
 	@Column(name = SHORT_DESC)
-	public String shortDesc;
-	
-	@Column(name = LONG_DESC)
-	public String longDesc;
+	public String description;
 	
 	@Column(name = DISPLAY_NAME)
 	public String displayName;
@@ -57,20 +54,12 @@ public class EOCustUnitGroup extends EOCustObject {
 		this.typeId = typeId;
 	}
 
-	public String getShortDesc() {
-		return shortDesc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setShortDesc(String shortDesc) {
-		this.shortDesc = shortDesc;
-	}
-
-	public String getLongDesc() {
-		return longDesc;
-	}
-
-	public void setLongDesc(String longDesc) {
-		this.longDesc = longDesc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getDisplayName() {

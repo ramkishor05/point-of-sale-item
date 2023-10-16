@@ -2,10 +2,10 @@ package com.brijframework.production.cust.entities;
 
 import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID;
 import static com.brijframework.production.contants.Constants.CUST_UNIT_GROUP_ID;
+import static com.brijframework.production.contants.Constants.DESCRIPTION;
 import static com.brijframework.production.contants.Constants.DISPLAY_NAME;
 import static com.brijframework.production.contants.Constants.EOCUST_UNIT;
-import static com.brijframework.production.contants.Constants.LONG_DESC;
-import static com.brijframework.production.contants.Constants.SHORT_DESC;
+import static com.brijframework.production.contants.Constants.NAME;
 import static com.brijframework.production.contants.Constants.TYPE_ID;
 
 import javax.persistence.Column;
@@ -27,11 +27,11 @@ public class EOCustUnit extends EOCustObject{
 	@Column(name = TYPE_ID)
 	public String typeId;
 	
-	@Column(name = SHORT_DESC)
-	public String shortDesc;
+	@Column(name = NAME)
+	public String name;
 	
-	@Column(name = LONG_DESC)
-	public String longDesc;
+	@Column(name = DESCRIPTION)
+	public String description;
 	
 	@Column(name = DISPLAY_NAME)
 	public String displayName;
@@ -52,20 +52,12 @@ public class EOCustUnit extends EOCustObject{
 		this.typeId = typeId;
 	}
 
-	public String getShortDesc() {
-		return shortDesc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setShortDesc(String shortDesc) {
-		this.shortDesc = shortDesc;
-	}
-
-	public String getLongDesc() {
-		return longDesc;
-	}
-
-	public void setLongDesc(String longDesc) {
-		this.longDesc = longDesc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getDisplayName() {
