@@ -1,0 +1,68 @@
+{
+	"id": "product_form",
+	"fields": [
+		{
+			"key": "title",
+			"name": "title",
+			"label": "Title",
+			"type": "text"
+		},
+		{
+			"key": "name",
+			"name": "name",
+			"label": "Name",
+			"type": "text"
+		},
+		{
+			"key": "desc",
+			"name": "desc",
+			"label": "Description",
+			"type": "text"
+		},
+		{
+			"key": "title",
+			"name": "purchasePrice",
+			"label": "Purchase",
+			"type": "text"
+		},
+		{
+			"key": "purchaseUnit.id",
+			"name": "purchaseUnitId",
+			"label": "Unit",
+			"type": "select",
+			"items": [],
+			"itemKey": "id",
+			"itemVal": "name"
+		},
+		{
+			"key": "retailPrice",
+			"name": "retailPrice",
+			"label": "Retail",
+			"type": "text"
+		},
+		{
+			"key": "retailUnit.id",
+			"name": "retailUnitId",
+			"label": "Unit",
+			"type": "select",
+			"items": [],
+			"itemKey": "id",
+			"itemVal": "name"
+		},
+		{
+			"key": "wholePrice",
+			"name": "wholePrice",
+			"label": "Whole",
+			"type": "text"
+		},
+		{
+			"key": "wholeUnit.id",
+			"name": "wholeUnitId",
+			"label": "Unit",
+			"type": "select",
+			"items": [],
+			"itemKey": "id",
+			"itemVal": "name"
+		}
+	]
+}
