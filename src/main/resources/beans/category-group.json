@@ -1,102 +1,106 @@
-[
-	{
-		"id": "GlobalCategoryGroup_Fluid",
-		"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
-		"name": "GlobalCategoryGroup",
-		"properties": {
-			"typeId": "Home & Kitchen",
-			"name": "Home & Kitchen",
-			"desc": "Home & Kitchen"
+{
+	"id": "GlobalCategoryGroup",
+	"order": 1,
+	"objects": [
+		{
+			"id": "GlobalCategoryGroup_Home_Kitchen",
+			"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
+			"name": "GlobalCategoryGroup",
+			"properties": {
+				"typeId": "Home & Kitchen",
+				"name": "Home & Kitchen",
+				"desc": "Home & Kitchen"
+			}
+		},
+		{
+			"id": "GlobalCategoryGroup_Beauty_Personal_Car",
+			"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
+			"name": "GlobalCategoryGroup",
+			"properties": {
+				"typeId": "Beauty & Personal Car",
+				"name": "Beauty & Personal Car",
+				"desc": "Beauty & Personal Car"
+			}
+		},
+		{
+			"id": "GlobalCategoryGroup_Clothing_Shoes_Jewelry",
+			"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
+			"name": "GlobalCategoryGroup",
+			"properties": {
+				"typeId": "Clothing, Shoes & Jewelry",
+				"name": "Clothing, Shoes & Jewelry",
+				"desc": "Clothing, Shoes & Jewelry"
+			}
+		},
+		{
+			"id": "GlobalCategoryGroup_Toys_games",
+			"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
+			"name": "GlobalCategoryGroup",
+			"properties": {
+				"typeId": "Toys & games",
+				"name": "Toys & games",
+				"desc": "Toys & games"
+			}
+		},
+		{
+			"id": "GlobalCategoryGroup_Health_Household_Baby_Care",
+			"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
+			"name": "GlobalCategoryGroup",
+			"properties": {
+				"typeId": "Health, Household & Baby Care",
+				"name": "Health, Household & Baby Care",
+				"desc": "Health, Household & Baby Care"
+			}
+		},
+		{
+			"id": "GlobalCategoryGroup_Baby",
+			"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
+			"name": "GlobalCategoryGroup",
+			"properties": {
+				"typeId": "Baby",
+				"name": "Baby",
+				"desc": "Baby"
+			}
+		},
+		{
+			"id": "GlobalCategoryGroup_Electronics",
+			"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
+			"name": "GlobalCategoryGroup",
+			"properties": {
+				"typeId": "Electronics",
+				"name": "Electronics",
+				"desc": "Electronics"
+			}
+		},
+		{
+			"id": "GlobalCategoryGroup_Sports_outdoors",
+			"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
+			"name": "GlobalCategoryGroup",
+			"properties": {
+				"typeId": "Sports & outdoors",
+				"name": "Sports & outdoors",
+				"desc": "Sports & outdoors"
+			}
+		},
+		{
+			"id": "GlobalCategoryGroup_Pet_Supplies",
+			"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
+			"name": "GlobalCategoryGroup",
+			"properties": {
+				"typeId": "Pet Supplies",
+				"name": "Pet Supplies",
+				"desc": "Pet Supplies"
+			}
+		},
+		{
+			"id": "GlobalCategoryGroup_Office_Supplies",
+			"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
+			"name": "GlobalCategoryGroup",
+			"properties": {
+				"typeId": "Office Supplies",
+				"name": "Office Supplies",
+				"desc": "Office Supplies"
+			}
 		}
-	},
-	{
-		"id": "GlobalCategoryGroup_Beauty_Personal_Car",
-		"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
-		"name": "GlobalCategoryGroup",
-		"properties": {
-			"typeId": "Beauty & Personal Car",
-			"name": "Beauty & Personal Car",
-			"desc": "Beauty & Personal Car"
-		}
-	},
-	{
-		"id": "GlobalCategoryGroup_Clothing_Shoes_Jewelry",
-		"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
-		"name": "GlobalCategoryGroup",
-		"properties": {
-			"typeId": "Clothing, Shoes & Jewelry",
-			"name": "Clothing, Shoes & Jewelry",
-			"desc": "Clothing, Shoes & Jewelry"
-		}
-	},
-	{
-		"id": "GlobalCategoryGroup_Toys_games",
-		"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
-		"name": "GlobalCategoryGroup",
-		"properties": {
-			"typeId": "Toys & games",
-			"name": "Toys & games",
-			"desc": "Toys & games"
-		}
-	},
-	{
-		"id": "GlobalCategoryGroup_Health_Household_Baby_Care",
-		"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
-		"name": "GlobalCategoryGroup",
-		"properties": {
-			"typeId": "Health, Household & Baby Care",
-			"name": "Health, Household & Baby Care",
-			"desc": "Health, Household & Baby Care"
-		}
-	},
-	{
-		"id": "GlobalCategoryGroup_Baby",
-		"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
-		"name": "GlobalCategoryGroup",
-		"properties": {
-			"typeId": "Baby",
-			"name": "Baby",
-			"desc": "Baby"
-		}
-	},
-	{
-		"id": "GlobalCategoryGroup_Electronics",
-		"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
-		"name": "GlobalCategoryGroup",
-		"properties": {
-			"typeId": "Electronics",
-			"name": "Electronics",
-			"desc": "Electronics"
-		}
-	},
-	{
-		"id": "GlobalCategoryGroup_Sports_outdoors",
-		"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
-		"name": "GlobalCategoryGroup",
-		"properties": {
-			"typeId": "Sports & outdoors",
-			"name": "Sports & outdoors",
-			"desc": "Sports & outdoors"
-		}
-	},
-	{
-		"id": "GlobalCategoryGroup_Pet_Supplies",
-		"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
-		"name": "GlobalCategoryGroup",
-		"properties": {
-			"typeId": "Pet Supplies",
-			"name": "Pet Supplies",
-			"desc": "Pet Supplies"
-		}
-	},
-	{
-		"id": "GlobalCategoryGroup_Office_Supplies",
-		"type": "com.brijframework.production.global.entities.EOGlobalCategoryGroup",
-		"name": "GlobalCategoryGroup",
-		"properties": {
-			"typeId": "Office Supplies",
-			"name": "Office Supplies",
-			"desc": "Office Supplies"
-		}
-	}
-]
+	]
+}

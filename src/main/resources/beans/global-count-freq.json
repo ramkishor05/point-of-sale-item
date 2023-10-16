@@ -1,42 +1,46 @@
-[
-	{
-		"id": "GlobalCountFreq_Daily",
-		"type": "com.brijframework.production.global.entities.EOGlobalCountFreq",
-		"name": "GlobalCountFreq",
-		"properties": {
-			"typeId": "DAILY",
-			"name": "Daily",
-			"description": "Count daily time duraction"
+{
+	"id": "GlobalCountFreq",
+	"order": 6,
+	"objects": [
+		{
+			"id": "GlobalCountFreq_Daily",
+			"type": "com.brijframework.production.global.entities.EOGlobalCountFreq",
+			"name": "GlobalCountFreq",
+			"properties": {
+				"typeId": "DAILY",
+				"name": "Daily",
+				"description": "Count daily time duraction"
+			}
+		},
+		{
+			"id": "GlobalCountFreq_Weekly",
+			"type": "com.brijframework.production.global.entities.EOGlobalCountFreq",
+			"name": "GlobalCountFreq",
+			"properties": {
+				"typeId": "WEEKLY",
+				"name": "Weekly",
+				"description": "Count weekly time duraction"
+			}
+		},
+		{
+			"id": "GlobalCountFreq_Monthly",
+			"type": "com.brijframework.production.global.entities.EOGlobalCountFreq",
+			"name": "GlobalCountFreq",
+			"properties": {
+				"typeId": "MONTHLY",
+				"name": "Monthly",
+				"description": "Count Monthly time duraction"
+			}
+		},
+		{
+			"id": "GlobalCountFreq_Period",
+			"type": "com.brijframework.production.global.entities.EOGlobalCountFreq",
+			"name": "GlobalCountFreq",
+			"properties": {
+				"typeId": "PERIOD",
+				"name": "Period",
+				"description": "Count Period time duraction"
+			}
 		}
-	},
-	{
-		"id": "GlobalCountFreq_Weekly",
-		"type": "com.brijframework.production.global.entities.EOGlobalCountFreq",
-		"name": "GlobalCountFreq",
-		"properties": {
-			"typeId": "WEEKLY",
-			"name": "Weekly",
-			"description": "Count weekly time duraction"
-		}
-	},
-	{
-		"id": "GlobalCountFreq_Monthly",
-		"type": "com.brijframework.production.global.entities.EOGlobalCountFreq",
-		"name": "GlobalCountFreq",
-		"properties": {
-			"typeId": "MONTHLY",
-			"name": "Monthly",
-			"description": "Count Monthly time duraction"
-		}
-	},
-	{
-		"id": "GlobalCountFreq_Period",
-		"type": "com.brijframework.production.global.entities.EOGlobalCountFreq",
-		"name": "GlobalCountFreq",
-		"properties": {
-			"typeId": "PERIOD",
-			"name": "Period",
-			"description": "Count Period time duraction"
-		}
-	}
-]
+	]
+}

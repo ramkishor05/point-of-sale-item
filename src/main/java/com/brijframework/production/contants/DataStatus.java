@@ -5,12 +5,12 @@ import java.util.List;
 
 public enum DataStatus {
   
-	ACTIVETED("ACTIVETED", Arrays.asList(1)), DACTIVETED("DACTIVETED",Arrays.asList(0)), ALL("All", Arrays.asList(0,1));
+	ACTIVETED("ACTIVETED", Arrays.asList("ACTIVETED")), DACTIVETED("DACTIVETED",Arrays.asList("DACTIVETED")), ALL("All", Arrays.asList("ACTIVETED","DACTIVETED"));
 	
 	String status;
-	List<Integer> statusIds;
+	List<String> statusIds;
 
-	DataStatus(String status, List<Integer> statusIds) {
+	DataStatus(String status, List<String> statusIds) {
 		this.status=status;
 		this.statusIds=statusIds;
 	}
@@ -19,7 +19,7 @@ public enum DataStatus {
 		return status;
 	}
 
-	public List<Integer> getStatusIds() {
+	public List<String> getStatusIds() {
 		return statusIds;
 	}
 	

@@ -26,7 +26,7 @@ public interface CustCategoryGroupRepository extends JpaRepository<EOCustCategor
 	EOCustCategoryGroup findOneByIdAndCustAppId(long custAppId, Long id);
 
 	@Query(nativeQuery = true, value = "select * from EOCUST_CATEGORY_GROUP where CUST_PROD_APP_ID= ?1 and RECORD_STATUS in(?2)")
-	List<EOCustCategoryGroup> findAllByCustAppIdAndStatusIn(long custAppId, List<Integer> statusIds);
+	List<EOCustCategoryGroup> findAllByCustAppIdAndStatusIn(long custAppId, List<String> statusIds);
 
 	@Query(nativeQuery = true, value = "select * from EOCUST_CATEGORY_GROUP where CUST_PROD_APP_ID= ?1 and TYPE_ID = ?2")
 	List<EOCustCategoryGroup>  findOneByCustAppIdAndTypeId(long custAppId, String typeId);

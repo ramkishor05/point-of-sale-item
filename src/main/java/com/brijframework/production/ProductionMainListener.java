@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import com.brijframework.production.contants.DataStatus;
 import com.brijframework.production.cust.entities.EOCustCategory;
 import com.brijframework.production.cust.entities.EOCustCategoryGroup;
 import com.brijframework.production.cust.entities.EOCustCountFreq;
@@ -102,9 +103,19 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
     	List<EOGlobalCategoryGroup> eoGlobalCategoryGroupJson = instance.getAll(EOGlobalCategoryGroup.class);
     	
     	eoGlobalCategoryGroupJson.forEach(eoGlobalCategoryGroup->{
-    		if(glbCategoryGroupRepository.countByTypeId(eoGlobalCategoryGroup.getTypeId())==0) {
-	    		EOGlobalCategoryGroup eoGlobalCategoryGroupSave= glbCategoryGroupRepository.save(eoGlobalCategoryGroup);
-	    		eoGlobalCategoryGroup.setId(eoGlobalCategoryGroupSave.getId());
+    		EOGlobalCategoryGroup findGlobalCategoryGroup = glbCategoryGroupRepository.findByTypeId(eoGlobalCategoryGroup.getTypeId()).orElse(eoGlobalCategoryGroup);
+    		findGlobalCategoryGroup.setRecordState(DataStatus.ACTIVETED.getStatus());
+    		EOGlobalCategoryGroup eoGlobalCategoryGroupSave= glbCategoryGroupRepository.save(findGlobalCategoryGroup);
+    		eoGlobalCategoryGroup.setId(eoGlobalCategoryGroupSave.getId());
+    	});
+    	
+    	List<EOGlobalCategory> eoGlobalCategoryJson = instance.getAll(EOGlobalCategory.class);
+    	
+    	eoGlobalCategoryJson.forEach(eoGlobalCategory->{
+    		if(glbCategoryRepository.countByTypeId(eoGlobalCategory.getTypeId())==0) {
+    			eoGlobalCategory.setRecordState(DataStatus.ACTIVETED.getStatus());
+	    		EOGlobalCategory eoGlobalCategorySave= glbCategoryRepository.save(eoGlobalCategory);
+	    		eoGlobalCategory.setId(eoGlobalCategorySave.getId());
     		}
     	});
     	
@@ -112,6 +123,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
     	
     	eoGlobalUnitGroupsJson.forEach(eoGlobalUnitGroup->{
     		if(glbUnitGroupRepository.countByTypeId(eoGlobalUnitGroup.getTypeId())==0) {
+    			eoGlobalUnitGroup.setRecordState(DataStatus.ACTIVETED.getStatus());
 	    		EOGlobalUnitGroup eoGlobalUnitGroupSave= glbUnitGroupRepository.save(eoGlobalUnitGroup);
 	    		eoGlobalUnitGroup.setId(eoGlobalUnitGroupSave.getId());
     		}
@@ -122,6 +134,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 
     	eoGlobalUnitsJson.forEach(eoGlobalUnit->{
     		if(glbUnitRepository.countByTypeId(eoGlobalUnit.getTypeId())==0) {
+    			eoGlobalUnit.setRecordState(DataStatus.ACTIVETED.getStatus());
 	    		EOGlobalUnit eoGlobalUnitSave= glbUnitRepository.save(eoGlobalUnit);
 	    		eoGlobalUnit.setId(eoGlobalUnitSave.getId());
     		}
@@ -131,6 +144,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 
     	eoGlobalCountFreqsJson.forEach(eoGlobalCountFreq->{
     		if(globalCountFreqRepository.countByTypeId(eoGlobalCountFreq.getTypeId())==0) {
+    			eoGlobalCountFreq.setRecordState(DataStatus.ACTIVETED.getStatus());
 	    		EOGlobalCountFreq eoGlobalCountFreqSave = globalCountFreqRepository.save(eoGlobalCountFreq);
 	    		eoGlobalCountFreq.setId(eoGlobalCountFreqSave.getId());
     		}
@@ -140,13 +154,14 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 
     	eoGlobalUnitConversions.forEach(eoGlobalUnitConversion->{
     		if(globalUnitConversionRepository.countByTypeId(eoGlobalUnitConversion.getTypeId())==0) {
+    			eoGlobalUnitConversion.setRecordState(DataStatus.ACTIVETED.getStatus());
 	    		EOGlobalUnitConversion eoGlobalUnitConversionSave =globalUnitConversionRepository.save(eoGlobalUnitConversion);
 	    		eoGlobalUnitConversion.setId(eoGlobalUnitConversionSave.getId());
     		}
     	});
     	
     	
-    	Optional<EOCustProductionApp> findCustProductionApp = custProductionAppRepository.findById(1L);
+    	Optional<EOCustProductionApp> findCustProductionApp = custProductionAppRepository.findByCustIdAndAppid(1L,1l);
     	if(!findCustProductionApp.isPresent()) {
     		EOCustProductionApp custProductionApp =new EOCustProductionApp();
     		custProductionApp.setCustId(1l);

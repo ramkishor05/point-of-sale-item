@@ -70,13 +70,11 @@ public class JsonSchemaMetaFactory {
 		try {
 			resourcepath=resourcepath.replaceAll(REGEX, REPLACEMENT);
 			InputStream inJson = JsonSchemaMetaFactory.class.getResourceAsStream(resourcepath);
-			TypeReference<List<JsonSchemaObject>>  typeReference =new TypeReference<List<JsonSchemaObject>>() {
-			};
-			List<JsonSchemaObject> schemaObjects = objectMapper.readValue(inJson, typeReference);
+			JsonSchemaFile jsonSchemaFile = objectMapper.readValue(inJson, JsonSchemaFile.class);
+			List<JsonSchemaObject> schemaObjects = jsonSchemaFile.getObjects();
 			for(JsonSchemaObject segmentMetaData :  schemaObjects) {
 				getCache().put(segmentMetaData.getId(), segmentMetaData);
 			}
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -1,6 +1,7 @@
 package com.brijframework.production.global.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,11 +16,13 @@ public interface GlobalCategoryGroupRepository extends JpaRepository<EOGlobalCat
 	
 	EOGlobalCategoryGroup findOneByTypeId(String typeId);
 
-	@Query(nativeQuery = true, value = "select * from EOGLOBAL_CATEGORY_GROUP where record_state in (?1)")
-	List<EOGlobalCategoryGroup> findAllByStatus(List<Integer> statusIds);
+	@Query(nativeQuery = true, value = "select * from EOGLOBAL_CATEGORY_GROUP where RECORD_STATUS in (?1)")
+	List<EOGlobalCategoryGroup> getCategoryGroupListByStatus(List<String> statusIds);
 
-	@Query(nativeQuery = true, value = "select * from EOGLOBAL_CATEGORY_GROUP where type_id = ?1")
+	@Query(nativeQuery = true, value = "select * from EOGLOBAL_CATEGORY_GROUP where TYPE_ID = ?1")
 	List<EOGlobalCategoryGroup> findAllByTypeId(String typeId);
 	
 	int countByTypeId(String typeId);
+
+	Optional<EOGlobalCategoryGroup> findByTypeId(String typeId);
 }

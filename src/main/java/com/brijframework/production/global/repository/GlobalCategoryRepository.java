@@ -13,4 +13,6 @@ import com.brijframework.production.global.entities.EOGlobalCategory;
 public interface GlobalCategoryRepository extends JpaRepository<EOGlobalCategory, Long>{
 	
 	List<EOGlobalCategory> findOneByTypeId(String typeId);
+
+	int countByTypeId(String typeId);
 }

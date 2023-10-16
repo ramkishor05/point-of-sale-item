@@ -40,7 +40,9 @@ public class GlobalCategoryGroupServiceImpl implements GlobalCategoryGroupServic
 	
 	@Override
 	public List<UIGlobalCategoryGroup> getCategoryGroupList(DataStatus dataStatus) {
-		return inventoryCategoryGroupMapper.mapToDTO(globalCategoryGroupRepository.findAllByStatus(dataStatus.getStatusIds()));
+		List<EOGlobalCategoryGroup> findAllByStatus = globalCategoryGroupRepository.getCategoryGroupListByStatus(dataStatus.getStatusIds());
+		System.out.println("findAllByStatus="+findAllByStatus);
+		return inventoryCategoryGroupMapper.mapToDTO(findAllByStatus);
 	}
 
 	@Override
@@ -51,7 +53,7 @@ public class GlobalCategoryGroupServiceImpl implements GlobalCategoryGroupServic
 	@Override
 	public boolean deleteCategoryGroup(Long id) {
 		EOGlobalCategoryGroup eoGlobalCategoryGroup = globalCategoryGroupRepository.getOne(id);
-		eoGlobalCategoryGroup.setRecordState(false);
+		eoGlobalCategoryGroup.setRecordState(DataStatus.DACTIVETED.getStatus());
 		globalCategoryGroupRepository.save(eoGlobalCategoryGroup);
 		return true;
 	}

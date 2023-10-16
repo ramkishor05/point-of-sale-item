@@ -1,86 +1,90 @@
-[
-	{
-		"id": "GlobalUnit_Tsp",
-		"type": "com.brijframework.production.global.entities.EOGlobalUnit",
-		"name": "GlobalUnit",
-		"properties": {
-			"typeId": "TSP",
-			"shortDesc": "Tsp",
-			"longDesc": "Tsp",
-			"displayName": "Volume ( Tsp }",
-			"unitGroup": "LK@GlobalUnitGroup_Fluid"
+{
+	"id": "GlobalUnit",
+	"order": 4,
+	"objects": [
+		{
+			"id": "GlobalUnit_Tsp",
+			"type": "com.brijframework.production.global.entities.EOGlobalUnit",
+			"name": "GlobalUnit",
+			"properties": {
+				"typeId": "TSP",
+				"shortDesc": "Tsp",
+				"longDesc": "Tsp",
+				"displayName": "Volume ( Tsp }",
+				"unitGroup": "LK@GlobalUnitGroup_Fluid"
+			}
+		},
+		{
+			"id": "GlobalUnit_Tbsp",
+			"type": "com.brijframework.production.global.entities.EOGlobalUnit",
+			"name": "GlobalUnit",
+			"properties": {
+				"typeId": "TBSP",
+				"shortDesc": "Tbsp",
+				"longDesc": "Tbsp",
+				"displayName": "Volume ( Tbsp }",
+				"unitGroup": "LK@GlobalUnitGroup_Fluid"
+			}
+		},
+		{
+			"id": "GlobalUnit_Pt",
+			"type": "com.brijframework.production.global.entities.EOGlobalUnit",
+			"name": "GlobalUnit",
+			"properties": {
+				"typeId": "PINT",
+				"shortDesc": "Pt",
+				"longDesc": "Pint",
+				"displayName": "Volume ( Pint }",
+				"unitGroup": "LK@GlobalUnitGroup_Fluid"
+			}
+		},
+		{
+			"id": "GlobalUnit_Qrt",
+			"type": "com.brijframework.production.global.entities.EOGlobalUnit",
+			"name": "GlobalUnit",
+			"properties": {
+				"typeId": "QUART",
+				"shortDesc": "Qrt",
+				"longDesc": "Quart",
+				"displayName": "Volume ( Quart }",
+				"unitGroup": "LK@GlobalUnitGroup_Fluid"
+			}
+		},
+		{
+			"id": "GlobalUnit_Gl",
+			"type": "com.brijframework.production.global.entities.EOGlobalUnit",
+			"name": "GlobalUnit",
+			"properties": {
+				"typeId": "GALLON",
+				"shortDesc": "Gl",
+				"longDesc": "Gallon",
+				"displayName": "Volume ( Gallon }",
+				"unitGroup": "LK@GlobalUnitGroup_Fluid"
+			}
+		},
+		{
+			"id": "GlobalUnit_Kg",
+			"type": "com.brijframework.production.global.entities.EOGlobalUnit",
+			"name": "GlobalUnit",
+			"properties": {
+				"typeId": "KILOGRAM",
+				"shortDesc": "K G",
+				"longDesc": "Kilo Gram",
+				"displayName": " Weight ( Gallon }",
+				"unitGroup": "LK@GlobalUnitGroup_Solid"
+			}
+		},
+		{
+			"id": "GlobalUnit_Gr",
+			"type": "com.brijframework.production.global.entities.EOGlobalUnit",
+			"name": "GlobalUnit",
+			"properties": {
+				"typeId": "GRAM",
+				"shortDesc": "Gr",
+				"longDesc": "Gram",
+				"displayName": " Weight ( Gram }",
+				"unitGroup": "LK@GlobalUnitGroup_Solid"
+			}
 		}
-	},
-	{
-		"id": "GlobalUnit_Tbsp",
-		"type": "com.brijframework.production.global.entities.EOGlobalUnit",
-		"name": "GlobalUnit",
-		"properties": {
-			"typeId": "TBSP",
-			"shortDesc": "Tbsp",
-			"longDesc": "Tbsp",
-			"displayName": "Volume ( Tbsp }",
-			"unitGroup": "LK@GlobalUnitGroup_Fluid"
-		}
-	},
-	{
-		"id": "GlobalUnit_Pt",
-		"type": "com.brijframework.production.global.entities.EOGlobalUnit",
-		"name": "GlobalUnit",
-		"properties": {
-			"typeId": "PINT",
-			"shortDesc": "Pt",
-			"longDesc": "Pint",
-			"displayName": "Volume ( Pint }",
-			"unitGroup": "LK@GlobalUnitGroup_Fluid"
-		}
-	},
-	{
-		"id": "GlobalUnit_Qrt",
-		"type": "com.brijframework.production.global.entities.EOGlobalUnit",
-		"name": "GlobalUnit",
-		"properties": {
-			"typeId": "QUART",
-			"shortDesc": "Qrt",
-			"longDesc": "Quart",
-			"displayName": "Volume ( Quart }",
-			"unitGroup": "LK@GlobalUnitGroup_Fluid"
-		}
-	},
-	{
-		"id": "GlobalUnit_Gl",
-		"type": "com.brijframework.production.global.entities.EOGlobalUnit",
-		"name": "GlobalUnit",
-		"properties": {
-			"typeId": "GALLON",
-			"shortDesc": "Gl",
-			"longDesc": "Gallon",
-			"displayName": "Volume ( Gallon }",
-			"unitGroup": "LK@GlobalUnitGroup_Fluid"
-		}
-	},
-	{
-		"id": "GlobalUnit_Kg",
-		"type": "com.brijframework.production.global.entities.EOGlobalUnit",
-		"name": "GlobalUnit",
-		"properties": {
-			"typeId": "KILOGRAM",
-			"shortDesc": "K G",
-			"longDesc": "Kilo Gram",
-			"displayName": " Weight ( Gallon }",
-			"unitGroup": "LK@GlobalUnitGroup_Solid"
-		}
-	},
-	{
-		"id": "GlobalUnit_Gr",
-		"type": "com.brijframework.production.global.entities.EOGlobalUnit",
-		"name": "GlobalUnit",
-		"properties": {
-			"typeId": "GRAM",
-			"shortDesc": "Gr",
-			"longDesc": "Gram",
-			"displayName": " Weight ( Gram }",
-			"unitGroup": "LK@GlobalUnitGroup_Solid"
-		}
-	}
-]
+	]
+}

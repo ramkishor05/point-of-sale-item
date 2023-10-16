@@ -59,7 +59,7 @@ public class CustCategoryGroupServiceImpl implements CustCategoryGroupService {
 	public boolean deleteCategoryGroup(long custAppId, Long id) {
 		EOCustCategoryGroup eoCustCategoryGroup = custCategoryGroupRepository.findOneByIdAndCustAppId(custAppId,id);
 		if(eoCustCategoryGroup!=null) {
-			eoCustCategoryGroup.setRecordState(false);
+			eoCustCategoryGroup.setRecordState(DataStatus.DACTIVETED.getStatus());
 			custCategoryGroupRepository.save(eoCustCategoryGroup);
 			return true;
 		}
