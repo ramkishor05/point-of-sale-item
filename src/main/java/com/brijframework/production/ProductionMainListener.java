@@ -98,7 +98,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	
     @Override
     public void onApplicationEvent(final ContextRefreshedEvent event) {
-    	
+    	/*
     	JsonSchemaDataFactory instance = JsonSchemaDataFactory.getInstance();
     	
     	List<EOGlobalCategoryGroup> eoGlobalCategoryGroupJson = instance.getAll(EOGlobalCategoryGroup.class);
@@ -238,5 +238,6 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	    		}
 	    	}
     	}
+    	*/
     }
 }

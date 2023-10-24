@@ -4,7 +4,6 @@ import static com.brijframework.production.contants.Constants.DESCRIPTION;
 import static com.brijframework.production.contants.Constants.DISPLAY_NAME;
 import static com.brijframework.production.contants.Constants.EOGLOBAL_UNIT;
 import static com.brijframework.production.contants.Constants.GROUP_ID;
-import static com.brijframework.production.contants.Constants.LONG_DESC;
 import static com.brijframework.production.contants.Constants.NAME;
 import static com.brijframework.production.contants.Constants.TYPE_ID;
 

@@ -79,6 +79,7 @@ com\brijframework\production\cust\rest\CustProductSaleRequest.class
 com\brijframework\production\global\mapper\GlobalCountFreqResponseMapper.class
 com\brijframework\production\cust\rest\CustCategoryRequest.class
 com\brijframework\production\global\dto\UIGlobalUnit.class
+com\brijframework\production\form\factories\FormControlFactory.class
 com\brijframework\production\global\mapper\impl\GlobalCategoryRequestMapperImpl.class
 com\brijframework\production\global\service\GlobalUnitService.class
 com\brijframework\production\cust\controller\CustCountFreqController.class
@@ -96,6 +97,7 @@ com\brijframework\production\cust\mapper\impl\CustProductResponseMapperImpl.clas
 com\brijframework\production\global\repository\GlobalUnitRepository.class
 com\brijframework\production\cust\controller\CustCategoryGroupController.class
 com\brijframework\production\cust\entities\EOCustProductionApp.class
+com\brijframework\production\form\controller\CustFormController.class
 com\brijframework\production\cust\mapper\impl\CustProductSaleRequestMapperImpl.class
 com\brijframework\production\cust\service\CustCategoryService.class
 com\brijframework\production\cust\service\CustProductSaleService.class
@@ -116,6 +118,7 @@ com\brijframework\production\global\mapper\impl\GlobalCountFreqResponseMapperImp
 com\brijframework\production\cust\repository\CustUnitRepository.class
 com\brijframework\production\global\mapper\impl\GlobalCategoryGroupMapperImpl.class
 com\brijframework\production\mapper\e2e\CustCategoryGroupGlobalCategoryGroupMapper.class
+com\brijframework\production\form\FormControl.class
 com\brijframework\production\config\SwaggerViewConfig.class
 com\brijframework\production\mapper\e2e\CustUnitGlobalUnitMapper.class
 com\brijframework\production\cust\repository\CustProductWholeSaleRepository.class
@@ -133,6 +136,7 @@ com\brijframework\production\global\entities\EOGlobalUnitConversion.class
 com\brijframework\production\cust\service\impl\CustUnitGroupServiceImpl.class
 com\brijframework\production\global\entities\EOGlobalCategoryGroup.class
 com\brijframework\production\global\repository\GlobalCountFreqRepository.class
+com\brijframework\production\form\FieldControl.class
 com\brijframework\production\cust\mapper\CustProductRequestMapper.class
 com\brijframework\production\cust\rest\CustProductRetailSaleResponse.class
 com\brijframework\production\global\mapper\GlobalCountFreqMapper.class

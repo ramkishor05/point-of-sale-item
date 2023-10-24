@@ -11,10 +11,8 @@ import org.mapstruct.Mapping;
 import com.brijframework.production.cust.entities.EOCustProductRetailSale;
 import com.brijframework.production.cust.entities.EOCustProductSale;
 import com.brijframework.production.cust.entities.EOCustProductWholeSale;
-import com.brijframework.production.cust.rest.CustProductRetailSaleRequest;
 import com.brijframework.production.cust.rest.CustProductRetailSaleResponse;
 import com.brijframework.production.cust.rest.CustProductSaleResponse;
-import com.brijframework.production.cust.rest.CustProductWholeSaleRequest;
 import com.brijframework.production.cust.rest.CustProductWholeSaleResponse;
 import com.brijframework.production.mapper.GenericMapper;
 

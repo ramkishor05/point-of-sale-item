@@ -4,7 +4,6 @@ import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID;
 import static com.brijframework.production.contants.Constants.CUST_UNIT_GROUP;
 import static com.brijframework.production.contants.Constants.DISPLAY_NAME;
 import static com.brijframework.production.contants.Constants.EOCUST_UNIT_GROUP;
-import static com.brijframework.production.contants.Constants.LONG_DESC;
 import static com.brijframework.production.contants.Constants.NAME;
 import static com.brijframework.production.contants.Constants.SHORT_DESC;
 import static com.brijframework.production.contants.Constants.TYPE_ID;

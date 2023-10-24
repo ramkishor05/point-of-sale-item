@@ -75,8 +75,10 @@ D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\c
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\mapper\CustCountFreqMapper.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\dto\UIProductVariant.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\mapper\CustCountFreqRequestMapper.java
+D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\form\controller\CustFormController.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\entities\EOCustObject.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\mapper\CustProductMapper.java
+D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\form\factories\FormControlFactory.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\schema\factories\JsonSchemaPpt.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\service\impl\CustUnitServiceImpl.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\entities\EOEntityObject.java
@@ -151,6 +153,7 @@ D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\entities\EOGlobalUnitConversion.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\rest\CustCategoryResponse.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\entities\EOGlobalCountFreq.java
+D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\form\FormControl.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\service\impl\GlobalUnitGroupServiceImpl.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\controller\CustCategoryGroupController.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\dto\UICustUnitGroup.java
@@ -162,3 +165,4 @@ D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\mapper
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\rest\CustProductWholeSaleRequest.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\service\impl\CustProductSaleServiceImpl.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\dto\UICustCategory.java
+D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\form\FieldControl.java

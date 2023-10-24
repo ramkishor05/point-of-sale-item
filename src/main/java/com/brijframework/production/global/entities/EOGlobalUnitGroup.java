@@ -1,10 +1,9 @@
 package com.brijframework.production.global.entities;
 
-import static com.brijframework.production.contants.Constants.*;
+import static com.brijframework.production.contants.Constants.DESCRIPTION;
+import static com.brijframework.production.contants.Constants.DISPLAY_NAME;
 import static com.brijframework.production.contants.Constants.EOGLOBAL_UNIT_GROUP;
-import static com.brijframework.production.contants.Constants.LONG_DESC;
 import static com.brijframework.production.contants.Constants.NAME;
-import static com.brijframework.production.contants.Constants.SHORT_DESC;
 import static com.brijframework.production.contants.Constants.TYPE_ID;
 import static com.brijframework.production.contants.Constants.UNIT_GROUP;
 

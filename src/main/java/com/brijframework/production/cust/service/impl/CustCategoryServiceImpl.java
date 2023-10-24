@@ -50,7 +50,7 @@ public class CustCategoryServiceImpl implements CustCategoryService {
 
 	@Override
 	public CustCategoryResponse getCategory(long custAppId, long id) {
-		return custCategoryResponseMapper.mapToDTO(custCategoryRepository.getOne(id));
+		return custCategoryResponseMapper.mapToDTO(custCategoryRepository.getReferenceById(id));
 	}
 
 	@Override

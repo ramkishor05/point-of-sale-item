@@ -85,7 +85,7 @@ public class CustProductServiceImpl implements CustProductService {
 	
 	@Override
 	public CustProductResponse getProduct(long id) {
-		return custProductResponseMapper.mapToDTO(custProductRepository.getOne(id));
+		return custProductResponseMapper.mapToDTO(custProductRepository.getReferenceById(id));
 	}
 
 	@Override
