@@ -98,18 +98,21 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	
     @Override
     public void onApplicationEvent(final ContextRefreshedEvent event) {
-    	/*
+    	
     	JsonSchemaDataFactory instance = JsonSchemaDataFactory.getInstance();
     	
     	List<EOGlobalCategoryGroup> eoGlobalCategoryGroupJson = instance.getAll(EOGlobalCategoryGroup.class);
     	
     	eoGlobalCategoryGroupJson.forEach(eoGlobalCategoryGroup->{
+    		Optional<EOGlobalCategoryGroup> findByTypeId = glbCategoryGroupRepository.findByTypeId(eoGlobalCategoryGroup.getTypeId());
+    		System.out.println("findByTypeId="+findByTypeId.isPresent());
     		EOGlobalCategoryGroup findGlobalCategoryGroup = glbCategoryGroupRepository.findByTypeId(eoGlobalCategoryGroup.getTypeId()).orElse(eoGlobalCategoryGroup);
-    		BeanUtils.copyProperties(eoGlobalCategoryGroup, findGlobalCategoryGroup);
+    		BeanUtils.copyProperties(eoGlobalCategoryGroup, findGlobalCategoryGroup,"id");
     		findGlobalCategoryGroup.setRecordState(DataStatus.ACTIVETED.getStatus());
     		EOGlobalCategoryGroup eoGlobalCategoryGroupSave= glbCategoryGroupRepository.save(findGlobalCategoryGroup);
     		eoGlobalCategoryGroup.setId(eoGlobalCategoryGroupSave.getId());
     	});
+    	
     	List<EOGlobalCategory> eoGlobalCategoryJson = instance.getAll(EOGlobalCategory.class);
     	
     	eoGlobalCategoryJson.forEach(eoGlobalCategory->{
@@ -238,6 +241,6 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	    		}
 	    	}
     	}
-    	*/
+    	
     }
 }

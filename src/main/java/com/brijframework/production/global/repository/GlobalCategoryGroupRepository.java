@@ -24,5 +24,6 @@ public interface GlobalCategoryGroupRepository extends JpaRepository<EOGlobalCat
 	
 	int countByTypeId(String typeId);
 
+	@Query(nativeQuery = true, value = "select * from EOGLOBAL_CATEGORY_GROUP where TYPE_ID = ?1")
 	Optional<EOGlobalCategoryGroup> findByTypeId(String typeId);
 }
