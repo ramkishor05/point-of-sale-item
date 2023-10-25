@@ -42,7 +42,7 @@ public class GlobalCountFreqServiceImpl implements GlobalCountFreqService {
 
 	@Override
 	public GlobalCountFreqResponse getCountFreq(long id) {
-		return globalCountFreqResponseMapper.mapToDTO(countFreqRepository.getReferenceById(id));
+		return globalCountFreqResponseMapper.mapToDTO(countFreqRepository.getOne(id));
 	}
 
 	@Override

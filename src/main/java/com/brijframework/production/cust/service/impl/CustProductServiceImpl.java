@@ -72,6 +72,7 @@ public class CustProductServiceImpl implements CustProductService {
 		EOCustProductionApp eoInventoryApp = findById.get();
 		Optional<EOCustProduct> findProduct = custProductRepository.findById(custProductRequest.getId());
 		if(!findProduct.isPresent()) {
+			System.out.println("NOT FOUND");
 			return null;
 		}
 		EOCustProduct eoGlobalProduct = findProduct.get();
@@ -85,7 +86,7 @@ public class CustProductServiceImpl implements CustProductService {
 	
 	@Override
 	public CustProductResponse getProduct(long id) {
-		return custProductResponseMapper.mapToDTO(custProductRepository.getReferenceById(id));
+		return custProductResponseMapper.mapToDTO(custProductRepository.getOne(id));
 	}
 
 	@Override

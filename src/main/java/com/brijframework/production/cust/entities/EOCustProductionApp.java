@@ -1,5 +1,6 @@
 package com.brijframework.production.cust.entities;
 import static com.brijframework.production.contants.Constants.APP_ID;
+import static com.brijframework.production.contants.Constants.BUSINESS_ID;
 import static com.brijframework.production.contants.Constants.CUST_ID;
 import static com.brijframework.production.contants.Constants.CUST_PRODUCTION_APP;
 import static com.brijframework.production.contants.Constants.EOCUST_PRODUCTION_APP;
@@ -16,7 +17,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = EOCUST_PRODUCTION_APP, uniqueConstraints = {@UniqueConstraint (columnNames = { APP_ID, CUST_ID })})
+@Table(name = EOCUST_PRODUCTION_APP, uniqueConstraints = {@UniqueConstraint (columnNames = { APP_ID, CUST_ID,BUSINESS_ID })})
 public class EOCustProductionApp extends EOCustObject {
 
 	private static final long serialVersionUID = 1L;
@@ -26,6 +27,9 @@ public class EOCustProductionApp extends EOCustObject {
 
 	@Column(name = CUST_ID, nullable = false)
 	private long custId;
+	
+	@Column(name = BUSINESS_ID, nullable = false)
+	private long businessId;
 
 	@OneToMany(mappedBy = CUST_PRODUCTION_APP)
 	public Set<EOCustCountFreq> custCountFreqs;

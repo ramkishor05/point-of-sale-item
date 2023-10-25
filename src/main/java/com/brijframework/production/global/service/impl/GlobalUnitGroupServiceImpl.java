@@ -42,7 +42,7 @@ public class GlobalUnitGroupServiceImpl implements GlobalUnitGroupService {
 
 	@Override
 	public UIGlobalUnitGroup getUnitGroup(long id) {
-		return globalUnitGroupMapper.mapToDTO(globalUnitGroupRepository.getReferenceById(id));
+		return globalUnitGroupMapper.mapToDTO(globalUnitGroupRepository.getOne(id));
 	}
 
 	

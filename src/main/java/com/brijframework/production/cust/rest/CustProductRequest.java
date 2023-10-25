@@ -10,7 +10,7 @@ public class CustProductRequest implements Serializable {
 	private String idenNo;
 	private String title;
 	private String name;
-	private String desc;
+	private String description;
 	private String logoUrl;
 	private Date expDate;
 	private Date mfrDate;
@@ -63,12 +63,12 @@ public class CustProductRequest implements Serializable {
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getLogoUrl() {
