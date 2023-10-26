@@ -1,7 +1,8 @@
 package com.brijframework.production.cust.entities;
-import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID;
+
+import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
 import static com.brijframework.production.contants.Constants.DESCRIPTION;
-import static com.brijframework.production.contants.Constants.EOCUST_CATEGORY;
+import static com.brijframework.production.contants.Constants.EOCUST_CATEGORY_ITEM;
 import static com.brijframework.production.contants.Constants.GLB_IMG_ID;
 import static com.brijframework.production.contants.Constants.GROUP_ID;
 import static com.brijframework.production.contants.Constants.NAME;
@@ -21,8 +22,9 @@ import com.brijframework.production.global.entities.EOGlobalMediaDetail;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = EOCUST_CATEGORY, uniqueConstraints = { @UniqueConstraint(columnNames = { CUST_PROD_APP_ID, GROUP_ID, NAME }) })
-public class EOCustCategory extends EOCustObject{
+@Table(name = EOCUST_CATEGORY_ITEM, uniqueConstraints = {
+		@UniqueConstraint(columnNames = { CUST_BUSINESS_APP_ID, GROUP_ID, NAME }) })
+public class EOCustCategoryItem extends EOCustObject {
 	/**
 	 * 
 	 */
@@ -36,14 +38,14 @@ public class EOCustCategory extends EOCustObject{
 
 	@Column(name = TYPE_ID)
 	private String typeId;
-	
+
 	@OneToOne
 	@JoinColumn(name = GLB_IMG_ID)
 	public EOGlobalMediaDetail custImageDetail;
 
-	@JoinColumn(name = CUST_PROD_APP_ID, nullable = false)
+	@JoinColumn(name = CUST_BUSINESS_APP_ID, nullable = false)
 	@ManyToOne
-	private EOCustProductionApp custProductionApp;
+	private EOCustBusinessApp custBusinessApp;
 
 	@ManyToOne
 	@JoinColumn(name = GROUP_ID, nullable = false)
@@ -73,12 +75,20 @@ public class EOCustCategory extends EOCustObject{
 		this.typeId = typeId;
 	}
 
-	public EOCustProductionApp getCustProductionApp() {
-		return custProductionApp;
+	public EOGlobalMediaDetail getCustImageDetail() {
+		return custImageDetail;
 	}
 
-	public void setCustProductionApp(EOCustProductionApp custProductionApp) {
-		this.custProductionApp = custProductionApp;
+	public void setCustImageDetail(EOGlobalMediaDetail custImageDetail) {
+		this.custImageDetail = custImageDetail;
+	}
+
+	public EOCustBusinessApp getCustBusinessApp() {
+		return custBusinessApp;
+	}
+
+	public void setCustBusinessApp(EOCustBusinessApp custBusinessApp) {
+		this.custBusinessApp = custBusinessApp;
 	}
 
 	public EOCustCategoryGroup getCustCategoryGroup() {
@@ -89,13 +99,4 @@ public class EOCustCategory extends EOCustObject{
 		this.custCategoryGroup = custCategoryGroup;
 	}
 
-	public EOGlobalMediaDetail getCustImageDetail() {
-		return custImageDetail;
-	}
-
-	public void setCustImageDetail(EOGlobalMediaDetail custImageDetail) {
-		this.custImageDetail = custImageDetail;
-	}
-	
-	
 }

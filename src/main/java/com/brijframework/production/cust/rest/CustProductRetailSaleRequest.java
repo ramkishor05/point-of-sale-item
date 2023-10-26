@@ -2,20 +2,20 @@ package com.brijframework.production.cust.rest;
 
 import java.io.Serializable;
 
+import com.brijframework.production.cust.dto.UICustProductPrice;
+
 public class CustProductRetailSaleRequest implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String idenNo;
 	// for purchase items
-	private Double purchasePrice;
-	private Long purchaseUnitId;
+	private UICustProductPrice purchasePrice;
 
 	private Long custProductId;
 	// for sale items
 	private Double retailQnt;
-	private Double retailPrice;
-	private Long retailUnitId;
+	private UICustProductPrice retailPrice;
 
 	public Long getId() {
 		return id;
@@ -32,8 +32,14 @@ public class CustProductRetailSaleRequest implements Serializable {
 	public void setIdenNo(String idenNo) {
 		this.idenNo = idenNo;
 	}
-	
-	
+
+	public UICustProductPrice getPurchasePrice() {
+		return purchasePrice;
+	}
+
+	public void setPurchasePrice(UICustProductPrice purchasePrice) {
+		this.purchasePrice = purchasePrice;
+	}
 
 	public Long getCustProductId() {
 		return custProductId;
@@ -43,38 +49,6 @@ public class CustProductRetailSaleRequest implements Serializable {
 		this.custProductId = custProductId;
 	}
 
-	public Double getPurchasePrice() {
-		return purchasePrice;
-	}
-
-	public void setPurchasePrice(Double purchasePrice) {
-		this.purchasePrice = purchasePrice;
-	}
-
-	public Long getPurchaseUnitId() {
-		return purchaseUnitId;
-	}
-
-	public void setPurchaseUnitId(Long purchaseUnitId) {
-		this.purchaseUnitId = purchaseUnitId;
-	}
-
-	public Double getRetailPrice() {
-		return retailPrice;
-	}
-
-	public void setRetailPrice(Double retailPrice) {
-		this.retailPrice = retailPrice;
-	}
-
-	public Long getRetailUnitId() {
-		return retailUnitId;
-	}
-
-	public void setRetailUnitId(Long retailUnitId) {
-		this.retailUnitId = retailUnitId;
-	}
-
 	public Double getRetailQnt() {
 		return retailQnt;
 	}
@@ -82,4 +56,13 @@ public class CustProductRetailSaleRequest implements Serializable {
 	public void setRetailQnt(Double retailQnt) {
 		this.retailQnt = retailQnt;
 	}
+
+	public UICustProductPrice getRetailPrice() {
+		return retailPrice;
+	}
+
+	public void setRetailPrice(UICustProductPrice retailPrice) {
+		this.retailPrice = retailPrice;
+	}
+
 }

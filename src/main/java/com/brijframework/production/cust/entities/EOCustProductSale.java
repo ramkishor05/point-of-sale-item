@@ -2,7 +2,7 @@ package com.brijframework.production.cust.entities;
 
 import static com.brijframework.production.contants.Constants.CUSTOMER_ID;
 import static com.brijframework.production.contants.Constants.CUST_PRODUCT_SALE;
-import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID;
+import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
 import static com.brijframework.production.contants.Constants.DISCOUNTS;
 import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT_SALE;
 import static com.brijframework.production.contants.Constants.RETAIL_SALE_QNT;
@@ -56,39 +56,15 @@ public class EOCustProductSale extends EOCustItem {
 	@Column(name = CUSTOMER_ID, nullable = false)
 	private Long customerId;
 	
-	@JoinColumn(name = CUST_PROD_APP_ID, nullable = false)
+	@JoinColumn(name = CUST_BUSINESS_APP_ID, nullable = false)
 	@ManyToOne
-	private EOCustProductionApp custProductionApp;
+	private EOCustBusinessApp custBusinessApp;
 
 	@OneToMany(mappedBy = CUST_PRODUCT_SALE)
 	private List<EOCustProductRetailSale> custProductRetailSaleList;
 
 	@OneToMany(mappedBy = CUST_PRODUCT_SALE)
 	private List<EOCustProductWholeSale> custProductWholeSaleList;
-
-	public Date getSaleDate() {
-		return saleDate;
-	}
-
-	public void setSaleDate(Date saleDate) {
-		this.saleDate = saleDate;
-	}
-
-	public EOCustProductionApp getCustProductionApp() {
-		return custProductionApp;
-	}
-
-	public void setCustProductionApp(EOCustProductionApp custProductionApp) {
-		this.custProductionApp = custProductionApp;
-	}
-
-	public Long getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
-	}
 
 	public Double getDiscounts() {
 		return discounts;
@@ -114,6 +90,46 @@ public class EOCustProductSale extends EOCustItem {
 		this.wholeSaleTotals = wholeSaleTotals;
 	}
 
+	public Double getRetailSaleQnt() {
+		return retailSaleQnt;
+	}
+
+	public void setRetailSaleQnt(Double retailSaleQnt) {
+		this.retailSaleQnt = retailSaleQnt;
+	}
+
+	public Double getWholeSaleQnt() {
+		return wholeSaleQnt;
+	}
+
+	public void setWholeSaleQnt(Double wholeSaleQnt) {
+		this.wholeSaleQnt = wholeSaleQnt;
+	}
+
+	public Date getSaleDate() {
+		return saleDate;
+	}
+
+	public void setSaleDate(Date saleDate) {
+		this.saleDate = saleDate;
+	}
+
+	public Long getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
+	}
+
+	public EOCustBusinessApp getCustBusinessApp() {
+		return custBusinessApp;
+	}
+
+	public void setCustBusinessApp(EOCustBusinessApp custBusinessApp) {
+		this.custBusinessApp = custBusinessApp;
+	}
+
 	public List<EOCustProductRetailSale> getCustProductRetailSaleList() {
 		return custProductRetailSaleList;
 	}
@@ -129,5 +145,5 @@ public class EOCustProductSale extends EOCustItem {
 	public void setCustProductWholeSaleList(List<EOCustProductWholeSale> custProductWholeSaleList) {
 		this.custProductWholeSaleList = custProductWholeSaleList;
 	}
-
+	
 }

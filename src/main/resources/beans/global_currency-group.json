@@ -1,0 +1,26 @@
+{
+	"id": "GlobalCurrencyGroup",
+	"order": 1,
+	"objects": [
+		{
+			"id": "GlobalCurrencyGroup_Paisa",
+			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyGroup",
+			"name": "GlobalCurrencyGroup",
+			"properties": {
+				"typeId": "Paisa",
+				"name": "Paisa",
+				"description": "Paisa"
+			}
+		},
+		{
+			"id": "GlobalCurrencyGroup_Cent",
+			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyGroup",
+			"name": "GlobalCurrencyGroup",
+			"properties": {
+				"typeId": "Cent",
+				"name": "Cent",
+				"description": "Cent"
+			}
+		}
+	]
+}

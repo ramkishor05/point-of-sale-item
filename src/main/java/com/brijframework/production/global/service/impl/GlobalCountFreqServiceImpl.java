@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.brijframework.production.cust.repository.CustProductionAppRepository;
+import com.brijframework.production.cust.repository.CustBusinessAppRepository;
 import com.brijframework.production.global.entities.EOGlobalCountFreq;
 import com.brijframework.production.global.mapper.GlobalCountFreqMapper;
 import com.brijframework.production.global.mapper.GlobalCountFreqRequestMapper;
@@ -19,7 +19,7 @@ import com.brijframework.production.global.service.GlobalCountFreqService;
 public class GlobalCountFreqServiceImpl implements GlobalCountFreqService {
 	
 	@Autowired
-	CustProductionAppRepository custProductionAppRepository;
+	CustBusinessAppRepository custProductionAppRepository;
 	
 	@Autowired
 	GlobalCountFreqRepository countFreqRepository;

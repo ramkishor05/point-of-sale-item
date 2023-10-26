@@ -15,20 +15,14 @@ public class CustProductRequest implements Serializable {
 	private Date expDate;
 	private Date mfrDate;
 	// for purchase items
-	private Double purchasePrice;
-	private Long purchaseUnitId;
-
+	private CustProductPriceRequest purchasePrice;
 	// for sale items
-	private Double retailPrice;
-	private Long retailUnitId;
-	private Double wholePrice;
-	private Long wholeUnitId;
+	private CustProductPriceRequest retailPrice;
 
-	private Long stockQnt;
-	private Long saleQnt;
+	private CustProductPriceRequest wholePrice;
 
 	private Long custImgId;
-	private Long custProductionAppId;
+	private Long custBusinessAppId;
 	private Long custCategoryId;
 
 	public Long getId() {
@@ -95,44 +89,28 @@ public class CustProductRequest implements Serializable {
 		this.mfrDate = mfrDate;
 	}
 
-	public Double getPurchasePrice() {
+	public CustProductPriceRequest getPurchasePrice() {
 		return purchasePrice;
 	}
 
-	public void setPurchasePrice(Double purchasePrice) {
+	public void setPurchasePrice(CustProductPriceRequest purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public Double getRetailPrice() {
+	public CustProductPriceRequest getRetailPrice() {
 		return retailPrice;
 	}
 
-	public void setRetailPrice(Double retailPrice) {
+	public void setRetailPrice(CustProductPriceRequest retailPrice) {
 		this.retailPrice = retailPrice;
 	}
 
-	public Double getWholePrice() {
+	public CustProductPriceRequest getWholePrice() {
 		return wholePrice;
 	}
 
-	public void setWholePrice(Double wholePrice) {
+	public void setWholePrice(CustProductPriceRequest wholePrice) {
 		this.wholePrice = wholePrice;
-	}
-
-	public Long getStockQnt() {
-		return stockQnt;
-	}
-
-	public void setStockQnt(Long stockQnt) {
-		this.stockQnt = stockQnt;
-	}
-
-	public Long getSaleQnt() {
-		return saleQnt;
-	}
-
-	public void setSaleQnt(Long saleQnt) {
-		this.saleQnt = saleQnt;
 	}
 
 	public Long getCustImgId() {
@@ -143,12 +121,12 @@ public class CustProductRequest implements Serializable {
 		this.custImgId = custImgId;
 	}
 
-	public Long getCustProductionAppId() {
-		return custProductionAppId;
+	public Long getCustBusinessAppId() {
+		return custBusinessAppId;
 	}
 
-	public void setCustProductionAppId(Long custProductionAppId) {
-		this.custProductionAppId = custProductionAppId;
+	public void setCustBusinessAppId(Long custBusinessAppId) {
+		this.custBusinessAppId = custBusinessAppId;
 	}
 
 	public Long getCustCategoryId() {
@@ -157,30 +135,6 @@ public class CustProductRequest implements Serializable {
 
 	public void setCustCategoryId(Long custCategoryId) {
 		this.custCategoryId = custCategoryId;
-	}
-
-	public Long getPurchaseUnitId() {
-		return purchaseUnitId;
-	}
-
-	public void setPurchaseUnitId(Long purchaseUnitId) {
-		this.purchaseUnitId = purchaseUnitId;
-	}
-
-	public Long getRetailUnitId() {
-		return retailUnitId;
-	}
-
-	public void setRetailUnitId(Long retailUnitId) {
-		this.retailUnitId = retailUnitId;
-	}
-
-	public Long getWholeUnitId() {
-		return wholeUnitId;
-	}
-
-	public void setWholeUnitId(Long wholeUnitId) {
-		this.wholeUnitId = wholeUnitId;
 	}
 
 }

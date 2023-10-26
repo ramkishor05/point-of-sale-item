@@ -4,16 +4,16 @@ import static com.brijframework.production.contants.Constants.SPRING;
 
 import org.mapstruct.Mapper;
 
-import com.brijframework.production.cust.entities.EOCustUnit;
+import com.brijframework.production.cust.entities.EOCustUnitItem;
 import com.brijframework.production.global.entities.EOGlobalUnit;
 import com.brijframework.production.mapper.GenericMapper;
 
 @Mapper(componentModel = SPRING, implementationPackage = COM_BRIJFRAMEWORK_CUST_PRODUCTION_MAPPER_IMPL)
-public interface CustUnitGlobalUnitMapper  extends GenericMapper<EOCustUnit, EOGlobalUnit>{
+public interface CustUnitGlobalUnitMapper  extends GenericMapper<EOCustUnitItem, EOGlobalUnit>{
 
 	@Override
-	EOCustUnit mapToDAO(EOGlobalUnit eoGlobalUnit);
+	EOCustUnitItem mapToDAO(EOGlobalUnit eoGlobalUnit);
 	
 	@Override
-	EOGlobalUnit mapToDTO(EOCustUnit eoCustUnit);
+	EOGlobalUnit mapToDTO(EOCustUnitItem eoCustUnit);
 }

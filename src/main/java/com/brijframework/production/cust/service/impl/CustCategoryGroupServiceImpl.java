@@ -8,18 +8,18 @@ import org.springframework.stereotype.Service;
 
 import com.brijframework.production.contants.DataStatus;
 import com.brijframework.production.cust.dto.UICustCategoryGroup;
+import com.brijframework.production.cust.entities.EOCustBusinessApp;
 import com.brijframework.production.cust.entities.EOCustCategoryGroup;
-import com.brijframework.production.cust.entities.EOCustProductionApp;
 import com.brijframework.production.cust.mapper.CustCategoryGroupMapper;
+import com.brijframework.production.cust.repository.CustBusinessAppRepository;
 import com.brijframework.production.cust.repository.CustCategoryGroupRepository;
-import com.brijframework.production.cust.repository.CustProductionAppRepository;
 import com.brijframework.production.cust.service.CustCategoryGroupService;
 
 @Service
 public class CustCategoryGroupServiceImpl implements CustCategoryGroupService {
 	
 	@Autowired
-	private CustProductionAppRepository custProductionAppRepository;
+	private CustBusinessAppRepository custBusinessAppRepository;
 	
 	@Autowired
 	private CustCategoryGroupRepository custCategoryGroupRepository;
@@ -29,18 +29,18 @@ public class CustCategoryGroupServiceImpl implements CustCategoryGroupService {
 
 	@Override
 	public UICustCategoryGroup saveCategoryGroup(long custAppId, UICustCategoryGroup custCategoryGroup) {
-		Optional<EOCustProductionApp> findById = custProductionAppRepository.findById(custAppId);
+		Optional<EOCustBusinessApp> findById = custBusinessAppRepository.findById(custAppId);
 		if(!findById.isPresent()) {
 			return null;
 		}
-		EOCustProductionApp eoCustProductionApp = findById.get();
-		return saveCategoryGroup(custCategoryGroup, eoCustProductionApp);
+		EOCustBusinessApp eoCustBusinessApp = findById.get();
+		return saveCategoryGroup(custCategoryGroup, eoCustBusinessApp);
 	}
 
 	private UICustCategoryGroup saveCategoryGroup(UICustCategoryGroup custCategoryGroup,
-			EOCustProductionApp eoCustProductionApp) {
+			EOCustBusinessApp eoCustBusinessApp) {
 		EOCustCategoryGroup eoCustCategoryGroup = custCategoryGroupMapper.mapToDAO(custCategoryGroup);
-		eoCustCategoryGroup.setCustProductionApp(eoCustProductionApp);
+		eoCustCategoryGroup.setCustBusinessApp(eoCustBusinessApp);
 		eoCustCategoryGroup = custCategoryGroupRepository.saveAndFlush(eoCustCategoryGroup);
 		return custCategoryGroupMapper.mapToDTO(eoCustCategoryGroup);
 	}

@@ -3,7 +3,7 @@ package com.brijframework.production.cust.rest;
 import java.io.Serializable;
 
 import com.brijframework.production.cust.dto.UICustProduct;
-import com.brijframework.production.global.dto.UIGlobalUnit;
+import com.brijframework.production.cust.dto.UICustProductPrice;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -15,14 +15,13 @@ public class CustProductWholeSaleResponse implements Serializable {
 	private Long id;
 	private String idenNo;
 	// for purchase items
-	private Double purchasePrice;
-	private UIGlobalUnit purchaseUnit;
+	private UICustProductPrice purchasePrice;
+	private Double purchaseQnt;
 
 	// for sale items
 	private Double wholeQnt;
-	private Double wholePrice;
-	private UIGlobalUnit wholeUnit;
-	
+	private UICustProductPrice wholePrice;
+
 	private UICustProduct custProduct;
 
 	public Long getId() {
@@ -41,20 +40,20 @@ public class CustProductWholeSaleResponse implements Serializable {
 		this.idenNo = idenNo;
 	}
 
-	public Double getPurchasePrice() {
+	public UICustProductPrice getPurchasePrice() {
 		return purchasePrice;
 	}
 
-	public void setPurchasePrice(Double purchasePrice) {
+	public void setPurchasePrice(UICustProductPrice purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public UIGlobalUnit getPurchaseUnit() {
-		return purchaseUnit;
+	public Double getPurchaseQnt() {
+		return purchaseQnt;
 	}
 
-	public void setPurchaseUnit(UIGlobalUnit purchaseUnit) {
-		this.purchaseUnit = purchaseUnit;
+	public void setPurchaseQnt(Double purchaseQnt) {
+		this.purchaseQnt = purchaseQnt;
 	}
 
 	public Double getWholeQnt() {
@@ -65,20 +64,12 @@ public class CustProductWholeSaleResponse implements Serializable {
 		this.wholeQnt = wholeQnt;
 	}
 
-	public Double getWholePrice() {
+	public UICustProductPrice getWholePrice() {
 		return wholePrice;
 	}
 
-	public void setWholePrice(Double wholePrice) {
+	public void setWholePrice(UICustProductPrice wholePrice) {
 		this.wholePrice = wholePrice;
-	}
-
-	public UIGlobalUnit getWholeUnit() {
-		return wholeUnit;
-	}
-
-	public void setWholeUnit(UIGlobalUnit wholeUnit) {
-		this.wholeUnit = wholeUnit;
 	}
 
 	public UICustProduct getCustProduct() {
@@ -89,5 +80,4 @@ public class CustProductWholeSaleResponse implements Serializable {
 		this.custProduct = custProduct;
 	}
 
-	
 }

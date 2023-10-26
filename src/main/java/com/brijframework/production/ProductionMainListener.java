@@ -10,39 +10,55 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import com.brijframework.production.contants.DataStatus;
-import com.brijframework.production.cust.entities.EOCustCategory;
+import com.brijframework.production.cust.entities.EOCustBusinessApp;
 import com.brijframework.production.cust.entities.EOCustCategoryGroup;
+import com.brijframework.production.cust.entities.EOCustCategoryItem;
 import com.brijframework.production.cust.entities.EOCustCountFreq;
-import com.brijframework.production.cust.entities.EOCustProductionApp;
-import com.brijframework.production.cust.entities.EOCustUnit;
+import com.brijframework.production.cust.entities.EOCustCurrencyGroup;
+import com.brijframework.production.cust.entities.EOCustCurrencyItem;
 import com.brijframework.production.cust.entities.EOCustUnitGroup;
+import com.brijframework.production.cust.entities.EOCustUnitItem;
+import com.brijframework.production.cust.repository.CustBusinessAppRepository;
 import com.brijframework.production.cust.repository.CustCategoryGroupRepository;
-import com.brijframework.production.cust.repository.CustCategoryRepository;
+import com.brijframework.production.cust.repository.CustCategoryItemRepository;
 import com.brijframework.production.cust.repository.CustCountFreqRepository;
-import com.brijframework.production.cust.repository.CustProductionAppRepository;
+import com.brijframework.production.cust.repository.CustCurrencyGroupRepository;
+import com.brijframework.production.cust.repository.CustCurrencyItemRepository;
 import com.brijframework.production.cust.repository.CustUnitGroupRepository;
-import com.brijframework.production.cust.repository.CustUnitRepository;
+import com.brijframework.production.cust.repository.CustUnitItemRepository;
 import com.brijframework.production.global.entities.EOGlobalCategory;
 import com.brijframework.production.global.entities.EOGlobalCategoryGroup;
 import com.brijframework.production.global.entities.EOGlobalCountFreq;
+import com.brijframework.production.global.entities.EOGlobalCurrencyGroup;
+import com.brijframework.production.global.entities.EOGlobalCurrencyItem;
 import com.brijframework.production.global.entities.EOGlobalUnit;
 import com.brijframework.production.global.entities.EOGlobalUnitConversion;
 import com.brijframework.production.global.entities.EOGlobalUnitGroup;
 import com.brijframework.production.global.repository.GlobalCategoryGroupRepository;
 import com.brijframework.production.global.repository.GlobalCategoryRepository;
 import com.brijframework.production.global.repository.GlobalCountFreqRepository;
+import com.brijframework.production.global.repository.GlobalCurrencyGroupRepository;
+import com.brijframework.production.global.repository.GlobalCurrencyItemRepository;
 import com.brijframework.production.global.repository.GlobalUnitConversionRepository;
 import com.brijframework.production.global.repository.GlobalUnitGroupRepository;
 import com.brijframework.production.global.repository.GlobalUnitRepository;
 import com.brijframework.production.mapper.e2e.CustCategoryGlobalCategoryMapper;
 import com.brijframework.production.mapper.e2e.CustCategoryGroupGlobalCategoryGroupMapper;
 import com.brijframework.production.mapper.e2e.CustCountFreqGlobalCountFreqMapper;
+import com.brijframework.production.mapper.e2e.CustCurrencyGroupGlobalCurrencyGroupMapper;
+import com.brijframework.production.mapper.e2e.CustCurrencyItemGlobalCurrencyItemMapper;
 import com.brijframework.production.mapper.e2e.CustUnitGlobalUnitMapper;
 import com.brijframework.production.mapper.e2e.CustUnitGroupGlobalUnitGroupMapper;
 import com.brijframework.production.schema.factories.JsonSchemaDataFactory;
 
 @Component
 public class ProductionMainListener implements ApplicationListener<ContextRefreshedEvent> {
+	
+	@Autowired
+	private GlobalCurrencyGroupRepository globalCurrencyGroupRepository;
+	
+	@Autowired
+	private GlobalCurrencyItemRepository globalCurrencyItemRepository;
 	
 	@Autowired
 	private GlobalCountFreqRepository globalCountFreqRepository;
@@ -54,7 +70,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	private CustCountFreqRepository custCountFreqRepository;
 	
 	@Autowired
-	private CustProductionAppRepository custProductionAppRepository;
+	private CustBusinessAppRepository custBusinessAppRepository;
 	
 	@Autowired
 	private CustUnitGroupRepository custUnitGroupRepository;
@@ -63,7 +79,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	private GlobalUnitGroupRepository glbUnitGroupRepository;
 	
 	@Autowired
-	private CustUnitRepository custUnitRepository;
+	private CustUnitItemRepository custUnitRepository;
 	
 	@Autowired
 	private GlobalUnitRepository glbUnitRepository;
@@ -75,7 +91,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	private GlobalCategoryGroupRepository glbCategoryGroupRepository;
 	
 	@Autowired
-	private CustCategoryRepository custCategoryRepository;
+	private CustCategoryItemRepository custCategoryRepository;
 	
 	@Autowired
 	private GlobalCategoryRepository glbCategoryRepository;
@@ -95,17 +111,45 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	
 	@Autowired
 	private CustCategoryGroupGlobalCategoryGroupMapper custCategoryGroupGlobalCategoryGroupMapper;
+
+	@Autowired
+	private CustCurrencyGroupGlobalCurrencyGroupMapper currencyGroupGlobalCurrencyGroupMapper;
+
+	@Autowired
+	private CustCurrencyGroupRepository custCurrencyGroupRepository;
+	
+	@Autowired
+	private CustCurrencyItemGlobalCurrencyItemMapper currencyItemGlobalCurrencyItemMapper;
+
+	@Autowired
+	private CustCurrencyItemRepository custCurrencyItemRepository;
 	
     @Override
     public void onApplicationEvent(final ContextRefreshedEvent event) {
     	
     	JsonSchemaDataFactory instance = JsonSchemaDataFactory.getInstance();
     	
+    	List<EOGlobalCurrencyGroup> eoGlobalCurrencyGroupJson = instance.getAll(EOGlobalCurrencyGroup.class);
+    	eoGlobalCurrencyGroupJson.forEach(eoGlobalCurrencyGroup->{
+    		EOGlobalCurrencyGroup findGlobalCurrencyGroup = globalCurrencyGroupRepository.findByTypeId(eoGlobalCurrencyGroup.getTypeId()).orElse(eoGlobalCurrencyGroup);
+    		BeanUtils.copyProperties(eoGlobalCurrencyGroup, findGlobalCurrencyGroup,"id");
+    		findGlobalCurrencyGroup.setRecordState(DataStatus.ACTIVETED.getStatus());
+    		EOGlobalCurrencyGroup eoGlobalCurrencyGroupSave= globalCurrencyGroupRepository.save(findGlobalCurrencyGroup);
+    		eoGlobalCurrencyGroup.setId(eoGlobalCurrencyGroupSave.getId());
+    	});
+    	
+    	List<EOGlobalCurrencyItem> eoGlobalCurrencyItemJson = instance.getAll(EOGlobalCurrencyItem.class);
+    	eoGlobalCurrencyItemJson.forEach(eoGlobalCurrencyItem->{
+    		if(globalCurrencyItemRepository.countByTypeId(eoGlobalCurrencyItem.getTypeId())==0) {
+    			eoGlobalCurrencyItem.setRecordState(DataStatus.ACTIVETED.getStatus());
+	    		EOGlobalCurrencyItem eoGlobalCurrencyItemSave= globalCurrencyItemRepository.save(eoGlobalCurrencyItem);
+	    		eoGlobalCurrencyItem.setId(eoGlobalCurrencyItemSave.getId());
+    		}
+    	});
+    	
     	List<EOGlobalCategoryGroup> eoGlobalCategoryGroupJson = instance.getAll(EOGlobalCategoryGroup.class);
     	
     	eoGlobalCategoryGroupJson.forEach(eoGlobalCategoryGroup->{
-    		Optional<EOGlobalCategoryGroup> findByTypeId = glbCategoryGroupRepository.findByTypeId(eoGlobalCategoryGroup.getTypeId());
-    		System.out.println("findByTypeId="+findByTypeId.isPresent());
     		EOGlobalCategoryGroup findGlobalCategoryGroup = glbCategoryGroupRepository.findByTypeId(eoGlobalCategoryGroup.getTypeId()).orElse(eoGlobalCategoryGroup);
     		BeanUtils.copyProperties(eoGlobalCategoryGroup, findGlobalCategoryGroup,"id");
     		findGlobalCategoryGroup.setRecordState(DataStatus.ACTIVETED.getStatus());
@@ -127,7 +171,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
     	
     	eoGlobalUnitGroupsJson.forEach(eoGlobalUnitGroup->{
     		EOGlobalUnitGroup findGlobalUnitGroup = glbUnitGroupRepository.findByTypeId(eoGlobalUnitGroup.getTypeId()).orElse(eoGlobalUnitGroup);
-    		BeanUtils.copyProperties(eoGlobalUnitGroup, findGlobalUnitGroup);
+    		BeanUtils.copyProperties(eoGlobalUnitGroup, findGlobalUnitGroup,"id");
     		findGlobalUnitGroup.setRecordState(DataStatus.ACTIVETED.getStatus());
     		EOGlobalUnitGroup eoGlobalUnitGroupSave= glbUnitGroupRepository.save(findGlobalUnitGroup);
     		eoGlobalUnitGroup.setId(eoGlobalUnitGroupSave.getId());
@@ -165,24 +209,50 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
     	});
     	
     	
-    	Optional<EOCustProductionApp> findCustProductionApp = custProductionAppRepository.findByCustIdAndAppid(1L,1l);
-    	if(!findCustProductionApp.isPresent()) {
-    		EOCustProductionApp custProductionApp =new EOCustProductionApp();
-    		custProductionApp.setCustId(1l);
-    		custProductionApp.setAppid(1l);
-    		custProductionAppRepository.saveAndFlush(custProductionApp);
+    	Optional<EOCustBusinessApp> findCustBusinessApp = custBusinessAppRepository.findByCustIdAndAppid(1L,1l);
+    	if(!findCustBusinessApp.isPresent()) {
+    		EOCustBusinessApp custBusinessApp =new EOCustBusinessApp();
+    		custBusinessApp.setCustId(1l);
+    		custBusinessApp.setAppid(1l);
+    		custBusinessAppRepository.saveAndFlush(custBusinessApp);
     	}
     	
-    	List<EOCustProductionApp> custProductionApps = custProductionAppRepository.findAll();
+    	List<EOCustBusinessApp> custBusinessApps = custBusinessAppRepository.findAll();
+    	
+    	/// 
+    	List<EOGlobalCurrencyGroup> eoGlobalCurrencyGroups = globalCurrencyGroupRepository.findAll();
+    	for(EOCustBusinessApp eoCustBusinessApp :  custBusinessApps) {
+	    	for(EOGlobalCurrencyGroup eoGlobalCurrencyGroup :  eoGlobalCurrencyGroups) {
+	    		Optional<EOCustCurrencyGroup> findCustCurrencyGroup = custCurrencyGroupRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalCurrencyGroup.getName());
+	    		if(!findCustCurrencyGroup.isPresent()) {
+	    			EOCustCurrencyGroup eoCustCurrencyGroup = currencyGroupGlobalCurrencyGroupMapper.mapToDAO(eoGlobalCurrencyGroup);
+	    			eoCustCurrencyGroup.setCustBusinessApp(eoCustBusinessApp);
+	    			custCurrencyGroupRepository.saveAndFlush(eoCustCurrencyGroup);
+	    		}
+	    	}
+    	}
+    	
+    	/// 
+    	List<EOGlobalCurrencyItem> eoGlobalCurrencyItems = globalCurrencyItemRepository.findAll();
+    	for(EOCustBusinessApp eoCustBusinessApp :  custBusinessApps) {
+	    	for(EOGlobalCurrencyItem eoGlobalCurrencyItem :  eoGlobalCurrencyItems) {
+	    		Optional<EOCustCurrencyItem> findCustCurrencyItem = custCurrencyItemRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalCurrencyItem.getName());
+	    		if(!findCustCurrencyItem.isPresent()) {
+	    			EOCustCurrencyItem eoCustCurrencyItem = currencyItemGlobalCurrencyItemMapper.mapToDAO(eoGlobalCurrencyItem);
+	    			eoCustCurrencyItem.setCustBusinessApp(eoCustBusinessApp);
+	    			custCurrencyItemRepository.saveAndFlush(eoCustCurrencyItem);
+	    		}
+	    	}
+    	}
     	
     	/// 
     	List<EOGlobalCountFreq> eoGlobalCountFreqs = globalCountFreqRepository.findAll();
-    	for(EOCustProductionApp eoCustProductionApp :  custProductionApps) {
+    	for(EOCustBusinessApp eoCustBusinessApp :  custBusinessApps) {
 	    	for(EOGlobalCountFreq eoGlobalCountFreq :  eoGlobalCountFreqs) {
-	    		Optional<EOCustCountFreq> findCustCountFreq = custCountFreqRepository.findByCustAppAndName(eoCustProductionApp.getId(), eoGlobalCountFreq.getName());
+	    		Optional<EOCustCountFreq> findCustCountFreq = custCountFreqRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalCountFreq.getName());
 	    		if(!findCustCountFreq.isPresent()) {
 	    			EOCustCountFreq eoCustCountFreq = countFreqGlobalCountFreqMapper.mapToDAO(eoGlobalCountFreq);
-	    			eoCustCountFreq.setCustProductionApp(eoCustProductionApp);
+	    			eoCustCountFreq.setCustBusinessApp(eoCustBusinessApp);
 	    			custCountFreqRepository.saveAndFlush(eoCustCountFreq);
 	    		}
 	    	}
@@ -190,12 +260,12 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
     	
     	///
     	List<EOGlobalUnitGroup> eoGlobalUnitGroups = glbUnitGroupRepository.findAll();
-    	for(EOCustProductionApp eoCustProductionApp :  custProductionApps) {
+    	for(EOCustBusinessApp eoCustBusinessApp :  custBusinessApps) {
 	    	for(EOGlobalUnitGroup eoGlobalUnitGroup :  eoGlobalUnitGroups) {
-	    		Optional<EOCustUnitGroup> findCustUnitGroup = custUnitGroupRepository.findByCustAppAndName(eoCustProductionApp.getId(), eoGlobalUnitGroup.getName());
+	    		Optional<EOCustUnitGroup> findCustUnitGroup = custUnitGroupRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalUnitGroup.getName());
 	    		if(!findCustUnitGroup.isPresent()) {
 	    			EOCustUnitGroup eoCustUnitGroup = custUnitGroupGlobalUnitGroupMapper.mapToDAO(eoGlobalUnitGroup);
-	    			eoCustUnitGroup.setCustProductionApp(eoCustProductionApp);
+	    			eoCustUnitGroup.setCustBusinessApp(eoCustBusinessApp);
 	    			custUnitGroupRepository.saveAndFlush(eoCustUnitGroup);
 	    		}
 	    	}
@@ -203,12 +273,12 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
     	
     	///
     	List<EOGlobalUnit> eoGlobalUnits = glbUnitRepository.findAll();
-    	for(EOCustProductionApp eoCustProductionApp :  custProductionApps) {
+    	for(EOCustBusinessApp eoCustBusinessApp :  custBusinessApps) {
 	    	for(EOGlobalUnit eoGlobalUnit :  eoGlobalUnits) {
-	    		Optional<EOCustUnit> findCustUnit = custUnitRepository.findByCustAppAndName(eoCustProductionApp.getId(), eoGlobalUnit.getName());
+	    		Optional<EOCustUnitItem> findCustUnit = custUnitRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalUnit.getName());
 	    		if(!findCustUnit.isPresent()) {
-	    			EOCustUnit eoCustUnit = custUnitGlobalUnitMapper.mapToDAO(eoGlobalUnit);
-	    			eoCustUnit.setCustProductionApp(eoCustProductionApp);
+	    			EOCustUnitItem eoCustUnit = custUnitGlobalUnitMapper.mapToDAO(eoGlobalUnit);
+	    			eoCustUnit.setCustBusinessApp(eoCustBusinessApp);
 	    			custUnitRepository.saveAndFlush(eoCustUnit);
 	    		}
 	    	}
@@ -216,12 +286,12 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
     	
     	///custCategoryGroupRepository
     	List<EOGlobalCategoryGroup> eoGlobalCategoryGroups = glbCategoryGroupRepository.findAll();
-    	for(EOCustProductionApp eoCustProductionApp :  custProductionApps) {
+    	for(EOCustBusinessApp eoCustBusinessApp :  custBusinessApps) {
 	    	for(EOGlobalCategoryGroup eoGlobalCategoryGroup :  eoGlobalCategoryGroups) {
-	    		Optional<EOCustCategoryGroup> findCustCategoryGroup = custCategoryGroupRepository.findByCustAppAndName(eoCustProductionApp.getId(), eoGlobalCategoryGroup.getName());
+	    		Optional<EOCustCategoryGroup> findCustCategoryGroup = custCategoryGroupRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalCategoryGroup.getName());
 	    		if(!findCustCategoryGroup.isPresent()) {
 	    			EOCustCategoryGroup eoCustCategoryGroup = custCategoryGroupGlobalCategoryGroupMapper.mapToDAO(eoGlobalCategoryGroup);
-	    			eoCustCategoryGroup.setCustProductionApp(eoCustProductionApp);
+	    			eoCustCategoryGroup.setCustBusinessApp(eoCustBusinessApp);
 	    			custCategoryGroupRepository.saveAndFlush(eoCustCategoryGroup);
 	    		}
 	    	}
@@ -229,14 +299,14 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
     	
     	///
     	List<EOGlobalCategory> eoGlobalCategorys = glbCategoryRepository.findAll();
-    	for(EOCustProductionApp eoCustProductionApp :  custProductionApps) {
+    	for(EOCustBusinessApp eoCustBusinessApp :  custBusinessApps) {
 	    	for(EOGlobalCategory eoGlobalCategory :  eoGlobalCategorys) {
-	    		Optional<EOCustCategory> findCustCategory = custCategoryRepository.findByCustAppAndName(eoCustProductionApp.getId(), eoGlobalCategory.getName());
+	    		Optional<EOCustCategoryItem> findCustCategory = custCategoryRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalCategory.getName());
 	    		if(!findCustCategory.isPresent()) {
-	    			EOCustCategory eoCustCategory = custCategoryGlobalCategoryMapper.mapToDAO(eoGlobalCategory);
-		    		EOCustCategoryGroup custCategoryGroup = custCategoryGroupRepository.findByCustAppAndName(eoCustProductionApp.getId(), eoGlobalCategory.getGlobalCategoryGroup().getName()).orElse(null);
+	    			EOCustCategoryItem eoCustCategory = custCategoryGlobalCategoryMapper.mapToDAO(eoGlobalCategory);
+		    		EOCustCategoryGroup custCategoryGroup = custCategoryGroupRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalCategory.getGlobalCategoryGroup().getName()).orElse(null);
 		    		eoCustCategory.setCustCategoryGroup(custCategoryGroup);
-	    			eoCustCategory.setCustProductionApp(eoCustProductionApp);
+	    			eoCustCategory.setCustBusinessApp(eoCustBusinessApp);
 	    			custCategoryRepository.saveAndFlush(eoCustCategory);
 	    		}
 	    	}

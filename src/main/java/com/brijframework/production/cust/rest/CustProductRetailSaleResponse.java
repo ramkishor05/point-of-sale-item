@@ -3,6 +3,7 @@ package com.brijframework.production.cust.rest;
 import java.io.Serializable;
 
 import com.brijframework.production.cust.dto.UICustProduct;
+import com.brijframework.production.cust.dto.UICustProductPrice;
 import com.brijframework.production.global.dto.UIGlobalUnit;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -14,16 +15,13 @@ public class CustProductRetailSaleResponse implements Serializable {
 	private Long id;
 	private String idenNo;
 	// for purchase items
-	private Double purchasePrice;
-	private UIGlobalUnit purchaseUnit;
+	private UICustProductPrice purchasePrice;
 
 	// for sale items
 	private Double retailQnt;
-	private Double retailPrice;
-	private UIGlobalUnit retailUnit;
-	
-	private UICustProduct custProduct;
+	private UICustProductPrice retailPrice;
 
+	private UICustProduct custProduct;
 
 	public Long getId() {
 		return id;
@@ -41,20 +39,12 @@ public class CustProductRetailSaleResponse implements Serializable {
 		this.idenNo = idenNo;
 	}
 
-	public Double getPurchasePrice() {
+	public UICustProductPrice getPurchasePrice() {
 		return purchasePrice;
 	}
 
-	public void setPurchasePrice(Double purchasePrice) {
+	public void setPurchasePrice(UICustProductPrice purchasePrice) {
 		this.purchasePrice = purchasePrice;
-	}
-
-	public UIGlobalUnit getPurchaseUnit() {
-		return purchaseUnit;
-	}
-
-	public void setPurchaseUnit(UIGlobalUnit purchaseUnit) {
-		this.purchaseUnit = purchaseUnit;
 	}
 
 	public Double getRetailQnt() {
@@ -65,20 +55,12 @@ public class CustProductRetailSaleResponse implements Serializable {
 		this.retailQnt = retailQnt;
 	}
 
-	public Double getRetailPrice() {
+	public UICustProductPrice getRetailPrice() {
 		return retailPrice;
 	}
 
-	public void setRetailPrice(Double retailPrice) {
+	public void setRetailPrice(UICustProductPrice retailPrice) {
 		this.retailPrice = retailPrice;
-	}
-
-	public UIGlobalUnit getRetailUnit() {
-		return retailUnit;
-	}
-
-	public void setRetailUnit(UIGlobalUnit retailUnit) {
-		this.retailUnit = retailUnit;
 	}
 
 	public UICustProduct getCustProduct() {
@@ -89,5 +71,4 @@ public class CustProductRetailSaleResponse implements Serializable {
 		this.custProduct = custProduct;
 	}
 
-	
 }

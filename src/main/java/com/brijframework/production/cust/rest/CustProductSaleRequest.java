@@ -22,7 +22,7 @@ public class CustProductSaleRequest {
 	
 	private Double wholeSaleQnt;
 	
-	private Long custProductionAppId;
+	private Long custBusinessAppId;
 	
 	private Long customerId;
 	
@@ -46,12 +46,12 @@ public class CustProductSaleRequest {
 		this.customerId = customerId;
 	}
 
-	public Long getCustProductionAppId() {
-		return custProductionAppId;
+	public Long getCustBusinessAppId() {
+		return custBusinessAppId;
 	}
 
-	public void setCustProductionAppId(Long custProductionAppId) {
-		this.custProductionAppId = custProductionAppId;
+	public void setCustBusinessAppId(Long custBusinessAppId) {
+		this.custBusinessAppId = custBusinessAppId;
 	}
 
 	public String getIdenNo() {

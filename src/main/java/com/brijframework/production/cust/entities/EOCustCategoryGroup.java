@@ -1,7 +1,7 @@
 package com.brijframework.production.cust.entities;
 
 import static com.brijframework.production.contants.Constants.CUST_CATEGORY_GROUP;
-import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID;
+import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
 import static com.brijframework.production.contants.Constants.DESCRIPTION;
 import static com.brijframework.production.contants.Constants.EOCUST_CATEGORY_GROUP;
 import static com.brijframework.production.contants.Constants.NAME;
@@ -21,11 +21,8 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = EOCUST_CATEGORY_GROUP, uniqueConstraints = { @UniqueConstraint(columnNames = { CUST_PROD_APP_ID, NAME }) })
+@Table(name = EOCUST_CATEGORY_GROUP, uniqueConstraints = { @UniqueConstraint(columnNames = { CUST_BUSINESS_APP_ID, NAME }) })
 public class EOCustCategoryGroup extends EOCustObject{
-
-
-	
 
 	/**
 	 * 
@@ -36,17 +33,17 @@ public class EOCustCategoryGroup extends EOCustObject{
 	private String name;
 
 	@Column(name = DESCRIPTION)
-	private String desc;
+	private String description;
 
 	@Column(name = TYPE_ID)
 	private String typeId;
 	
-	@JoinColumn(name = CUST_PROD_APP_ID, nullable = false)
+	@JoinColumn(name = CUST_BUSINESS_APP_ID, nullable = false)
 	@ManyToOne
-	private EOCustProductionApp custProductionApp;
+	private EOCustBusinessApp custBusinessApp;
 
 	@OneToMany(mappedBy = CUST_CATEGORY_GROUP)
-	public Set<EOCustCategory> custCategories;
+	public Set<EOCustCategoryItem> custCategoryList;
 
 	public String getName() {
 		return name;
@@ -56,12 +53,12 @@ public class EOCustCategoryGroup extends EOCustObject{
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getTypeId() {
@@ -71,23 +68,20 @@ public class EOCustCategoryGroup extends EOCustObject{
 	public void setTypeId(String typeId) {
 		this.typeId = typeId;
 	}
-	
-	
 
-	public EOCustProductionApp getCustProductionApp() {
-		return custProductionApp;
+	public EOCustBusinessApp getCustBusinessApp() {
+		return custBusinessApp;
 	}
 
-	public void setCustProductionApp(EOCustProductionApp custProductionApp) {
-		this.custProductionApp = custProductionApp;
+	public void setCustBusinessApp(EOCustBusinessApp custBusinessApp) {
+		this.custBusinessApp = custBusinessApp;
 	}
 
-	public Set<EOCustCategory> getCustCategories() {
-		return custCategories;
+	public Set<EOCustCategoryItem> getCustCategoryList() {
+		return custCategoryList;
 	}
 
-	public void setCustCategories(Set<EOCustCategory> custCategories) {
-		this.custCategories = custCategories;
+	public void setCustCategoryList(Set<EOCustCategoryItem> custCategoryList) {
+		this.custCategoryList = custCategoryList;
 	}
-	
 }

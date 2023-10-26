@@ -14,10 +14,10 @@ import com.brijframework.production.cust.entities.EOCustUnitGroup;
 @Transactional
 public interface CustUnitGroupRepository extends JpaRepository<EOCustUnitGroup, Long>{
 
-	@Query(nativeQuery = true, value = "select * from EOCUST_UNIT_GROUP where CUST_PROD_APP_ID= ?1 and NAME=?2")
+	@Query(nativeQuery = true, value = "select * from EOCUST_UNIT_GROUP where CUST_BUSINESS_APP_ID= ?1 and NAME=?2")
 	Optional<EOCustUnitGroup> findByCustAppAndName(Long id, String name);
 
-	@Query(nativeQuery = true, value = "select * from EOCUST_UNIT_GROUP where CUST_PROD_APP_ID= ?1")
+	@Query(nativeQuery = true, value = "select * from EOCUST_UNIT_GROUP where CUST_BUSINESS_APP_ID= ?1")
 	List<EOCustUnitGroup>  findByCustAppId(long custAppId);
 
 }

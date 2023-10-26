@@ -12,9 +12,9 @@ import com.brijframework.production.cust.entities.EOCustProduct;
 @Transactional
 public interface CustProductRepository extends JpaRepository<EOCustProduct, Long>{
 	
-	List<EOCustProduct> findAllByCustProductionAppId(long custProductionAppId);
+	List<EOCustProduct> findAllByCustBusinessAppId(long custBusinessAppId);
 
-	EOCustProduct findByCustProductionAppIdAndTypeId(long custProductionAppId, String typeId);
+	EOCustProduct findByCustBusinessAppIdAndTypeId(long custBusinessAppId, String typeId);
 
 
 }

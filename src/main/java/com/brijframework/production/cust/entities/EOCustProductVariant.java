@@ -2,7 +2,7 @@ package com.brijframework.production.cust.entities;
 
 import static com.brijframework.production.contants.Constants.COLOR;
 import static com.brijframework.production.contants.Constants.CUST_PRODUCT_ID;
-import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID;
+import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
 import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT_VARIANT;
 import static com.brijframework.production.contants.Constants.IDEN_NO;
 import static com.brijframework.production.contants.Constants.RETAIL_PRICE;
@@ -22,7 +22,7 @@ import javax.persistence.UniqueConstraint;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = EOCUST_PRODUCT_VARIANT, uniqueConstraints = {
 		@UniqueConstraint (columnNames = { 
-				CUST_PROD_APP_ID,CUST_PRODUCT_ID, IDEN_NO })})
+				CUST_BUSINESS_APP_ID,CUST_PRODUCT_ID, IDEN_NO })})
 public class EOCustProductVariant extends EOCustItem{
 
 	/**
@@ -46,9 +46,9 @@ public class EOCustProductVariant extends EOCustItem{
 	@JoinColumn(name = CUST_PRODUCT_ID)
 	public EOCustProduct custProduct;
 	
-	@JoinColumn(name = CUST_PROD_APP_ID, nullable = false)
+	@JoinColumn(name = CUST_BUSINESS_APP_ID, nullable = false)
 	@ManyToOne
-	private EOCustProductionApp custProductionApp;
+	private EOCustBusinessApp custBusinessApp;
 
 	public String getTitle() {
 		return title;

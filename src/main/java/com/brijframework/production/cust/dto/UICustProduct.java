@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.brijframework.production.cust.entities.EOCustProductPrice;
 import com.brijframework.production.dto.UIManufacturer;
 import com.brijframework.production.dto.UIProductDetail;
 import com.brijframework.production.dto.UIProductRecipe;
@@ -20,23 +21,22 @@ public class UICustProduct implements Serializable {
 	private String logoUrl;
 
 	private Long glbImgDetailId;
-	
-	private Long custProductionAppId;
+
+	private Long custBusinessAppId;
 	private Long categoryId;
-	
+
 	private Date expDate;
 	private Date mfrDate;
-	
+
 	// for purchase items
-	private Double unitPrice;
-	private Double purchasePrice;
-	
+	private UICustProductPrice purchasePrice;
+
 	// for sale items
-	private Double retailPrice;
-	private Double wholePrice;
-	
+	private UICustProductPrice retailPrice;
+	private UICustProductPrice wholePrice;
+
 	private Long stockQnt;
-	
+
 	private Long saleQnt;
 
 	public UIManufacturer manufacturer;
@@ -103,12 +103,12 @@ public class UICustProduct implements Serializable {
 		this.glbImgDetailId = glbImgDetailId;
 	}
 
-	public Long getCustProductionAppId() {
-		return custProductionAppId;
+	public Long getCustBusinessAppId() {
+		return custBusinessAppId;
 	}
 
-	public void setCustProductionAppId(Long custProductionAppId) {
-		this.custProductionAppId = custProductionAppId;
+	public void setCustBusinessAppId(Long custBusinessAppId) {
+		this.custBusinessAppId = custBusinessAppId;
 	}
 
 	public Long getCategoryId() {
@@ -135,35 +135,27 @@ public class UICustProduct implements Serializable {
 		this.mfrDate = mfrDate;
 	}
 
-	public Double getUnitPrice() {
-		return unitPrice;
-	}
-
-	public void setUnitPrice(Double unitPrice) {
-		this.unitPrice = unitPrice;
-	}
-
-	public Double getPurchasePrice() {
+	public UICustProductPrice getPurchasePrice() {
 		return purchasePrice;
 	}
 
-	public void setPurchasePrice(Double purchasePrice) {
+	public void setPurchasePrice(UICustProductPrice purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public Double getRetailPrice() {
+	public UICustProductPrice getRetailPrice() {
 		return retailPrice;
 	}
 
-	public void setRetailPrice(Double retailPrice) {
+	public void setRetailPrice(UICustProductPrice retailPrice) {
 		this.retailPrice = retailPrice;
 	}
 
-	public Double getWholePrice() {
+	public UICustProductPrice getWholePrice() {
 		return wholePrice;
 	}
 
-	public void setWholePrice(Double wholePrice) {
+	public void setWholePrice(UICustProductPrice wholePrice) {
 		this.wholePrice = wholePrice;
 	}
 

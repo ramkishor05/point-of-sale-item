@@ -1,10 +1,10 @@
 package com.brijframework.production.cust.entities;
 
-import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID;
-import static com.brijframework.production.contants.Constants.CUST_UNIT_GROUP_ID;
+import static com.brijframework.production.contants.Constants.CUST_CURRENCY_GROUP_ID;
+import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
 import static com.brijframework.production.contants.Constants.DESCRIPTION;
 import static com.brijframework.production.contants.Constants.DISPLAY_NAME;
-import static com.brijframework.production.contants.Constants.EOCUST_UNIT;
+import static com.brijframework.production.contants.Constants.EOCUST_CURRENCY_ITEM;
 import static com.brijframework.production.contants.Constants.NAME;
 import static com.brijframework.production.contants.Constants.TYPE_ID;
 
@@ -16,8 +16,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = EOCUST_UNIT)
-public class EOCustUnit extends EOCustObject{
+@Table(name = EOCUST_CURRENCY_ITEM)
+public class EOCustCurrencyItem extends EOCustObject{
 
 	/**
 	 * 
@@ -37,12 +37,12 @@ public class EOCustUnit extends EOCustObject{
 	public String displayName;
 		
 	@ManyToOne
-	@JoinColumn(name=CUST_UNIT_GROUP_ID)
-	public EOCustUnitGroup  custUnitGroup;
+	@JoinColumn(name=CUST_CURRENCY_GROUP_ID)
+	public EOCustCurrencyGroup  custCurrencyGroup;
 	
-	@JoinColumn(name = CUST_PROD_APP_ID, nullable = false)
+	@JoinColumn(name = CUST_BUSINESS_APP_ID, nullable = false)
 	@ManyToOne
-	private EOCustProductionApp custProductionApp;
+	private EOCustBusinessApp custBusinessApp;
 
 	public String getTypeId() {
 		return typeId;
@@ -50,6 +50,14 @@ public class EOCustUnit extends EOCustObject{
 
 	public void setTypeId(String typeId) {
 		this.typeId = typeId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getDescription() {
@@ -68,20 +76,20 @@ public class EOCustUnit extends EOCustObject{
 		this.displayName = displayName;
 	}
 
-	public EOCustUnitGroup getCustUnitGroup() {
-		return custUnitGroup;
+	public EOCustCurrencyGroup getCustCurrencyGroup() {
+		return custCurrencyGroup;
 	}
 
-	public void setCustUnitGroup(EOCustUnitGroup custUnitGroup) {
-		this.custUnitGroup = custUnitGroup;
+	public void setCustCurrencyGroup(EOCustCurrencyGroup custCurrencyGroup) {
+		this.custCurrencyGroup = custCurrencyGroup;
 	}
 
-	public EOCustProductionApp getCustProductionApp() {
-		return custProductionApp;
+	public EOCustBusinessApp getCustBusinessApp() {
+		return custBusinessApp;
 	}
 
-	public void setCustProductionApp(EOCustProductionApp custProductionApp) {
-		this.custProductionApp = custProductionApp;
+	public void setCustBusinessApp(EOCustBusinessApp custBusinessApp) {
+		this.custBusinessApp = custBusinessApp;
 	}
 	
 }

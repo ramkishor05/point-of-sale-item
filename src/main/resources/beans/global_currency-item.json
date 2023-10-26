@@ -1,0 +1,116 @@
+{
+	"id": "GlobalCurrencyItem",
+	"order": 2,
+	"objects": [
+		{
+			"id": "GlobalCurrency_USD",
+			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
+			"name": "GlobalCurrencyItem",
+			"properties": {
+				"typeId": "USD",
+				"name": "USD",
+				"description": "US Dollars",
+				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Paisa"
+			}
+		},
+		{
+			"id": "GlobalCurrency_AED",
+			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
+			"name": "GlobalCurrencyItem",
+			"properties": {
+				"typeId": "AED",
+				"name": "AED",
+				"description": "United Arab Emirates Dirham",
+				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Paisa"
+			}
+		},
+		{
+			"id": "GlobalCurrency_ARS",
+			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
+			"name": "GlobalCurrencyItem",
+			"properties": {
+				"typeId": "ARS",
+				"name": "ARS",
+				"description": "Argentine Pesos",
+				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Paisa"
+			}
+		},
+		{
+			"id": "GlobalCurrency_AUD",
+			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
+			"name": "GlobalCurrencyItem",
+			"properties": {
+				"typeId": "AUD",
+				"name": "AUD",
+				"description": "Australian Dollars",
+				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Paisa"
+			}
+		},
+		{
+			"id": "GlobalCurrency_BGN",
+			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
+			"name": "GlobalCurrencyItem",
+			"properties": {
+				"typeId": "BGN",
+				"name": "BGN",
+				"description": "Bulgarian Lev",
+				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Cent"
+			}
+		},
+		{
+			"id": "GlobalCurrency_BOB",
+			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
+			"name": "GlobalCurrencyItem",
+			"properties": {
+				"typeId": "BOB",
+				"name": "BOB",
+				"description": "Bolivian Boliviano",
+				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Cent"
+			}
+		},
+		{
+			"id": "GlobalCurrency_BRL",
+			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
+			"name": "GlobalCurrencyItem",
+			"properties": {
+				"typeId": "BRL",
+				"name": "BRL",
+				"description": "Brazilian Real",
+				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Cent"
+			}
+		},
+		{
+			"id": "GlobalCurrency_CAD",
+			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
+			"name": "GlobalCurrencyItem",
+			"properties": {
+				"typeId": "CAD",
+				"name": "CAD",
+				"description": "Canadian Dollars",
+				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Cent"
+			}
+		},
+		{
+			"id": "GlobalCurrency_CHF",
+			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
+			"name": "GlobalCurrencyItem",
+			"properties": {
+				"typeId": "CHF",
+				"name": "CHF",
+				"description": "Swiss Francs",
+				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Cent"
+			}
+		},
+		{
+			"id": "GlobalCurrency_CLP",
+			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
+			"name": "GlobalCurrencyItem",
+			"properties": {
+				"typeId": "CLP",
+				"name": "CLP",
+				"description": "Chilean Peso",
+				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Cent"
+			}
+		}
+	]
+}

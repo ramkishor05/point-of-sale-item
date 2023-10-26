@@ -7,17 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.brijframework.production.cust.dto.UICustUnitGroup;
-import com.brijframework.production.cust.entities.EOCustProductionApp;
+import com.brijframework.production.cust.entities.EOCustBusinessApp;
 import com.brijframework.production.cust.entities.EOCustUnitGroup;
 import com.brijframework.production.cust.mapper.CustUnitGroupMapper;
-import com.brijframework.production.cust.repository.CustProductionAppRepository;
+import com.brijframework.production.cust.repository.CustBusinessAppRepository;
 import com.brijframework.production.cust.repository.CustUnitGroupRepository;
 import com.brijframework.production.cust.service.CustUnitGroupService;
 
 @Service
 public class CustUnitGroupServiceImpl implements CustUnitGroupService {
 	@Autowired
-	CustProductionAppRepository custProductionAppRepository;
+	CustBusinessAppRepository custBusinessAppRepository;
 	
 	@Autowired
 	CustUnitGroupRepository custUnitGroupRepository;
@@ -28,26 +28,26 @@ public class CustUnitGroupServiceImpl implements CustUnitGroupService {
 
 	@Override
 	public UICustUnitGroup saveUnitGroup(long custAppId, UICustUnitGroup uiCustUnitGroup) {
-		Optional<EOCustProductionApp> findById = custProductionAppRepository.findById(custAppId);
+		Optional<EOCustBusinessApp> findById = custBusinessAppRepository.findById(custAppId);
 		if(!findById.isPresent()) {
 			return null;
 		}
-		EOCustProductionApp eoCustProductionApp = findById.get();
+		EOCustBusinessApp eoCustBusinessApp = findById.get();
 		EOCustUnitGroup eoCustUnitGroup = custUnitGroupMapper.mapToDAO(uiCustUnitGroup);
-		eoCustUnitGroup.setCustProductionApp(eoCustProductionApp);
+		eoCustUnitGroup.setCustBusinessApp(eoCustBusinessApp);
 		eoCustUnitGroup=custUnitGroupRepository.save(eoCustUnitGroup);
 		return custUnitGroupMapper.mapToDTO(eoCustUnitGroup);
 	}
 
 	@Override
 	public UICustUnitGroup updateUnitGroup(long custAppId, UICustUnitGroup uiCustUnitGroup) {
-		Optional<EOCustProductionApp> findById = custProductionAppRepository.findById(custAppId);
+		Optional<EOCustBusinessApp> findById = custBusinessAppRepository.findById(custAppId);
 		if(!findById.isPresent()) {
 			return null;
 		}
-		EOCustProductionApp eoCustProductionApp = findById.get();
+		EOCustBusinessApp eoCustBusinessApp = findById.get();
 		EOCustUnitGroup eoCustUnitGroup = custUnitGroupMapper.mapToDAO(uiCustUnitGroup);
-		eoCustUnitGroup.setCustProductionApp(eoCustProductionApp);
+		eoCustUnitGroup.setCustBusinessApp(eoCustBusinessApp);
 		eoCustUnitGroup=custUnitGroupRepository.save(eoCustUnitGroup);
 		return custUnitGroupMapper.mapToDTO(eoCustUnitGroup);
 	}

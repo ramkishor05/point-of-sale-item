@@ -28,20 +28,12 @@ public interface CustProductSaleRequestMapper extends GenericMapper<EOCustProduc
 	@Override
 	CustProductSaleRequest mapToDTO(EOCustProductSale eoCustProductSale);
 
-	@Mapping(target = CUST_PURCHASE_UNIT_ID_ENTITY, source = CUST_PURCHASE_UNIT_ID_UI)
-	@Mapping(target = CUST_RETAIL_UNIT_ID_ENTITY, source = CUST_RETAIL_UNIT_ID_UI)
 	EOCustProductRetailSale mapToDAO(CustProductRetailSaleRequest custProductRetailSaleRequest);
 
-	@Mapping(source = CUST_PURCHASE_UNIT_ID_ENTITY, target = CUST_PURCHASE_UNIT_ID_UI)
-	@Mapping(source = CUST_RETAIL_UNIT_ID_ENTITY, target = CUST_RETAIL_UNIT_ID_UI)
 	CustProductRetailSaleRequest mapToDTO(EOCustProductRetailSale eoCustProductRetailSale);
 
-	@Mapping(target = CUST_PURCHASE_UNIT_ID_ENTITY, source = CUST_PURCHASE_UNIT_ID_UI)
-	@Mapping(target = CUST_WHOLE_UNIT_ID_ENTITY, source = CUST_WHOLE_UNIT_ID_UI)
 	EOCustProductWholeSale mapToDAO(CustProductWholeSaleRequest custProductWholeSaleRequest);
 
-	@Mapping(source = CUST_PURCHASE_UNIT_ID_ENTITY, target = CUST_PURCHASE_UNIT_ID_UI)
-	@Mapping(source = CUST_WHOLE_UNIT_ID_ENTITY, target = CUST_WHOLE_UNIT_ID_UI)
 	CustProductWholeSaleRequest mapToDTO(EOCustProductWholeSale eoCustProductWholeSale);
 
 }

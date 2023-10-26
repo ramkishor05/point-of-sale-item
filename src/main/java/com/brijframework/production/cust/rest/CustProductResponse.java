@@ -3,10 +3,10 @@ package com.brijframework.production.cust.rest;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.brijframework.production.cust.dto.UICustProductPrice;
 import com.brijframework.production.dto.UICustCategory;
 import com.brijframework.production.dto.UIManufacturer;
 import com.brijframework.production.global.dto.UIGlobalMediaDetail;
-import com.brijframework.production.global.dto.UIGlobalUnit;
 
 public class CustProductResponse implements Serializable {
 
@@ -20,21 +20,13 @@ public class CustProductResponse implements Serializable {
 	private Date expDate;
 	private Date mfrDate;
 	// for purchase items
-	private Double purchasePrice;
-	private UIGlobalUnit purchaseUnit;
+	private UICustProductPrice purchasePrice;
 	// for sale items
-	private Double retailPrice;
-	private UIGlobalUnit retailUnit;
+	private UICustProductPrice retailPrice;
 	
-	private Double wholePrice;
+	private UICustProductPrice wholePrice;
 	
-	private UIGlobalUnit wholeUnit;
-	
-	// for stock items
-	private Long stockQnt;
-	private Long saleQnt;
-	
-	private Long custProductionAppId;
+	private Long custBusinessAppId;
 	
 	private UICustCategory custCategory;
 	
@@ -90,14 +82,6 @@ public class CustProductResponse implements Serializable {
 		this.logoUrl = logoUrl;
 	}
 
-	public Long getCustProductionAppId() {
-		return custProductionAppId;
-	}
-
-	public void setCustProductionAppId(Long custAppId) {
-		this.custProductionAppId = custAppId;
-	}
-
 	public Date getExpDate() {
 		return expDate;
 	}
@@ -114,68 +98,36 @@ public class CustProductResponse implements Serializable {
 		this.mfrDate = mfrDate;
 	}
 
-	public Double getPurchasePrice() {
+	public UICustProductPrice getPurchasePrice() {
 		return purchasePrice;
 	}
 
-	public void setPurchasePrice(Double purchasePrice) {
+	public void setPurchasePrice(UICustProductPrice purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public Double getRetailPrice() {
+	public UICustProductPrice getRetailPrice() {
 		return retailPrice;
 	}
 
-	public void setRetailPrice(Double retailPrice) {
+	public void setRetailPrice(UICustProductPrice retailPrice) {
 		this.retailPrice = retailPrice;
 	}
 
-	public Double getWholePrice() {
+	public UICustProductPrice getWholePrice() {
 		return wholePrice;
 	}
 
-	public void setWholePrice(Double wholePrice) {
+	public void setWholePrice(UICustProductPrice wholePrice) {
 		this.wholePrice = wholePrice;
 	}
 
-	public Long getStockQnt() {
-		return stockQnt;
+	public Long getCustBusinessAppId() {
+		return custBusinessAppId;
 	}
 
-	public void setStockQnt(Long stockQnt) {
-		this.stockQnt = stockQnt;
-	}
-
-	public Long getSaleQnt() {
-		return saleQnt;
-	}
-
-	public void setSaleQnt(Long saleQnt) {
-		this.saleQnt = saleQnt;
-	}
-	
-	public UIGlobalUnit getPurchaseUnit() {
-		return purchaseUnit;
-	}
-
-	public void setPurchaseUnit(UIGlobalUnit purchaseUnit) {
-		this.purchaseUnit = purchaseUnit;
-	}
-
-	public UIGlobalUnit getRetailUnit() {
-		return retailUnit;
-	}
-
-	public void setRetailUnit(UIGlobalUnit retailUnit) {
-		this.retailUnit = retailUnit;
-	}
-
-	public UIGlobalUnit getWholeUnit() {
-		return wholeUnit;
-	}
-
-	public void setWholeUnit(UIGlobalUnit wholeUnit) {
-		this.wholeUnit = wholeUnit;
+	public void setCustBusinessAppId(Long custBusinessAppId) {
+		this.custBusinessAppId = custBusinessAppId;
 	}
 
 	public UICustCategory getCustCategory() {

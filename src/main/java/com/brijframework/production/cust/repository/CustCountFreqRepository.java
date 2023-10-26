@@ -14,13 +14,13 @@ import com.brijframework.production.cust.entities.EOCustCountFreq;
 @Transactional
 public interface CustCountFreqRepository extends JpaRepository<EOCustCountFreq, Long>{
 
-	@Query(nativeQuery = true, value = "select * from EOCUST_COUNT_FREQ where CUST_PROD_APP_ID= ?1 and NAME=?2")
+	@Query(nativeQuery = true, value = "select * from EOCUST_COUNT_FREQ where CUST_BUSINESS_APP_ID= ?1 and NAME=?2")
 	Optional<EOCustCountFreq> findByCustAppAndName(Long id, String name);
 
-	@Query(nativeQuery = true, value = "select * from EOCUST_COUNT_FREQ where CUST_PROD_APP_ID= ?1")
+	@Query(nativeQuery = true, value = "select * from EOCUST_COUNT_FREQ where CUST_BUSINESS_APP_ID= ?1")
 	List<EOCustCountFreq> findAllByCustAppId(long custAppId);
 	
-	@Query(nativeQuery = true, value = "select * from EOCUST_COUNT_FREQ where CUST_PROD_APP_ID= ?1 and TYPE_ID=?2")
+	@Query(nativeQuery = true, value = "select * from EOCUST_COUNT_FREQ where CUST_BUSINESS_APP_ID= ?1 and TYPE_ID=?2")
 	List<EOCustCountFreq> findAllByCustAppIdAndTypeId(long custAppId, String typeId);
 
 }

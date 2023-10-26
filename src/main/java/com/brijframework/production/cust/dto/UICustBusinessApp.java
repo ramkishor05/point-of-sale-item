@@ -1,6 +1,6 @@
 package com.brijframework.production.cust.dto;
 
-public class UICustProductionApp {
+public class UICustBusinessApp {
 
 	private long id;
 

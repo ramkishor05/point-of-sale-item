@@ -5,10 +5,8 @@ import static com.brijframework.production.contants.Constants.CUST_PRODUCT_SALE_
 import static com.brijframework.production.contants.Constants.DISCOUNT;
 import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT_RETAIL_SALE;
 import static com.brijframework.production.contants.Constants.PURCHASE_PRICE;
-import static com.brijframework.production.contants.Constants.PURCHASE_UNIT;
 import static com.brijframework.production.contants.Constants.RETAIL_PRICE;
 import static com.brijframework.production.contants.Constants.RETAIL_QTN;
-import static com.brijframework.production.contants.Constants.RETAIL_UNIT;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,72 +22,49 @@ import javax.persistence.Table;
 @Table(name = EOCUST_PRODUCT_RETAIL_SALE)
 public class EOCustProductRetailSale extends EOCustItem {
 
-
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	// for purchase cost
-	@Column(name = PURCHASE_PRICE)
-	private Double purchasePrice;
-
-	@JoinColumn(name = PURCHASE_UNIT)
 	@OneToOne
-	private EOCustUnit purchaseUnit;
+	@JoinColumn(name = PURCHASE_PRICE)
+	private EOCustProductRetailSalePrice purchasePrice;
 
 	// for sale cost
-	@Column(name = RETAIL_PRICE)
-	private Double retailPrice;
-
-	@JoinColumn(name = RETAIL_UNIT)
 	@OneToOne
-	private EOCustUnit retailUnit;
+	@JoinColumn(name = RETAIL_PRICE)
+	private EOCustProductRetailSalePrice retailPrice;
 
 	@Column(name = RETAIL_QTN)
 	private Long retailQnt;
-	
+
 	@Column(name = DISCOUNT)
 	private Double discount;
 
 	@JoinColumn(name = CUST_PRODUCT_ID)
 	@ManyToOne
 	private EOCustProduct custProduct;
-	
+
 	@JoinColumn(name = CUST_PRODUCT_SALE_ID)
 	@OneToOne
 	private EOCustProductSale custProductSale;
 
-	public Double getPurchasePrice() {
+	public EOCustProductRetailSalePrice getPurchasePrice() {
 		return purchasePrice;
 	}
 
-	public void setPurchasePrice(Double purchasePrice) {
+	public void setPurchasePrice(EOCustProductRetailSalePrice purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public EOCustUnit getPurchaseUnit() {
-		return purchaseUnit;
-	}
-
-	public void setPurchaseUnit(EOCustUnit purchaseUnit) {
-		this.purchaseUnit = purchaseUnit;
-	}
-
-	public Double getRetailPrice() {
+	public EOCustProductRetailSalePrice getRetailPrice() {
 		return retailPrice;
 	}
 
-	public void setRetailPrice(Double retailPrice) {
+	public void setRetailPrice(EOCustProductRetailSalePrice retailPrice) {
 		this.retailPrice = retailPrice;
-	}
-
-	public EOCustUnit getRetailUnit() {
-		return retailUnit;
-	}
-
-	public void setRetailUnit(EOCustUnit retailUnit) {
-		this.retailUnit = retailUnit;
 	}
 
 	public Long getRetailQnt() {
@@ -100,20 +75,20 @@ public class EOCustProductRetailSale extends EOCustItem {
 		this.retailQnt = retailQnt;
 	}
 
-	public EOCustProduct getCustProduct() {
-		return custProduct;
-	}
-
-	public void setCustProduct(EOCustProduct custProduct) {
-		this.custProduct = custProduct;
-	}
-
 	public Double getDiscount() {
 		return discount;
 	}
 
 	public void setDiscount(Double discount) {
 		this.discount = discount;
+	}
+
+	public EOCustProduct getCustProduct() {
+		return custProduct;
+	}
+
+	public void setCustProduct(EOCustProduct custProduct) {
+		this.custProduct = custProduct;
 	}
 
 	public EOCustProductSale getCustProductSale() {
@@ -124,5 +99,4 @@ public class EOCustProductRetailSale extends EOCustItem {
 		this.custProductSale = custProductSale;
 	}
 
-	
 }

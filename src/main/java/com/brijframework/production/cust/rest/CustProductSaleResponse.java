@@ -30,7 +30,7 @@ public class CustProductSaleResponse implements Serializable {
 
 	private Double wholeSaleTotals;
 	
-	private Long custProductionAppId;
+	private Long custBusinessAppId;
 	
 	private Date  saleDate;
 	
@@ -72,12 +72,12 @@ public class CustProductSaleResponse implements Serializable {
 		this.customerId = customerId;
 	}
 
-	public Long getCustProductionAppId() {
-		return custProductionAppId;
+	public Long getCustBusinessAppId() {
+		return custBusinessAppId;
 	}
 
-	public void setCustProductionAppId(Long custProductionAppId) {
-		this.custProductionAppId = custProductionAppId;
+	public void setCustBusinessAppId(Long custBusinessAppId) {
+		this.custBusinessAppId = custBusinessAppId;
 	}
 
 	public Double getDiscounts() {
@@ -90,7 +90,7 @@ public class CustProductSaleResponse implements Serializable {
 
 	public Double getRetailSaleTotals() {
 		if(retailSaleTotals==null || retailSaleTotals==0) {
-			retailSaleTotals=custProductRetailSaleList.stream().filter(custProductRetail->custProductRetail.getRetailPrice()!=null && custProductRetail.getRetailQnt()!=null).collect(Collectors.summarizingDouble(custProductRetailSale->custProductRetailSale.getRetailPrice()*custProductRetailSale.getRetailQnt())).getSum();
+			retailSaleTotals=custProductRetailSaleList.stream().filter(custProductRetail->custProductRetail.getRetailPrice()!=null && custProductRetail.getRetailQnt()!=null).collect(Collectors.summarizingDouble(custProductRetailSale->custProductRetailSale.getRetailPrice().getPrice()*custProductRetailSale.getRetailQnt())).getSum();
 		}
 		return retailSaleTotals;
 	}
@@ -101,7 +101,7 @@ public class CustProductSaleResponse implements Serializable {
 
 	public Double getWholeSaletotals() {
 		if(wholeSaleTotals==null || wholeSaleTotals==0) {
-			wholeSaleTotals= custProductWholeSaleList==null? 0:  custProductWholeSaleList.stream().filter(custProductRetail->custProductRetail.getWholePrice()!=null && custProductRetail.getWholeQnt()!=null).collect(Collectors.summarizingDouble(custProductWholeSale->custProductWholeSale.getWholePrice()*custProductWholeSale.getWholeQnt())).getSum();
+			wholeSaleTotals= custProductWholeSaleList==null? 0:  custProductWholeSaleList.stream().filter(custProductRetail->custProductRetail.getWholePrice().getPrice()!=null && custProductRetail.getWholeQnt()!=null).collect(Collectors.summarizingDouble(custProductWholeSale->custProductWholeSale.getWholePrice().getPrice()*custProductWholeSale.getWholeQnt())).getSum();
 		}
 		return wholeSaleTotals;
 	}

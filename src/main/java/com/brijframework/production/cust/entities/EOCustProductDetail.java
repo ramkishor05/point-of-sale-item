@@ -3,7 +3,7 @@ package com.brijframework.production.cust.entities;
 import static com.brijframework.production.contants.Constants.ATTRIBUTE_NAME;
 import static com.brijframework.production.contants.Constants.ATTRIBUTE_VALUE;
 import static com.brijframework.production.contants.Constants.CUST_PRODUCT_ID;
-import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID;
+import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
 import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT_DETAIL;
 import static com.brijframework.production.contants.Constants.SECTION_NAME;
 
@@ -19,7 +19,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name=EOCUST_PRODUCT_DETAIL, uniqueConstraints = { @UniqueConstraint(columnNames = { 
-		CUST_PROD_APP_ID, CUST_PRODUCT_ID, SECTION_NAME, ATTRIBUTE_NAME }) })
+		CUST_BUSINESS_APP_ID, CUST_PRODUCT_ID, SECTION_NAME, ATTRIBUTE_NAME }) })
 public class EOCustProductDetail extends EOCustObject {
 
 	/**
@@ -40,9 +40,9 @@ public class EOCustProductDetail extends EOCustObject {
 	@JoinColumn(name = CUST_PRODUCT_ID)
 	public EOCustProduct custProduct;
 	
-	@JoinColumn(name = CUST_PROD_APP_ID, nullable = false)
+	@JoinColumn(name = CUST_BUSINESS_APP_ID, nullable = false)
 	@ManyToOne
-	private EOCustProductionApp custProductionApp;
+	private EOCustBusinessApp custBusinessApp;
 
 	public String getSectionName() {
 		return sectionName;

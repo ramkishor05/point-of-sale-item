@@ -12,7 +12,7 @@ public class UICustCategory implements Serializable {
 	public String typeId;
 	public long custImageDetailId;
 	public long custCategoryGroupId;
-	public long custProductionAppId;
+	public long custBusinessAppId;
 
 	public long getId() {
 		return id;
@@ -70,12 +70,12 @@ public class UICustCategory implements Serializable {
 		this.custCategoryGroupId = custCategoryGroupId;
 	}
 
-	public long getCustProductionAppId() {
-		return custProductionAppId;
+	public long getCustBusinessAppId() {
+		return custBusinessAppId;
 	}
 
-	public void setCustProductionAppId(long custProductionAppId) {
-		this.custProductionAppId = custProductionAppId;
+	public void setCustBusinessAppId(long custBusinessAppId) {
+		this.custBusinessAppId = custBusinessAppId;
 	}
 
 }

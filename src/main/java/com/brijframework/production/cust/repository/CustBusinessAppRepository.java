@@ -6,12 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.brijframework.production.cust.entities.EOCustProductionApp;
+import com.brijframework.production.cust.entities.EOCustBusinessApp;
 
 @Repository
 @Transactional
-public interface CustProductionAppRepository  extends JpaRepository<EOCustProductionApp, Long>{
+public interface CustBusinessAppRepository  extends JpaRepository<EOCustBusinessApp, Long>{
 
-	Optional<EOCustProductionApp> findByCustIdAndAppid(long l, long m);
+	Optional<EOCustBusinessApp> findByCustIdAndAppid(long l, long m);
 
 }

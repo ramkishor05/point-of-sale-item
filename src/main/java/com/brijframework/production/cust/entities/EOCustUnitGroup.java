@@ -1,6 +1,6 @@
 package com.brijframework.production.cust.entities;
 
-import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID;
+import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
 import static com.brijframework.production.contants.Constants.CUST_UNIT_GROUP;
 import static com.brijframework.production.contants.Constants.DISPLAY_NAME;
 import static com.brijframework.production.contants.Constants.EOCUST_UNIT_GROUP;
@@ -38,12 +38,12 @@ public class EOCustUnitGroup extends EOCustObject {
 	@Column(name = DISPLAY_NAME)
 	public String displayName;
 
-	@JoinColumn(name = CUST_PROD_APP_ID, nullable = false)
+	@JoinColumn(name = CUST_BUSINESS_APP_ID, nullable = false)
 	@ManyToOne
-	private EOCustProductionApp custProductionApp;
+	private EOCustBusinessApp custBusinessApp;
 
 	@OneToMany(mappedBy = CUST_UNIT_GROUP)
-	public Set<EOCustUnit> custUnits ;
+	public Set<EOCustUnitItem> custUnits ;
 
 	public String getTypeId() {
 		return typeId;
@@ -51,6 +51,14 @@ public class EOCustUnitGroup extends EOCustObject {
 
 	public void setTypeId(String typeId) {
 		this.typeId = typeId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getDescription() {
@@ -69,19 +77,19 @@ public class EOCustUnitGroup extends EOCustObject {
 		this.displayName = displayName;
 	}
 
-	public EOCustProductionApp getCustProductionApp() {
-		return custProductionApp;
+	public EOCustBusinessApp getCustBusinessApp() {
+		return custBusinessApp;
 	}
 
-	public void setCustProductionApp(EOCustProductionApp custProductionApp) {
-		this.custProductionApp = custProductionApp;
+	public void setCustBusinessApp(EOCustBusinessApp custBusinessApp) {
+		this.custBusinessApp = custBusinessApp;
 	}
 
-	public Set<EOCustUnit> getCustUnits() {
+	public Set<EOCustUnitItem> getCustUnits() {
 		return custUnits;
 	}
 
-	public void setCustUnits(Set<EOCustUnit> custUnits) {
+	public void setCustUnits(Set<EOCustUnitItem> custUnits) {
 		this.custUnits = custUnits;
 	}
 }

@@ -6,12 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.brijframework.production.cust.entities.EOCustCategory;
-import com.brijframework.production.cust.entities.EOCustProductionApp;
+import com.brijframework.production.cust.entities.EOCustCategoryItem;
+import com.brijframework.production.cust.entities.EOCustBusinessApp;
 import com.brijframework.production.cust.mapper.CustCategoryRequestMapper;
 import com.brijframework.production.cust.mapper.CustCategoryResponseMapper;
-import com.brijframework.production.cust.repository.CustCategoryRepository;
-import com.brijframework.production.cust.repository.CustProductionAppRepository;
+import com.brijframework.production.cust.repository.CustCategoryItemRepository;
+import com.brijframework.production.cust.repository.CustBusinessAppRepository;
 import com.brijframework.production.cust.rest.CustCategoryRequest;
 import com.brijframework.production.cust.rest.CustCategoryResponse;
 import com.brijframework.production.cust.service.CustCategoryService;
@@ -20,10 +20,10 @@ import com.brijframework.production.cust.service.CustCategoryService;
 public class CustCategoryServiceImpl implements CustCategoryService {
 	
 	@Autowired
-	CustProductionAppRepository custProductionAppRepository;
+	CustBusinessAppRepository custBusinessAppRepository;
 	
 	@Autowired
-	CustCategoryRepository custCategoryRepository;
+	CustCategoryItemRepository custCategoryRepository;
 	
 	@Autowired
 	CustCategoryRequestMapper custCategoryRequestMapper;
@@ -33,7 +33,7 @@ public class CustCategoryServiceImpl implements CustCategoryService {
 	
 	@Override
 	public CustCategoryResponse saveCategory(long custAppId, CustCategoryRequest custCategoryRequest) {
-		Optional<EOCustProductionApp> findById = custProductionAppRepository.findById(custAppId);
+		Optional<EOCustBusinessApp> findById = custBusinessAppRepository.findById(custAppId);
 		if(!findById.isPresent()) {
 			return null;
 		}
@@ -41,9 +41,9 @@ public class CustCategoryServiceImpl implements CustCategoryService {
 	}
 	
 	@Override
-	public CustCategoryResponse saveCategory(EOCustProductionApp eoCustProductionApp,CustCategoryRequest custCategoryRequest) {
-		EOCustCategory eoCustCategory=custCategoryRequestMapper.mapToDAO(custCategoryRequest);
-		eoCustCategory.setCustProductionApp(eoCustProductionApp);
+	public CustCategoryResponse saveCategory(EOCustBusinessApp eoCustBusinessApp,CustCategoryRequest custCategoryRequest) {
+		EOCustCategoryItem eoCustCategory=custCategoryRequestMapper.mapToDAO(custCategoryRequest);
+		eoCustCategory.setCustBusinessApp(eoCustBusinessApp);
 		custCategoryRepository.save(eoCustCategory);
 		return custCategoryResponseMapper.mapToDTO(eoCustCategory);
 	}

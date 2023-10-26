@@ -2,7 +2,7 @@ package com.brijframework.production.cust.entities;
 
 import static com.brijframework.production.contants.Constants.CUST_COUNT_FREQ_ID;
 import static com.brijframework.production.contants.Constants.CUST_PRODUCT_ID;
-import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID;
+import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
 import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT_COUNT_FREQ;
 
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name=EOCUST_PRODUCT_COUNT_FREQ, uniqueConstraints = { @UniqueConstraint(columnNames = { 
-		CUST_PROD_APP_ID, CUST_PRODUCT_ID, CUST_COUNT_FREQ_ID }) })
+		CUST_BUSINESS_APP_ID, CUST_PRODUCT_ID, CUST_COUNT_FREQ_ID }) })
 public class EOCustProductCountFreq extends EOCustObject{
 
 
@@ -31,9 +31,9 @@ public class EOCustProductCountFreq extends EOCustObject{
 	@JoinColumn(name=CUST_COUNT_FREQ_ID)
 	public EOCustCountFreq custCountFreq;
 	
-	@JoinColumn(name = CUST_PROD_APP_ID, nullable = false)
+	@JoinColumn(name = CUST_BUSINESS_APP_ID, nullable = false)
 	@ManyToOne
-	private EOCustProductionApp custProductionApp;
+	private EOCustBusinessApp custBusinessApp;
 
 	public EOCustProduct getCustProduct() {
 		return custProduct;

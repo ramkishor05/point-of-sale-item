@@ -2,17 +2,15 @@ package com.brijframework.production.cust.entities;
 
 import static com.brijframework.production.contants.Constants.CUST_CATEGORY_ID;
 import static com.brijframework.production.contants.Constants.CUST_PRODUCT;
-import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID;
+import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
 import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT;
-import static com.brijframework.production.contants.Constants.EXPIRY_DATE;
+import static com.brijframework.production.contants.Constants.EXP_DATE;
 import static com.brijframework.production.contants.Constants.GLB_IMG_ID;
 import static com.brijframework.production.contants.Constants.GLB_MRF_ID;
 import static com.brijframework.production.contants.Constants.IDEN_NO;
-import static com.brijframework.production.contants.Constants.MRFTR_DATE;
+import static com.brijframework.production.contants.Constants.MRF_DATE;
 import static com.brijframework.production.contants.Constants.PURCHASE_PRICE;
 import static com.brijframework.production.contants.Constants.RETAIL_PRICE;
-import static com.brijframework.production.contants.Constants.SALE_QTN;
-import static com.brijframework.production.contants.Constants.STOCK_QTN;
 import static com.brijframework.production.contants.Constants.TITLE;
 import static com.brijframework.production.contants.Constants.WHOLE_PRICE;
 
@@ -35,7 +33,8 @@ import com.brijframework.production.global.entities.EOGlobalMediaDetail;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = EOCUST_PRODUCT, uniqueConstraints = { @UniqueConstraint(columnNames = { CUST_PROD_APP_ID, IDEN_NO }) })
+@Table(name = EOCUST_PRODUCT, uniqueConstraints = {
+		@UniqueConstraint(columnNames = { CUST_BUSINESS_APP_ID, IDEN_NO }) })
 public class EOCustProduct extends EOCustItem {
 
 	/**
@@ -46,62 +45,45 @@ public class EOCustProduct extends EOCustItem {
 	@Column(name = TITLE)
 	private String title;
 
-	// for purchase cost
-	@Column(name = PURCHASE_PRICE)
-	private Double purchasePrice;
-	
-	@JoinColumn(name = "PURCHASE_UNIT")
 	@OneToOne
-	private EOCustUnit purchaseUnit;
+	@JoinColumn(name = PURCHASE_PRICE, nullable = true)
+	private EOCustProductPrice purchasePrice;
 
-	// for sale cost
-	@Column(name = RETAIL_PRICE)
-	private Double retailPrice;
-	
-	@JoinColumn(name = "RETAIL_UNIT")
 	@OneToOne
-	private EOCustUnit retailUnit;
+	@JoinColumn(name = RETAIL_PRICE, nullable = true)
+	private EOCustProductPrice retailPrice;
 
-	@Column(name = WHOLE_PRICE)
-	private Double wholePrice;
-	
-	@JoinColumn(name = "WHOLE_UNIT")
 	@OneToOne
-	private EOCustUnit wholeUnit;
+	@JoinColumn(name = WHOLE_PRICE, nullable = true)
+	private EOCustProductPrice wholePrice;
 
-	@Column(name = STOCK_QTN)
-	private Long stockQnt;
-
-	@Column(name = SALE_QTN)
-	private Long saleQnt;
-
-	@Column(name = EXPIRY_DATE)
+	@Column(name = EXP_DATE)
 	private Date expDate;
 
-	@Column(name = MRFTR_DATE)
+	@Column(name = MRF_DATE)
 	private Date mfrDate;
 
 	@OneToOne
+	@JoinColumn(name = CUST_CATEGORY_ID)
+	public EOCustCategoryItem custCategory;
+
+	@OneToOne
 	@JoinColumn(name = GLB_IMG_ID)
-	public EOGlobalMediaDetail glbImageDetail;
+	public EOGlobalMediaDetail custImageDetail;
 
 	@OneToOne
 	@JoinColumn(name = GLB_MRF_ID)
-	public EOGlobalManufacturer globalManufacturer;
+	public EOGlobalManufacturer custManufacturer;
 
-	@JoinColumn(name = CUST_PROD_APP_ID, nullable = false)
+	@JoinColumn(name = CUST_BUSINESS_APP_ID, nullable = false)
 	@ManyToOne
-	private EOCustProductionApp custProductionApp;
-
-	@OneToOne
-	@JoinColumn(name = CUST_CATEGORY_ID)
-	public EOCustCategory custCategory;
+	private EOCustBusinessApp custBusinessApp;
 
 	@OneToMany(mappedBy = CUST_PRODUCT)
-	public List<EOCustProductDetail> custProductDetails;
+	public List<EOCustProductDetail> custProductDetailList;
 
 	@OneToMany(mappedBy = CUST_PRODUCT)
-	public List<EOCustProductVariant> custProductVariants;
+	public List<EOCustProductVariant> custProductVariantList;
 
 	public String getTitle() {
 		return title;
@@ -111,44 +93,28 @@ public class EOCustProduct extends EOCustItem {
 		this.title = title;
 	}
 
-	public Double getPurchasePrice() {
+	public EOCustProductPrice getPurchasePrice() {
 		return purchasePrice;
 	}
 
-	public void setPurchasePrice(Double purchasePrice) {
+	public void setPurchasePrice(EOCustProductPrice purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public Double getRetailPrice() {
+	public EOCustProductPrice getRetailPrice() {
 		return retailPrice;
 	}
 
-	public void setRetailPrice(Double retailPrice) {
+	public void setRetailPrice(EOCustProductPrice retailPrice) {
 		this.retailPrice = retailPrice;
 	}
 
-	public Double getWholePrice() {
+	public EOCustProductPrice getWholePrice() {
 		return wholePrice;
 	}
 
-	public void setWholePrice(Double wholePrice) {
+	public void setWholePrice(EOCustProductPrice wholePrice) {
 		this.wholePrice = wholePrice;
-	}
-
-	public Long getStockQnt() {
-		return stockQnt;
-	}
-
-	public void setStockQnt(Long stockQnt) {
-		this.stockQnt = stockQnt;
-	}
-
-	public Long getSaleQnt() {
-		return saleQnt;
-	}
-
-	public void setSaleQnt(Long saleQnt) {
-		this.saleQnt = saleQnt;
 	}
 
 	public Date getExpDate() {
@@ -166,77 +132,53 @@ public class EOCustProduct extends EOCustItem {
 	public void setMfrDate(Date mfrDate) {
 		this.mfrDate = mfrDate;
 	}
-	
-	public EOCustUnit getPurchaseUnit() {
-		return purchaseUnit;
-	}
 
-	public void setPurchaseUnit(EOCustUnit purchaseUnit) {
-		this.purchaseUnit = purchaseUnit;
-	}
-
-	public EOCustUnit getRetailUnit() {
-		return retailUnit;
-	}
-
-	public void setRetailUnit(EOCustUnit retailUnit) {
-		this.retailUnit = retailUnit;
-	}
-
-	public EOCustUnit getWholeUnit() {
-		return wholeUnit;
-	}
-
-	public void setWholeUnit(EOCustUnit wholeUnit) {
-		this.wholeUnit = wholeUnit;
-	}
-
-	public EOGlobalMediaDetail getGlbImageDetail() {
-		return glbImageDetail;
-	}
-
-	public void setGlbImageDetail(EOGlobalMediaDetail glbImageDetail) {
-		this.glbImageDetail = glbImageDetail;
-	}
-
-	public EOGlobalManufacturer getGlobalManufacturer() {
-		return globalManufacturer;
-	}
-
-	public void setGlobalManufacturer(EOGlobalManufacturer globalManufacturer) {
-		this.globalManufacturer = globalManufacturer;
-	}
-
-	public EOCustProductionApp getCustProductionApp() {
-		return custProductionApp;
-	}
-
-	public void setCustProductionApp(EOCustProductionApp custProductionApp) {
-		this.custProductionApp = custProductionApp;
-	}
-
-	public EOCustCategory getCustCategory() {
+	public EOCustCategoryItem getCustCategory() {
 		return custCategory;
 	}
 
-	public void setCustCategory(EOCustCategory custCategory) {
+	public void setCustCategory(EOCustCategoryItem custCategory) {
 		this.custCategory = custCategory;
 	}
 
-	public List<EOCustProductDetail> getCustProductDetails() {
-		return custProductDetails;
+	public EOGlobalMediaDetail getCustImageDetail() {
+		return custImageDetail;
 	}
 
-	public void setCustProductDetails(List<EOCustProductDetail> custProductDetails) {
-		this.custProductDetails = custProductDetails;
+	public void setCustImageDetail(EOGlobalMediaDetail custImageDetail) {
+		this.custImageDetail = custImageDetail;
 	}
 
-	public List<EOCustProductVariant> getCustProductVariants() {
-		return custProductVariants;
+	public EOGlobalManufacturer getCustManufacturer() {
+		return custManufacturer;
 	}
 
-	public void setCustProductVariants(List<EOCustProductVariant> custProductVariants) {
-		this.custProductVariants = custProductVariants;
+	public void setCustManufacturer(EOGlobalManufacturer custManufacturer) {
+		this.custManufacturer = custManufacturer;
+	}
+
+	public EOCustBusinessApp getCustBusinessApp() {
+		return custBusinessApp;
+	}
+
+	public void setCustBusinessApp(EOCustBusinessApp custBusinessApp) {
+		this.custBusinessApp = custBusinessApp;
+	}
+
+	public List<EOCustProductDetail> getCustProductDetailList() {
+		return custProductDetailList;
+	}
+
+	public void setCustProductDetailList(List<EOCustProductDetail> custProductDetailList) {
+		this.custProductDetailList = custProductDetailList;
+	}
+
+	public List<EOCustProductVariant> getCustProductVariantList() {
+		return custProductVariantList;
+	}
+
+	public void setCustProductVariantList(List<EOCustProductVariant> custProductVariantList) {
+		this.custProductVariantList = custProductVariantList;
 	}
 
 }

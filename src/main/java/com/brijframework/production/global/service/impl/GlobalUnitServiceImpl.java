@@ -7,7 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.brijframework.production.cust.repository.CustProductionAppRepository;
+import com.brijframework.production.cust.repository.CustBusinessAppRepository;
 import com.brijframework.production.global.dto.UIGlobalUnit;
 import com.brijframework.production.global.entities.EOGlobalUnit;
 import com.brijframework.production.global.entities.EOGlobalUnitGroup;
@@ -21,7 +21,7 @@ import com.brijframework.production.global.service.GlobalUnitService;
 public class GlobalUnitServiceImpl implements GlobalUnitService {
 	
 	@Autowired
-	CustProductionAppRepository inventoryApplicationRepository;
+	CustBusinessAppRepository inventoryApplicationRepository;
 	
 	@Autowired
 	GlobalUnitGroupRepository inventoryUnitGroupRepository;
