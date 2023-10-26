@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import com.brijframework.production.cust.dto.UICustProduct;
 import com.brijframework.production.cust.dto.UICustProductPrice;
-import com.brijframework.production.global.dto.UIGlobalUnit;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 

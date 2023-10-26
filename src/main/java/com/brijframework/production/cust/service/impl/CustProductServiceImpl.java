@@ -100,6 +100,12 @@ public class CustProductServiceImpl implements CustProductService {
 		return null;
 	}
 
+	@Override
+	public boolean deleteProduct(long custAppId, long id) {
+		custProductRepository.deleteById(id);
+		return true;
+	}
+
 	
 
 }

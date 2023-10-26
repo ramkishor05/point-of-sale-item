@@ -22,4 +22,6 @@ public interface CustProductService {
 
 	CustProductResponse updateProduct(long custBusinessAppId, CustProductRequest product);
 
+	boolean deleteProduct(long custAppId, long id);
+
 }

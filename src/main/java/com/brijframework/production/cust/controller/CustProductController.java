@@ -6,6 +6,7 @@ import static com.brijframework.production.contants.Constants.TYPE_ID;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,6 +40,11 @@ public class CustProductController {
 	@GetMapping
 	public List<CustProductResponse> getProductList(@RequestHeader(CUST_APP_ID) long custAppId) {
 		return custProductService.getProductList(custAppId);
+	}
+	
+	@DeleteMapping("/{id}")
+	public boolean deleteProduct(@RequestHeader(CUST_APP_ID) long custAppId, @PathVariable long id) {
+		return custProductService.deleteProduct(custAppId, id);
 	}
 	
 	@GetMapping("/type/{typeId}")

@@ -1,11 +1,14 @@
 com\brijframework\production\global\mapper\impl\GlobalCategoryMapperImpl.class
 com\brijframework\production\cust\mapper\impl\CustCurrencyItemGlobalCurrencyItemMapperImpl.class
+com\brijframework\production\cust\mapper\impl\CustCurrencyItemRequestMapperImpl.class
 com\brijframework\production\cust\mapper\impl\CustCategoryGlobalCategoryMapperImpl.class
 com\brijframework\production\cust\mapper\impl\CustProductMapperImpl.class
 com\brijframework\production\cust\mapper\impl\CustUnitGroupMapperImpl.class
 com\brijframework\production\cust\mapper\impl\CustCategoryMapperImpl.class
 com\brijframework\production\cust\mapper\impl\CustProductSaleResponseMapperImpl.class
+com\brijframework\production\cust\mapper\impl\CustCurrencyItemResponseMapperImpl.class
 com\brijframework\production\global\mapper\impl\GlobalCountFreqMapperImpl.class
+com\brijframework\production\cust\mapper\impl\CustCurrencyGroupMapperImpl.class
 com\brijframework\production\global\mapper\impl\GlobalCurrencyItemResponseMapperImpl.class
 com\brijframework\production\global\mapper\impl\GlobalCategoryRequestMapperImpl.class
 com\brijframework\production\global\mapper\impl\GlobalCurrencyItemRequestMapperImpl.class

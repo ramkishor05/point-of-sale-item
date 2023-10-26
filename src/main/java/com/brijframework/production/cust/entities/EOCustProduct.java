@@ -17,6 +17,7 @@ import static com.brijframework.production.contants.Constants.WHOLE_PRICE;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -45,15 +46,15 @@ public class EOCustProduct extends EOCustItem {
 	@Column(name = TITLE)
 	private String title;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = PURCHASE_PRICE, nullable = true)
 	private EOCustProductPrice purchasePrice;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = RETAIL_PRICE, nullable = true)
 	private EOCustProductPrice retailPrice;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = WHOLE_PRICE, nullable = true)
 	private EOCustProductPrice wholePrice;
 

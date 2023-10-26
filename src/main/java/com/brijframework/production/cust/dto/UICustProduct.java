@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import com.brijframework.production.cust.entities.EOCustProductPrice;
 import com.brijframework.production.dto.UIManufacturer;
 import com.brijframework.production.dto.UIProductDetail;
 import com.brijframework.production.dto.UIProductRecipe;
