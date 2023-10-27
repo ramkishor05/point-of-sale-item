@@ -10,6 +10,7 @@ import static com.brijframework.production.contants.Constants.WHOLE_PRICE;
 import static com.brijframework.production.contants.Constants.WHOLE_QTN;
 import static com.brijframework.production.contants.Constants.WHOLE_UNIT;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -30,12 +31,12 @@ public class EOCustProductWholeSale extends EOCustItem {
 	private static final long serialVersionUID = 1L;
 	
 	// for purchase cost
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = PURCHASE_PRICE)
 	private EOCustProductRetailSalePrice purchasePrice;
 
 	// for sale cost
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = WHOLE_PRICE)
 	private EOCustProductRetailSalePrice wholePrice;
 

@@ -8,6 +8,7 @@ import static com.brijframework.production.contants.Constants.PURCHASE_PRICE;
 import static com.brijframework.production.contants.Constants.RETAIL_PRICE;
 import static com.brijframework.production.contants.Constants.RETAIL_QTN;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -28,12 +29,12 @@ public class EOCustProductRetailSale extends EOCustItem {
 	private static final long serialVersionUID = 1L;
 
 	// for purchase cost
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = PURCHASE_PRICE)
 	private EOCustProductRetailSalePrice purchasePrice;
 
 	// for sale cost
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = RETAIL_PRICE)
 	private EOCustProductRetailSalePrice retailPrice;
 
