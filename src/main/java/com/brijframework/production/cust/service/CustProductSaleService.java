@@ -18,4 +18,6 @@ public interface CustProductSaleService {
 
 	List<CustProductSaleResponse> filterProductSaleList(long custAppId, LocalDateTime fromDate, LocalDateTime toDate);
 
+	boolean deleteProductSale(long custAppId, Long id);
+
 }

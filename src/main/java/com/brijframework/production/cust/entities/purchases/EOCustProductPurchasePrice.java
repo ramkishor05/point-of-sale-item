@@ -1,4 +1,4 @@
-package com.brijframework.production.cust.entities;
+package com.brijframework.production.cust.entities.purchases;
 
 import static com.brijframework.production.contants.Constants.CURRENCY;
 import static com.brijframework.production.contants.Constants.*;
@@ -14,10 +14,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.brijframework.production.cust.entities.EOCustCurrencyItem;
+import com.brijframework.production.cust.entities.EOCustObject;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = EOCUST_PRODUCT_RETAIL_SALE_PRICE)
-public class EOCustProductRetailSalePrice extends EOCustObject{
+public class EOCustProductPurchasePrice extends EOCustObject{
 	
 	/**
 	 * 
@@ -33,8 +36,8 @@ public class EOCustProductRetailSalePrice extends EOCustObject{
 	private EOCustCurrencyItem currency;
 
 	@ManyToOne
-	@JoinColumn(name = CUST_PRODUCT_RETAIL_SALE_ID)
-	public EOCustProductRetailSale custProductRetailSale;
+	@JoinColumn(name = CUST_PURCHASE_ITEM_ID)
+	public EOCustProductPurchaseItem custProductPurchaseItem;
 
 	public Double getPrice() {
 		return price;
@@ -52,12 +55,11 @@ public class EOCustProductRetailSalePrice extends EOCustObject{
 		this.currency = currency;
 	}
 
-	public EOCustProductRetailSale getCustProductRetailSale() {
-		return custProductRetailSale;
+	public EOCustProductPurchaseItem getCustProductPurchaseItem() {
+		return custProductPurchaseItem;
 	}
 
-	public void setCustProductRetailSale(EOCustProductRetailSale custProductRetailSale) {
-		this.custProductRetailSale = custProductRetailSale;
+	public void setCustProductPurchaseItem(EOCustProductPurchaseItem custProductPurchaseItem) {
+		this.custProductPurchaseItem = custProductPurchaseItem;
 	}
-	
 }

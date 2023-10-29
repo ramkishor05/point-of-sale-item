@@ -8,20 +8,16 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
-
-public class CustProductWholeSaleResponse implements Serializable {
+public class CustProductSaleItemResponse implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String idenNo;
-	// for purchase items
 	private UICustProductPrice purchasePrice;
-	private Double purchaseQnt;
-
-	// for sale items
-	private Double wholeQnt;
-	private UICustProductPrice wholePrice;
-
+	private UICustProductPrice salePrice;
+	private Double saleQnt;
+	private Double discount;
+	private String saleType;
 	private UICustProduct custProduct;
 
 	public Long getId() {
@@ -48,28 +44,36 @@ public class CustProductWholeSaleResponse implements Serializable {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public Double getPurchaseQnt() {
-		return purchaseQnt;
+	public UICustProductPrice getSalePrice() {
+		return salePrice;
 	}
 
-	public void setPurchaseQnt(Double purchaseQnt) {
-		this.purchaseQnt = purchaseQnt;
+	public void setSalePrice(UICustProductPrice salePrice) {
+		this.salePrice = salePrice;
 	}
 
-	public Double getWholeQnt() {
-		return wholeQnt;
+	public Double getSaleQnt() {
+		return saleQnt;
 	}
 
-	public void setWholeQnt(Double wholeQnt) {
-		this.wholeQnt = wholeQnt;
+	public void setSaleQnt(Double saleQnt) {
+		this.saleQnt = saleQnt;
 	}
 
-	public UICustProductPrice getWholePrice() {
-		return wholePrice;
+	public Double getDiscount() {
+		return discount;
 	}
 
-	public void setWholePrice(UICustProductPrice wholePrice) {
-		this.wholePrice = wholePrice;
+	public void setDiscount(Double discount) {
+		this.discount = discount;
+	}
+
+	public String getSaleType() {
+		return saleType;
+	}
+
+	public void setSaleType(String saleType) {
+		this.saleType = saleType;
 	}
 
 	public UICustProduct getCustProduct() {

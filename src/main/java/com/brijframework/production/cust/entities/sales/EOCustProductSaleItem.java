@@ -1,14 +1,12 @@
-package com.brijframework.production.cust.entities;
+package com.brijframework.production.cust.entities.sales;
 
 import static com.brijframework.production.contants.Constants.CUST_PRODUCT_ID;
 import static com.brijframework.production.contants.Constants.CUST_PRODUCT_SALE_ID;
-import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT_WHOLE_SALE;
+import static com.brijframework.production.contants.Constants.DISCOUNT;
+import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT_SALE_ITEM;
 import static com.brijframework.production.contants.Constants.PURCHASE_PRICE;
-import static com.brijframework.production.contants.Constants.PURCHASE_UNIT;
-import static com.brijframework.production.contants.Constants.RETAIL_PRICE;
-import static com.brijframework.production.contants.Constants.WHOLE_PRICE;
-import static com.brijframework.production.contants.Constants.WHOLE_QTN;
-import static com.brijframework.production.contants.Constants.WHOLE_UNIT;
+import static com.brijframework.production.contants.Constants.SALE_PRICE;
+import static com.brijframework.production.contants.Constants.*;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,16 +18,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.brijframework.production.cust.entities.EOCustItem;
+import com.brijframework.production.cust.entities.EOCustProduct;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = EOCUST_PRODUCT_WHOLE_SALE)
-public class EOCustProductWholeSale extends EOCustItem {
+@Table(name = EOCUST_PRODUCT_SALE_ITEM)
+public class EOCustProductSaleItem extends EOCustItem {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	// for purchase cost
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = PURCHASE_PRICE)
@@ -37,21 +38,24 @@ public class EOCustProductWholeSale extends EOCustItem {
 
 	// for sale cost
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = WHOLE_PRICE)
-	private EOCustProductRetailSalePrice wholePrice;
+	@JoinColumn(name = SALE_PRICE)
+	private EOCustProductRetailSalePrice salePrice;
 
-	@Column(name = WHOLE_QTN)
-	private Long wholeQnt;
+	@Column(name = SALE_QTN)
+	private Long saleQnt;
 
-	@Column(name = "DISCOUNT")
+	@Column(name = DISCOUNT)
 	private Double discount;
+	
+	@Column(name = SALE_TYPE)
+	private String saleType;
 
 	@JoinColumn(name = CUST_PRODUCT_ID)
 	@ManyToOne
 	private EOCustProduct custProduct;
 
 	@JoinColumn(name = CUST_PRODUCT_SALE_ID)
-	@ManyToOne
+	@OneToOne
 	private EOCustProductSale custProductSale;
 
 	public EOCustProductRetailSalePrice getPurchasePrice() {
@@ -62,20 +66,28 @@ public class EOCustProductWholeSale extends EOCustItem {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public EOCustProductRetailSalePrice getWholePrice() {
-		return wholePrice;
+	public EOCustProductRetailSalePrice getSalePrice() {
+		return salePrice;
 	}
 
-	public void setWholePrice(EOCustProductRetailSalePrice wholePrice) {
-		this.wholePrice = wholePrice;
+	public void setSalePrice(EOCustProductRetailSalePrice salePrice) {
+		this.salePrice = salePrice;
 	}
 
-	public Long getWholeQnt() {
-		return wholeQnt;
+	public Long getSaleQnt() {
+		return saleQnt;
 	}
 
-	public void setWholeQnt(Long wholeQnt) {
-		this.wholeQnt = wholeQnt;
+	public void setSaleQnt(Long saleQnt) {
+		this.saleQnt = saleQnt;
+	}
+
+	public String getSaleType() {
+		return saleType;
+	}
+
+	public void setSaleType(String saleType) {
+		this.saleType = saleType;
 	}
 
 	public Double getDiscount() {
@@ -101,5 +113,5 @@ public class EOCustProductWholeSale extends EOCustItem {
 	public void setCustProductSale(EOCustProductSale custProductSale) {
 		this.custProductSale = custProductSale;
 	}
-	
+
 }

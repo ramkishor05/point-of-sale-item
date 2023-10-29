@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,8 +45,13 @@ public class CustSaleController {
 	}
 	
 	@GetMapping("/type/{typeId}")
-	public CustProductSaleResponse getProductList(@RequestHeader(CUST_APP_ID) long custAppId,@PathVariable(TYPE_ID) String typeId) {
+	public CustProductSaleResponse getProductSale(@RequestHeader(CUST_APP_ID) long custAppId,@PathVariable(TYPE_ID) String typeId) {
 		return custProductSaleService.getProductSale(custAppId, typeId);
+	}
+	
+	@DeleteMapping("/{id}")
+	public boolean deleteProductSale(@RequestHeader(CUST_APP_ID) long custAppId,@PathVariable("id") Long id) {
+		return custProductSaleService.deleteProductSale(custAppId, id);
 	}
 	
 	@GetMapping("/filter")

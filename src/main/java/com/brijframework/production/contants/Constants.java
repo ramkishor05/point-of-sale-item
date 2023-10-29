@@ -44,6 +44,7 @@ public class Constants {
 	public static final String EOCUST_CATEGORY_GROUP = "EOCUST_CATEGORY_Group";
 	public static final String EOCUST_CATEGORY_ITEM = "EOCUST_CATEGORY_ITEM";
 	public static final String CUST_BUSINESS_APP_ID = "CUST_BUSINESS_APP_ID";
+
 	public static final String CUSTOMER_ID = "CUSTOMER_ID";
 	public static final String GROUP_ID = "GROUP_ID";
 	public static final String BRAND = "BRAND";
@@ -88,11 +89,19 @@ public class Constants {
 	public static final String EOCUST_PRODUCT = "EOCUST_PRODUCT";
 	public static final String EOCUST_PRODUCT_RETAIL_SALE_PRICE = "EOCUST_PRODUCT_RETAIL_SALE_PRICE";
 	public static final String EOCUST_PRODUCT_WHOLE_SALE_PRICE = "EOCUST_PRODUCT_WHOLE_SALE_PRICE";
+	public static final String EOCUST_PRODUCT_SALE_ADDITIONAL = "EOCUST_PRODUCT_SALE_ADDITIONAL";
+	public static final String EOCUST_PRODUCT_SALE_PAYMENT = "EOCUST_PRODUCT_SALE_PAYMENT";
+	public static final String EOCUST_PRODUCT_PURCHASE_ADDITIONAL = "EOCUST_PRODUCT_PURCHASE_ADDITIONAL";
+	public static final String EOCUST_PRODUCT_PURCHASE_ITEM = "EOCUST_PRODUCT_PURCHASE_ITEM";
 
+	public static final String EOCUST_PRODUCT_PURCHASE_PAYMENT = "EOCUST_PRODUCT_PURCHASE_PAYMENT";
 	public static final String EOCUST_PRODUCT_PRICE = "EOCUST_PRODUCT_PRICE";
 
 	public static final String TITLE = "TITLE";
 	public static final String PURCHASE_PRICE = "PURCHASE_PRICE";
+	public static final String SALE_PRICE = "SALE_PRICE";
+	public static final String SALE_TYPE = "SALE_TYPE";
+
 	public static final String PRICE = "PRICE";
 	public static final String CURRENCY = "CURRENCY";
 	public static final String RETAIL_PRICE = "RETAIL_PRICE";
@@ -157,7 +166,10 @@ public class Constants {
 	public static final String EOCUST_PRODUCT_WHOLE_SALE = "EOCUST_PRODUCT_WHOLE_SALE";
 	public static final String WHOLE_QTN = "WHOLE_QTN";
 	public static final String EOCUST_PRODUCT_RETAIL_SALE = "EOCUST_PRODUCT_RETAIL_SALE";
+	public static final String EOCUST_PRODUCT_SALE_ITEM = "EOCUST_PRODUCT_SALE_ITEM";
+
 	public static final String RETAIL_QTN = "RETAIL_QTN";
+
 	public static final String PURCHASE_UNIT = "PURCHASE_UNIT";
 	public static final String RETAIL_UNIT = "RETAIL_UNIT";
 	public static final String WHOLE_UNIT = "WHOLE_UNIT";
@@ -166,13 +178,22 @@ public class Constants {
 	public static final String DISCOUNT = "DISCOUNT";
 
 	public static final String CUST_PRODUCT_SALE = "custProductSale";
+	
+	public static final String CUST_PRODUCT_PURCHASE = "custProductPurchase";
+	public static final String  EOCUST_PRODUCT_PURCHASE ="EOCUST_PRODUCT_PURCHASE";
+	public static final String CUST_PRODUCT_PURCHASE_ID = "CUST_PRODUCT_PURCHASE_ID";
+
 
 	public static final String WHOLE_SALE_TOTALS = "WHOLE_SALE_TOTALS";
 
 	public static final String RETAIL_SALE_TOTALS = "RETAIL_SALE_TOTALS";
 
 	public static final String DISCOUNTS = "DISCOUNTS";
-	
+	public static final String TOTAL_PRICE = "TOTAL_PRICE";
+
+	public static final String TOTAL_QNT = "TOTAL_QNT";
+
+	public static final String PURCHASE_DATE = "PURCHASE_DATE";
 
 	public static final String SALE_DATE = "SALE_DATE";
 
@@ -188,8 +209,11 @@ public class Constants {
 	
 	public static final String CUST_WHOLE_UNIT_ID_ENTITY = "wholeUnit.id";
 	public static final String CUST_WHOLE_UNIT_ID_UI = "wholeUnitId";
-	
 	public static final String CUST_PRODUCT_SALE_ID = "CUST_PRODUCT_SALE_ID";
+
+	public static final String CUST_PURCHASE_ID = "CUST_PURCHASE_ID";
+	public static final String CUST_PURCHASE_ITEM_ID = "CUST_PURCHASE_ITEM_ID";
+
 	public static final String CUST_PRODUCT_RETAIL_SALE_ID = "CUST_PRODUCT_RETAIL_SALE_ID";
 
 	public static final String CUST_PRODUCT_WHOLE_SALE_ID = "CUST_PRODUCT_WHOLE_SALE_ID";

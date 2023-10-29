@@ -8,12 +8,10 @@ import static com.brijframework.production.contants.Constants.SPRING;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import com.brijframework.production.cust.entities.EOCustProductRetailSale;
-import com.brijframework.production.cust.entities.EOCustProductSale;
-import com.brijframework.production.cust.entities.EOCustProductWholeSale;
-import com.brijframework.production.cust.rest.CustProductRetailSaleResponse;
+import com.brijframework.production.cust.entities.sales.EOCustProductSale;
+import com.brijframework.production.cust.entities.sales.EOCustProductSaleItem;
+import com.brijframework.production.cust.rest.CustProductSaleItemResponse;
 import com.brijframework.production.cust.rest.CustProductSaleResponse;
-import com.brijframework.production.cust.rest.CustProductWholeSaleResponse;
 import com.brijframework.production.mapper.GenericMapper;
 
 @Mapper(componentModel = SPRING, implementationPackage = COM_BRIJFRAMEWORK_CUST_PRODUCTION_MAPPER_IMPL)
@@ -27,12 +25,8 @@ public interface CustProductSaleResponseMapper  extends GenericMapper<EOCustProd
 	@Override
 	CustProductSaleResponse mapToDTO(EOCustProductSale eoInvProduct);
 	
-	CustProductRetailSaleResponse mapToDTO(EOCustProductRetailSale eoCustProductRetailSale);
+	CustProductSaleItemResponse mapToDTO(EOCustProductSaleItem eoCustProductRetailSale);
 	
-	EOCustProductRetailSale mapToDAO(CustProductRetailSaleResponse custProductRetailSaleResponse);
-	
-	CustProductWholeSaleResponse mapToDTO(EOCustProductWholeSale eoCustProductWholeSale);
-	
-	EOCustProductWholeSale mapToDAO(CustProductWholeSaleResponse custProductWholeSaleResponse);
+	EOCustProductSaleItem mapToDAO(CustProductSaleItemResponse custProductRetailSaleResponse);
 	
 }

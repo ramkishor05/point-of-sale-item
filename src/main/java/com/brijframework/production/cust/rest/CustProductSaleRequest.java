@@ -12,23 +12,23 @@ public class CustProductSaleRequest {
 	
 	private String idenNo;
 	
+	private String  saleDate;
+	
 	private Double discounts;
 
-	private Double retailSaleTotals;
+	private Double totalPrice;
 	
-	private Double retailSaleQnt;
-	
-	private Double wholeSaleTotals;
-	
-	private Double wholeSaleQnt;
-	
+	private Double totalQnt;
+
 	private Long custBusinessAppId;
 	
 	private Long customerId;
 	
-	private List<CustProductRetailSaleRequest> custProductRetailSaleList;
+	private List<CustProductSaleItemRequest> custProductSaleItemList;
 	
-	private List<CustProductWholeSaleRequest> custProductWholeSaleList;
+	private List<CustProductSaleAdditional> custProductSaleAdditionalList;
+	
+	private List<CustProductSalePayment> custProductSalePaymentList;
 
 	public Long getId() {
 		return id;
@@ -36,22 +36,6 @@ public class CustProductSaleRequest {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-	
-	public Long getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
-	}
-
-	public Long getCustBusinessAppId() {
-		return custBusinessAppId;
-	}
-
-	public void setCustBusinessAppId(Long custBusinessAppId) {
-		this.custBusinessAppId = custBusinessAppId;
 	}
 
 	public String getIdenNo() {
@@ -62,6 +46,14 @@ public class CustProductSaleRequest {
 		this.idenNo = idenNo;
 	}
 
+	public String getSaleDate() {
+		return saleDate;
+	}
+
+	public void setSaleDate(String saleDate) {
+		this.saleDate = saleDate;
+	}
+
 	public Double getDiscounts() {
 		return discounts;
 	}
@@ -70,52 +62,60 @@ public class CustProductSaleRequest {
 		this.discounts = discounts;
 	}
 
-	public Double getRetailSaleTotals() {
-		return retailSaleTotals;
+	public Double getTotalPrice() {
+		return totalPrice;
 	}
 
-	public void setRetailSaleTotals(Double retailSaleTotals) {
-		this.retailSaleTotals = retailSaleTotals;
+	public void setTotalPrice(Double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
-	public Double getWholeSaleTotals() {
-		return wholeSaleTotals;
+	public Double getTotalQnt() {
+		return totalQnt;
 	}
 
-	public void setWholeSaleTotals(Double wholeSaleTotals) {
-		this.wholeSaleTotals = wholeSaleTotals;
-	}
-	
-	public Double getRetailSaleQnt() {
-		return retailSaleQnt;
+	public void setTotalQnt(Double totalQnt) {
+		this.totalQnt = totalQnt;
 	}
 
-	public void setRetailSaleQnt(Double retailSaleQnt) {
-		this.retailSaleQnt = retailSaleQnt;
+	public Long getCustBusinessAppId() {
+		return custBusinessAppId;
 	}
 
-	public Double getWholeSaleQnt() {
-		return wholeSaleQnt;
+	public void setCustBusinessAppId(Long custBusinessAppId) {
+		this.custBusinessAppId = custBusinessAppId;
 	}
 
-	public void setWholeSaleQnt(Double wholeSaleQnt) {
-		this.wholeSaleQnt = wholeSaleQnt;
+	public Long getCustomerId() {
+		return customerId;
 	}
 
-	public List<CustProductRetailSaleRequest> getCustProductRetailSaleList() {
-		return custProductRetailSaleList;
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
 	}
 
-	public void setCustProductRetailSaleList(List<CustProductRetailSaleRequest> custProductRetailSaleList) {
-		this.custProductRetailSaleList = custProductRetailSaleList;
+	public List<CustProductSaleItemRequest> getCustProductSaleItemList() {
+		return custProductSaleItemList;
 	}
 
-	public List<CustProductWholeSaleRequest> getCustProductWholeSaleList() {
-		return custProductWholeSaleList;
+	public void setCustProductSaleItemList(List<CustProductSaleItemRequest> custProductSaleItemList) {
+		this.custProductSaleItemList = custProductSaleItemList;
 	}
 
-	public void setCustProductWholeSaleList(List<CustProductWholeSaleRequest> custProductWholeSaleList) {
-		this.custProductWholeSaleList = custProductWholeSaleList;
+	public List<CustProductSaleAdditional> getCustProductSaleAdditionalList() {
+		return custProductSaleAdditionalList;
 	}
-	
+
+	public void setCustProductSaleAdditionalList(List<CustProductSaleAdditional> custProductSaleAdditionalList) {
+		this.custProductSaleAdditionalList = custProductSaleAdditionalList;
+	}
+
+	public List<CustProductSalePayment> getCustProductSalePaymentList() {
+		return custProductSalePaymentList;
+	}
+
+	public void setCustProductSalePaymentList(List<CustProductSalePayment> custProductSalePaymentList) {
+		this.custProductSalePaymentList = custProductSalePaymentList;
+	}
+
 }

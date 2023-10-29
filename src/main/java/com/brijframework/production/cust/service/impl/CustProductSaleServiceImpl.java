@@ -9,21 +9,23 @@ import org.springframework.stereotype.Service;
 
 import com.brijframework.production.cust.entities.EOCustBusinessApp;
 import com.brijframework.production.cust.entities.EOCustProduct;
-import com.brijframework.production.cust.entities.EOCustProductRetailSale;
-import com.brijframework.production.cust.entities.EOCustProductSale;
-import com.brijframework.production.cust.entities.EOCustProductWholeSale;
+import com.brijframework.production.cust.entities.sales.EOCustProductSaleItem;
+import com.brijframework.production.cust.entities.sales.EOCustProductSale;
+import com.brijframework.production.cust.entities.sales.EOCustProductSaleAdditional;
+import com.brijframework.production.cust.entities.sales.EOCustProductSalePayment;
 import com.brijframework.production.cust.mapper.CustProductSaleRequestMapper;
 import com.brijframework.production.cust.mapper.CustProductSaleResponseMapper;
 import com.brijframework.production.cust.repository.CustBusinessAppRepository;
 import com.brijframework.production.cust.repository.CustProductRepository;
-import com.brijframework.production.cust.repository.CustProductRetailSaleRepository;
+import com.brijframework.production.cust.repository.CustProductSaleItemRepository;
+import com.brijframework.production.cust.repository.CustProductSaleAdditionalRepository;
+import com.brijframework.production.cust.repository.CustProductSalePaymentRepository;
 import com.brijframework.production.cust.repository.CustProductSaleRepository;
-import com.brijframework.production.cust.repository.CustProductWholeSaleRepository;
-import com.brijframework.production.cust.repository.CustUnitItemRepository;
-import com.brijframework.production.cust.rest.CustProductRetailSaleRequest;
+import com.brijframework.production.cust.rest.CustProductSaleAdditional;
+import com.brijframework.production.cust.rest.CustProductSaleItemRequest;
+import com.brijframework.production.cust.rest.CustProductSalePayment;
 import com.brijframework.production.cust.rest.CustProductSaleRequest;
 import com.brijframework.production.cust.rest.CustProductSaleResponse;
-import com.brijframework.production.cust.rest.CustProductWholeSaleRequest;
 import com.brijframework.production.cust.service.CustProductSaleService;
 import com.brijframework.production.util.CommanUtil;
 
@@ -37,16 +39,10 @@ public class CustProductSaleServiceImpl implements CustProductSaleService {
 	private CustProductSaleRepository custProductSaleRepository;
 	
 	@Autowired
-	private CustProductRetailSaleRepository custProductRetailSaleRepository;
-	
-	@Autowired
-	private CustProductWholeSaleRepository custProductWholeSaleRepository;
+	private CustProductSaleItemRepository custProductRetailSaleRepository;
 	
 	@Autowired
 	private  CustBusinessAppRepository custBusinessAppRepository;
-	
-	@Autowired
-	private CustUnitItemRepository custUnitRepository;
 	
 	@Autowired
 	private CustProductRepository custProductRepository;
@@ -57,6 +53,12 @@ public class CustProductSaleServiceImpl implements CustProductSaleService {
 	@Autowired
 	private CustProductSaleResponseMapper custProductSaleResponseMapper; 
 	
+	@Autowired
+	private CustProductSalePaymentRepository custProductSalePaymentRepository;
+	
+	@Autowired
+	private CustProductSaleAdditionalRepository custProductSaleAdditionalRepository;
+	
 	@Override
 	public CustProductSaleResponse saveProductSale(long custAppId, CustProductSaleRequest custProductSaleRequest) {
 		Optional<EOCustBusinessApp> findById = custBusinessAppRepository.findById(custAppId);
@@ -64,20 +66,40 @@ public class CustProductSaleServiceImpl implements CustProductSaleService {
 			return null;
 		}
 		EOCustBusinessApp eoCustBusinessApp = findById.get();
-		List<CustProductRetailSaleRequest> custProductRetailSaleList = custProductSaleRequest.getCustProductRetailSaleList();
-		List<CustProductWholeSaleRequest> custProductWholeSaleList = custProductSaleRequest.getCustProductWholeSaleList();
-		
-		custProductSaleRequest.setCustProductRetailSaleList(null);
-		custProductSaleRequest.setCustProductWholeSaleList(null);
+		EOCustProductSale eoCustProductSale = saveCustProductSale(custProductSaleRequest, eoCustBusinessApp);
+		return custProductSaleResponseMapper.mapToDTO(eoCustProductSale);
+	}
+
+	private EOCustProductSale saveCustProductSale(CustProductSaleRequest custProductSaleRequest,
+			EOCustBusinessApp eoCustBusinessApp) {
+		List<CustProductSaleItemRequest> custProductSaleItemList = custProductSaleRequest.getCustProductSaleItemList();
+		List<CustProductSaleAdditional> custProductAdditionalList = custProductSaleRequest.getCustProductSaleAdditionalList();
+		List<CustProductSalePayment> custProductPaymentList = custProductSaleRequest.getCustProductSalePaymentList();
+		custProductSaleRequest.setCustProductSaleItemList(null);
+		custProductSaleRequest.setCustProductSaleAdditionalList(null);
+		custProductSaleRequest.setCustProductSalePaymentList(null);
 		
 		EOCustProductSale eoCustProductSale = custProductSaleRequestMapper.mapToDAO(custProductSaleRequest);
 		eoCustProductSale.setCustomerId(custProductSaleRequest.getCustomerId());
-		eoCustProductSale.setIdenNo(CommanUtil. getIdenNo(CSL));
+		if(custProductSaleRequest.getId()==null) {
+			eoCustProductSale.setIdenNo(CommanUtil. getIdenNo(CSL));
+		}
 		eoCustProductSale.setCustBusinessApp(eoCustBusinessApp);
 		eoCustProductSale = custProductSaleRepository.saveAndFlush(eoCustProductSale);
 		
-		for(CustProductRetailSaleRequest custProductRetailSaleUi : custProductRetailSaleList){
-			EOCustProductRetailSale eoCustProductRetailSale = custProductSaleRequestMapper.mapToDAO(custProductRetailSaleUi);
+		for(EOCustProductSaleAdditional custProductAdditional: custProductSaleRequestMapper.custProductSaleAdditionalListDAO(custProductAdditionalList)){
+			custProductAdditional.setCustProductSale(eoCustProductSale);
+			custProductSaleAdditionalRepository.saveAndFlush(custProductAdditional);
+		};
+		
+		for(EOCustProductSalePayment custProductSalePayment: custProductSaleRequestMapper.custProductSalePaymentListDAO(custProductPaymentList)){
+			custProductSalePayment.setCustProductSale(eoCustProductSale);
+			custProductSalePayment.setCustomerId(eoCustProductSale.getCustomerId());
+			custProductSalePaymentRepository.saveAndFlush(custProductSalePayment);
+		};
+		
+		for(CustProductSaleItemRequest custProductRetailSaleUi : custProductSaleItemList){
+			EOCustProductSaleItem eoCustProductRetailSale = custProductSaleRequestMapper.mapToDAO(custProductRetailSaleUi);
 			EOCustProduct eoCustProduct = custProductRepository.findById(custProductRetailSaleUi.getCustProductId()).orElse(null);
 
 			eoCustProductRetailSale.setCustProduct(eoCustProduct);
@@ -86,25 +108,18 @@ public class CustProductSaleServiceImpl implements CustProductSaleService {
 			
 			custProductRetailSaleRepository.saveAndFlush(eoCustProductRetailSale);
 		}
-		
-		for (CustProductWholeSaleRequest custProductWholeSaleRequest : custProductWholeSaleList) {
-			EOCustProductWholeSale custProductWholeSale = custProductSaleRequestMapper.mapToDAO(custProductWholeSaleRequest);
-			custProductWholeSale.setCustProductSale(eoCustProductSale);
-			
-			EOCustProduct eoCustProduct = custProductRepository.findById(custProductWholeSaleRequest.getCustProductId()).orElse(null);
-
-			custProductWholeSale.setCustProduct(eoCustProduct);
-			
-			custProductWholeSaleRepository.saveAndFlush(custProductWholeSale);
-		}
-		
-		return custProductSaleResponseMapper.mapToDTO(eoCustProductSale);
+		return eoCustProductSale;
 	}
 
 	@Override
 	public CustProductSaleResponse updateProductSale(long custAppId, CustProductSaleRequest custProductSaleRequest) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<EOCustBusinessApp> findById = custBusinessAppRepository.findById(custAppId);
+		if(!findById.isPresent()) {
+			return null;
+		}
+		EOCustBusinessApp eoCustBusinessApp = findById.get();
+		EOCustProductSale eoCustProductSale = saveCustProductSale(custProductSaleRequest, eoCustBusinessApp);
+		return custProductSaleResponseMapper.mapToDTO(eoCustProductSale);
 	}
 
 	@Override
@@ -122,6 +137,12 @@ public class CustProductSaleServiceImpl implements CustProductSaleService {
 			LocalDateTime toDate) {
 		LocalDateTime toDateOf = LocalDateTime.of(toDate.getYear(), toDate.getMonth(), toDate.getDayOfMonth(), 23, 59,59);
 		return custProductSaleResponseMapper.mapToDTO(custProductSaleRepository.filterProductSaleList(custAppId, fromDate, toDateOf));
+	}
+
+	@Override
+	public boolean deleteProductSale(long custAppId, Long id) {
+		custProductSaleRepository.deleteById(id);
+		return true;
 	}
 
 }

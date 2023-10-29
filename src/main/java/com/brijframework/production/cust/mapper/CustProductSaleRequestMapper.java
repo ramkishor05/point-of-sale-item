@@ -3,17 +3,21 @@ package com.brijframework.production.cust.mapper;
 import static com.brijframework.production.contants.Constants.COM_BRIJFRAMEWORK_CUST_PRODUCTION_MAPPER_IMPL;
 import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID_ENTITY;
 import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID_UI;
-import static com.brijframework.production.contants.Constants.*;
+import static com.brijframework.production.contants.Constants.SPRING;
+
+import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import com.brijframework.production.cust.entities.EOCustProductRetailSale;
-import com.brijframework.production.cust.entities.EOCustProductSale;
-import com.brijframework.production.cust.entities.EOCustProductWholeSale;
-import com.brijframework.production.cust.rest.CustProductRetailSaleRequest;
+import com.brijframework.production.cust.entities.sales.EOCustProductSale;
+import com.brijframework.production.cust.entities.sales.EOCustProductSaleAdditional;
+import com.brijframework.production.cust.entities.sales.EOCustProductSaleItem;
+import com.brijframework.production.cust.entities.sales.EOCustProductSalePayment;
+import com.brijframework.production.cust.rest.CustProductSaleAdditional;
+import com.brijframework.production.cust.rest.CustProductSaleItemRequest;
+import com.brijframework.production.cust.rest.CustProductSalePayment;
 import com.brijframework.production.cust.rest.CustProductSaleRequest;
-import com.brijframework.production.cust.rest.CustProductWholeSaleRequest;
 import com.brijframework.production.mapper.GenericMapper;
 
 @Mapper(componentModel = SPRING, implementationPackage = COM_BRIJFRAMEWORK_CUST_PRODUCTION_MAPPER_IMPL)
@@ -28,12 +32,14 @@ public interface CustProductSaleRequestMapper extends GenericMapper<EOCustProduc
 	@Override
 	CustProductSaleRequest mapToDTO(EOCustProductSale eoCustProductSale);
 
-	EOCustProductRetailSale mapToDAO(CustProductRetailSaleRequest custProductRetailSaleRequest);
+	EOCustProductSaleItem mapToDAO(CustProductSaleItemRequest custProductRetailSaleRequest);
 
-	CustProductRetailSaleRequest mapToDTO(EOCustProductRetailSale eoCustProductRetailSale);
+	CustProductSaleItemRequest mapToDTO(EOCustProductSaleItem eoCustProductRetailSale);
 
-	EOCustProductWholeSale mapToDAO(CustProductWholeSaleRequest custProductWholeSaleRequest);
+	List<CustProductSaleAdditional> custProductSaleAdditionalListDTO(List<EOCustProductSaleAdditional> custProductSaleAdditionals);
+	
+	List<EOCustProductSaleAdditional> custProductSaleAdditionalListDAO(List<CustProductSaleAdditional> custProductSaleAdditionals);
 
-	CustProductWholeSaleRequest mapToDTO(EOCustProductWholeSale eoCustProductWholeSale);
+	List<EOCustProductSalePayment> custProductSalePaymentListDAO(List<CustProductSalePayment> custProductPaymentList);
 
 }

@@ -4,10 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.brijframework.production.cust.entities.EOCustProductWholeSale;
+import com.brijframework.production.cust.entities.sales.EOCustProductSaleItem;
 
 @Repository
 @Transactional
-public interface CustProductWholeSaleRepository extends JpaRepository<EOCustProductWholeSale, Long>{
-
+public interface CustProductSaleItemRepository extends JpaRepository<EOCustProductSaleItem, Long>{
+	
 }
