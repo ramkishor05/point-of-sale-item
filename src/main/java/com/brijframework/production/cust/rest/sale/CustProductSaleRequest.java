@@ -1,39 +1,33 @@
-package com.brijframework.production.cust.rest;
+package com.brijframework.production.cust.rest.sale;
 
-import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
-public class CustProductSaleResponse implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class CustProductSaleRequest {
 
 	private Long id;
-
+	
 	private String idenNo;
-
-	private Double discounts;
-
+	
 	private String  saleDate;
 	
-	private long customerId;
-	
+	private Double discounts;
+
 	private Double totalPrice;
 	
 	private Double totalQnt;
-	
+
 	private Long custBusinessAppId;
 	
-	private List<CustProductSaleItemResponse> custProductSaleItemList;
-
+	private Long customerId;
+	
+	private List<CustProductSaleItemRequest> custProductSaleItemList;
+	
 	private List<CustProductSaleAdditional> custProductSaleAdditionalList;
-
+	
 	private List<CustProductSalePayment> custProductSalePaymentList;
 
 	public Long getId() {
@@ -52,14 +46,6 @@ public class CustProductSaleResponse implements Serializable {
 		this.idenNo = idenNo;
 	}
 
-	public Double getDiscounts() {
-		return discounts;
-	}
-
-	public void setDiscounts(Double discounts) {
-		this.discounts = discounts;
-	}
-
 	public String getSaleDate() {
 		return saleDate;
 	}
@@ -68,12 +54,12 @@ public class CustProductSaleResponse implements Serializable {
 		this.saleDate = saleDate;
 	}
 
-	public long getCustomerId() {
-		return customerId;
+	public Double getDiscounts() {
+		return discounts;
 	}
 
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
+	public void setDiscounts(Double discounts) {
+		this.discounts = discounts;
 	}
 
 	public Double getTotalPrice() {
@@ -100,11 +86,19 @@ public class CustProductSaleResponse implements Serializable {
 		this.custBusinessAppId = custBusinessAppId;
 	}
 
-	public List<CustProductSaleItemResponse> getCustProductSaleItemList() {
+	public Long getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
+	}
+
+	public List<CustProductSaleItemRequest> getCustProductSaleItemList() {
 		return custProductSaleItemList;
 	}
 
-	public void setCustProductSaleItemList(List<CustProductSaleItemResponse> custProductSaleItemList) {
+	public void setCustProductSaleItemList(List<CustProductSaleItemRequest> custProductSaleItemList) {
 		this.custProductSaleItemList = custProductSaleItemList;
 	}
 

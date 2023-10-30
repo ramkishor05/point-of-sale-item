@@ -1,21 +1,14 @@
-package com.brijframework.production.cust.rest;
+package com.brijframework.production.cust.rest.sale;
 
-public class CustProductPurchaseAdditional {
-	public long id;
+import com.brijframework.production.dto.UIComman;
+
+public class CustProductSaleAdditional extends UIComman {
 
 	private String field;
 
 	private String value;
 
 	private String type;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public String getField() {
 		return field;
@@ -40,5 +33,5 @@ public class CustProductPurchaseAdditional {
 	public void setType(String type) {
 		this.type = type;
 	}
-
+	
 }

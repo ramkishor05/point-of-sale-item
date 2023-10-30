@@ -34,12 +34,12 @@ public class EOCustProductSaleItem extends EOCustItem {
 	// for purchase cost
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = PURCHASE_PRICE)
-	private EOCustProductRetailSalePrice purchasePrice;
+	private EOCustProductSaleItemPrice purchasePrice;
 
 	// for sale cost
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = SALE_PRICE)
-	private EOCustProductRetailSalePrice salePrice;
+	private EOCustProductSaleItemPrice salePrice;
 
 	@Column(name = SALE_QTN)
 	private Long saleQnt;
@@ -58,19 +58,19 @@ public class EOCustProductSaleItem extends EOCustItem {
 	@OneToOne
 	private EOCustProductSale custProductSale;
 
-	public EOCustProductRetailSalePrice getPurchasePrice() {
+	public EOCustProductSaleItemPrice getPurchasePrice() {
 		return purchasePrice;
 	}
 
-	public void setPurchasePrice(EOCustProductRetailSalePrice purchasePrice) {
+	public void setPurchasePrice(EOCustProductSaleItemPrice purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public EOCustProductRetailSalePrice getSalePrice() {
+	public EOCustProductSaleItemPrice getSalePrice() {
 		return salePrice;
 	}
 
-	public void setSalePrice(EOCustProductRetailSalePrice salePrice) {
+	public void setSalePrice(EOCustProductSaleItemPrice salePrice) {
 		this.salePrice = salePrice;
 	}
 

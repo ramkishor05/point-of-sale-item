@@ -1,8 +1,8 @@
 package com.brijframework.production.cust.entities.sales;
 
 import static com.brijframework.production.contants.Constants.CURRENCY;
-import static com.brijframework.production.contants.Constants.*;
-import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT_RETAIL_SALE_PRICE;
+import static com.brijframework.production.contants.Constants.CUST_PRODUCT_RETAIL_SALE_ID;
+import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT_SALE_ITEM_PRICE;
 import static com.brijframework.production.contants.Constants.PRICE;
 
 import javax.persistence.Column;
@@ -19,8 +19,8 @@ import com.brijframework.production.cust.entities.EOCustObject;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = EOCUST_PRODUCT_RETAIL_SALE_PRICE)
-public class EOCustProductRetailSalePrice extends EOCustObject{
+@Table(name = EOCUST_PRODUCT_SALE_ITEM_PRICE)
+public class EOCustProductSaleItemPrice extends EOCustObject{
 	
 	/**
 	 * 

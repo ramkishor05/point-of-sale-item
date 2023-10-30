@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.brijframework.production.cust.rest.CustProductSaleRequest;
-import com.brijframework.production.cust.rest.CustProductSaleResponse;
+import com.brijframework.production.cust.rest.sale.CustProductSaleRequest;
+import com.brijframework.production.cust.rest.sale.CustProductSaleResponse;
 import com.brijframework.production.cust.service.CustProductSaleService;
 
 @RestController

@@ -1,10 +1,14 @@
-package com.brijframework.production.cust.rest;
+package com.brijframework.production.cust.rest.sale;
 
 import java.io.Serializable;
 
+import com.brijframework.production.cust.dto.UICustProduct;
 import com.brijframework.production.cust.dto.UICustProductPrice;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-public class CustProductSaleItemRequest implements Serializable {
+@JsonInclude(Include.NON_NULL)
+public class CustProductSaleItemResponse implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Long id;
@@ -14,7 +18,7 @@ public class CustProductSaleItemRequest implements Serializable {
 	private Double saleQnt;
 	private Double discount;
 	private String saleType;
-	private Long custProductId;
+	private UICustProduct custProduct;
 
 	public Long getId() {
 		return id;
@@ -72,12 +76,12 @@ public class CustProductSaleItemRequest implements Serializable {
 		this.saleType = saleType;
 	}
 
-	public Long getCustProductId() {
-		return custProductId;
+	public UICustProduct getCustProduct() {
+		return custProduct;
 	}
 
-	public void setCustProductId(Long custProductId) {
-		this.custProductId = custProductId;
+	public void setCustProduct(UICustProduct custProduct) {
+		this.custProduct = custProduct;
 	}
 
 }

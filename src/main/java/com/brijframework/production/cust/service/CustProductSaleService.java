@@ -3,8 +3,8 @@ package com.brijframework.production.cust.service;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.brijframework.production.cust.rest.CustProductSaleRequest;
-import com.brijframework.production.cust.rest.CustProductSaleResponse;
+import com.brijframework.production.cust.rest.sale.CustProductSaleRequest;
+import com.brijframework.production.cust.rest.sale.CustProductSaleResponse;
 
 public interface CustProductSaleService {
 

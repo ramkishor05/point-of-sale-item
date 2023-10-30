@@ -1,4 +1,4 @@
-package com.brijframework.production.cust.rest;
+package com.brijframework.production.cust.rest.sale;
 
 import com.brijframework.production.contants.PaymentMode;
 import com.brijframework.production.dto.UIComman;

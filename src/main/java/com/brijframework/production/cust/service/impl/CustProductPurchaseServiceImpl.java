@@ -21,11 +21,11 @@ import com.brijframework.production.cust.repository.CustProductPurchaseItemRepos
 import com.brijframework.production.cust.repository.CustProductPurchasePaymentRepository;
 import com.brijframework.production.cust.repository.CustProductPurchaseRepository;
 import com.brijframework.production.cust.repository.CustProductRepository;
-import com.brijframework.production.cust.rest.CustProductPurchaseAdditional;
-import com.brijframework.production.cust.rest.CustProductPurchaseItemRequest;
-import com.brijframework.production.cust.rest.CustProductPurchasePayment;
-import com.brijframework.production.cust.rest.CustProductPurchaseRequest;
-import com.brijframework.production.cust.rest.CustProductPurchaseResponse;
+import com.brijframework.production.cust.rest.purchase.CustProductPurchaseAdditional;
+import com.brijframework.production.cust.rest.purchase.CustProductPurchaseItemRequest;
+import com.brijframework.production.cust.rest.purchase.CustProductPurchasePayment;
+import com.brijframework.production.cust.rest.purchase.CustProductPurchaseRequest;
+import com.brijframework.production.cust.rest.purchase.CustProductPurchaseResponse;
 import com.brijframework.production.cust.service.CustProductPurchaseService;
 import com.brijframework.production.util.CommanUtil;
 

@@ -31,7 +31,7 @@ public class EOCustProductPurchaseItem extends EOCustItem{
 	// for purchase cost
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = PURCHASE_PRICE)
-	private EOCustProductPurchasePrice purchasePrice;
+	private EOCustProductPurchaseItemPrice purchasePrice;
 	
 	@Column(name = "DISCOUNT")
 	private Double discount;
@@ -47,11 +47,11 @@ public class EOCustProductPurchaseItem extends EOCustItem{
 	@ManyToOne
 	private EOCustProductPurchase custProductPurchase;
 
-	public EOCustProductPurchasePrice getPurchasePrice() {
+	public EOCustProductPurchaseItemPrice getPurchasePrice() {
 		return purchasePrice;
 	}
 
-	public void setPurchasePrice(EOCustProductPurchasePrice purchasePrice) {
+	public void setPurchasePrice(EOCustProductPurchaseItemPrice purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 

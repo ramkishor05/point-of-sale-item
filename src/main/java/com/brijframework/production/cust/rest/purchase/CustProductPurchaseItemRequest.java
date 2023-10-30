@@ -1,16 +1,15 @@
-package com.brijframework.production.cust.rest;
+package com.brijframework.production.cust.rest.purchase;
 
-import com.brijframework.production.cust.dto.UICustProduct;
 import com.brijframework.production.cust.dto.UICustProductPrice;
 
-public class CustProductPurchaseItemResponse {
+public class CustProductPurchaseItemRequest {
 
 	private Long id;
 	private String idenNo;
-	private Double purchaseQnt;
 	private Double discount;
+	private Double purchaseQnt;
 	private UICustProductPrice purchasePrice;
-	private UICustProduct custProduct;
+	private Long custProductId;
 
 	public Long getId() {
 		return id;
@@ -28,20 +27,20 @@ public class CustProductPurchaseItemResponse {
 		this.idenNo = idenNo;
 	}
 
-	public Double getPurchaseQnt() {
-		return purchaseQnt;
-	}
-
-	public void setPurchaseQnt(Double purchaseQnt) {
-		this.purchaseQnt = purchaseQnt;
-	}
-
 	public Double getDiscount() {
 		return discount;
 	}
 
 	public void setDiscount(Double discount) {
 		this.discount = discount;
+	}
+
+	public Double getPurchaseQnt() {
+		return purchaseQnt;
+	}
+
+	public void setPurchaseQnt(Double purchaseQnt) {
+		this.purchaseQnt = purchaseQnt;
 	}
 
 	public UICustProductPrice getPurchasePrice() {
@@ -52,12 +51,12 @@ public class CustProductPurchaseItemResponse {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public UICustProduct getCustProduct() {
-		return custProduct;
+	public Long getCustProductId() {
+		return custProductId;
 	}
 
-	public void setCustProduct(UICustProduct custProduct) {
-		this.custProduct = custProduct;
+	public void setCustProductId(Long custProductId) {
+		this.custProductId = custProductId;
 	}
 
 }

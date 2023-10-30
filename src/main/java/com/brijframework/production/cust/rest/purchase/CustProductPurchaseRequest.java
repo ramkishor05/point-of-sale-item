@@ -1,4 +1,4 @@
-package com.brijframework.production.cust.rest;
+package com.brijframework.production.cust.rest.purchase;
 
 import java.util.List;
 

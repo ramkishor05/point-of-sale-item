@@ -14,10 +14,10 @@ import com.brijframework.production.cust.entities.purchases.EOCustProductPurchas
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchaseAdditional;
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchaseItem;
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchasePayment;
-import com.brijframework.production.cust.rest.CustProductPurchaseAdditional;
-import com.brijframework.production.cust.rest.CustProductPurchasePayment;
-import com.brijframework.production.cust.rest.CustProductPurchaseRequest;
-import com.brijframework.production.cust.rest.CustProductPurchaseItemRequest;
+import com.brijframework.production.cust.rest.purchase.CustProductPurchaseAdditional;
+import com.brijframework.production.cust.rest.purchase.CustProductPurchaseItemRequest;
+import com.brijframework.production.cust.rest.purchase.CustProductPurchasePayment;
+import com.brijframework.production.cust.rest.purchase.CustProductPurchaseRequest;
 import com.brijframework.production.mapper.GenericMapper;
 
 @Mapper(componentModel = SPRING, implementationPackage = COM_BRIJFRAMEWORK_CUST_PRODUCTION_MAPPER_IMPL)

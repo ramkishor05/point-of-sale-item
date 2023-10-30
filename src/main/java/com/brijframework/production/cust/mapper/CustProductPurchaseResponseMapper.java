@@ -10,8 +10,8 @@ import org.mapstruct.Mapping;
 
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchase;
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchaseItem;
-import com.brijframework.production.cust.rest.CustProductPurchaseResponse;
-import com.brijframework.production.cust.rest.CustProductPurchaseItemResponse;
+import com.brijframework.production.cust.rest.purchase.CustProductPurchaseItemResponse;
+import com.brijframework.production.cust.rest.purchase.CustProductPurchaseResponse;
 import com.brijframework.production.mapper.GenericMapper;
 
 @Mapper(componentModel = SPRING, implementationPackage = COM_BRIJFRAMEWORK_CUST_PRODUCTION_MAPPER_IMPL)
