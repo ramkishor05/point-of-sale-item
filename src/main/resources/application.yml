@@ -20,7 +20,7 @@ spring:
        show_sql: true
        naming: 
          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-
+   database.config.data: false
 # Discovery Server Access
 eureka:
   client:
