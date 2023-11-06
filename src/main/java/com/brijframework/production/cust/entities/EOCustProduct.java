@@ -192,4 +192,17 @@ public class EOCustProduct extends EOCustItem {
 	public void setCustProductStockList(List<EOCustProductStock> custProductStockList) {
 		this.custProductStockList = custProductStockList;
 	}
+	
+	public String finalName() {
+		if(this.getName()!=null) {
+			return this.getName();
+		}
+		if(this.getDescription()!=null) {
+			return this.getDescription();
+		}
+		if(this.getTitle()!=null) {
+			return this.getTitle();
+		}
+		return "";
+	}
 }
