@@ -2,8 +2,10 @@ package com.brijframework.production.cust.rest;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import com.brijframework.production.cust.dto.UICustProductPrice;
+import com.brijframework.production.cust.dto.UICustProductStock;
 import com.brijframework.production.dto.UICustCategory;
 import com.brijframework.production.dto.UIManufacturer;
 import com.brijframework.production.global.dto.UIGlobalMediaDetail;
@@ -23,16 +25,18 @@ public class CustProductResponse implements Serializable {
 	private UICustProductPrice purchasePrice;
 	// for sale items
 	private UICustProductPrice retailPrice;
-	
+
 	private UICustProductPrice wholePrice;
-	
+
 	private Long custBusinessAppId;
-	
+
 	private UICustCategory custCategory;
-	
+
 	private UIGlobalMediaDetail custMediaDetail;
-	
+
 	private UIManufacturer custManufacturer;
+
+	private List<UICustProductStock> custProductStockList;
 
 	public Long getId() {
 		return id;
@@ -153,5 +157,13 @@ public class CustProductResponse implements Serializable {
 	public void setCustManufacturer(UIManufacturer custManufacturer) {
 		this.custManufacturer = custManufacturer;
 	}
-	
+
+	public List<UICustProductStock> getCustProductStockList() {
+		return custProductStockList;
+	}
+
+	public void setCustProductStockList(List<UICustProductStock> custProductStockList) {
+		this.custProductStockList = custProductStockList;
+	}
+
 }

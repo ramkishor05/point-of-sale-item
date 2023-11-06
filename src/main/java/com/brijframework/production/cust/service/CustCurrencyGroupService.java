@@ -2,7 +2,7 @@ package com.brijframework.production.cust.service;
 
 import java.util.List;
 
-import com.brijframework.production.contants.DataStatus;
+import com.brijframework.production.contants.RecordStatus;
 import com.brijframework.production.cust.dto.UICustCurrencyGroup;
 
 public interface CustCurrencyGroupService {
@@ -15,7 +15,7 @@ public interface CustCurrencyGroupService {
 
 	boolean deleteCurrencyGroup(long custAppId, Long id);
 
-	List<UICustCurrencyGroup> getCurrencyGroupListByStatus(long custAppId, DataStatus dataStatus);
+	List<UICustCurrencyGroup> getCurrencyGroupListByStatus(long custAppId, RecordStatus dataStatus);
 
 	List<UICustCurrencyGroup> getCurrencyGroupListByType(long custAppId, String typeId);
 

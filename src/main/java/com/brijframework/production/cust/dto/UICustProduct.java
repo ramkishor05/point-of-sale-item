@@ -45,6 +45,8 @@ public class UICustProduct implements Serializable {
 	public List<UIProductDetail> productDetails;
 
 	public List<UIProductVariant> productVariants;
+	
+	public List<UICustProductStock> productStocks;
 
 	public Long getId() {
 		return id;
@@ -206,4 +208,11 @@ public class UICustProduct implements Serializable {
 		this.productVariants = productVariants;
 	}
 
+	public List<UICustProductStock> getProductStocks() {
+		return productStocks;
+	}
+
+	public void setProductStocks(List<UICustProductStock> productStocks) {
+		this.productStocks = productStocks;
+	}
 }

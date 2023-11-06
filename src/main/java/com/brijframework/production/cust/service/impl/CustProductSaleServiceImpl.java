@@ -27,6 +27,7 @@ import com.brijframework.production.cust.rest.sale.CustProductSalePayment;
 import com.brijframework.production.cust.rest.sale.CustProductSaleRequest;
 import com.brijframework.production.cust.rest.sale.CustProductSaleResponse;
 import com.brijframework.production.cust.service.CustProductSaleService;
+import com.brijframework.production.cust.service.CustProductStockService;
 import com.brijframework.production.util.CommanUtil;
 
 @Service
@@ -58,6 +59,9 @@ public class CustProductSaleServiceImpl implements CustProductSaleService {
 	
 	@Autowired
 	private CustProductSaleAdditionalRepository custProductSaleAdditionalRepository;
+	
+	@Autowired
+	private CustProductStockService custProductStockService;
 	
 	@Override
 	public CustProductSaleResponse saveProductSale(long custAppId, CustProductSaleRequest custProductSaleRequest) {
@@ -106,7 +110,8 @@ public class CustProductSaleServiceImpl implements CustProductSaleService {
 
 			eoCustProductRetailSale.setCustProductSale(eoCustProductSale);
 			
-			custProductRetailSaleRepository.saveAndFlush(eoCustProductRetailSale);
+			EOCustProductSaleItem saveCustProductRetailPurchase= custProductRetailSaleRepository.saveAndFlush(eoCustProductRetailSale);
+			custProductStockService.saveCustProductStocksBackground(saveCustProductRetailPurchase); 
 		}
 		return eoCustProductSale;
 	}

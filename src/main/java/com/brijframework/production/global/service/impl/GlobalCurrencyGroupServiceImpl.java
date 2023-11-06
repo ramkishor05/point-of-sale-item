@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.brijframework.production.contants.DataStatus;
+import com.brijframework.production.contants.RecordStatus;
 import com.brijframework.production.global.dto.UIGlobalCurrencyGroup;
 import com.brijframework.production.global.entities.EOGlobalCurrencyGroup;
 import com.brijframework.production.global.mapper.GlobalCurrencyGroupMapper;
@@ -39,7 +39,7 @@ public class GlobalCurrencyGroupServiceImpl implements GlobalCurrencyGroupServic
 	}
 	
 	@Override
-	public List<UIGlobalCurrencyGroup> getCurrencyGroupList(DataStatus dataStatus) {
+	public List<UIGlobalCurrencyGroup> getCurrencyGroupList(RecordStatus dataStatus) {
 		List<EOGlobalCurrencyGroup> findAllByStatus = globalCurrencyGroupRepository.getCurrencyGroupListByStatus(dataStatus.getStatusIds());
 		return inventoryCurrencyGroupMapper.mapToDTO(findAllByStatus);
 	}
@@ -52,7 +52,7 @@ public class GlobalCurrencyGroupServiceImpl implements GlobalCurrencyGroupServic
 	@Override
 	public boolean deleteCurrencyGroup(Long id) {
 		EOGlobalCurrencyGroup eoGlobalCurrencyGroup = globalCurrencyGroupRepository.getOne(id);
-		eoGlobalCurrencyGroup.setRecordState(DataStatus.DACTIVETED.getStatus());
+		eoGlobalCurrencyGroup.setRecordState(RecordStatus.DACTIVETED.getStatus());
 		globalCurrencyGroupRepository.save(eoGlobalCurrencyGroup);
 		return true;
 	}

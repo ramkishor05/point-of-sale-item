@@ -1,8 +1,8 @@
 package com.brijframework.production.cust.entities;
 
+import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
 import static com.brijframework.production.contants.Constants.CUST_CATEGORY_ID;
 import static com.brijframework.production.contants.Constants.CUST_PRODUCT;
-import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
 import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT;
 import static com.brijframework.production.contants.Constants.EXP_DATE;
 import static com.brijframework.production.contants.Constants.GLB_IMG_ID;
@@ -85,7 +85,10 @@ public class EOCustProduct extends EOCustItem {
 
 	@OneToMany(mappedBy = CUST_PRODUCT)
 	public List<EOCustProductVariant> custProductVariantList;
-
+	
+	@OneToMany(mappedBy = CUST_PRODUCT)
+	private List<EOCustProductStock> custProductStockList;
+	
 	public String getTitle() {
 		return title;
 	}
@@ -182,4 +185,11 @@ public class EOCustProduct extends EOCustItem {
 		this.custProductVariantList = custProductVariantList;
 	}
 
+	public List<EOCustProductStock> getCustProductStockList() {
+		return custProductStockList;
+	}
+
+	public void setCustProductStockList(List<EOCustProductStock> custProductStockList) {
+		this.custProductStockList = custProductStockList;
+	}
 }

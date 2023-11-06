@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.brijframework.production.contants.DataStatus;
+import com.brijframework.production.contants.RecordStatus;
 import com.brijframework.production.global.dto.UIGlobalCategoryGroup;
 import com.brijframework.production.global.service.GlobalCategoryGroupService;
 
@@ -49,7 +49,7 @@ public class GlobalCategoryGroupController {
 	}
 	
 	@GetMapping("/status/{status}")
-	public List<UIGlobalCategoryGroup> getCategoryGroupList(@PathVariable("status") DataStatus  dataStatus) {
+	public List<UIGlobalCategoryGroup> getCategoryGroupList(@PathVariable("status") RecordStatus  dataStatus) {
 		return globalCategoryGroupService.getCategoryGroupList(dataStatus);
 	}
 	

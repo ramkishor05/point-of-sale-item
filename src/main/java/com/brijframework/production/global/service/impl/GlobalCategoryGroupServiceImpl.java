@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.brijframework.production.contants.DataStatus;
+import com.brijframework.production.contants.RecordStatus;
 import com.brijframework.production.global.dto.UIGlobalCategoryGroup;
 import com.brijframework.production.global.entities.EOGlobalCategoryGroup;
 import com.brijframework.production.global.mapper.GlobalCategoryGroupMapper;
@@ -39,7 +39,7 @@ public class GlobalCategoryGroupServiceImpl implements GlobalCategoryGroupServic
 	}
 	
 	@Override
-	public List<UIGlobalCategoryGroup> getCategoryGroupList(DataStatus dataStatus) {
+	public List<UIGlobalCategoryGroup> getCategoryGroupList(RecordStatus dataStatus) {
 		List<EOGlobalCategoryGroup> findAllByStatus = globalCategoryGroupRepository.getCategoryGroupListByStatus(dataStatus.getStatusIds());
 		System.out.println("findAllByStatus="+findAllByStatus);
 		return inventoryCategoryGroupMapper.mapToDTO(findAllByStatus);
@@ -53,7 +53,7 @@ public class GlobalCategoryGroupServiceImpl implements GlobalCategoryGroupServic
 	@Override
 	public boolean deleteCategoryGroup(Long id) {
 		EOGlobalCategoryGroup eoGlobalCategoryGroup = globalCategoryGroupRepository.getOne(id);
-		eoGlobalCategoryGroup.setRecordState(DataStatus.DACTIVETED.getStatus());
+		eoGlobalCategoryGroup.setRecordState(RecordStatus.DACTIVETED.getStatus());
 		globalCategoryGroupRepository.save(eoGlobalCategoryGroup);
 		return true;
 	}

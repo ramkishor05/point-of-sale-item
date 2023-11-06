@@ -27,6 +27,7 @@ D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\m
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\service\GlobalUnitGroupService.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\service\CustCategoryGroupService.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\schema\factories\JsonSchemaFile.java
+D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\contants\StockStatus.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\controller\CustCategoryController.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\controller\GlobalCurrencyGroupController.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\service\GlobalCategoryService.java
@@ -71,6 +72,7 @@ D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\mapper\e2e\CustCurrencyGroupGlobalCurrencyGroupMapper.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\filters\MutableHttpServletRequest.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\service\impl\CustCurrencyGroupServiceImpl.java
+D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\contants\RecordStatus.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\ProductionMainListener.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\mapper\GlobalCategoryResponseMapper.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\entities\EOCustProductDetail.java
@@ -85,6 +87,7 @@ D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\r
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\dto\UICategorySummary.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\service\impl\GlobalCurrencyGroupServiceImpl.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\dto\UIManufacturer.java
+D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\dto\UICustProductStockPrice.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\rest\purchase\CustProductPurchaseResponse.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\mapper\CustCategoryGroupMapper.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\entities\sales\EOCustProductSaleAdditional.java
@@ -105,6 +108,7 @@ D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\entities\EOCustCategoryGroup.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\service\GlobalCurrencyItemService.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\controller\GlobalUnitGroupController.java
+D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\dto\UICustProductStock.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\repository\CustCategoryItemRepository.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\repository\CustCurrencyItemRepository.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\entities\EOGlobalItem.java
@@ -124,6 +128,7 @@ D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\r
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\mapper\CustProductSaleRequestMapper.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\dto\UIGlobalUnit.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\repository\GlobalCurrencyItemRepository.java
+D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\entities\EOCustProductStockPrice.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\service\impl\GlobalCountFreqServiceImpl.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\mapper\CustCurrencyItemRequestMapper.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\mapper\GlobalCountFreqMapper.java
@@ -143,6 +148,7 @@ D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\c
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\service\CustCategoryService.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\repository\CustProductSaleAdditionalRepository.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\rest\GlobalCategoryRequest.java
+D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\repository\CustProductStockRepository.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\contants\CountFreq.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\mapper\CustCurrencyItemResponseMapper.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\dto\UIComman.java
@@ -159,10 +165,10 @@ D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\repository\CustProductSaleRepository.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\service\impl\CustCategoryGroupServiceImpl.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\repository\GlobalCategoryRepository.java
+D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\entities\EOCustProductStock.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\mapper\GlobalUnitGroupMapper.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\mapper\CustCategoryResponseMapper.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\repository\GlobalUnitRepository.java
-D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\contants\DataStatus.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\mapper\GlobalUnitMapper.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\repository\GlobalCategoryGroupRepository.java
 D:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\mapper\CustCountFreqRequestMapper.java

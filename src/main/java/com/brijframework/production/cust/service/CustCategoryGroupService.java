@@ -2,7 +2,7 @@ package com.brijframework.production.cust.service;
 
 import java.util.List;
 
-import com.brijframework.production.contants.DataStatus;
+import com.brijframework.production.contants.RecordStatus;
 import com.brijframework.production.cust.dto.UICustCategoryGroup;
 
 public interface CustCategoryGroupService {
@@ -15,7 +15,7 @@ public interface CustCategoryGroupService {
 
 	boolean deleteCategoryGroup(long custAppId, Long id);
 
-	List<UICustCategoryGroup> getCategoryGroupListByStatus(long custAppId, DataStatus dataStatus);
+	List<UICustCategoryGroup> getCategoryGroupListByStatus(long custAppId, RecordStatus dataStatus);
 
 	List<UICustCategoryGroup> getCategoryGroupListByType(long custAppId, String typeId);
 

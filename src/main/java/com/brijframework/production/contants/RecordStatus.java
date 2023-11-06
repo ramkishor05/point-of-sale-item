@@ -3,14 +3,14 @@ package com.brijframework.production.contants;
 import java.util.Arrays;
 import java.util.List;
 
-public enum DataStatus {
+public enum RecordStatus {
   
 	ACTIVETED("ACTIVETED", Arrays.asList("ACTIVETED")), DACTIVETED("DACTIVETED",Arrays.asList("DACTIVETED")), ALL("All", Arrays.asList("ACTIVETED","DACTIVETED"));
 	
 	String status;
 	List<String> statusIds;
 
-	DataStatus(String status, List<String> statusIds) {
+	RecordStatus(String status, List<String> statusIds) {
 		this.status=status;
 		this.statusIds=statusIds;
 	}

@@ -8,9 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.brijframework.production.contants.RecordStatus;
 
 @MappedSuperclass
 public abstract class EOEntityObject implements Serializable {
@@ -43,6 +46,11 @@ public abstract class EOEntityObject implements Serializable {
 	
 	@Column(name = "ORDER_SEQUENCE")
 	private Float orderSequence;
+	
+	@PrePersist
+	public void init() {
+		this.recordState=RecordStatus.ACTIVETED.getStatus();
+	}
 
 	public Long getId() {
 		return id;

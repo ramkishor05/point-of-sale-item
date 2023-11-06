@@ -2,7 +2,7 @@ package com.brijframework.production.global.service;
 
 import java.util.List;
 
-import com.brijframework.production.contants.DataStatus;
+import com.brijframework.production.contants.RecordStatus;
 import com.brijframework.production.global.dto.UIGlobalCurrencyGroup;
 
 public interface GlobalCurrencyGroupService {
@@ -15,7 +15,7 @@ public interface GlobalCurrencyGroupService {
 
 	List<UIGlobalCurrencyGroup> getCurrencyGroup( String typeId);
 
-	List<UIGlobalCurrencyGroup> getCurrencyGroupList(DataStatus dataStatus);
+	List<UIGlobalCurrencyGroup> getCurrencyGroupList(RecordStatus dataStatus);
 
 	boolean deleteCurrencyGroup(Long id);
 

@@ -2,7 +2,7 @@ package com.brijframework.production.global.service;
 
 import java.util.List;
 
-import com.brijframework.production.contants.DataStatus;
+import com.brijframework.production.contants.RecordStatus;
 import com.brijframework.production.global.dto.UIGlobalCategoryGroup;
 
 public interface GlobalCategoryGroupService {
@@ -15,7 +15,7 @@ public interface GlobalCategoryGroupService {
 
 	List<UIGlobalCategoryGroup> getCategoryGroup( String typeId);
 
-	List<UIGlobalCategoryGroup> getCategoryGroupList(DataStatus dataStatus);
+	List<UIGlobalCategoryGroup> getCategoryGroupList(RecordStatus dataStatus);
 
 	boolean deleteCategoryGroup(Long id);
 

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.brijframework.production.contants.DataStatus;
+import com.brijframework.production.contants.RecordStatus;
 import com.brijframework.production.cust.dto.UICustCurrencyGroup;
 import com.brijframework.production.cust.service.CustCurrencyGroupService;
 
@@ -52,7 +52,7 @@ public class CustCurrencyGroupController {
 	}
 	
 	@GetMapping("/status/{status}")
-	public List<UICustCurrencyGroup> getCurrencyGroupList(@RequestHeader(CUST_APP_ID) long custAppId,@PathVariable("status") DataStatus  dataStatus) {
+	public List<UICustCurrencyGroup> getCurrencyGroupList(@RequestHeader(CUST_APP_ID) long custAppId,@PathVariable("status") RecordStatus  dataStatus) {
 		return custCurrencyGroupService.getCurrencyGroupListByStatus(custAppId,dataStatus);
 	}
 	

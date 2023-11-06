@@ -6,6 +6,9 @@ import static com.brijframework.production.contants.Constants.DISCOUNT;
 import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT_SALE_ITEM;
 import static com.brijframework.production.contants.Constants.PURCHASE_PRICE;
 import static com.brijframework.production.contants.Constants.SALE_PRICE;
+
+import java.util.List;
+
 import static com.brijframework.production.contants.Constants.*;
 
 import javax.persistence.CascadeType;
@@ -15,11 +18,13 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.brijframework.production.cust.entities.EOCustItem;
 import com.brijframework.production.cust.entities.EOCustProduct;
+import com.brijframework.production.cust.entities.EOCustProductStock;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -57,6 +62,9 @@ public class EOCustProductSaleItem extends EOCustItem {
 	@JoinColumn(name = CUST_PRODUCT_SALE_ID)
 	@OneToOne
 	private EOCustProductSale custProductSale;
+	
+	@OneToMany(mappedBy = "custProductSaleItem")
+	private List<EOCustProductStock> custProductStockList;
 
 	public EOCustProductSaleItemPrice getPurchasePrice() {
 		return purchasePrice;

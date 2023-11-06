@@ -27,11 +27,11 @@ import com.brijframework.production.cust.rest.purchase.CustProductPurchasePaymen
 import com.brijframework.production.cust.rest.purchase.CustProductPurchaseRequest;
 import com.brijframework.production.cust.rest.purchase.CustProductPurchaseResponse;
 import com.brijframework.production.cust.service.CustProductPurchaseService;
+import com.brijframework.production.cust.service.CustProductStockService;
 import com.brijframework.production.util.CommanUtil;
 
 @Service
 public class CustProductPurchaseServiceImpl implements CustProductPurchaseService {
-	
 	
 	private static final String CPL = "CPL";
 
@@ -58,6 +58,9 @@ public class CustProductPurchaseServiceImpl implements CustProductPurchaseServic
 	
 	@Autowired
 	private CustProductPurchaseAdditionalRepository custProductPurchaseAdditionalRepository;
+	
+	@Autowired
+	private CustProductStockService custProductStockService;
 	
 	@Override
 	public CustProductPurchaseResponse saveProductPurchase(long custAppId, CustProductPurchaseRequest custProductPurchaseRequest) {
@@ -103,9 +106,9 @@ public class CustProductPurchaseServiceImpl implements CustProductPurchaseServic
 			EOCustProduct eoCustProduct = custProductRepository.findById(custProductRetailPurchaseUi.getCustProductId()).orElse(null);
 			eoCustProductRetailPurchase.setCustProduct(eoCustProduct);
 			eoCustProductRetailPurchase.setCustProductPurchase(eoCustProductPurchase);
-			custProductPurchaseItemRepository.saveAndFlush(eoCustProductRetailPurchase);
+			EOCustProductPurchaseItem saveCustProductRetailPurchase=custProductPurchaseItemRepository.saveAndFlush(eoCustProductRetailPurchase);
+			custProductStockService.saveCustProductStocksBackground(saveCustProductRetailPurchase); 
 		}
-		
 		return eoCustProductPurchase;
 	}
 

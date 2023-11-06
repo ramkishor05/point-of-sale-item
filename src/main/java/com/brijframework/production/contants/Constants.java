@@ -99,6 +99,8 @@ public class Constants {
 
 	public static final String EOCUST_PRODUCT_PURCHASE_PAYMENT = "EOCUST_PRODUCT_PURCHASE_PAYMENT";
 	public static final String EOCUST_PRODUCT_PRICE = "EOCUST_PRODUCT_PRICE";
+	public static final String EOCUST_PRODUCT_STOCK = "EOCUST_PRODUCT_STOCK";
+	public static final String EOCUST_PRODUCT_STOCK_PRICE = "EOCUST_PRODUCT_STOCK_PRICE";
 
 	public static final String TITLE = "TITLE";
 	public static final String PURCHASE_PRICE = "PURCHASE_PRICE";
@@ -133,6 +135,7 @@ public class Constants {
 	public static final String APP_ID = "APP_ID";
 	public static final String VENDOR_ID = "VENDOR_ID";
 	public static final String SUPPLIER_ID = "SUPPLIER_ID";
+	public static final String STOCK_STATUS="STOCK_STATUS";
 
 	public static final String EOCUST_PRODUCTION_LOCATION = "EOCUST_PRODUCTION_LOCATION";
 	public static final String EOCUST_PRODUCT_LOCATION = "EOCUST_PRODUCT_LOCATION";
@@ -216,11 +219,8 @@ public class Constants {
 
 	public static final String CUST_PURCHASE_ID = "CUST_PURCHASE_ID";
 	public static final String CUST_PURCHASE_ITEM_ID = "CUST_PURCHASE_ITEM_ID";
-
 	public static final String CUST_PRODUCT_RETAIL_SALE_ID = "CUST_PRODUCT_RETAIL_SALE_ID";
-
 	public static final String CUST_PRODUCT_WHOLE_SALE_ID = "CUST_PRODUCT_WHOLE_SALE_ID";
-
 
 	public static final boolean TRUE = true;
 	public static final boolean FALSE = false;

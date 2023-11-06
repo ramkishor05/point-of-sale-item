@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.brijframework.production.contants.DataStatus;
+import com.brijframework.production.contants.RecordStatus;
 import com.brijframework.production.cust.dto.UICustCategoryGroup;
 import com.brijframework.production.cust.entities.EOCustBusinessApp;
 import com.brijframework.production.cust.entities.EOCustCategoryGroup;
@@ -59,7 +59,7 @@ public class CustCategoryGroupServiceImpl implements CustCategoryGroupService {
 	public boolean deleteCategoryGroup(long custAppId, Long id) {
 		EOCustCategoryGroup eoCustCategoryGroup = custCategoryGroupRepository.findOneByIdAndCustAppId(custAppId,id);
 		if(eoCustCategoryGroup!=null) {
-			eoCustCategoryGroup.setRecordState(DataStatus.DACTIVETED.getStatus());
+			eoCustCategoryGroup.setRecordState(RecordStatus.DACTIVETED.getStatus());
 			custCategoryGroupRepository.save(eoCustCategoryGroup);
 			return true;
 		}
@@ -67,7 +67,7 @@ public class CustCategoryGroupServiceImpl implements CustCategoryGroupService {
 	}
 
 	@Override
-	public List<UICustCategoryGroup> getCategoryGroupListByStatus(long custAppId, DataStatus dataStatus) {
+	public List<UICustCategoryGroup> getCategoryGroupListByStatus(long custAppId, RecordStatus dataStatus) {
 		return custCategoryGroupMapper.mapToDTO(custCategoryGroupRepository.findAllByCustAppIdAndStatusIn(custAppId,dataStatus.getStatusIds()));
 	}
 

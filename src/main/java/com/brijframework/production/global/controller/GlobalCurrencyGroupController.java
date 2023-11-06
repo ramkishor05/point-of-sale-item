@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.brijframework.production.contants.DataStatus;
+import com.brijframework.production.contants.RecordStatus;
 import com.brijframework.production.global.dto.UIGlobalCurrencyGroup;
 import com.brijframework.production.global.service.GlobalCurrencyGroupService;
 
@@ -49,7 +49,7 @@ public class GlobalCurrencyGroupController {
 	}
 	
 	@GetMapping("/status/{status}")
-	public List<UIGlobalCurrencyGroup> getCurrencyGroupList(@PathVariable("status") DataStatus  dataStatus) {
+	public List<UIGlobalCurrencyGroup> getCurrencyGroupList(@PathVariable("status") RecordStatus  dataStatus) {
 		return globalCurrencyGroupService.getCurrencyGroupList(dataStatus);
 	}
 	

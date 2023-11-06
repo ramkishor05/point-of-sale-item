@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.brijframework.production.contants.DataStatus;
+import com.brijframework.production.contants.RecordStatus;
 import com.brijframework.production.cust.dto.UICustCategoryGroup;
 import com.brijframework.production.cust.service.CustCategoryGroupService;
 
@@ -52,7 +52,7 @@ public class CustCategoryGroupController {
 	}
 	
 	@GetMapping("/status/{status}")
-	public List<UICustCategoryGroup> getCategoryGroupList(@RequestHeader(CUST_APP_ID) long custAppId,@PathVariable("status") DataStatus  dataStatus) {
+	public List<UICustCategoryGroup> getCategoryGroupList(@RequestHeader(CUST_APP_ID) long custAppId,@PathVariable("status") RecordStatus  dataStatus) {
 		return custCategoryGroupService.getCategoryGroupListByStatus(custAppId,dataStatus);
 	}
 	

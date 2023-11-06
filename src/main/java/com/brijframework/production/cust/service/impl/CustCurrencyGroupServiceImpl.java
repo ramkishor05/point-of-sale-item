@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.brijframework.production.contants.DataStatus;
+import com.brijframework.production.contants.RecordStatus;
 import com.brijframework.production.cust.dto.UICustCurrencyGroup;
 import com.brijframework.production.cust.entities.EOCustBusinessApp;
 import com.brijframework.production.cust.entities.EOCustCurrencyGroup;
@@ -59,7 +59,7 @@ public class CustCurrencyGroupServiceImpl implements CustCurrencyGroupService {
 	public boolean deleteCurrencyGroup(long custAppId, Long id) {
 		EOCustCurrencyGroup eoCustCurrencyGroup = custCurrencyGroupRepository.findOneByIdAndCustAppId(custAppId,id);
 		if(eoCustCurrencyGroup!=null) {
-			eoCustCurrencyGroup.setRecordState(DataStatus.DACTIVETED.getStatus());
+			eoCustCurrencyGroup.setRecordState(RecordStatus.DACTIVETED.getStatus());
 			custCurrencyGroupRepository.save(eoCustCurrencyGroup);
 			return true;
 		}
@@ -67,7 +67,7 @@ public class CustCurrencyGroupServiceImpl implements CustCurrencyGroupService {
 	}
 
 	@Override
-	public List<UICustCurrencyGroup> getCurrencyGroupListByStatus(long custAppId, DataStatus dataStatus) {
+	public List<UICustCurrencyGroup> getCurrencyGroupListByStatus(long custAppId, RecordStatus dataStatus) {
 		return custCurrencyGroupMapper.mapToDTO(custCurrencyGroupRepository.findAllByCustAppIdAndStatusIn(custAppId,dataStatus.getStatusIds()));
 	}
 

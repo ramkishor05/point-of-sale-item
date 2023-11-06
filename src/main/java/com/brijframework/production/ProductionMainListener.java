@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import com.brijframework.production.contants.DataStatus;
+import com.brijframework.production.contants.RecordStatus;
 import com.brijframework.production.cust.entities.EOCustBusinessApp;
 import com.brijframework.production.cust.entities.EOCustCategoryGroup;
 import com.brijframework.production.cust.entities.EOCustCategoryItem;
@@ -136,7 +136,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	    	eoGlobalCurrencyGroupJson.forEach(eoGlobalCurrencyGroup->{
 	    		EOGlobalCurrencyGroup findGlobalCurrencyGroup = globalCurrencyGroupRepository.findByTypeId(eoGlobalCurrencyGroup.getTypeId()).orElse(eoGlobalCurrencyGroup);
 	    		BeanUtils.copyProperties(eoGlobalCurrencyGroup, findGlobalCurrencyGroup,"id");
-	    		findGlobalCurrencyGroup.setRecordState(DataStatus.ACTIVETED.getStatus());
+	    		findGlobalCurrencyGroup.setRecordState(RecordStatus.ACTIVETED.getStatus());
 	    		EOGlobalCurrencyGroup eoGlobalCurrencyGroupSave= globalCurrencyGroupRepository.save(findGlobalCurrencyGroup);
 	    		eoGlobalCurrencyGroup.setId(eoGlobalCurrencyGroupSave.getId());
 	    	});
@@ -144,7 +144,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	    	List<EOGlobalCurrencyItem> eoGlobalCurrencyItemJson = instance.getAll(EOGlobalCurrencyItem.class);
 	    	eoGlobalCurrencyItemJson.forEach(eoGlobalCurrencyItem->{
 	    		if(globalCurrencyItemRepository.countByTypeId(eoGlobalCurrencyItem.getTypeId())==0) {
-	    			eoGlobalCurrencyItem.setRecordState(DataStatus.ACTIVETED.getStatus());
+	    			eoGlobalCurrencyItem.setRecordState(RecordStatus.ACTIVETED.getStatus());
 		    		EOGlobalCurrencyItem eoGlobalCurrencyItemSave= globalCurrencyItemRepository.save(eoGlobalCurrencyItem);
 		    		eoGlobalCurrencyItem.setId(eoGlobalCurrencyItemSave.getId());
 	    		}
@@ -155,7 +155,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	    	eoGlobalCategoryGroupJson.forEach(eoGlobalCategoryGroup->{
 	    		EOGlobalCategoryGroup findGlobalCategoryGroup = glbCategoryGroupRepository.findByTypeId(eoGlobalCategoryGroup.getTypeId()).orElse(eoGlobalCategoryGroup);
 	    		BeanUtils.copyProperties(eoGlobalCategoryGroup, findGlobalCategoryGroup,"id");
-	    		findGlobalCategoryGroup.setRecordState(DataStatus.ACTIVETED.getStatus());
+	    		findGlobalCategoryGroup.setRecordState(RecordStatus.ACTIVETED.getStatus());
 	    		EOGlobalCategoryGroup eoGlobalCategoryGroupSave= glbCategoryGroupRepository.save(findGlobalCategoryGroup);
 	    		eoGlobalCategoryGroup.setId(eoGlobalCategoryGroupSave.getId());
 	    	});
@@ -164,7 +164,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	    	
 	    	eoGlobalCategoryJson.forEach(eoGlobalCategory->{
 	    		if(glbCategoryRepository.countByTypeId(eoGlobalCategory.getTypeId())==0) {
-	    			eoGlobalCategory.setRecordState(DataStatus.ACTIVETED.getStatus());
+	    			eoGlobalCategory.setRecordState(RecordStatus.ACTIVETED.getStatus());
 		    		EOGlobalCategory eoGlobalCategorySave= glbCategoryRepository.save(eoGlobalCategory);
 		    		eoGlobalCategory.setId(eoGlobalCategorySave.getId());
 	    		}
@@ -175,7 +175,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	    	eoGlobalUnitGroupsJson.forEach(eoGlobalUnitGroup->{
 	    		EOGlobalUnitGroup findGlobalUnitGroup = glbUnitGroupRepository.findByTypeId(eoGlobalUnitGroup.getTypeId()).orElse(eoGlobalUnitGroup);
 	    		BeanUtils.copyProperties(eoGlobalUnitGroup, findGlobalUnitGroup,"id");
-	    		findGlobalUnitGroup.setRecordState(DataStatus.ACTIVETED.getStatus());
+	    		findGlobalUnitGroup.setRecordState(RecordStatus.ACTIVETED.getStatus());
 	    		EOGlobalUnitGroup eoGlobalUnitGroupSave= glbUnitGroupRepository.save(findGlobalUnitGroup);
 	    		eoGlobalUnitGroup.setId(eoGlobalUnitGroupSave.getId());
 	    	});
@@ -185,7 +185,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	
 	    	eoGlobalUnitsJson.forEach(eoGlobalUnit->{
 	    		if(glbUnitRepository.countByTypeId(eoGlobalUnit.getTypeId())==0) {
-	    			eoGlobalUnit.setRecordState(DataStatus.ACTIVETED.getStatus());
+	    			eoGlobalUnit.setRecordState(RecordStatus.ACTIVETED.getStatus());
 		    		EOGlobalUnit eoGlobalUnitSave= glbUnitRepository.save(eoGlobalUnit);
 		    		eoGlobalUnit.setId(eoGlobalUnitSave.getId());
 	    		}
@@ -195,7 +195,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	
 	    	eoGlobalCountFreqsJson.forEach(eoGlobalCountFreq->{
 	    		if(globalCountFreqRepository.countByTypeId(eoGlobalCountFreq.getTypeId())==0) {
-	    			eoGlobalCountFreq.setRecordState(DataStatus.ACTIVETED.getStatus());
+	    			eoGlobalCountFreq.setRecordState(RecordStatus.ACTIVETED.getStatus());
 		    		EOGlobalCountFreq eoGlobalCountFreqSave = globalCountFreqRepository.save(eoGlobalCountFreq);
 		    		eoGlobalCountFreq.setId(eoGlobalCountFreqSave.getId());
 	    		}
@@ -205,7 +205,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	
 	    	eoGlobalUnitConversions.forEach(eoGlobalUnitConversion->{
 	    		if(globalUnitConversionRepository.countByTypeId(eoGlobalUnitConversion.getTypeId())==0) {
-	    			eoGlobalUnitConversion.setRecordState(DataStatus.ACTIVETED.getStatus());
+	    			eoGlobalUnitConversion.setRecordState(RecordStatus.ACTIVETED.getStatus());
 		    		EOGlobalUnitConversion eoGlobalUnitConversionSave =globalUnitConversionRepository.save(eoGlobalUnitConversion);
 		    		eoGlobalUnitConversion.setId(eoGlobalUnitConversionSave.getId());
 	    		}
