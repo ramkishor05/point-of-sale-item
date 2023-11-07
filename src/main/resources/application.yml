@@ -20,6 +20,11 @@ spring:
        show_sql: true
        naming: 
          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+   kafka:
+     bootstrap-servers: localhost:9092
+     consumer.group-id: orders-group
+     producer.key-serializer: org.apache.kafka.common.serialization.StringSerializer
+     producer.value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
    database.config.data: false
 # Discovery Server Access
 eureka:
@@ -35,6 +40,7 @@ logging.level.org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 error:
   whitelabel:
     enabled: true
+    
 ---
 spring:
    profiles: local

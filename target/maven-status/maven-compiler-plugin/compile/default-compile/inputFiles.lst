@@ -10,6 +10,7 @@ E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\Produc
 E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\entities\sales\EOCustProductSaleItem.java
 E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\entities\EOCustProduct.java
 E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\rest\CustProductRequest.java
+E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\event\StockEvent.java
 E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\repository\CustProductPurchasePaymentRepository.java
 E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\dto\UICustProduct.java
 E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\mapper\CustProductPurchaseRequestMapper.java
@@ -21,6 +22,7 @@ E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\filter
 E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\dto\UIGlobalCategory.java
 E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\dto\UICategorySummary.java
 E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\config\SwaggerViewConfig.java
+E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\rest\CustDashboardStock.java
 E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\cust\mapper\CustCategoryMapper.java
 E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\mapper\GlobalCountFreqRequestMapper.java
 E:\projects\point_of_sale_item\src\main\java\com\brijframework\production\global\mapper\GlobalCategoryMapper.java

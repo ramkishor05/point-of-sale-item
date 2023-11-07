@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import com.brijframework.production.cust.entities.EOCustBusinessApp;
@@ -13,6 +14,7 @@ import com.brijframework.production.cust.entities.purchases.EOCustProductPurchas
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchaseAdditional;
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchaseItem;
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchasePayment;
+import com.brijframework.production.cust.event.StockEvent;
 import com.brijframework.production.cust.mapper.CustProductPurchaseRequestMapper;
 import com.brijframework.production.cust.mapper.CustProductPurchaseResponseMapper;
 import com.brijframework.production.cust.repository.CustBusinessAppRepository;
@@ -34,6 +36,9 @@ import com.brijframework.production.util.CommanUtil;
 public class CustProductPurchaseServiceImpl implements CustProductPurchaseService {
 	
 	private static final String CPL = "CPL";
+	
+	@Autowired
+    private KafkaTemplate<String, StockEvent> stockEventTemplate;
 
 	@Autowired
 	private CustProductPurchaseRepository custProductPurchaseRepository;
@@ -107,6 +112,9 @@ public class CustProductPurchaseServiceImpl implements CustProductPurchaseServic
 			eoCustProductRetailPurchase.setCustProduct(eoCustProduct);
 			eoCustProductRetailPurchase.setCustProductPurchase(eoCustProductPurchase);
 			EOCustProductPurchaseItem saveCustProductRetailPurchase=custProductPurchaseItemRepository.saveAndFlush(eoCustProductRetailPurchase);
+			
+			stockEventTemplate.send("STOCK_EVENT", new StockEvent(saveCustProductRetailPurchase.getId(),eoCustProduct.getId()));
+			
 			custProductStockService.saveCustProductStocksBackground(saveCustProductRetailPurchase); 
 		}
 		return eoCustProductPurchase;

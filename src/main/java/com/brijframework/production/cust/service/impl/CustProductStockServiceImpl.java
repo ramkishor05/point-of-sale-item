@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import com.brijframework.production.contants.StockStatus;
@@ -14,10 +15,14 @@ import com.brijframework.production.cust.entities.purchases.EOCustProductPurchas
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchaseItemPrice;
 import com.brijframework.production.cust.entities.sales.EOCustProductSaleItem;
 import com.brijframework.production.cust.entities.sales.EOCustProductSaleItemPrice;
+import com.brijframework.production.cust.event.StockEvent;
 import com.brijframework.production.cust.repository.CustProductStockRepository;
-import com.brijframework.production.cust.rest.CustProductStockResponse;
+import com.brijframework.production.cust.repository.CustProductStockRepository.ProductStock;
 import com.brijframework.production.cust.service.CustProductStockService;
 import com.brijframework.production.util.CommanUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class CustProductStockServiceImpl implements CustProductStockService {
@@ -26,6 +31,12 @@ public class CustProductStockServiceImpl implements CustProductStockService {
 
 	@Autowired
 	private CustProductStockRepository custProductStockRepository;
+	
+    @KafkaListener(topics = "STOCK_EVENT", groupId = "orders-group")
+    public void processPayment(String event) throws JsonMappingException, JsonProcessingException {
+    	StockEvent stockEvent = new ObjectMapper().readValue(event, StockEvent.class);
+    	System.out.println("stockEvent="+stockEvent);
+    }
 	
 	@Override
 	public void saveCustProductStocksBackground(EOCustProductPurchaseItem eoCustProductSaleItem) {
@@ -239,9 +250,8 @@ public class CustProductStockServiceImpl implements CustProductStockService {
 	}
 
 	@Override
-	public List<CustProductStockResponse> getProductStockList(long custAppId, Long productId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProductStock> getProductStockList(long custAppId, Long productId) {
+		return custProductStockRepository.findAllByCustProductId(productId);
 	}
 
 	@Override

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.brijframework.production.cust.rest.CustProductStockResponse;
+import com.brijframework.production.cust.repository.CustProductStockRepository.ProductStock;
 import com.brijframework.production.cust.service.CustProductStockService;
 
 @RestController
@@ -23,7 +23,7 @@ public class CustProductStockController {
 	private CustProductStockService custProductStockService;
 	
 	@GetMapping("/{productId}")
-	public List<CustProductStockResponse> getProductStockList(@RequestHeader(CUST_APP_ID) long custAppId, @PathVariable Long productId) {
+	public List<ProductStock> getProductStockList(@RequestHeader(CUST_APP_ID) long custAppId, @PathVariable("productId") Long productId) {
 		return custProductStockService.getProductStockList(custAppId, productId);
 	}
 	
