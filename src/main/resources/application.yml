@@ -23,6 +23,7 @@ spring:
    kafka:
      bootstrap-servers: localhost:9092
      consumer.group-id: orders-group
+     consumer.topic-id: STOCK_EVENT
      producer.key-serializer: org.apache.kafka.common.serialization.StringSerializer
      producer.value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
    database.config.data: false
