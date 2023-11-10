@@ -30,6 +30,8 @@ public class CustProductSaleResponse implements Serializable {
 	
 	private Long custBusinessAppId;
 	
+	private Long businessId;
+	
 	private List<CustProductSaleItemResponse> custProductSaleItemList;
 
 	private List<CustProductSaleAdditional> custProductSaleAdditionalList;
@@ -74,6 +76,14 @@ public class CustProductSaleResponse implements Serializable {
 
 	public void setCustomerId(long customerId) {
 		this.customerId = customerId;
+	}
+
+	public Long getBusinessId() {
+		return businessId;
+	}
+
+	public void setBusinessId(Long businessId) {
+		this.businessId = businessId;
 	}
 
 	public Double getTotalPrice() {

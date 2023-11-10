@@ -18,6 +18,8 @@ public class CustProductPurchaseResponse {
 	private Long supplierId;
 	
 	private Long custBusinessAppId;
+	
+	private Long businessId;
 
 	private List<CustProductPurchaseItemResponse> custProductPurchaseItemList;
 
@@ -79,6 +81,14 @@ public class CustProductPurchaseResponse {
 
 	public void setSupplierId(Long supplierId) {
 		this.supplierId = supplierId;
+	}
+
+	public Long getBusinessId() {
+		return businessId;
+	}
+
+	public void setBusinessId(Long businessId) {
+		this.businessId = businessId;
 	}
 
 	public Long getCustBusinessAppId() {

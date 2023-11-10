@@ -26,11 +26,11 @@ public class CustBusinessAppServiceImpl implements CustBusinessAppService {
 	private CustBusinessAppDetailMapper custBusinessAppDetailMapper;
 	
 	@Override
-	public UICustBusinessApp saveCustBusinessApp(UICustBusinessApp inventory) {
-		EOCustBusinessApp eoCustBusinessApp=new EOCustBusinessApp();
-		eoCustBusinessApp.setId(inventory.getId());
-		eoCustBusinessApp.setAppid(inventory.getAppid());
-		eoCustBusinessApp.setCustId(inventory.getCustId());
+	public UICustBusinessApp saveCustBusinessApp(UICustBusinessApp uiCustBusinessApp) {
+		EOCustBusinessApp eoCustBusinessApp=custBusinessAppRepository.findByCustIdAndAppIdAndBusinessId(uiCustBusinessApp.getCustId(), uiCustBusinessApp.getAppId(),uiCustBusinessApp.getBusinessId()).orElse(new EOCustBusinessApp());
+		eoCustBusinessApp.setAppId(uiCustBusinessApp.getAppId());
+		eoCustBusinessApp.setCustId(uiCustBusinessApp.getCustId());
+		eoCustBusinessApp.setBusinessId(uiCustBusinessApp.getBusinessId());
 		custBusinessAppRepository.save(eoCustBusinessApp);
 		return custBusinessAppMapper.mapToDTO(eoCustBusinessApp);
 	}

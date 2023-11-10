@@ -1,10 +1,14 @@
 package com.brijframework.production.cust.controller;
 
+import static com.brijframework.production.contants.Constants.OWNER_ID_KEY;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +24,14 @@ public class CustApplicationController {
 	CustBusinessAppService custApplicationService;
 	
 	@PostMapping
-	public UICustBusinessApp addCustBusiness(@RequestBody UICustBusinessApp inventoryApplication) {
+	public UICustBusinessApp addCustBusiness(@RequestHeader(OWNER_ID_KEY) Long ownerId,@RequestBody UICustBusinessApp inventoryApplication) {
+		inventoryApplication.setCustId(ownerId);
+		return custApplicationService.saveCustBusinessApp(inventoryApplication);
+	}
+	
+	@PutMapping
+	public UICustBusinessApp updateCustBusiness(@RequestHeader(OWNER_ID_KEY) Long ownerId, @RequestBody UICustBusinessApp inventoryApplication) {
+		inventoryApplication.setCustId(ownerId);
 		return custApplicationService.saveCustBusinessApp(inventoryApplication);
 	}
 	

@@ -1,7 +1,7 @@
 package com.brijframework.production.filters;
 
 import static com.brijframework.production.contants.Constants.CUST_APP_ID;
-import static com.brijframework.production.contants.Constants.OWNER_ID;
+import static com.brijframework.production.contants.Constants.OWNER_ID_KEY;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -29,12 +29,11 @@ public class TransactionFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        String ownerId = req.getHeader(OWNER_ID);
+        String ownerId = req.getHeader(OWNER_ID_KEY);
+        String appId = req.getHeader(OWNER_ID_KEY);
         MutableHttpServletRequest requestWrapper = new MutableHttpServletRequest(req);
-        System.out.println("ownerId="+ownerId);
         if(Objects.nonNull(ownerId)) {
-        	custBusinessAppRepository.findByCustIdAndAppid(Long.valueOf(ownerId), 1l).ifPresent((custBusinessApp)->{
-        		System.out.println("CUST_APP_ID="+custBusinessApp.getId());
+        	custBusinessAppRepository.findByCustIdAndAppId(Long.valueOf(ownerId), 1l).ifPresent((custBusinessApp)->{
         		requestWrapper.putHeader(CUST_APP_ID, ""+custBusinessApp.getId());
         		req.setAttribute(CUST_APP_ID, ""+custBusinessApp.getId());
         	});

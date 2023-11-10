@@ -211,15 +211,6 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	    		}
 	    	});
 	    	
-	    	
-	    	Optional<EOCustBusinessApp> findCustBusinessApp = custBusinessAppRepository.findByCustIdAndAppid(1L,1l);
-	    	if(!findCustBusinessApp.isPresent()) {
-	    		EOCustBusinessApp custBusinessApp =new EOCustBusinessApp();
-	    		custBusinessApp.setCustId(1l);
-	    		custBusinessApp.setAppid(1l);
-	    		custBusinessAppRepository.saveAndFlush(custBusinessApp);
-	    	}
-	    	
 	    	List<EOCustBusinessApp> custBusinessApps = custBusinessAppRepository.findAll();
 	    	
 	    	/// 

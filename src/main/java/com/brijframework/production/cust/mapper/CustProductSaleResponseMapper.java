@@ -1,6 +1,8 @@
 package com.brijframework.production.cust.mapper;
 
 import static com.brijframework.production.contants.Constants.COM_BRIJFRAMEWORK_CUST_PRODUCTION_MAPPER_IMPL;
+import static com.brijframework.production.contants.Constants.CUST_BUSINESS_ID_ENTITY;
+import static com.brijframework.production.contants.Constants.BUSINESS_ID_KEY;
 import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID_ENTITY;
 import static com.brijframework.production.contants.Constants.CUST_PROD_APP_ID_UI;
 import static com.brijframework.production.contants.Constants.SPRING;
@@ -22,6 +24,7 @@ public interface CustProductSaleResponseMapper  extends GenericMapper<EOCustProd
 	EOCustProductSale mapToDAO(CustProductSaleResponse uiProduct);
 	
 	@Mapping(source=CUST_PROD_APP_ID_ENTITY, target=CUST_PROD_APP_ID_UI)
+	@Mapping(source=CUST_BUSINESS_ID_ENTITY, target=BUSINESS_ID_KEY)
 	@Override
 	CustProductSaleResponse mapToDTO(EOCustProductSale eoInvProduct);
 	

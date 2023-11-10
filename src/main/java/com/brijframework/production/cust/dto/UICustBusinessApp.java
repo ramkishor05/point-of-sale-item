@@ -4,9 +4,11 @@ public class UICustBusinessApp {
 
 	private long id;
 
-	private long appid;
+	private long appId;
 
 	private long custId;
+	
+	private long businessId;
 
 	public long getId() {
 		return id;
@@ -16,12 +18,12 @@ public class UICustBusinessApp {
 		this.id = id;
 	}
 
-	public long getAppid() {
-		return appid;
+	public long getAppId() {
+		return appId;
 	}
 
-	public void setAppid(long appid) {
-		this.appid = appid;
+	public void setAppId(long appId) {
+		this.appId = appId;
 	}
 
 	public long getCustId() {
@@ -32,9 +34,17 @@ public class UICustBusinessApp {
 		this.custId = custId;
 	}
 
+	public long getBusinessId() {
+		return businessId;
+	}
+
+	public void setBusinessId(long businessId) {
+		this.businessId = businessId;
+	}
+
 	@Override
 	public String toString() {
-		return "UIInventoryApplication [id=" + id + ", appid=" + appid + ", custId=" + custId + "]";
+		return "UIInventoryApplication [id=" + id + ", appId=" + appId + ", custId=" + custId + "]";
 	}
 
 }

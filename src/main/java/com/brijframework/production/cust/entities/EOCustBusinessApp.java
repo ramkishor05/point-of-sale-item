@@ -25,7 +25,7 @@ public class EOCustBusinessApp extends EOCustObject {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = APP_ID, nullable = false)
-	private long appid;
+	private long appId;
 
 	@Column(name = CUST_ID, nullable = false)
 	private long custId;
@@ -48,12 +48,12 @@ public class EOCustBusinessApp extends EOCustObject {
 	@OneToMany(mappedBy = CUST_BUSINESS_APP)
 	public Set<EOCustProduct> custProductList;
 
-	public long getAppid() {
-		return appid;
+	public long getAppId() {
+		return appId;
 	}
 
-	public void setAppid(long appid) {
-		this.appid = appid;
+	public void setAppId(long appId) {
+		this.appId = appId;
 	}
 
 	public long getCustId() {

@@ -12,6 +12,8 @@ import com.brijframework.production.cust.entities.EOCustBusinessApp;
 @Transactional
 public interface CustBusinessAppRepository  extends JpaRepository<EOCustBusinessApp, Long>{
 
-	Optional<EOCustBusinessApp> findByCustIdAndAppid(long l, long m);
+	Optional<EOCustBusinessApp> findByCustIdAndAppId(long custId, long appId);
+
+	Optional<EOCustBusinessApp> findByCustIdAndAppIdAndBusinessId(long custId, long appId, long businessId);
 
 }
