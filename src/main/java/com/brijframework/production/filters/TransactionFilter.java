@@ -3,7 +3,7 @@ package com.brijframework.production.filters;
 import static com.brijframework.production.contants.Constants.CUST_APP_ID;
 import static com.brijframework.production.contants.Constants.OWNER_ID_KEY;
 import static com.brijframework.production.contants.Constants.APP_ID_KEY;
-import static com.brijframework.production.contants.Constants.APP_ID_KEY;;
+import static com.brijframework.production.contants.Constants.BUSINESS_ID_KEY;
 
 
 import java.io.IOException;
@@ -33,14 +33,25 @@ public class TransactionFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         String ownerId = req.getHeader(OWNER_ID_KEY);
-        String appId = req.getHeader(OWNER_ID_KEY);
+        String appId = req.getHeader(APP_ID_KEY);
+        String businessId = req.getHeader(BUSINESS_ID_KEY);
         MutableHttpServletRequest requestWrapper = new MutableHttpServletRequest(req);
-        if(Objects.nonNull(ownerId)) {
-        	custBusinessAppRepository.findByCustIdAndAppId(Long.valueOf(ownerId), 1l).ifPresent((custBusinessApp)->{
+        if(Objects.nonNull(ownerId) && Objects.nonNull(businessId) && Objects.nonNull(appId)) {
+        	custBusinessAppRepository.findByCustIdAndAppIdAndBusinessId(Long.valueOf(ownerId), Long.valueOf(appId),Long.valueOf(businessId)).ifPresent((custBusinessApp)->{
         		requestWrapper.putHeader(CUST_APP_ID, ""+custBusinessApp.getId());
         		req.setAttribute(CUST_APP_ID, ""+custBusinessApp.getId());
         	});
-        }
+        } else  if(Objects.nonNull(ownerId) && Objects.nonNull(businessId)) {
+         	custBusinessAppRepository.findByCustIdAndAppIdAndBusinessId(Long.valueOf(ownerId), Long.valueOf(1l),Long.valueOf(businessId)).ifPresent((custBusinessApp)->{
+         		requestWrapper.putHeader(CUST_APP_ID, ""+custBusinessApp.getId());
+         		req.setAttribute(CUST_APP_ID, ""+custBusinessApp.getId());
+         	});
+         } else  if(Objects.nonNull(ownerId)) {
+         	custBusinessAppRepository.findByCustIdAndAppId(Long.valueOf(ownerId), Long.valueOf(1l)).ifPresent((custBusinessApp)->{
+         		requestWrapper.putHeader(CUST_APP_ID, ""+custBusinessApp.getId());
+         		req.setAttribute(CUST_APP_ID, ""+custBusinessApp.getId());
+         	});
+         }
         chain.doFilter(requestWrapper, response);
     }
 }

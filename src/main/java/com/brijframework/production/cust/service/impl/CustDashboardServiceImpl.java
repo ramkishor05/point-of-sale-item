@@ -27,7 +27,7 @@ public class CustDashboardServiceImpl implements CustDashboardService {
 		double totalGrossSale=0.0;
 		double totalNetPurchase=0.0;
 		double totalNetSale=0.0;
-		List<EOCustProductStock> custProductStocks = custProductStockRepository.findAll();
+		List<EOCustProductStock> custProductStocks = custProductStockRepository.findAllByCustBusinessAppId(custAppId);
 		for(EOCustProductStock custProductStock : custProductStocks){
 			EOCustProductPurchaseItem custProductPurchaseItem = custProductStock.getCustProductPurchaseItem();
 			EOCustProductSaleItem custProductSaleItem = custProductStock.getCustProductSaleItem();
