@@ -24,7 +24,6 @@ final class MutableHttpServletRequest extends HttpServletRequestWrapper {
     }
  
     public String getHeader(String name) {
-    	System.out.println("Get header: "+name);
         // check the custom headers first
         String headerValue = customHeaders.get(name);
         
@@ -38,7 +37,6 @@ final class MutableHttpServletRequest extends HttpServletRequestWrapper {
     public Enumeration<String> getHeaderNames() {
         // create a set of the custom header names
         Set<String> set = new HashSet<String>(this.customHeaders.keySet());
-        System.out.println("getHeaderNames: ");
         // now add the headers from the wrapped request object
         Enumeration<String> e = ((HttpServletRequest) getRequest()).getHeaderNames();
         while (e.hasMoreElements()) {
@@ -57,7 +55,6 @@ final class MutableHttpServletRequest extends HttpServletRequestWrapper {
     
     @Override
     public Enumeration<String> getHeaders(String name) {
-    	System.out.println("Get getHeaders: "+name);
         // check the custom headers first
         String headerValue = customHeaders.get(name);
         

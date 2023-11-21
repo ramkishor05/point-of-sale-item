@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.brijframework.production.cust.dto.UICustBusinessApp;
 import com.brijframework.production.cust.dto.UICustBusinessAppDetail;
+import com.brijframework.production.cust.entities.EOCustBusinessApp;
 
 public interface CustBusinessAppService {
 
@@ -16,4 +17,6 @@ public interface CustBusinessAppService {
 	List<UICustBusinessApp> getCustBusinessAppList();
 
 	UICustBusinessAppDetail getCustBusinessAppDetail(long id);
+
+	void init(EOCustBusinessApp eoCustBusinessApp);
 }
