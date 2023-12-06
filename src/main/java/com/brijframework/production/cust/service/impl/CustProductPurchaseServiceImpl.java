@@ -12,6 +12,7 @@ import com.brijframework.production.cust.entities.EOCustProduct;
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchase;
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchaseAdditional;
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchaseItem;
+import com.brijframework.production.cust.entities.purchases.EOCustProductPurchaseItemPrice;
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchasePayment;
 import com.brijframework.production.cust.mapper.CustProductPurchaseRequestMapper;
 import com.brijframework.production.cust.mapper.CustProductPurchaseResponseMapper;
@@ -106,8 +107,9 @@ public class CustProductPurchaseServiceImpl implements CustProductPurchaseServic
 			EOCustProduct eoCustProduct = custProductRepository.findById(custProductRetailPurchaseUi.getCustProductId()).orElse(null);
 			eoCustProductRetailPurchase.setCustProduct(eoCustProduct);
 			eoCustProductRetailPurchase.setCustProductPurchase(eoCustProductPurchase);
+			EOCustProductPurchaseItemPrice purchasePrice = eoCustProductRetailPurchase.getPurchasePrice();
 			EOCustProductPurchaseItem saveCustProductRetailPurchase=custProductPurchaseItemRepository.saveAndFlush(eoCustProductRetailPurchase);
-			
+			purchasePrice.setCustProductPurchaseItem(saveCustProductRetailPurchase);
 			custProductStockService.saveCustProductStocksBackground(saveCustProductRetailPurchase); 
 		}
 		return eoCustProductPurchase;
@@ -128,6 +130,11 @@ public class CustProductPurchaseServiceImpl implements CustProductPurchaseServic
 	public List<CustProductPurchaseResponse> getProductPurchaseList(long custAppId) {
 		return custProductPurchaseResponseMapper.mapToDTO(custProductPurchaseRepository.findAllByCustBusinessAppId(custAppId));
 	}
+	
+	@Override
+	public List<CustProductPurchaseResponse> getProductPurchaseList(long custAppId, Long supplierId) {
+		return custProductPurchaseResponseMapper.mapToDTO(custProductPurchaseRepository.findAllByCustBusinessAppId(custAppId, supplierId));
+	}
 
 	@Override
 	public CustProductPurchaseResponse getProductPurchase(long custAppId, String typeId) {
@@ -139,6 +146,13 @@ public class CustProductPurchaseServiceImpl implements CustProductPurchaseServic
 			LocalDateTime toDate) {
 		LocalDateTime toDateOf = LocalDateTime.of(toDate.getYear(), toDate.getMonth(), toDate.getDayOfMonth(), 23, 59,59);
 		return custProductPurchaseResponseMapper.mapToDTO(custProductPurchaseRepository.filterProductPurchaseList(custAppId, fromDate, toDateOf));
+	}
+	
+	@Override
+	public List<CustProductPurchaseResponse> filterProductPurchaseList(long custAppId, Long supplierId, LocalDateTime fromDate,
+			LocalDateTime toDate) {
+		LocalDateTime toDateOf = LocalDateTime.of(toDate.getYear(), toDate.getMonth(), toDate.getDayOfMonth(), 23, 59,59);
+		return custProductPurchaseResponseMapper.mapToDTO(custProductPurchaseRepository.filterProductPurchaseList(custAppId, supplierId, fromDate, toDateOf));
 	}
 
 	@Override

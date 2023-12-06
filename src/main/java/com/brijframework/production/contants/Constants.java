@@ -91,7 +91,6 @@ public class Constants {
 	public static final String QNT = "QNT";
 	public static final String EOCUST_PREPARATION_LOCATION = "EOCUST_PREPARATION_LOCATION";
 	public static final String EOCUST_PRODUCT = "EOCUST_PRODUCT";
-	public static final String EOCUST_PRODUCT_RETAIL_SALE_PRICE = "EOCUST_PRODUCT_RETAIL_SALE_PRICE";
 	public static final String EOCUST_PRODUCT_SALE_ITEM_PRICE = "EOCUST_PRODUCT_SALE_ITEM_PRICE";
 
 	public static final String EOCUST_PRODUCT_PURCHASE_ITEM_PRICE = "EOCUST_PRODUCT_PURCHASE_ITEM_PRICE";

@@ -1,6 +1,5 @@
 spring:
-   profiles: 
-     active:  aws_rds
+   profiles: aws_rds
    application:
      name: point_of_sale_item
    main:
@@ -44,7 +43,8 @@ error:
     
 ---
 spring:
-   profiles: local
+   profiles:  
+     active: local
    application:
      name: point_of_sale_item
    main:
@@ -64,7 +64,9 @@ spring:
        show_sql: true
        naming: 
          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-
+   database:
+      config:
+        data: true
 # Discovery Server Access
 #eureka:
 #    client:

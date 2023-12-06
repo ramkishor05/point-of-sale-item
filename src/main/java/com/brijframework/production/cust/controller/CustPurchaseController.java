@@ -34,14 +34,20 @@ public class CustPurchaseController {
 	public CustProductPurchaseResponse addProductPurchase(@RequestHeader(CUST_APP_ID) long custAppId,@RequestBody CustProductPurchaseRequest custProductPurchaseRequest) {
 		return custProductPurchaseService.saveProductPurchase(custAppId,custProductPurchaseRequest);
 	}
+	
 	@PutMapping
 	public CustProductPurchaseResponse updateProductPurchase(@RequestHeader(CUST_APP_ID) long custAppId,@RequestBody CustProductPurchaseRequest custProductPurchaseRequest) {
 		return custProductPurchaseService.updateProductPurchase(custAppId,custProductPurchaseRequest);
 	}
 	
 	@GetMapping
-	public List<CustProductPurchaseResponse> getProductList(@RequestHeader(CUST_APP_ID) long custAppId) {
+	public List<CustProductPurchaseResponse> getProductPurchaseList(@RequestHeader(CUST_APP_ID) long custAppId) {
 		return custProductPurchaseService.getProductPurchaseList(custAppId);
+	}
+	
+	@GetMapping("/supplier/{supplierId}")
+	public List<CustProductPurchaseResponse> getProductPurchaseList(@RequestHeader(CUST_APP_ID) long custAppId, @PathVariable Long supplierId) {
+		return custProductPurchaseService.getProductPurchaseList(custAppId, supplierId);
 	}
 	
 	@GetMapping("/type/{typeId}")
@@ -55,7 +61,12 @@ public class CustPurchaseController {
 	}
 	
 	@GetMapping("/filter")
-	public List<CustProductPurchaseResponse> filterProductList(@RequestHeader(CUST_APP_ID) long custAppId,@RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime fromDate, @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime toDate) {
+	public List<CustProductPurchaseResponse> filterProductPurchaseList(@RequestHeader(CUST_APP_ID) long custAppId,@RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime fromDate, @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime toDate) {
 		return custProductPurchaseService.filterProductPurchaseList(custAppId, fromDate, toDate);
+	}
+	
+	@GetMapping("/filter/supplier/{supplierId}")
+	public List<CustProductPurchaseResponse> filterProductPurchaseList(@RequestHeader(CUST_APP_ID) long custAppId,@PathVariable("supplierId") Long supplierId, @RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime fromDate, @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime toDate) {
+		return custProductPurchaseService.filterProductPurchaseList(custAppId, supplierId, fromDate, toDate);
 	}
 }

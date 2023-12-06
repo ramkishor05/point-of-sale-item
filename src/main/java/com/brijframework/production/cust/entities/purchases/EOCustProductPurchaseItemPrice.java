@@ -26,7 +26,6 @@ public class EOCustProductPurchaseItemPrice extends EOCustObject{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	// for purchase cost
 	@Column(name = PRICE)
 	private Double price;

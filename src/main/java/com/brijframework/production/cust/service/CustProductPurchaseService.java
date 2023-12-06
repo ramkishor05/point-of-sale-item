@@ -20,4 +20,9 @@ public interface CustProductPurchaseService {
 
 	boolean deleteProductPurchase(long custAppId, Long id);
 
+	List<CustProductPurchaseResponse> filterProductPurchaseList(long custAppId, Long supplierId, LocalDateTime fromDate,
+			LocalDateTime toDate);
+
+	List<CustProductPurchaseResponse> getProductPurchaseList(long custAppId, Long supplierId);
+
 }
