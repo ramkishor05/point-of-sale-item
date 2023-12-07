@@ -20,4 +20,8 @@ public interface CustProductSaleService {
 
 	boolean deleteProductSale(long custAppId, Long id);
 
+	List<CustProductSaleResponse> getProductSaleListBySupplier(long custAppId, Long customerId);
+
+	List<CustProductSaleResponse> getProductSaleListByUser(long custAppId, Long userId);
+
 }

@@ -23,6 +23,8 @@ public interface CustProductPurchaseService {
 	List<CustProductPurchaseResponse> filterProductPurchaseList(long custAppId, Long supplierId, LocalDateTime fromDate,
 			LocalDateTime toDate);
 
-	List<CustProductPurchaseResponse> getProductPurchaseList(long custAppId, Long supplierId);
+	List<CustProductPurchaseResponse> getProductPurchaseListBySupplier(long custAppId, Long supplierId);
+
+	List<CustProductPurchaseResponse> getProductPurchaseListByUser(long custAppId, Long userId);
 
 }

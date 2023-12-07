@@ -8,7 +8,7 @@ public class Constants {
 	public static final String CUST_APP_ID = "custAppId";
 	public static final String CUST_APP_ID_URI = "{custAppId}";
 	public static final String VENDOR_APP_ID = "vendorId";
-
+	public static final String USER_APP_ID = "userId";
 	public static final String SPRING = "spring";
 	public static final String CUST_PROD_APP_ID_ENTITY = "custBusinessApp.id";
 	public static final String CUST_PROD_APP_ID_UI = "custBusinessAppId";
@@ -138,6 +138,8 @@ public class Constants {
 	public static final String APP_ID = "APP_ID";
 	public static final String VENDOR_ID = "VENDOR_ID";
 	public static final String SUPPLIER_ID = "SUPPLIER_ID";
+	public static final String USER_ID = "USER_ID";
+
 	public static final String STOCK_STATUS="STOCK_STATUS";
 
 	public static final String EOCUST_PRODUCTION_LOCATION = "EOCUST_PRODUCTION_LOCATION";

@@ -30,6 +30,8 @@ public class CustProductSaleRequest {
 	
 	private List<CustProductSalePayment> custProductSalePaymentList;
 
+	private long userId;
+
 	public Long getId() {
 		return id;
 	}
@@ -93,6 +95,14 @@ public class CustProductSaleRequest {
 	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
+	
+	public void setUserId(long userId) {
+		this.userId=userId;
+	}
+
+	public long getUserId() {
+		return userId;
+	}
 
 	public List<CustProductSaleItemRequest> getCustProductSaleItemList() {
 		return custProductSaleItemList;
@@ -117,5 +127,4 @@ public class CustProductSaleRequest {
 	public void setCustProductSalePaymentList(List<CustProductSalePayment> custProductSalePaymentList) {
 		this.custProductSalePaymentList = custProductSalePaymentList;
 	}
-
 }

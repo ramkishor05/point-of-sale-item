@@ -84,6 +84,7 @@ public class CustProductSaleServiceImpl implements CustProductSaleService {
 		custProductSaleRequest.setCustProductSalePaymentList(null);
 		
 		EOCustProductSale eoCustProductSale = custProductSaleRequestMapper.mapToDAO(custProductSaleRequest);
+		eoCustProductSale.setUserId(custProductSaleRequest.getUserId());
 		eoCustProductSale.setCustomerId(custProductSaleRequest.getCustomerId());
 		if(custProductSaleRequest.getId()==null) {
 			eoCustProductSale.setIdenNo(CommanUtil. getIdenNo(CSL));
@@ -150,4 +151,14 @@ public class CustProductSaleServiceImpl implements CustProductSaleService {
 		return true;
 	}
 
+	@Override
+	public List<CustProductSaleResponse> getProductSaleListBySupplier(long custAppId, Long customerId) {
+		return custProductSaleResponseMapper.mapToDTO(custProductSaleRepository.findByCustBusinessAppIdAndCustomerId(custAppId, customerId));
+
+	}
+	
+	@Override
+	public List<CustProductSaleResponse> getProductSaleListByUser(long custAppId, Long userId) {
+		return custProductSaleResponseMapper.mapToDTO(custProductSaleRepository.findByCustBusinessAppIdAndUserId(custAppId, userId));
+	}
 }

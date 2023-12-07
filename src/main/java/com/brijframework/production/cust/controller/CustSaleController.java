@@ -2,6 +2,7 @@ package com.brijframework.production.cust.controller;
 
 import static com.brijframework.production.contants.Constants.CUST_APP_ID;
 import static com.brijframework.production.contants.Constants.TYPE_ID;
+import static com.brijframework.production.contants.Constants.USER_APP_ID;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,11 +32,13 @@ public class CustSaleController {
 	private CustProductSaleService custProductSaleService;
 	
 	@PostMapping
-	public CustProductSaleResponse addProductSale(@RequestHeader(CUST_APP_ID) long custAppId,@RequestBody CustProductSaleRequest custProductSaleRequest) {
+	public CustProductSaleResponse addProductSale(@RequestHeader(CUST_APP_ID) long custAppId,@RequestHeader(USER_APP_ID) long userId,@RequestBody CustProductSaleRequest custProductSaleRequest) {
+		custProductSaleRequest.setUserId(userId);
 		return custProductSaleService.saveProductSale(custAppId,custProductSaleRequest);
 	}
 	@PutMapping
-	public CustProductSaleResponse updateProductSale(@RequestHeader(CUST_APP_ID) long custAppId,@RequestBody CustProductSaleRequest custProductSaleRequest) {
+	public CustProductSaleResponse updateProductSale(@RequestHeader(CUST_APP_ID) long custAppId,@RequestHeader(USER_APP_ID) long userId,@RequestBody CustProductSaleRequest custProductSaleRequest) {
+		custProductSaleRequest.setUserId(userId);
 		return custProductSaleService.updateProductSale(custAppId,custProductSaleRequest);
 	}
 	
@@ -57,5 +60,15 @@ public class CustSaleController {
 	@GetMapping("/filter")
 	public List<CustProductSaleResponse> filterProductList(@RequestHeader(CUST_APP_ID) long custAppId,@RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime fromDate, @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime toDate) {
 		return custProductSaleService.filterProductSaleList(custAppId, fromDate, toDate);
+	}
+	
+	@GetMapping("/customer/{customerId}")
+	public List<CustProductSaleResponse> getProductSaleListBySupplier(@RequestHeader(CUST_APP_ID) long custAppId, @PathVariable Long customerId) {
+		return custProductSaleService.getProductSaleListBySupplier(custAppId, customerId);
+	}
+	
+	@GetMapping("/user/{userId}")
+	public List<CustProductSaleResponse> getProductSaleListByUser(@RequestHeader(CUST_APP_ID) long custAppId, @PathVariable Long userId) {
+		return custProductSaleService.getProductSaleListByUser(custAppId, userId);
 	}
 }

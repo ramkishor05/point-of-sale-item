@@ -25,5 +25,9 @@ public interface CustProductPurchaseRepository extends JpaRepository<EOCustProdu
 	List<EOCustProductPurchase> filterProductPurchaseList(long custAppId, Long supplierId, LocalDateTime fromDate, LocalDateTime toDate);
 
 	@Query(nativeQuery = true, value = "select * from EOCUST_PRODUCT_PURCHASE where CUST_BUSINESS_APP_ID =?1 and SUPPLIER_ID =?2 order by CREATED_AT desc")
-	List<EOCustProductPurchase> findAllByCustBusinessAppId(long custAppId, Long supplierId);
+	List<EOCustProductPurchase> findAllByCustBusinessAppIdAndSupplierId(long custAppId, Long supplierId);
+	
+
+	@Query(nativeQuery = true, value = "select * from EOCUST_PRODUCT_PURCHASE where CUST_BUSINESS_APP_ID =?1 and USER_ID =?2 order by CREATED_AT desc")
+	List<EOCustProductPurchase> findAllByCustBusinessAppIdAndUserId(long custAppId, Long userId);
 }

@@ -24,6 +24,8 @@ public class CustProductSaleResponse implements Serializable {
 	
 	private long customerId;
 	
+	private long userId;
+	
 	private Double totalPrice;
 	
 	private Double totalQnt;
@@ -76,6 +78,14 @@ public class CustProductSaleResponse implements Serializable {
 
 	public void setCustomerId(long customerId) {
 		this.customerId = customerId;
+	}
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 	public Long getBusinessId() {

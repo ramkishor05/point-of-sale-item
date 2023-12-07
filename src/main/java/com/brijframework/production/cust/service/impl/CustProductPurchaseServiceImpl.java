@@ -84,6 +84,7 @@ public class CustProductPurchaseServiceImpl implements CustProductPurchaseServic
 		custProductPurchaseRequest.setCustProductPurchasePaymentList(null);
 		
 		EOCustProductPurchase eoCustProductPurchase = custProductPurchaseRequestMapper.mapToDAO(custProductPurchaseRequest);
+		eoCustProductPurchase.setUserId(custProductPurchaseRequest.getUserId());
 		eoCustProductPurchase.setSupplierId(custProductPurchaseRequest.getSupplierId());
 		if(custProductPurchaseRequest.getId()==null) {
 			eoCustProductPurchase.setIdenNo(CommanUtil. getIdenNo(CPL));
@@ -130,10 +131,15 @@ public class CustProductPurchaseServiceImpl implements CustProductPurchaseServic
 	public List<CustProductPurchaseResponse> getProductPurchaseList(long custAppId) {
 		return custProductPurchaseResponseMapper.mapToDTO(custProductPurchaseRepository.findAllByCustBusinessAppId(custAppId));
 	}
+		
+	@Override
+	public List<CustProductPurchaseResponse> getProductPurchaseListBySupplier(long custAppId, Long customerId) {
+		return custProductPurchaseResponseMapper.mapToDTO(custProductPurchaseRepository.findAllByCustBusinessAppIdAndSupplierId(custAppId, customerId));
+	}
 	
 	@Override
-	public List<CustProductPurchaseResponse> getProductPurchaseList(long custAppId, Long supplierId) {
-		return custProductPurchaseResponseMapper.mapToDTO(custProductPurchaseRepository.findAllByCustBusinessAppId(custAppId, supplierId));
+	public List<CustProductPurchaseResponse> getProductPurchaseListByUser(long custAppId, Long userId) {
+		return custProductPurchaseResponseMapper.mapToDTO(custProductPurchaseRepository.findAllByCustBusinessAppIdAndUserId(custAppId, userId));
 	}
 
 	@Override

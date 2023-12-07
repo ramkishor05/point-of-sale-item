@@ -2,6 +2,7 @@ package com.brijframework.production.cust.controller;
 
 import static com.brijframework.production.contants.Constants.CUST_APP_ID;
 import static com.brijframework.production.contants.Constants.TYPE_ID;
+import static com.brijframework.production.contants.Constants.USER_APP_ID;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,16 +28,19 @@ import com.brijframework.production.cust.service.CustProductPurchaseService;
 @RequestMapping("/api/cust/purchases")
 public class CustPurchaseController {
 
+	
 	@Autowired
 	private CustProductPurchaseService custProductPurchaseService;
 	
 	@PostMapping
-	public CustProductPurchaseResponse addProductPurchase(@RequestHeader(CUST_APP_ID) long custAppId,@RequestBody CustProductPurchaseRequest custProductPurchaseRequest) {
+	public CustProductPurchaseResponse addProductPurchase(@RequestHeader(CUST_APP_ID) long custAppId,@RequestHeader(USER_APP_ID) long userId, @RequestBody CustProductPurchaseRequest custProductPurchaseRequest) {
+		custProductPurchaseRequest.setUserId(userId);
 		return custProductPurchaseService.saveProductPurchase(custAppId,custProductPurchaseRequest);
 	}
 	
 	@PutMapping
-	public CustProductPurchaseResponse updateProductPurchase(@RequestHeader(CUST_APP_ID) long custAppId,@RequestBody CustProductPurchaseRequest custProductPurchaseRequest) {
+	public CustProductPurchaseResponse updateProductPurchase(@RequestHeader(CUST_APP_ID) long custAppId,@RequestHeader(USER_APP_ID) long userId,@RequestBody CustProductPurchaseRequest custProductPurchaseRequest) {
+		custProductPurchaseRequest.setUserId(userId);
 		return custProductPurchaseService.updateProductPurchase(custAppId,custProductPurchaseRequest);
 	}
 	
@@ -46,8 +50,13 @@ public class CustPurchaseController {
 	}
 	
 	@GetMapping("/supplier/{supplierId}")
-	public List<CustProductPurchaseResponse> getProductPurchaseList(@RequestHeader(CUST_APP_ID) long custAppId, @PathVariable Long supplierId) {
-		return custProductPurchaseService.getProductPurchaseList(custAppId, supplierId);
+	public List<CustProductPurchaseResponse> getProductPurchaseListBySupplier(@RequestHeader(CUST_APP_ID) long custAppId, @PathVariable Long supplierId) {
+		return custProductPurchaseService.getProductPurchaseListBySupplier(custAppId, supplierId);
+	}
+	
+	@GetMapping("/user/{userId}")
+	public List<CustProductPurchaseResponse> getProductPurchaseListByUser(@RequestHeader(CUST_APP_ID) long custAppId, @PathVariable Long userId) {
+		return custProductPurchaseService.getProductPurchaseListByUser(custAppId, userId);
 	}
 	
 	@GetMapping("/type/{typeId}")

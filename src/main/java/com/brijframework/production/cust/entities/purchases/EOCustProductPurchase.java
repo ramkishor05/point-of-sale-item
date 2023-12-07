@@ -8,6 +8,7 @@ import static com.brijframework.production.contants.Constants.PURCHASE_DATE;
 import static com.brijframework.production.contants.Constants.SUPPLIER_ID;
 import static com.brijframework.production.contants.Constants.TOTAL_PRICE;
 import static com.brijframework.production.contants.Constants.TOTAL_QNT;
+import static com.brijframework.production.contants.Constants.USER_ID;
 
 import java.util.Date;
 import java.util.List;
@@ -54,6 +55,9 @@ public class EOCustProductPurchase extends EOCustItem {
 	
 	@Column(name = SUPPLIER_ID, nullable = false)
 	private Long supplierId;
+	
+	@Column(name = USER_ID, nullable = false)
+	private Long userId;
 	
 	@JoinColumn(name = CUST_BUSINESS_APP_ID, nullable = false)
 	@ManyToOne
@@ -106,6 +110,14 @@ public class EOCustProductPurchase extends EOCustItem {
 
 	public void setSupplierId(Long supplierId) {
 		this.supplierId = supplierId;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public EOCustBusinessApp getCustBusinessApp() {
