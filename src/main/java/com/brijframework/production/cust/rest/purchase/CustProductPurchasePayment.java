@@ -11,6 +11,9 @@ public class CustProductPurchasePayment {
 	private Double amount;
 
 	private Long supplierId;
+	
+	private String transactionId;
+	private String transactionDate;
 
 	public long getId() {
 		return id;
@@ -43,6 +46,20 @@ public class CustProductPurchasePayment {
 	public void setSupplierId(Long supplierId) {
 		this.supplierId = supplierId;
 	}
-	
-	
+
+	public String getTransactionId() {
+		return transactionId;
+	}
+
+	public void setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
+	}
+
+	public String getTransactionDate() {
+		return transactionDate;
+	}
+
+	public void setTransactionDate(String transactionDate) {
+		this.transactionDate = transactionDate;
+	}
 }
