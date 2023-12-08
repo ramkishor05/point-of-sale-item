@@ -3,6 +3,7 @@ package com.brijframework.production.util;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 public class CommanUtil {
 
@@ -42,6 +43,15 @@ public class CommanUtil {
 		}
 		SimpleDateFormat dateFormat=new SimpleDateFormat(DATE_TIME_YYYY_MM_DD_HH_MM);
 		return dateFormat.format(toDate);
+	}
+	
+	private static Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+
+	public static boolean isNumeric(String strNum) {
+	    if (strNum == null) {
+	        return false; 
+	    }
+	    return pattern.matcher(strNum).matches();
 	}
 	
 }

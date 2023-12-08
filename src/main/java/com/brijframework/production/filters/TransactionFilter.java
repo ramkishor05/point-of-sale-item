@@ -21,6 +21,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import com.brijframework.production.cust.repository.CustBusinessAppRepository;
+import com.brijframework.production.util.CommanUtil;
 
 @Component
 @Order(0)
@@ -36,17 +37,17 @@ public class TransactionFilter implements Filter {
         String appId = req.getHeader(APP_ID_KEY);
         String businessId = req.getHeader(BUSINESS_ID_KEY);
         MutableHttpServletRequest requestWrapper = new MutableHttpServletRequest(req);
-        if(Objects.nonNull(ownerId) && Objects.nonNull(businessId) && Objects.nonNull(appId)) {
+        if(Objects.nonNull(ownerId)&& CommanUtil.isNumeric(ownerId) && Objects.nonNull(businessId) && CommanUtil.isNumeric(businessId) && Objects.nonNull(appId) && CommanUtil.isNumeric(appId)) {
         	custBusinessAppRepository.findByCustIdAndAppIdAndBusinessId(Long.valueOf(ownerId), Long.valueOf(appId),Long.valueOf(businessId)).ifPresent((custBusinessApp)->{
         		requestWrapper.putHeader(CUST_APP_ID, ""+custBusinessApp.getId());
         		req.setAttribute(CUST_APP_ID, ""+custBusinessApp.getId());
         	});
-        } else  if(Objects.nonNull(ownerId) && Objects.nonNull(businessId)) {
+        } else  if(Objects.nonNull(ownerId) && CommanUtil.isNumeric(ownerId) && Objects.nonNull(businessId)&& CommanUtil.isNumeric(businessId)) {
          	custBusinessAppRepository.findByCustIdAndAppIdAndBusinessId(Long.valueOf(ownerId), Long.valueOf(1l),Long.valueOf(businessId)).ifPresent((custBusinessApp)->{
          		requestWrapper.putHeader(CUST_APP_ID, ""+custBusinessApp.getId());
          		req.setAttribute(CUST_APP_ID, ""+custBusinessApp.getId());
          	});
-         } else  if(Objects.nonNull(ownerId)) {
+         } else  if(Objects.nonNull(ownerId)&& CommanUtil.isNumeric(ownerId)) {
          	custBusinessAppRepository.findByCustIdAndAppId(Long.valueOf(ownerId), Long.valueOf(1l)).ifPresent((custBusinessApp)->{
          		requestWrapper.putHeader(CUST_APP_ID, ""+custBusinessApp.getId());
          		req.setAttribute(CUST_APP_ID, ""+custBusinessApp.getId());
