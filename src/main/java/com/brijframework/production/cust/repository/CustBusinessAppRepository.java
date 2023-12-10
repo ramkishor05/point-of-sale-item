@@ -1,5 +1,6 @@
 package com.brijframework.production.cust.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,7 +13,7 @@ import com.brijframework.production.cust.entities.EOCustBusinessApp;
 @Transactional
 public interface CustBusinessAppRepository  extends JpaRepository<EOCustBusinessApp, Long>{
 
-	Optional<EOCustBusinessApp> findByCustIdAndAppId(long custId, long appId);
+	Optional<List<EOCustBusinessApp>> findByCustIdAndAppId(long custId, long appId);
 
 	Optional<EOCustBusinessApp> findByCustIdAndAppIdAndBusinessId(long custId, long appId, long businessId);
 
