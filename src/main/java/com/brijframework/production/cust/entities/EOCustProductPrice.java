@@ -23,7 +23,11 @@ public class EOCustProductPrice extends EOCustObject{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	public EOCustProductPrice() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	// for purchase cost
 	@Column(name = PRICE)
 	private Double price;

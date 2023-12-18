@@ -8,7 +8,9 @@ import static com.brijframework.production.contants.Constants.SPRING;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import com.brijframework.production.cust.dto.UICustProductPrice;
 import com.brijframework.production.cust.entities.EOCustProduct;
+import com.brijframework.production.cust.entities.EOCustProductPrice;
 import com.brijframework.production.cust.rest.CustProductResponse;
 import com.brijframework.production.mapper.GenericMapper;
 
@@ -22,4 +24,11 @@ public interface CustProductResponseMapper  extends GenericMapper<EOCustProduct,
 	@Mapping(source=CUST_PROD_APP_ID_ENTITY, target=CUST_PROD_APP_ID_UI)
 	@Override
 	CustProductResponse mapToDTO(EOCustProduct eoInvProduct);
+	
+	@Mapping(source="currency.id", target="currencyId")
+	UICustProductPrice mapCustProductPriceDTO(EOCustProductPrice eoCustProductPrice);
+	
+	
+	@Mapping(source="currencyId", target="currency.id")
+	EOCustProductPrice mapCustProductPriceDBO(UICustProductPrice custProductPriceUi);
 }

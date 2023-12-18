@@ -10,10 +10,13 @@ import org.springframework.stereotype.Service;
 
 import com.brijframework.production.cust.entities.EOCustBusinessApp;
 import com.brijframework.production.cust.entities.EOCustProduct;
+import com.brijframework.production.cust.entities.EOCustProductPrice;
 import com.brijframework.production.cust.mapper.CustProductRequestMapper;
 import com.brijframework.production.cust.mapper.CustProductResponseMapper;
 import com.brijframework.production.cust.repository.CustBusinessAppRepository;
+import com.brijframework.production.cust.repository.CustCurrencyItemRepository;
 import com.brijframework.production.cust.repository.CustProductRepository;
+import com.brijframework.production.cust.rest.CustProductPriceRequest;
 import com.brijframework.production.cust.rest.CustProductRequest;
 import com.brijframework.production.cust.rest.CustProductResponse;
 import com.brijframework.production.cust.service.CustProductService;
@@ -35,6 +38,9 @@ public class CustProductServiceImpl implements CustProductService {
 	
 	@Autowired
 	CustProductResponseMapper custProductResponseMapper;
+	
+	@Autowired
+	private CustCurrencyItemRepository custCurrencyItemRepository;
 	
 	@Override
 	public CustProductResponse saveProduct(long custAppId, CustProductRequest custProductRequest) {
@@ -76,7 +82,31 @@ public class CustProductServiceImpl implements CustProductService {
 			return null;
 		}
 		EOCustProduct eoGlobalProduct = findProduct.get();
-		BeanUtils.copyProperties(custProductRequest, eoGlobalProduct);
+		BeanUtils.copyProperties(custProductRequest, eoGlobalProduct,"id","wholePrice","retailPrice","purchasePrice");
+		CustProductPriceRequest wholePriceRequest = custProductRequest.getWholePrice();
+		if(wholePriceRequest!=null) {
+			EOCustProductPrice wholePrice = new EOCustProductPrice();
+			wholePrice.setCurrency(custCurrencyItemRepository.getOne(wholePriceRequest.getCurrencyId()));
+			wholePrice.setPrice(wholePriceRequest.getPrice());
+			wholePrice.setCustProduct(eoGlobalProduct);
+			eoGlobalProduct.setWholePrice(wholePrice);
+		}
+		CustProductPriceRequest retailPriceRequest = custProductRequest.getRetailPrice();
+		if(retailPriceRequest!=null) {
+			EOCustProductPrice retailPrice = new EOCustProductPrice();
+			retailPrice.setCurrency(custCurrencyItemRepository.getOne(retailPriceRequest.getCurrencyId()));
+			retailPrice.setPrice(retailPriceRequest.getPrice());
+			retailPrice.setCustProduct(eoGlobalProduct);
+			eoGlobalProduct.setRetailPrice(retailPrice);
+		}
+		CustProductPriceRequest purchasePriceRequest = custProductRequest.getPurchasePrice();
+		if(purchasePriceRequest!=null) {
+			EOCustProductPrice purchasePrice = new EOCustProductPrice();
+			purchasePrice.setCurrency(custCurrencyItemRepository.getOne(retailPriceRequest.getCurrencyId()));
+			purchasePrice.setPrice(retailPriceRequest.getPrice());
+			purchasePrice.setCustProduct(eoGlobalProduct);
+			eoGlobalProduct.setPurchasePrice(purchasePrice);
+		}
 		eoGlobalProduct.setCustBusinessApp(eoInventoryApp);
         eoGlobalProduct.setIdenNo(StringUtils.isEmpty(eoGlobalProduct.getIdenNo()) ? CommanUtil. getIdenNo(PO) : eoGlobalProduct.getIdenNo());
         //eoGlobalProduct.setIdenNo(getIdenNo());

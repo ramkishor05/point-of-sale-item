@@ -2,10 +2,8 @@ package com.brijframework.production.cust.rest;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import com.brijframework.production.cust.dto.UICustProductPrice;
-import com.brijframework.production.cust.dto.UICustProductStock;
 import com.brijframework.production.dto.UICustCategory;
 import com.brijframework.production.dto.UIManufacturer;
 import com.brijframework.production.global.dto.UIGlobalMediaDetail;
@@ -17,7 +15,7 @@ public class CustProductResponse implements Serializable {
 	private String idenNo;
 	private String title;
 	private String name;
-	private String desc;
+	private String description;
 	private String logoUrl;
 	private Date expDate;
 	private Date mfrDate;
@@ -68,12 +66,12 @@ public class CustProductResponse implements Serializable {
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getLogoUrl() {
