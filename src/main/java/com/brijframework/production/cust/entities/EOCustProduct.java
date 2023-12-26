@@ -68,7 +68,7 @@ public class EOCustProduct extends EOCustItem {
 	@JoinColumn(name = CUST_CATEGORY_ID)
 	public EOCustCategoryItem custCategory;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = GLB_IMG_ID)
 	public EOGlobalMediaDetail custImageDetail;
 
@@ -80,13 +80,13 @@ public class EOCustProduct extends EOCustItem {
 	@ManyToOne
 	private EOCustBusinessApp custBusinessApp;
 
-	@OneToMany(mappedBy = CUST_PRODUCT)
+	@OneToMany(mappedBy = CUST_PRODUCT, cascade = CascadeType.ALL)
 	public List<EOCustProductDetail> custProductDetailList;
 
-	@OneToMany(mappedBy = CUST_PRODUCT)
+	@OneToMany(mappedBy = CUST_PRODUCT, cascade = CascadeType.ALL)
 	public List<EOCustProductVariant> custProductVariantList;
 	
-	@OneToMany(mappedBy = CUST_PRODUCT)
+	@OneToMany(mappedBy = CUST_PRODUCT, cascade = CascadeType.ALL)
 	private List<EOCustProductStock> custProductStockList;
 	
 	public String getTitle() {
