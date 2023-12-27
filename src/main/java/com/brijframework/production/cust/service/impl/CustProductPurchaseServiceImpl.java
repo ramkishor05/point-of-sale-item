@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.brijframework.production.contants.RecordStatus;
 import com.brijframework.production.cust.entities.EOCustBusinessApp;
 import com.brijframework.production.cust.entities.EOCustProduct;
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchase;
@@ -86,6 +87,7 @@ public class CustProductPurchaseServiceImpl implements CustProductPurchaseServic
 		EOCustProductPurchase eoCustProductPurchase = custProductPurchaseRequestMapper.mapToDAO(custProductPurchaseRequest);
 		eoCustProductPurchase.setUserId(custProductPurchaseRequest.getUserId());
 		eoCustProductPurchase.setSupplierId(custProductPurchaseRequest.getSupplierId());
+		eoCustProductPurchase.setRecordState(RecordStatus.ACTIVETED.getStatus());
 		if(custProductPurchaseRequest.getId()==null) {
 			eoCustProductPurchase.setIdenNo(CommanUtil. getIdenNo(CPL));
 		}
@@ -128,8 +130,8 @@ public class CustProductPurchaseServiceImpl implements CustProductPurchaseServic
 	}
 
 	@Override
-	public List<CustProductPurchaseResponse> getProductPurchaseList(long custAppId) {
-		return custProductPurchaseResponseMapper.mapToDTO(custProductPurchaseRepository.findAllByCustBusinessAppId(custAppId));
+	public List<CustProductPurchaseResponse> getProductPurchaseList(long custAppId, long userId) {
+		return custProductPurchaseResponseMapper.mapToDTO(custProductPurchaseRepository.findAllByCustBusinessAppIdAndUserIdAndRecordState(custAppId, userId, RecordStatus.ACTIVETED.getStatus()));
 	}
 		
 	@Override
@@ -139,12 +141,12 @@ public class CustProductPurchaseServiceImpl implements CustProductPurchaseServic
 	
 	@Override
 	public List<CustProductPurchaseResponse> getProductPurchaseListByUser(long custAppId, Long userId) {
-		return custProductPurchaseResponseMapper.mapToDTO(custProductPurchaseRepository.findAllByCustBusinessAppIdAndUserId(custAppId, userId));
+		return custProductPurchaseResponseMapper.mapToDTO(custProductPurchaseRepository.findAllByCustBusinessAppIdAndUserIdAndRecordState(custAppId, userId, RecordStatus.ACTIVETED.getStatus()));
 	}
 
 	@Override
 	public CustProductPurchaseResponse getProductPurchase(long custAppId, String typeId) {
-		return custProductPurchaseResponseMapper.mapToDTO(custProductPurchaseRepository.findByCustBusinessAppIdAndTypeId(custAppId, typeId));
+		return custProductPurchaseResponseMapper.mapToDTO(custProductPurchaseRepository.findByCustBusinessAppIdAndTypeIdAndRecordState(custAppId, typeId, RecordStatus.ACTIVETED.getStatus()));
 	}
 
 	@Override
@@ -163,7 +165,12 @@ public class CustProductPurchaseServiceImpl implements CustProductPurchaseServic
 
 	@Override
 	public boolean deleteProductPurchase(long custAppId, Long id) {
-		custProductPurchaseRepository.deleteById(id);
+		Optional<EOCustProductPurchase> findById = custProductPurchaseRepository.findById(id);
+		if(findById.isPresent()) {
+			EOCustProductPurchase eoCustProductPurchase = findById.get();
+			eoCustProductPurchase.setRecordState(RecordStatus.DACTIVETED.getStatus());
+			custProductPurchaseRepository.save(eoCustProductPurchase);
+		}
 		return true;
 	}
 

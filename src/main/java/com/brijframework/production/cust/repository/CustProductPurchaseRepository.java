@@ -16,7 +16,7 @@ public interface CustProductPurchaseRepository extends JpaRepository<EOCustProdu
 	
 	List<EOCustProductPurchase> findAllByCustBusinessAppId(long custBusinessAppId);
 
-	EOCustProductPurchase findByCustBusinessAppIdAndTypeId(long custBusinessAppId, String typeId);
+	EOCustProductPurchase findByCustBusinessAppIdAndTypeIdAndRecordState(long custBusinessAppId, String typeId, String recordState);
 
 	@Query(nativeQuery = true, value = "select * from EOCUST_PRODUCT_PURCHASE where CUST_BUSINESS_APP_ID =?1 and CREATED_AT between ?2 AND ?3")
 	List<EOCustProductPurchase> filterProductPurchaseList(long custAppId, LocalDateTime fromDate, LocalDateTime toDate);
@@ -30,4 +30,6 @@ public interface CustProductPurchaseRepository extends JpaRepository<EOCustProdu
 
 	@Query(nativeQuery = true, value = "select * from EOCUST_PRODUCT_PURCHASE where CUST_BUSINESS_APP_ID =?1 and USER_ID =?2 order by CREATED_AT desc")
 	List<EOCustProductPurchase> findAllByCustBusinessAppIdAndUserId(long custAppId, Long userId);
+
+	List<EOCustProductPurchase> findAllByCustBusinessAppIdAndUserIdAndRecordState(long custAppId, Long userId, String status);
 }

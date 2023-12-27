@@ -51,7 +51,7 @@ public interface CustProductStockRepository extends JpaRepository<EOCustProductS
 	@Query(nativeQuery = true, value = "Select CP.TITLE as Name, CP.ID as ProductId, CPS.IDEN_NO as IdenNo, CPS.STOCK_STATUS as Status, 1 as Qnt,CPSPS.PRICE as SalePrice, CPSPP.PRICE AS PurchasePrice from "+EOCUST_PRODUCT_STOCK+" CPS "
 			+ " INNER JOIN "+EOCUST_PRODUCT+" CP ON CPS.CUST_PRODUCT_ID=CP.ID "
 			+ " INNER JOIN "+EOCUST_PRODUCT_STOCK_PRICE+" CPSPP ON CPSPP.ID=CPS.PURCHASE_PRICE "
-			+ " INNER JOIN "+EOCUST_PRODUCT_STOCK_PRICE+" CPSPS ON CPSPS.ID=CPS.SALE_PRICE "
+			+ " LEFT JOIN "+EOCUST_PRODUCT_STOCK_PRICE+" CPSPS ON CPSPS.ID=CPS.SALE_PRICE "
 			+ " WHERE CP.ID=?1 ORDER BY CPS.CREATED_AT DESC")
 	List<ProductStock> findAllByCustProductId(Long id);
 }

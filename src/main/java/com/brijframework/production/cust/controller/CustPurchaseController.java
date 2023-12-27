@@ -45,8 +45,8 @@ public class CustPurchaseController {
 	}
 	
 	@GetMapping
-	public List<CustProductPurchaseResponse> getProductPurchaseList(@RequestHeader(CUST_APP_ID) long custAppId) {
-		return custProductPurchaseService.getProductPurchaseList(custAppId);
+	public List<CustProductPurchaseResponse> getProductPurchaseList(@RequestHeader(CUST_APP_ID) long custAppId,@RequestHeader(USER_APP_ID) long userId) {
+		return custProductPurchaseService.getProductPurchaseList(custAppId, userId);
 	}
 	
 	@GetMapping("/supplier/{supplierId}")

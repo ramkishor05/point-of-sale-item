@@ -28,6 +28,7 @@ public abstract class EOCustItem extends EOCustObject{
 	private String logoUrl;
 	
 	@Column(name=DESCRIPTION)
+	@Lob
 	private String description;
 	
 	@Column(name=TYPE_ID)

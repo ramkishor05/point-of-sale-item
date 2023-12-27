@@ -12,7 +12,7 @@ public interface CustProductPurchaseService {
 
 	CustProductPurchaseResponse updateProductPurchase(long custAppId, CustProductPurchaseRequest custProductPurchaseRequest);
 
-	List<CustProductPurchaseResponse> getProductPurchaseList(long custAppId);
+	List<CustProductPurchaseResponse> getProductPurchaseList(long custAppId, long userId);
 
 	CustProductPurchaseResponse getProductPurchase(long custAppId, String typeId);
 
