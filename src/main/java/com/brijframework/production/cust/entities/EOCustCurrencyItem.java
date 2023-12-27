@@ -1,11 +1,12 @@
 package com.brijframework.production.cust.entities;
 
-import static com.brijframework.production.contants.Constants.CUST_CURRENCY_GROUP_ID;
 import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
+import static com.brijframework.production.contants.Constants.CUST_CURRENCY_GROUP_ID;
 import static com.brijframework.production.contants.Constants.DESCRIPTION;
 import static com.brijframework.production.contants.Constants.DISPLAY_NAME;
 import static com.brijframework.production.contants.Constants.EOCUST_CURRENCY_ITEM;
 import static com.brijframework.production.contants.Constants.NAME;
+import static com.brijframework.production.contants.Constants.SYMBOL;
 import static com.brijframework.production.contants.Constants.TYPE_ID;
 
 import javax.persistence.Column;
@@ -23,7 +24,7 @@ public class EOCustCurrencyItem extends EOCustObject{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Column(name = TYPE_ID)
 	public String typeId;
 	
@@ -35,6 +36,9 @@ public class EOCustCurrencyItem extends EOCustObject{
 	
 	@Column(name = DISPLAY_NAME)
 	public String displayName;
+	
+	@Column(name = SYMBOL)
+	public String symbol;
 		
 	@ManyToOne
 	@JoinColumn(name=CUST_CURRENCY_GROUP_ID)
@@ -66,6 +70,14 @@ public class EOCustCurrencyItem extends EOCustObject{
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getSymbol() {
+		return symbol;
+	}
+
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
 	}
 
 	public String getDisplayName() {

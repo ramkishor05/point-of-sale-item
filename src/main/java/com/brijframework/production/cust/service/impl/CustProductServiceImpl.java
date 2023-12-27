@@ -86,7 +86,7 @@ public class CustProductServiceImpl implements CustProductService {
 		CustProductPriceRequest wholePriceRequest = custProductRequest.getWholePrice();
 		if(wholePriceRequest!=null) {
 			EOCustProductPrice wholePrice = new EOCustProductPrice();
-			wholePrice.setCurrency(custCurrencyItemRepository.getOne(wholePriceRequest.getCurrencyId()));
+			wholePrice.setCurrency(wholePriceRequest.getCurrencyId()==null ? null :custCurrencyItemRepository.getOne(wholePriceRequest.getCurrencyId()));
 			wholePrice.setPrice(wholePriceRequest.getPrice());
 			wholePrice.setCustProduct(eoGlobalProduct);
 			eoGlobalProduct.setWholePrice(wholePrice);
@@ -94,7 +94,7 @@ public class CustProductServiceImpl implements CustProductService {
 		CustProductPriceRequest retailPriceRequest = custProductRequest.getRetailPrice();
 		if(retailPriceRequest!=null) {
 			EOCustProductPrice retailPrice = new EOCustProductPrice();
-			retailPrice.setCurrency(custCurrencyItemRepository.getOne(retailPriceRequest.getCurrencyId()));
+			retailPrice.setCurrency(retailPriceRequest.getCurrencyId()==null ? null :custCurrencyItemRepository.getOne(retailPriceRequest.getCurrencyId()));
 			retailPrice.setPrice(retailPriceRequest.getPrice());
 			retailPrice.setCustProduct(eoGlobalProduct);
 			eoGlobalProduct.setRetailPrice(retailPrice);
@@ -102,7 +102,7 @@ public class CustProductServiceImpl implements CustProductService {
 		CustProductPriceRequest purchasePriceRequest = custProductRequest.getPurchasePrice();
 		if(purchasePriceRequest!=null) {
 			EOCustProductPrice purchasePrice = new EOCustProductPrice();
-			purchasePrice.setCurrency(custCurrencyItemRepository.getOne(retailPriceRequest.getCurrencyId()));
+			purchasePrice.setCurrency(purchasePriceRequest.getCurrencyId()==null ? null :custCurrencyItemRepository.getOne(retailPriceRequest.getCurrencyId()));
 			purchasePrice.setPrice(retailPriceRequest.getPrice());
 			purchasePrice.setCustProduct(eoGlobalProduct);
 			eoGlobalProduct.setPurchasePrice(purchasePrice);

@@ -3,112 +3,145 @@
 	"order": 2,
 	"objects": [
 		{
-			"id": "GlobalCurrency_USD",
+			"id": "Global_Currency_Item_INR",
 			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
 			"name": "GlobalCurrencyItem",
 			"properties": {
+				"idenNo":"Global_Currency_Item_INR",
+				"typeId": "INR",
+				"name": "INR",
+				"description": "Indian Rupee",
+				"symbol": "₹",
+				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Paisa"
+			}
+		},
+		{
+			"id": "Global_Currency_Item_USD",
+			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
+			"name": "GlobalCurrencyItem",
+			"properties": {
+				"idenNo":"Global_Currency_Item_USD",
 				"typeId": "USD",
 				"name": "USD",
 				"description": "US Dollars",
+				"symbol": "$",
 				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Paisa"
 			}
 		},
 		{
-			"id": "GlobalCurrency_AED",
+			"id": "Global_Currency_Item_AED",
 			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
 			"name": "GlobalCurrencyItem",
 			"properties": {
+				"idenNo":"Global_Currency_Item_AED",
 				"typeId": "AED",
 				"name": "AED",
 				"description": "United Arab Emirates Dirham",
+				"symbol": "د.إ",
 				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Paisa"
 			}
 		},
 		{
-			"id": "GlobalCurrency_ARS",
+			"id": "Global_Currency_Item_ARS",
 			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
 			"name": "GlobalCurrencyItem",
 			"properties": {
+				"idenNo":"Global_Currency_Item_ARS",
 				"typeId": "ARS",
 				"name": "ARS",
 				"description": "Argentine Pesos",
+				"symbol": "$",
 				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Paisa"
 			}
 		},
 		{
-			"id": "GlobalCurrency_AUD",
+			"id": "Global_Currency_Item_AUD",
 			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
 			"name": "GlobalCurrencyItem",
 			"properties": {
+				"idenNo":"Global_Currency_Item_AUD",
 				"typeId": "AUD",
 				"name": "AUD",
 				"description": "Australian Dollars",
+				"symbol": "$",
 				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Paisa"
 			}
 		},
 		{
-			"id": "GlobalCurrency_BGN",
+			"id": "Global_Currency_Item_BGN",
 			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
 			"name": "GlobalCurrencyItem",
 			"properties": {
+				"idenNo":"Global_Currency_Item_BGN",
 				"typeId": "BGN",
 				"name": "BGN",
 				"description": "Bulgarian Lev",
+				"symbol": "лв",
 				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Cent"
 			}
 		},
 		{
-			"id": "GlobalCurrency_BOB",
+			"id": "Global_Currency_Item_BOB",
 			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
 			"name": "GlobalCurrencyItem",
 			"properties": {
+				"idenNo":"Global_Currency_Item_BOB",
 				"typeId": "BOB",
 				"name": "BOB",
 				"description": "Bolivian Boliviano",
+				"symbol": "b$",
 				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Cent"
 			}
 		},
 		{
-			"id": "GlobalCurrency_BRL",
+			"id": "Global_Currency_Item_BRL",
 			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
 			"name": "GlobalCurrencyItem",
 			"properties": {
+				"idenNo":"Global_Currency_Item_BRL",
 				"typeId": "BRL",
 				"name": "BRL",
 				"description": "Brazilian Real",
+				"symbol": "R$",
 				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Cent"
 			}
 		},
 		{
-			"id": "GlobalCurrency_CAD",
+			"id": "Global_Currency_Item_CAD",
 			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
 			"name": "GlobalCurrencyItem",
 			"properties": {
+				"idenNo":"Global_Currency_Item_CAD",
 				"typeId": "CAD",
 				"name": "CAD",
 				"description": "Canadian Dollars",
+				"symbol": "C$",
 				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Cent"
 			}
 		},
 		{
-			"id": "GlobalCurrency_CHF",
+			"id": "Global_Currency_Item_CHF",
 			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
 			"name": "GlobalCurrencyItem",
 			"properties": {
+				"idenNo":"Global_Currency_Item_CHF",
 				"typeId": "CHF",
 				"name": "CHF",
 				"description": "Swiss Francs",
+				"symbol": "₣",
 				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Cent"
 			}
 		},
 		{
-			"id": "GlobalCurrency_CLP",
+			"id": "Global_Currency_Item_CLP",
 			"type": "com.brijframework.production.global.entities.EOGlobalCurrencyItem",
 			"name": "GlobalCurrencyItem",
 			"properties": {
+				"idenNo":"Global_Currency_Item_CLP",
 				"typeId": "CLP",
 				"name": "CLP",
 				"description": "Chilean Peso",
+				"symbol": "$",
 				"globalCurrencyGroup": "LK@GlobalCurrencyGroup_Cent"
 			}
 		}

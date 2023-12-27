@@ -1,10 +1,11 @@
 package com.brijframework.production.global.entities;
 
-import static com.brijframework.production.contants.Constants.DESCRIPTION;
+import static com.brijframework.production.contants.Constants.*;
 import static com.brijframework.production.contants.Constants.EOGLOBAL_CURRENCY_ITEM;
 import static com.brijframework.production.contants.Constants.GLB_IMG_ID;
 import static com.brijframework.production.contants.Constants.GROUP_ID;
 import static com.brijframework.production.contants.Constants.NAME;
+import static com.brijframework.production.contants.Constants.SYMBOL;
 import static com.brijframework.production.contants.Constants.TYPE_ID;
 
 import javax.persistence.Column;
@@ -28,6 +29,9 @@ public class EOGlobalCurrencyItem extends EOEntityObject{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Column(name=IDEN_NO)
+	public String idenNo;
 
 	@Column(name=TYPE_ID)
 	public String typeId;
@@ -38,6 +42,9 @@ public class EOGlobalCurrencyItem extends EOEntityObject{
 	@Column(name=DESCRIPTION)
 	public String description;
 	
+	@Column(name = SYMBOL)
+	public String symbol;
+	
 	@OneToOne
 	@JoinColumn(name = GLB_IMG_ID)
 	public EOGlobalMediaDetail globalMediaDetail;
@@ -45,6 +52,14 @@ public class EOGlobalCurrencyItem extends EOEntityObject{
 	@ManyToOne
 	@JoinColumn(name = GROUP_ID, nullable = false)
 	private EOGlobalCurrencyGroup globalCurrencyGroup;
+
+	public String getIdenNo() {
+		return idenNo;
+	}
+
+	public void setIdenNo(String idenNo) {
+		this.idenNo = idenNo;
+	}
 
 	public String getTypeId() {
 		return typeId;
@@ -68,6 +83,14 @@ public class EOGlobalCurrencyItem extends EOEntityObject{
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getSymbol() {
+		return symbol;
+	}
+
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
 	}
 
 	public EOGlobalMediaDetail getGlobalMediaDetail() {

@@ -82,11 +82,11 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	    	
 	    	List<EOGlobalCurrencyItem> eoGlobalCurrencyItemJson = instance.getAll(EOGlobalCurrencyItem.class);
 	    	eoGlobalCurrencyItemJson.forEach(eoGlobalCurrencyItem->{
-	    		if(globalCurrencyItemRepository.countByTypeId(eoGlobalCurrencyItem.getTypeId())==0) {
-	    			eoGlobalCurrencyItem.setRecordState(RecordStatus.ACTIVETED.getStatus());
-		    		EOGlobalCurrencyItem eoGlobalCurrencyItemSave= globalCurrencyItemRepository.save(eoGlobalCurrencyItem);
-		    		eoGlobalCurrencyItem.setId(eoGlobalCurrencyItemSave.getId());
-	    		}
+	    		EOGlobalCurrencyItem findGlobalCurrencyItem=globalCurrencyItemRepository.findOneByIdenNo(eoGlobalCurrencyItem.getIdenNo()).orElse(eoGlobalCurrencyItem);
+	    		BeanUtils.copyProperties(eoGlobalCurrencyItem, findGlobalCurrencyItem,"id");
+	    		findGlobalCurrencyItem.setRecordState(RecordStatus.ACTIVETED.getStatus());
+	    		EOGlobalCurrencyItem eoGlobalCurrencyItemSave= globalCurrencyItemRepository.save(findGlobalCurrencyItem);
+	    		eoGlobalCurrencyItem.setId(eoGlobalCurrencyItemSave.getId());
 	    	});
 	    	
 	    	List<EOGlobalCategoryGroup> eoGlobalCategoryGroupJson = instance.getAll(EOGlobalCategoryGroup.class);
@@ -131,7 +131,6 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	    	});
 	    	
 	    	List<EOGlobalCountFreq> eoGlobalCountFreqsJson = instance.getAll(EOGlobalCountFreq.class);
-	
 	    	eoGlobalCountFreqsJson.forEach(eoGlobalCountFreq->{
 	    		if(globalCountFreqRepository.countByTypeId(eoGlobalCountFreq.getTypeId())==0) {
 	    			eoGlobalCountFreq.setRecordState(RecordStatus.ACTIVETED.getStatus());
