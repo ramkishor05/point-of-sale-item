@@ -47,7 +47,7 @@ public class CustCategoryGroupServiceImpl implements CustCategoryGroupService {
 
 	@Override
 	public List<UICustCategoryGroup> getCategoryGroupList(long custAppId) {
-		return custCategoryGroupMapper.mapToDTO(custCategoryGroupRepository.findAllByCustAppId(custAppId));
+		return custCategoryGroupMapper.mapToDTO(custCategoryGroupRepository.findAllByCustAppIdAndStatusIn(custAppId, RecordStatus.ACTIVETED.getStatusIds()));
 	}
 
 	@Override

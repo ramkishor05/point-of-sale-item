@@ -5,6 +5,7 @@ import static com.brijframework.production.contants.Constants.CUST_APP_ID;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,5 +44,16 @@ public class CustCountFreqController {
 	@GetMapping("/{typeId}")
 	public List<CustCountFreqResponse> getCountFreqList(@RequestHeader(CUST_APP_ID) long custAppId,@PathVariable("typeId") String typeId) {
 		return custCountFreqService.getCountFreq(custAppId,typeId);
+	}
+	
+
+	@GetMapping("/{id}")
+	public CustCountFreqResponse getCountFreq(@PathVariable("id") Long id) {
+		return custCountFreqService.getCountFreq(id);
+	}
+	
+	@DeleteMapping("/{id}")
+	public boolean deleteCountFreq(@PathVariable("id") Long id) {
+		return custCountFreqService.deleteCountFreq(id);
 	}
 }

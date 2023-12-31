@@ -13,7 +13,6 @@ public interface GlobalCountFreqService {
 
 	List<GlobalCountFreqResponse> getCountFreqList();
 
-	GlobalCountFreqResponse getCountFreq(String typeId);
-
+	boolean deleteCountFreq(Long id);
 
 }

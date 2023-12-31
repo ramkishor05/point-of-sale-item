@@ -13,4 +13,8 @@ public interface CustCountFreqService {
 
 	List<CustCountFreqResponse> getCountFreq(long custAppId, String typeId);
 
+	CustCountFreqResponse getCountFreq(Long id);
+
+	boolean deleteCountFreq(Long id);
+
 }

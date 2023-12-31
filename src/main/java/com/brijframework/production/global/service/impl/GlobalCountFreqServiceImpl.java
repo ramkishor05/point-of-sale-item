@@ -51,9 +51,9 @@ public class GlobalCountFreqServiceImpl implements GlobalCountFreqService {
 	}
 
 	@Override
-	public GlobalCountFreqResponse getCountFreq(String typeId) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean deleteCountFreq(Long id) {
+		countFreqRepository.deleteById(id);
+		return true;
 	}
 
 }

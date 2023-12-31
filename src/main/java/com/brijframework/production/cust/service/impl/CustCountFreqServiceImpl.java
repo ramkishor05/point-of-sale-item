@@ -60,4 +60,16 @@ public class CustCountFreqServiceImpl implements CustCountFreqService {
 		return custCountFreqResponseMapper.mapToDTO(custCountFreqRepository.findAllByCustAppIdAndTypeId(custAppId, typeId));
 	}
 
+	@Override
+	public CustCountFreqResponse getCountFreq(Long id) {
+		return custCountFreqResponseMapper.mapToDTO(custCountFreqRepository.getOne(id));
+
+	}
+
+	@Override
+	public boolean deleteCountFreq(Long id) {
+		custCountFreqRepository.deleteById(id);
+		return true;
+	}
+
 }
