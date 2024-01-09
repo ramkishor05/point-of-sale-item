@@ -1,14 +1,13 @@
 package com.brijframework.production.cust.dto;
 
 import java.util.Date;
-import java.util.UUID;
 
 import com.brijframework.production.contants.TransactionMode;
 import com.brijframework.production.contants.TransactionStatus;
 import com.brijframework.production.contants.TransactionType;
 
 public class UICustTransaction {
-	private UUID transactionId;
+	private String transactionId;
 	private Date transactionDate;
 	private Double transactionAmount;
 	private TransactionStatus transactionStatus;
@@ -18,11 +17,11 @@ public class UICustTransaction {
 	private Long transactionSenderId;
 	private Long transactionMakerId;
 
-	public UUID getTransactionId() {
+	public String getTransactionId() {
 		return transactionId;
 	}
 
-	public void setTransactionId(UUID transactionId) {
+	public void setTransactionId(String transactionId) {
 		this.transactionId = transactionId;
 	}
 

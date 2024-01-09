@@ -34,7 +34,7 @@ public class EOCustTransaction extends EOEntityObject {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = TRANSACTION_ID)
-	private UUID transactionId;
+	private String transactionId;
 	
 	@Column(name = TRANSACTION_DATE)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -67,14 +67,14 @@ public class EOCustTransaction extends EOEntityObject {
 	
 	@PrePersist
 	public void init() {
-		transactionId=UUID.randomUUID();
+		transactionId=UUID.randomUUID().toString();
 	}
 
-	public UUID getTransactionId() {
+	public String getTransactionId() {
 		return transactionId;
 	}
 
-	public void setTransactionId(UUID transactionId) {
+	public void setTransactionId(String transactionId) {
 		this.transactionId = transactionId;
 	}
 
