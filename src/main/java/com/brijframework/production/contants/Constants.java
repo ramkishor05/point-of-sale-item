@@ -235,4 +235,28 @@ public class Constants {
 	public static final String SYMBOL = "SYMBOL";
 	
 
+	public static final String TRANSACTION_DATE = "TRANSACTION_DATE";
+
+	public static final String TRANSACTION_ID = "TRANSACTION_ID";
+
+	public static final String TRANSACTION_MODE = "TRANSACTION_MODE";
+
+	public static final String TRANSACTION_AMOUNT = "TRANSACTION_AMOUNT";
+
+	public static final String TRANSACTION_STATUS = "TRANSACTION_STATUS";
+
+	public static final String TRANSACTION_RECIVER_ID = "TRANSACTION_RECIVER_ID";
+	
+	public static final String TRANSACTION_SENDER_ID = "TRANSACTION_SENDER_ID";
+	
+	public static final String TRANSACTION_MAKER_ID = "TRANSACTION_MAKER_ID";
+
+	public static final String TRANSACTION_TYPE = "TRANSACTION_TYPE";
+
+	public static final String CUST_TRANSACTION_ID = "CUST_TRANSACTION_ID";
+	
+	public static final String PRIMARY_PAYMENT = "PRIMARY_PAYMENT";
+
+	public static final String EOCUST_TRANSACTION="EOCUST_TRANSACTION";
+
 }

@@ -1,43 +1,15 @@
 package com.brijframework.production.cust.rest.purchase;
 
-import com.brijframework.production.contants.PaymentMode;
+import com.brijframework.production.cust.dto.UICustTransaction;
+import com.brijframework.production.dto.UIComman;
 
-public class CustProductPurchasePayment {
+public class CustProductPurchasePayment extends UIComman {
 	
-	public long id;
-
-	private PaymentMode mode;
-
-	private Double amount;
-
 	private Long supplierId;
 	
-	private String transactionId;
-	private String transactionDate;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public PaymentMode getMode() {
-		return mode;
-	}
-
-	public void setMode(PaymentMode mode) {
-		this.mode = mode;
-	}
-
-	public Double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(Double amount) {
-		this.amount = amount;
-	}
+	private Boolean primaryPayment;
+	
+	private UICustTransaction custTransaction;
 
 	public Long getSupplierId() {
 		return supplierId;
@@ -47,19 +19,20 @@ public class CustProductPurchasePayment {
 		this.supplierId = supplierId;
 	}
 
-	public String getTransactionId() {
-		return transactionId;
+	public Boolean getPrimaryPayment() {
+		return primaryPayment;
 	}
 
-	public void setTransactionId(String transactionId) {
-		this.transactionId = transactionId;
+	public void setPrimaryPayment(Boolean primaryPayment) {
+		this.primaryPayment = primaryPayment;
 	}
 
-	public String getTransactionDate() {
-		return transactionDate;
+	public UICustTransaction getCustTransaction() {
+		return custTransaction;
 	}
 
-	public void setTransactionDate(String transactionDate) {
-		this.transactionDate = transactionDate;
+	public void setCustTransaction(UICustTransaction custTransaction) {
+		this.custTransaction = custTransaction;
 	}
+	
 }

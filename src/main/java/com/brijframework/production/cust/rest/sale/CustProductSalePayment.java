@@ -1,31 +1,15 @@
 package com.brijframework.production.cust.rest.sale;
 
-import com.brijframework.production.contants.PaymentMode;
+import com.brijframework.production.cust.dto.UICustTransaction;
 import com.brijframework.production.dto.UIComman;
 
 public class CustProductSalePayment extends UIComman {
 
-	private PaymentMode mode;
-	
-	private Double amount;
+	private UICustTransaction custTransaction;
 	
 	private Long customerId;
-
-	public PaymentMode getMode() {
-		return mode;
-	}
-
-	public void setMode(PaymentMode mode) {
-		this.mode = mode;
-	}
-
-	public Double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(Double amount) {
-		this.amount = amount;
-	}
+	
+	private Boolean primaryPayment;
 
 	public Long getCustomerId() {
 		return customerId;
@@ -34,4 +18,21 @@ public class CustProductSalePayment extends UIComman {
 	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
+
+	public UICustTransaction getCustTransaction() {
+		return custTransaction;
+	}
+
+	public void setCustTransaction(UICustTransaction custTransaction) {
+		this.custTransaction = custTransaction;
+	}
+
+	public Boolean getPrimaryPayment() {
+		return primaryPayment;
+	}
+
+	public void setPrimaryPayment(Boolean primaryPayment) {
+		this.primaryPayment = primaryPayment;
+	}
+	
 }

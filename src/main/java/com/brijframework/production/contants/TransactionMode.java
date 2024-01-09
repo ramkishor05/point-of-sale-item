@@ -1,10 +1,14 @@
 package com.brijframework.production.contants;
 
-public enum PaymentMode {
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@JsonFormat(shape = JsonFormat.Shape.STRING)
+public enum TransactionMode {
+	
 	Unpaid("Unpaid"), Cash("Cash"), Online("Online");
 
 	String mode;
-	PaymentMode(String mode) {
+	TransactionMode(String mode) {
 		this.mode=mode;
 	}
 

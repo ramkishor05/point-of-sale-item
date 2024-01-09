@@ -1,31 +1,23 @@
 package com.brijframework.production.cust.entities.purchases;
 
+import static com.brijframework.production.contants.Constants.CUST_PRODUCT_PURCHASE_ID;
+import static com.brijframework.production.contants.Constants.CUST_TRANSACTION_ID;
+import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT_PURCHASE_PAYMENT;
+import static com.brijframework.production.contants.Constants.PRIMARY_PAYMENT;
 import static com.brijframework.production.contants.Constants.SUPPLIER_ID;
 
-import java.util.Date;
-
-import static com.brijframework.production.contants.Constants.CUST_PRODUCT_PURCHASE_ID;
-import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT_PURCHASE_PAYMENT;
-import static com.brijframework.production.contants.Constants.PURCHASE_DATE;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
-
-import com.brijframework.production.contants.PaymentMode;
 import com.brijframework.production.cust.entities.EOCustObject;
+import com.brijframework.production.cust.entities.EOCustTransaction;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -37,51 +29,34 @@ public class EOCustProductPurchasePayment extends EOCustObject {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final String TRANSACTION_DATE = "TRANSACTION_DATE";
-
-	private static final String TRANSACTION_ID = "TRANSACTION_ID";
-
-	@Column(name = "MODE")
-	@Enumerated(EnumType.STRING)
-	private PaymentMode mode;
-
-	@Column(name = "AMOUNT")
-	private Double amount;
-
 	@Column(name = SUPPLIER_ID, nullable = false)
 	private Long supplierId;
 	
-	@Column(name = TRANSACTION_ID)
-	@GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-        name = "UUID",
-    strategy = "org.hibernate.id.UUIDGenerator"
-    )
-	private String transactionId;
-	
-	@Column(name = TRANSACTION_DATE)
-	@Temporal(TemporalType.TIMESTAMP)
-	@CreationTimestamp
-	private Date transactionDate;
+	@Column(name = PRIMARY_PAYMENT, nullable = false)
+	private Boolean primaryPayment;
 
 	@JoinColumn(name = CUST_PRODUCT_PURCHASE_ID)
 	@ManyToOne
 	private EOCustProductPurchase custProductPurchase;
 
-	public PaymentMode getMode() {
-		return mode;
+	@JoinColumn(name = CUST_TRANSACTION_ID)
+	@OneToOne(cascade = CascadeType.ALL)
+	private EOCustTransaction custTransaction;
+
+	public Long getSupplierId() {
+		return supplierId;
 	}
 
-	public void setMode(PaymentMode mode) {
-		this.mode = mode;
+	public void setSupplierId(Long supplierId) {
+		this.supplierId = supplierId;
 	}
 
-	public Double getAmount() {
-		return amount;
+	public Boolean getPrimaryPayment() {
+		return primaryPayment;
 	}
 
-	public void setAmount(Double amount) {
-		this.amount = amount;
+	public void setPrimaryPayment(Boolean primaryPayment) {
+		this.primaryPayment = primaryPayment;
 	}
 
 	public EOCustProductPurchase getCustProductPurchase() {
@@ -92,30 +67,11 @@ public class EOCustProductPurchasePayment extends EOCustObject {
 		this.custProductPurchase = custProductPurchase;
 	}
 
-	public Long getSupplierId() {
-		return supplierId;
+	public EOCustTransaction getCustTransaction() {
+		return custTransaction;
 	}
 
-	public void setSupplierId(Long supplierId) {
-		this.supplierId = supplierId;
+	public void setCustTransaction(EOCustTransaction custTransaction) {
+		this.custTransaction = custTransaction;
 	}
-
-	public String getTransactionId() {
-		return transactionId;
-	}
-
-	public void setTransactionId(String transactionId) {
-		this.transactionId = transactionId;
-	}
-
-	public Date getTransactionDate() {
-		return transactionDate;
-	}
-
-	public void setTransactionDate(Date transactionDate) {
-		this.transactionDate = transactionDate;
-	}
-	
-	
-
 }
