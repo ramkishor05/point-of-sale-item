@@ -15,4 +15,6 @@ public interface CustCashBookService {
 
 	boolean deleteCashBook(Long custAppId, Long id);
 
+	List<CustCashBookResponse> getCashBookFiltedList(Long custAppId, Long userId, String startDate, String endDate);
+
 }

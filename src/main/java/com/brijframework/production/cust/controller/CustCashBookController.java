@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brijframework.production.cust.rest.CustCashBookRequest;
@@ -39,6 +40,11 @@ public class CustCashBookController {
 	@GetMapping
 	public List<CustCashBookResponse> getCashBookList(@RequestHeader(CUST_APP_ID) long custAppId,@RequestHeader(USER_APP_ID) long userId) {
 		return custCashBookService.getCashBookList(custAppId, userId);
+	}
+	
+	@GetMapping("/filted")
+	public List<CustCashBookResponse> getCashBookFiltedList(@RequestHeader(CUST_APP_ID) long custAppId,@RequestHeader(USER_APP_ID) long userId,@RequestParam String startDate, @RequestParam String endDate) {
+		return custCashBookService.getCashBookFiltedList(custAppId, userId, startDate, endDate);
 	}
 	
 	@GetMapping("/{id}")

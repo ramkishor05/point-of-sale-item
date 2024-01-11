@@ -17,4 +17,7 @@ public interface CustCashBookRepository extends JpaRepository<EOCustTransaction,
 	@Query(nativeQuery = true, value = "select * from EOCUST_TRANSACTION where TRANSACTION_MAKER_ID=?1")
 	Optional<List<EOCustTransaction>> findAllByCustAppAndUserId(Long userId);
 
+	@Query(nativeQuery = true, value = "select * from EOCUST_TRANSACTION where TRANSACTION_MAKER_ID=?1 and TRANSACTION_DATE between ?2 and ?3")
+	Optional<List<EOCustTransaction>> findAllByCustAppAndUserId(Long userId, String startDate, String endDate);
+
 }
