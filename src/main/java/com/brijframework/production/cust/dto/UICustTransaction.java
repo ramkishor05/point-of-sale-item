@@ -5,8 +5,9 @@ import java.util.Date;
 import com.brijframework.production.contants.TransactionMode;
 import com.brijframework.production.contants.TransactionStatus;
 import com.brijframework.production.contants.TransactionType;
+import com.brijframework.production.dto.UIComman;
 
-public class UICustTransaction {
+public class UICustTransaction extends UIComman{
 	private String transactionId;
 	private Date transactionDate;
 	private Double transactionAmount;

@@ -256,7 +256,21 @@ public class Constants {
 	public static final String CUST_TRANSACTION_ID = "CUST_TRANSACTION_ID";
 	
 	public static final String PRIMARY_PAYMENT = "PRIMARY_PAYMENT";
+	
+	public static final String CUST_ACCOUNT_ID="CUST_ACCOUNT_ID";
 
 	public static final String EOCUST_TRANSACTION="EOCUST_TRANSACTION";
+	
+	public static final String EOCUST_ACCOUNT="EOCUST_ACCOUNT";
 
+	public static final String ACCOUNT_ID = "ACCOUNT_ID";
+	
+	public static final String OPENING_DATE = "OPENING_DATE";
+
+	public static final String OPENING_BALANCE = "OPENING_BALANCE";
+
+	public static final String CLOSING_DATE = "CLOSING_DATE";
+
+	public static final String CLOSING_BALANCE = "CLOSING_BALANCE";
+	
 }

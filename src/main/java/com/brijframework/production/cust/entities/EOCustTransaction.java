@@ -1,5 +1,17 @@
 package com.brijframework.production.cust.entities;
 
+import static com.brijframework.production.contants.Constants.CUST_ACCOUNT_ID;
+import static com.brijframework.production.contants.Constants.EOCUST_TRANSACTION;
+import static com.brijframework.production.contants.Constants.TRANSACTION_AMOUNT;
+import static com.brijframework.production.contants.Constants.TRANSACTION_DATE;
+import static com.brijframework.production.contants.Constants.TRANSACTION_ID;
+import static com.brijframework.production.contants.Constants.TRANSACTION_MAKER_ID;
+import static com.brijframework.production.contants.Constants.TRANSACTION_MODE;
+import static com.brijframework.production.contants.Constants.TRANSACTION_RECIVER_ID;
+import static com.brijframework.production.contants.Constants.TRANSACTION_SENDER_ID;
+import static com.brijframework.production.contants.Constants.TRANSACTION_STATUS;
+import static com.brijframework.production.contants.Constants.TRANSACTION_TYPE;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -7,17 +19,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
-import static com.brijframework.production.contants.Constants.*;
+
 import com.brijframework.production.contants.TransactionMode;
 import com.brijframework.production.contants.TransactionStatus;
 import com.brijframework.production.contants.TransactionType;
@@ -64,6 +76,10 @@ public class EOCustTransaction extends EOEntityObject {
 	
 	@Column(name = TRANSACTION_MAKER_ID, nullable = false)
 	private Long transactionMakerId;
+	
+	@JoinColumn(name = CUST_ACCOUNT_ID, nullable = false)
+	@ManyToOne
+	private EOCustAccount custAccount;
 	
 	@PrePersist
 	public void init() {
