@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.brijframework.production.contants.RecordStatus;
+import com.brijframework.production.cust.entities.EOCustAccount;
 import com.brijframework.production.cust.entities.EOCustBusinessApp;
 import com.brijframework.production.cust.entities.EOCustProduct;
 import com.brijframework.production.cust.entities.purchases.EOCustProductPurchase;
@@ -28,6 +29,7 @@ import com.brijframework.production.cust.rest.purchase.CustProductPurchaseItemRe
 import com.brijframework.production.cust.rest.purchase.CustProductPurchasePayment;
 import com.brijframework.production.cust.rest.purchase.CustProductPurchaseRequest;
 import com.brijframework.production.cust.rest.purchase.CustProductPurchaseResponse;
+import com.brijframework.production.cust.service.CustAccountService;
 import com.brijframework.production.cust.service.CustProductPurchaseService;
 import com.brijframework.production.cust.service.CustProductStockService;
 import com.brijframework.production.util.CommanUtil;
@@ -64,6 +66,9 @@ public class CustProductPurchaseServiceImpl implements CustProductPurchaseServic
 	@Autowired
 	private CustProductStockService custProductStockService;
 	
+	@Autowired
+	private CustAccountService custAccountService;
+	
 	@Override
 	public CustProductPurchaseResponse saveProductPurchase(long custAppId, CustProductPurchaseRequest custProductPurchaseRequest) {
 		Optional<EOCustBusinessApp> findById = custBusinessAppRepository.findById(custAppId);
@@ -98,8 +103,10 @@ public class CustProductPurchaseServiceImpl implements CustProductPurchaseServic
 			custProductAdditional.setCustProductPurchase(eoCustProductPurchase);
 			custProductPurchaseAdditionalRepository.saveAndFlush(custProductAdditional);
 		};
-		
+		EOCustAccount currentAccount = custAccountService.getCurrentAccount(eoCustBusinessApp);
 		for(EOCustProductPurchasePayment custProductPurchasePayment: custProductPurchaseRequestMapper.custProductPurchasePaymentListDAO(custProductPaymentList)){
+			if(custProductPurchasePayment.getCustTransaction()!=null)
+			custProductPurchasePayment.getCustTransaction().setCustAccount(currentAccount);
 			custProductPurchasePayment.setCustProductPurchase(eoCustProductPurchase);
 			custProductPurchasePayment.setSupplierId(eoCustProductPurchase.getSupplierId());
 			custProductPurchasePaymentRepository.saveAndFlush(custProductPurchasePayment);

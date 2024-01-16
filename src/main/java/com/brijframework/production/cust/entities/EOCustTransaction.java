@@ -157,4 +157,13 @@ public class EOCustTransaction extends EOEntityObject {
 	public void setTransactionMakerId(Long transactionMakerId) {
 		this.transactionMakerId = transactionMakerId;
 	}
+
+	public EOCustAccount getCustAccount() {
+		return custAccount;
+	}
+
+	public void setCustAccount(EOCustAccount custAccount) {
+		this.custAccount = custAccount;
+	}
+	
 }

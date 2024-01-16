@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.brijframework.production.cust.entities.EOCustAccount;
 import com.brijframework.production.cust.entities.EOCustBusinessApp;
 import com.brijframework.production.cust.entities.EOCustProduct;
 import com.brijframework.production.cust.entities.sales.EOCustProductSale;
@@ -26,6 +27,7 @@ import com.brijframework.production.cust.rest.sale.CustProductSaleItemRequest;
 import com.brijframework.production.cust.rest.sale.CustProductSalePayment;
 import com.brijframework.production.cust.rest.sale.CustProductSaleRequest;
 import com.brijframework.production.cust.rest.sale.CustProductSaleResponse;
+import com.brijframework.production.cust.service.CustAccountService;
 import com.brijframework.production.cust.service.CustProductSaleService;
 import com.brijframework.production.cust.service.CustProductStockService;
 import com.brijframework.production.util.CommanUtil;
@@ -62,6 +64,9 @@ public class CustProductSaleServiceImpl implements CustProductSaleService {
 	
 	@Autowired
 	private CustProductStockService custProductStockService;
+
+	@Autowired
+	private CustAccountService custAccountService;
 	
 	@Override
 	public CustProductSaleResponse saveProductSale(long custAppId, CustProductSaleRequest custProductSaleRequest) {
@@ -96,8 +101,10 @@ public class CustProductSaleServiceImpl implements CustProductSaleService {
 			custProductAdditional.setCustProductSale(eoCustProductSale);
 			custProductSaleAdditionalRepository.saveAndFlush(custProductAdditional);
 		};
-		
+		EOCustAccount currentAccount = custAccountService.getCurrentAccount(eoCustBusinessApp);
 		for(EOCustProductSalePayment custProductSalePayment: custProductSaleRequestMapper.custProductSalePaymentListDAO(custProductPaymentList)){
+			if(custProductSalePayment.getCustTransaction()!=null)
+				custProductSalePayment.getCustTransaction().setCustAccount(currentAccount);
 			custProductSalePayment.setCustProductSale(eoCustProductSale);
 			custProductSalePayment.setCustomerId(eoCustProductSale.getCustomerId());
 			custProductSalePaymentRepository.saveAndFlush(custProductSalePayment);

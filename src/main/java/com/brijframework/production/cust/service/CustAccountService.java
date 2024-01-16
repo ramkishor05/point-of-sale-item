@@ -2,6 +2,8 @@ package com.brijframework.production.cust.service;
 
 import java.util.List;
 
+import com.brijframework.production.cust.entities.EOCustAccount;
+import com.brijframework.production.cust.entities.EOCustBusinessApp;
 import com.brijframework.production.cust.rest.CustAccountRequest;
 import com.brijframework.production.cust.rest.CustAccountResponse;
 
@@ -16,5 +18,7 @@ public interface CustAccountService {
 	CustAccountResponse getAccount(Long custAppId, Long id);
 
 	boolean deleteAccount(Long custAppId, Long id);
+
+	EOCustAccount getCurrentAccount(EOCustBusinessApp eoCustBusinessApp);
 
 }

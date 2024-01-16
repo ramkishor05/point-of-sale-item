@@ -6,7 +6,7 @@ import com.brijframework.production.contants.TransactionMode;
 import com.brijframework.production.contants.TransactionStatus;
 import com.brijframework.production.contants.TransactionType;
 
-public class CustCashBookRequest {
+public class CustTransationResponse {
 
 	private String transactionId;
 	private Date transactionDate;

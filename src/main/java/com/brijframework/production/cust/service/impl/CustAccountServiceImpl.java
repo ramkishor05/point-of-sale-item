@@ -3,6 +3,7 @@ package com.brijframework.production.cust.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +43,19 @@ public class CustAccountServiceImpl implements CustAccountService {
 		eoCustAccount.setCustBusinessApp(eoCustBusinessApp);
 		eoCustAccount=custAccountRepository.save(eoCustAccount);
 		return custAccountResponseMapper.mapToDTO(eoCustAccount);
+	}
+	
+	@Override
+	public EOCustAccount getCurrentAccount(EOCustBusinessApp eoCustBusinessApp) {
+		List<EOCustAccount> findAll = custAccountRepository.findAll();
+		if(findAll.isEmpty()) {
+			EOCustAccount eoCustAccount=new EOCustAccount();
+			eoCustAccount.setAccountId(RandomUtils.nextLong());
+			eoCustAccount.setCustBusinessApp(eoCustBusinessApp);
+			custAccountRepository.save(eoCustAccount);
+			return eoCustAccount;
+		}
+		return findAll.get(0);
 	}
 
 	@Override

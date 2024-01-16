@@ -5,7 +5,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @JsonFormat(shape = JsonFormat.Shape.STRING)
 public enum TransactionStatus {
 	
-	Unpaid("Unpaid"), Paid("Paid");
+	Unpaid("Unpaid"), 
+	Paid("Paid"),
+	
+	;
 
 	String mode;
 	TransactionStatus(String mode) {
