@@ -15,6 +15,6 @@ public interface CustTransationService {
 
 	boolean deleteTransation(Long custAppId, Long id);
 
-	List<CustTransationResponse> getTransationFiltedList(Long custAppId, Long userId, String startDate, String endDate);
+	List<CustTransationResponse> getTransationFiltedList(Long custAppId, Long userId, String startDate, String endDate, List<String> serviceType);
 
 }

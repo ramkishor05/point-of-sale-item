@@ -17,6 +17,7 @@ public class CustTransationRequest {
 	private Long transactionReciverId;
 	private Long transactionSenderId;
 	private Long transactionMakerId;
+	private String transactionService;
 
 	public String getTransactionId() {
 		return transactionId;
@@ -89,4 +90,23 @@ public class CustTransationRequest {
 	public void setTransactionMakerId(Long transactionMakerId) {
 		this.transactionMakerId = transactionMakerId;
 	}
+	
+	public String getTransactionService() {
+		return transactionService;
+	}
+
+	public void setTransactionService(String transactionService) {
+		this.transactionService = transactionService;
+	}
+
+	@Override
+	public String toString() {
+		return "CustTransationRequest [transactionId=" + transactionId + ", transactionDate=" + transactionDate
+				+ ", transactionAmount=" + transactionAmount + ", transactionStatus=" + transactionStatus
+				+ ", transactionType=" + transactionType + ", transactionMode=" + transactionMode
+				+ ", transactionReciverId=" + transactionReciverId + ", transactionSenderId=" + transactionSenderId
+				+ ", transactionMakerId=" + transactionMakerId + ", transactionService=" + transactionService + "]";
+	}
+	
+	
 }

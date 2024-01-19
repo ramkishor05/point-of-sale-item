@@ -9,6 +9,7 @@ import static com.brijframework.production.contants.Constants.TRANSACTION_MAKER_
 import static com.brijframework.production.contants.Constants.TRANSACTION_MODE;
 import static com.brijframework.production.contants.Constants.TRANSACTION_RECIVER_ID;
 import static com.brijframework.production.contants.Constants.TRANSACTION_SENDER_ID;
+import static com.brijframework.production.contants.Constants.TRANSACTION_SERVICE;
 import static com.brijframework.production.contants.Constants.TRANSACTION_STATUS;
 import static com.brijframework.production.contants.Constants.TRANSACTION_TYPE;
 
@@ -76,6 +77,9 @@ public class EOCustTransaction extends EOEntityObject {
 	
 	@Column(name = TRANSACTION_MAKER_ID, nullable = false)
 	private Long transactionMakerId;
+	
+	@Column(name = TRANSACTION_SERVICE, nullable = false)
+	private String transactionService;
 	
 	@JoinColumn(name = CUST_ACCOUNT_ID, nullable = false)
 	@ManyToOne
@@ -165,5 +169,15 @@ public class EOCustTransaction extends EOEntityObject {
 	public void setCustAccount(EOCustAccount custAccount) {
 		this.custAccount = custAccount;
 	}
+
+	public String getTransactionService() {
+		return transactionService;
+	}
+
+	public void setTransactionService(String transactionService) {
+		this.transactionService = transactionService;
+	}
+	
+	
 	
 }

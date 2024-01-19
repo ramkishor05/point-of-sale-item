@@ -43,8 +43,8 @@ public class CustTransationController {
 	}
 	
 	@GetMapping("/filted")
-	public List<CustTransationResponse> getTransationFiltedList(@RequestHeader(CUST_APP_ID) long custAppId,@RequestHeader(USER_APP_ID) long userId,@RequestParam String startDate, @RequestParam String endDate) {
-		return custTransationService.getTransationFiltedList(custAppId, userId, startDate, endDate);
+	public List<CustTransationResponse> getTransationFiltedList(@RequestHeader(CUST_APP_ID) long custAppId,@RequestHeader(USER_APP_ID) long userId,@RequestParam String startDate, @RequestParam String endDate, @RequestParam List<String> serviceType) {
+		return custTransationService.getTransationFiltedList(custAppId, userId, startDate, endDate, serviceType);
 	}
 	
 	@GetMapping("/{id}")

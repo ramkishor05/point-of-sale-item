@@ -43,8 +43,10 @@ public class CustTransationServiceImpl implements CustTransationService {
 		if(!findById.isPresent()) {
 			return null;
 		}
+		System.out.println("custTransationRequest="+custTransationRequest);
 		EOCustBusinessApp eoCustBusinessApp = findById.get();
 		EOCustTransaction eoCustTransaction = custTransationRequestMapper.mapToDAO(custTransationRequest);
+		eoCustTransaction.setTransactionService(custTransationRequest.getTransactionService());
 		EOCustAccount currentAccount = custAccountService.getCurrentAccount(eoCustBusinessApp);
 		eoCustTransaction.setCustAccount(currentAccount);
 		custCashBookRepository.save(eoCustTransaction);
@@ -58,8 +60,8 @@ public class CustTransationServiceImpl implements CustTransationService {
 	
 	@Override
 	public List<CustTransationResponse> getTransationFiltedList(Long custAppId, Long userId, String startDate,
-			String endDate) {
-		return custTransationResponseMapper.mapToDTO(custCashBookRepository.findAllByCustAppAndUserId(userId, startDate, endDate).orElse(new ArrayList<EOCustTransaction>())) ;
+			String endDate, List<String> serviceType) {
+		return custTransationResponseMapper.mapToDTO(custCashBookRepository.findAllByCustAppAndUserId(userId, startDate, endDate, serviceType).orElse(new ArrayList<EOCustTransaction>())) ;
 	}
 
 	@Override

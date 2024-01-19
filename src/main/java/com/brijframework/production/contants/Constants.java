@@ -252,6 +252,8 @@ public class Constants {
 	public static final String TRANSACTION_MAKER_ID = "TRANSACTION_MAKER_ID";
 
 	public static final String TRANSACTION_TYPE = "TRANSACTION_TYPE";
+	
+	public static final String TRANSACTION_SERVICE = "TRANSACTION_SERVICE";
 
 	public static final String CUST_TRANSACTION_ID = "CUST_TRANSACTION_ID";
 	
