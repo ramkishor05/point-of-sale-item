@@ -69,7 +69,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	
     @Override
     public void onApplicationEvent(final ContextRefreshedEvent event) {
-    	if(default_data) {/*
+    	if(default_data) {
 	    	JsonSchemaDataFactory instance = JsonSchemaDataFactory.getInstance();
 	    	List<EOGlobalCurrencyGroup> eoGlobalCurrencyGroupJson = instance.getAll(EOGlobalCurrencyGroup.class);
 	    	eoGlobalCurrencyGroupJson.forEach(eoGlobalCurrencyGroup->{
@@ -154,7 +154,7 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	    	/// 
 	    	for(EOCustBusinessApp eoCustBusinessApp :  custBusinessApps) {
 	    		custBusinessAppService.init(eoCustBusinessApp);
-	    	}*/
+	    	}
 	    	
 	    }
     }

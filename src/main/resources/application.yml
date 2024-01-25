@@ -26,7 +26,9 @@ spring:
      consumer.topic-id: STOCK_EVENT
      producer.key-serializer: org.apache.kafka.common.serialization.StringSerializer
      producer.value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-   database.config.data: false
+   database:
+      config:
+        data: true
 # Discovery Server Access
 eureka:
   client:
