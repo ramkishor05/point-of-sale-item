@@ -4,18 +4,16 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.4.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<groupId>com.brijframework</groupId>
+		<artifactId>point-of-sale-api</artifactId>
+		<version>1.1</version>
+		<relativePath />
 	</parent>
 
-	<groupId>com.brijframework</groupId>
-	<artifactId>project-brijframework-production</artifactId>
-	<version>1.0.1</version>
+	<artifactId>point-of-sale-item</artifactId>
 	<packaging>jar</packaging>
 
-	<name>project-brijframework-production</name>
+	<name>project-brijframework-item</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -28,6 +26,12 @@
 	</properties>
 
 	<dependencies>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -71,6 +75,18 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
