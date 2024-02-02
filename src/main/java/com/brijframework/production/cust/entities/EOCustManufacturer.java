@@ -1,11 +1,18 @@
-package com.brijframework.production.global.entities;
+package com.brijframework.production.cust.entities;
 
-import static com.brijframework.production.contants.Constants.*;
+import static com.brijframework.production.contants.Constants.BRAND;
+import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
+import static com.brijframework.production.contants.Constants.EOCUST_MANUFACTURER;
+import static com.brijframework.production.contants.Constants.GTIN;
+import static com.brijframework.production.contants.Constants.MPN;
+import static com.brijframework.production.contants.Constants.NAME;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -13,8 +20,8 @@ import com.brijframework.production.entities.EOEntityObject;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = EOGLOBAL_MANUFACTURER, uniqueConstraints = { @UniqueConstraint(columnNames = { NAME }) })
-public class EOGlobalManufacturer extends EOEntityObject{
+@Table(name = EOCUST_MANUFACTURER, uniqueConstraints = { @UniqueConstraint(columnNames = { NAME }) })
+public class EOCustManufacturer extends EOEntityObject{
 
 	/**
 	 * 
@@ -33,6 +40,10 @@ public class EOGlobalManufacturer extends EOEntityObject{
 
 	@Column(name = NAME)
 	private String name;
+	
+	@JoinColumn(name = CUST_BUSINESS_APP_ID, nullable = false)
+	@ManyToOne
+	private EOCustBusinessApp custBusinessApp;
 
 	public String getBrand() {
 		return brand;

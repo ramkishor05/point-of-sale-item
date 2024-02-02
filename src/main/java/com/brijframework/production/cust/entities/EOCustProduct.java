@@ -2,11 +2,10 @@ package com.brijframework.production.cust.entities;
 
 import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
 import static com.brijframework.production.contants.Constants.CUST_CATEGORY_ID;
+import static com.brijframework.production.contants.Constants.CUST_MRF_ID;
 import static com.brijframework.production.contants.Constants.CUST_PRODUCT;
 import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT;
 import static com.brijframework.production.contants.Constants.EXP_DATE;
-import static com.brijframework.production.contants.Constants.GLB_IMG_ID;
-import static com.brijframework.production.contants.Constants.GLB_MRF_ID;
 import static com.brijframework.production.contants.Constants.IDEN_NO;
 import static com.brijframework.production.contants.Constants.MRF_DATE;
 import static com.brijframework.production.contants.Constants.PURCHASE_PRICE;
@@ -28,9 +27,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-
-import com.brijframework.production.global.entities.EOGlobalManufacturer;
-import com.brijframework.production.global.entities.EOGlobalMediaDetail;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -68,13 +64,9 @@ public class EOCustProduct extends EOCustItem {
 	@JoinColumn(name = CUST_CATEGORY_ID)
 	public EOCustCategoryItem custCategory;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = GLB_IMG_ID)
-	public EOGlobalMediaDetail custImageDetail;
-
 	@OneToOne
-	@JoinColumn(name = GLB_MRF_ID)
-	public EOGlobalManufacturer custManufacturer;
+	@JoinColumn(name = CUST_MRF_ID)
+	public EOCustManufacturer custManufacturer;
 
 	@JoinColumn(name = CUST_BUSINESS_APP_ID, nullable = false)
 	@ManyToOne
@@ -145,19 +137,12 @@ public class EOCustProduct extends EOCustItem {
 		this.custCategory = custCategory;
 	}
 
-	public EOGlobalMediaDetail getCustImageDetail() {
-		return custImageDetail;
-	}
 
-	public void setCustImageDetail(EOGlobalMediaDetail custImageDetail) {
-		this.custImageDetail = custImageDetail;
-	}
-
-	public EOGlobalManufacturer getCustManufacturer() {
+	public EOCustManufacturer getCustManufacturer() {
 		return custManufacturer;
 	}
 
-	public void setCustManufacturer(EOGlobalManufacturer custManufacturer) {
+	public void setCustManufacturer(EOCustManufacturer custManufacturer) {
 		this.custManufacturer = custManufacturer;
 	}
 

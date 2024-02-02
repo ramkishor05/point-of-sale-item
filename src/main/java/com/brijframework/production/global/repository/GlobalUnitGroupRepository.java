@@ -1,24 +1,18 @@
 package com.brijframework.production.global.repository;
 
-import java.util.Optional;
+import static com.brijframework.production.contants.Constants.POINT_OF_SALE_APP;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
-import com.brijframework.production.global.entities.EOGlobalUnitGroup;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@Repository
-@Transactional
-public interface GlobalUnitGroupRepository extends JpaRepository<EOGlobalUnitGroup, Long>{
-	
-	EOGlobalUnitGroup findOneByTypeId(String typeId);
+import com.brijframework.production.global.dto.UIGlobalUnitGroup;
 
-	EOGlobalUnitGroup findAllByTypeId(String typeId);
+@FeignClient(POINT_OF_SALE_APP)
+public interface GlobalUnitGroupRepository {
 
-	int countByTypeId(String typeId);
-
-	Optional<EOGlobalUnitGroup> findByTypeId(String typeId);
-
+	@GetMapping("/api/global/categorygroup")
+	public List<UIGlobalUnitGroup> findAll() ;
 
 }

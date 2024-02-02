@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.brijframework.production.global.entities.EOGlobalUnit;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonSchemaMetaFactory {
@@ -115,10 +114,5 @@ public class JsonSchemaMetaFactory {
 			}
 		}
 		return typeObjectList;
-	}
-
-	public static void main(String[] args) {
-		JsonSchemaMetaFactory instance = JsonSchemaMetaFactory.getInstance();
-		System.out.println(instance.getAll(EOGlobalUnit.class));
 	}
 }

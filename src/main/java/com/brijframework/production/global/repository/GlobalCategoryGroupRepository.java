@@ -1,29 +1,19 @@
 package com.brijframework.production.global.repository;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import static com.brijframework.production.contants.Constants.POINT_OF_SALE_APP;
 
-import com.brijframework.production.global.entities.EOGlobalCategoryGroup;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@Repository
-@Transactional
-public interface GlobalCategoryGroupRepository extends JpaRepository<EOGlobalCategoryGroup, Long>{
+import com.brijframework.production.global.dto.UIGlobalCategoryGroup;
+
+@FeignClient(POINT_OF_SALE_APP)
+public interface GlobalCategoryGroupRepository {
+
+	@GetMapping("/api/global/categorygroup")
+	public List<UIGlobalCategoryGroup> findAll();
 	
-	EOGlobalCategoryGroup findOneByTypeId(String typeId);
-
-	@Query(nativeQuery = true, value = "select * from EOGLOBAL_CATEGORY_GROUP where RECORD_STATUS in (?1)")
-	List<EOGlobalCategoryGroup> getCategoryGroupListByStatus(List<String> statusIds);
-
-	@Query(nativeQuery = true, value = "select * from EOGLOBAL_CATEGORY_GROUP where TYPE_ID = ?1")
-	List<EOGlobalCategoryGroup> findAllByTypeId(String typeId);
 	
-	int countByTypeId(String typeId);
-
-	@Query(nativeQuery = true, value = "select * from EOGLOBAL_CATEGORY_GROUP where TYPE_ID = ?1")
-	Optional<EOGlobalCategoryGroup> findByTypeId(String typeId);
 }

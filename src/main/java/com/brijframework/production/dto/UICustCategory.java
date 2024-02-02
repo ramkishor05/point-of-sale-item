@@ -10,7 +10,6 @@ public class UICustCategory implements Serializable {
 	public String name;
 	public String description;
 	public String typeId;
-	public long custImageDetailId;
 	public long custCategoryGroupId;
 	public long custBusinessAppId;
 
@@ -52,14 +51,6 @@ public class UICustCategory implements Serializable {
 
 	public void setTypeId(String typeId) {
 		this.typeId = typeId;
-	}
-
-	public long getCustImageDetailId() {
-		return custImageDetailId;
-	}
-
-	public void setCustImageDetailId(long custImageDetailId) {
-		this.custImageDetailId = custImageDetailId;
 	}
 
 	public long getCustCategoryGroupId() {

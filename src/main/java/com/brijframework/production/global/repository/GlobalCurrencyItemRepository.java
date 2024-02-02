@@ -1,21 +1,18 @@
 package com.brijframework.production.global.repository;
 
+import static com.brijframework.production.contants.Constants.POINT_OF_SALE_APP;
+
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import com.brijframework.production.global.entities.EOGlobalCurrencyItem;
+import com.brijframework.production.global.dto.UIGlobalCurrencyItem;
 
-@Repository
-@Transactional
-public interface GlobalCurrencyItemRepository extends JpaRepository<EOGlobalCurrencyItem, Long>{
-	
-	Optional<EOGlobalCurrencyItem> findOneByIdenNo(String idenNo);
-	
-	List<EOGlobalCurrencyItem> findOneByTypeId(String typeId);
+@FeignClient(POINT_OF_SALE_APP)
+public interface GlobalCurrencyItemRepository {
 
-	int countByTypeId(String typeId);
+	@GetMapping("/api/global/categorygroup")
+	public List<UIGlobalCurrencyItem> findAll();
+
 }

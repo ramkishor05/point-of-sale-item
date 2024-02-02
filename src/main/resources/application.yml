@@ -69,11 +69,21 @@ spring:
    database:
       config:
         data: true
+   cloud:
+    loadbalancer:
+      ribbon:
+        enabled: true
+    discovery:
+      client:
+        simple:
+          instances:
+            point_of_sale_app:
+              uri: http://localhost:80
 # Discovery Server Access
-#eureka:
-#    client:
-#      serviceUrl:
-#        defaultZone: http://localhost:1111/eureka/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
 # HTTP Server (Tomcat) Port
 server: 
   port: 4444

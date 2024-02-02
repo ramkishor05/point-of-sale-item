@@ -10,6 +10,7 @@ public class UIGlobalCategory implements Serializable {
 	public String name;
 	public String desc;
 	public String typeId;
+	private UIGlobalCategoryGroup globalCategoryGroup;
 	
 	public long getId() {
 		return id;
@@ -51,4 +52,11 @@ public class UIGlobalCategory implements Serializable {
 		this.typeId = typeId;
 	}
 
+	public UIGlobalCategoryGroup getGlobalCategoryGroup() {
+		return globalCategoryGroup;
+	}
+
+	public void setGlobalCategoryGroup(UIGlobalCategoryGroup globalCategoryGroup) {
+		this.globalCategoryGroup = globalCategoryGroup;
+	}
 }

@@ -27,13 +27,13 @@ import com.brijframework.production.cust.repository.CustCurrencyItemRepository;
 import com.brijframework.production.cust.repository.CustUnitGroupRepository;
 import com.brijframework.production.cust.repository.CustUnitItemRepository;
 import com.brijframework.production.cust.service.CustBusinessAppService;
-import com.brijframework.production.global.entities.EOGlobalCategory;
-import com.brijframework.production.global.entities.EOGlobalCategoryGroup;
-import com.brijframework.production.global.entities.EOGlobalCountFreq;
-import com.brijframework.production.global.entities.EOGlobalCurrencyGroup;
-import com.brijframework.production.global.entities.EOGlobalCurrencyItem;
-import com.brijframework.production.global.entities.EOGlobalUnit;
-import com.brijframework.production.global.entities.EOGlobalUnitGroup;
+import com.brijframework.production.global.dto.UIGlobalCategory;
+import com.brijframework.production.global.dto.UIGlobalCategoryGroup;
+import com.brijframework.production.global.dto.UIGlobalCountFreq;
+import com.brijframework.production.global.dto.UIGlobalCurrencyGroup;
+import com.brijframework.production.global.dto.UIGlobalCurrencyItem;
+import com.brijframework.production.global.dto.UIGlobalUnit;
+import com.brijframework.production.global.dto.UIGlobalUnitGroup;
 import com.brijframework.production.global.repository.GlobalCategoryGroupRepository;
 import com.brijframework.production.global.repository.GlobalCategoryRepository;
 import com.brijframework.production.global.repository.GlobalCountFreqRepository;
@@ -127,9 +127,9 @@ public class CustBusinessAppServiceImpl implements CustBusinessAppService {
 	public void init(EOCustBusinessApp eoCustBusinessApp) {
 		new Thread(()->{
 		
-	    	List<EOGlobalCurrencyGroup> eoGlobalCurrencyGroups = globalCurrencyGroupRepository.findAll();
+	    	List<UIGlobalCurrencyGroup> eoGlobalCurrencyGroups = globalCurrencyGroupRepository.findAll();
 	
-			for(EOGlobalCurrencyGroup eoGlobalCurrencyGroup :  eoGlobalCurrencyGroups) {
+			for(UIGlobalCurrencyGroup eoGlobalCurrencyGroup :  eoGlobalCurrencyGroups) {
 	    		Optional<EOCustCurrencyGroup> findCustCurrencyGroup = custCurrencyGroupRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalCurrencyGroup.getName());
 	    		if(!findCustCurrencyGroup.isPresent()) {
 	    			EOCustCurrencyGroup eoCustCurrencyGroup = currencyGroupGlobalCurrencyGroupMapper.mapToDAO(eoGlobalCurrencyGroup);
@@ -137,8 +137,8 @@ public class CustBusinessAppServiceImpl implements CustBusinessAppService {
 	    			custCurrencyGroupRepository.saveAndFlush(eoCustCurrencyGroup);
 	    		}
 	    	}
-			List<EOGlobalCurrencyItem> eoGlobalCurrencyItems = globalCurrencyItemRepository.findAll();
-			for(EOGlobalCurrencyItem eoGlobalCurrencyItem :  eoGlobalCurrencyItems) {
+			List<UIGlobalCurrencyItem> eoGlobalCurrencyItems = globalCurrencyItemRepository.findAll();
+			for(UIGlobalCurrencyItem eoGlobalCurrencyItem :  eoGlobalCurrencyItems) {
 	    		Optional<EOCustCurrencyItem> findCustCurrencyItem = custCurrencyItemRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalCurrencyItem.getName());
 	    		if(!findCustCurrencyItem.isPresent()) {
 	    			EOCustCurrencyItem eoCustCurrencyItem = currencyItemGlobalCurrencyItemMapper.mapToDAO(eoGlobalCurrencyItem);
@@ -146,8 +146,8 @@ public class CustBusinessAppServiceImpl implements CustBusinessAppService {
 	    			custCurrencyItemRepository.saveAndFlush(eoCustCurrencyItem);
 	    		}
 	    	}
-	    	List<EOGlobalCountFreq> eoGlobalCountFreqs = globalCountFreqRepository.findAll();
-	    	for(EOGlobalCountFreq eoGlobalCountFreq :  eoGlobalCountFreqs) {
+	    	List<UIGlobalCountFreq> eoGlobalCountFreqs = globalCountFreqRepository.findAll();
+	    	for(UIGlobalCountFreq eoGlobalCountFreq :  eoGlobalCountFreqs) {
 	    		Optional<EOCustCountFreq> findCustCountFreq = custCountFreqRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalCountFreq.getName());
 	    		if(!findCustCountFreq.isPresent()) {
 	    			EOCustCountFreq eoCustCountFreq = countFreqGlobalCountFreqMapper.mapToDAO(eoGlobalCountFreq);
@@ -156,8 +156,8 @@ public class CustBusinessAppServiceImpl implements CustBusinessAppService {
 	    		}
 	    	}
 	    	
-	    	List<EOGlobalUnitGroup> eoGlobalUnitGroups = globalUnitGroupRepository.findAll();
-	    	for(EOGlobalUnitGroup eoGlobalUnitGroup :  eoGlobalUnitGroups) {
+	    	List<UIGlobalUnitGroup> eoGlobalUnitGroups = globalUnitGroupRepository.findAll();
+	    	for(UIGlobalUnitGroup eoGlobalUnitGroup :  eoGlobalUnitGroups) {
 	    		Optional<EOCustUnitGroup> findCustUnitGroup = custUnitGroupRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalUnitGroup.getName());
 	    		if(!findCustUnitGroup.isPresent()) {
 	    			EOCustUnitGroup eoCustUnitGroup = custUnitGroupGlobalUnitGroupMapper.mapToDAO(eoGlobalUnitGroup);
@@ -166,8 +166,8 @@ public class CustBusinessAppServiceImpl implements CustBusinessAppService {
 	    		}
 	    	}
 	    	
-	    	List<EOGlobalUnit> eoGlobalUnits = globalUnitRepository.findAll();
-	    	for(EOGlobalUnit eoGlobalUnit :  eoGlobalUnits) {
+	    	List<UIGlobalUnit> eoGlobalUnits = globalUnitRepository.findAll();
+	    	for(UIGlobalUnit eoGlobalUnit :  eoGlobalUnits) {
 	    		Optional<EOCustUnitItem> findCustUnit = custUnitItemRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalUnit.getName());
 	    		if(!findCustUnit.isPresent()) {
 	    			EOCustUnitItem eoCustUnit = custUnitGlobalUnitMapper.mapToDAO(eoGlobalUnit);
@@ -176,9 +176,9 @@ public class CustBusinessAppServiceImpl implements CustBusinessAppService {
 	    		}
 	    	}
 	    	
-	    	List<EOGlobalCategoryGroup> eoGlobalCategoryGroups = globalCategoryGroupRepository.findAll();
+	    	List<UIGlobalCategoryGroup> eoGlobalCategoryGroups = globalCategoryGroupRepository.findAll();
 	
-	    	for(EOGlobalCategoryGroup eoGlobalCategoryGroup :  eoGlobalCategoryGroups) {
+	    	for(UIGlobalCategoryGroup eoGlobalCategoryGroup :  eoGlobalCategoryGroups) {
 	    		Optional<EOCustCategoryGroup> findCustCategoryGroup = custCategoryGroupRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalCategoryGroup.getName());
 	    		if(!findCustCategoryGroup.isPresent()) {
 	    			EOCustCategoryGroup eoCustCategoryGroup = custCategoryGroupGlobalCategoryGroupMapper.mapToDAO(eoGlobalCategoryGroup);
@@ -187,9 +187,9 @@ public class CustBusinessAppServiceImpl implements CustBusinessAppService {
 	    		}
 	    	}
 	    	
-	    	List<EOGlobalCategory> eoGlobalCategorys = globalCategoryRepository.findAll();
+	    	List<UIGlobalCategory> eoGlobalCategorys = globalCategoryRepository.findAll();
 	
-	    	for(EOGlobalCategory eoGlobalCategory :  eoGlobalCategorys) {
+	    	for(UIGlobalCategory eoGlobalCategory :  eoGlobalCategorys) {
 	    		Optional<EOCustCategoryItem> findCustCategory = custCategoryRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalCategory.getName());
 	    		if(!findCustCategory.isPresent()) {
 	    			EOCustCategoryItem eoCustCategory = custCategoryGlobalCategoryMapper.mapToDAO(eoGlobalCategory);

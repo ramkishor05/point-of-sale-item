@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.brijframework.production.cust.entities.EOCustProductStock;
-import com.brijframework.production.cust.entities.purchases.EOCustProductPurchaseItem;
-import com.brijframework.production.cust.entities.sales.EOCustProductSaleItem;
 import com.brijframework.production.cust.repository.CustProductStockRepository;
 import com.brijframework.production.cust.rest.CustDashboardResponse;
 import com.brijframework.production.cust.rest.CustDashboardStock;
@@ -28,7 +26,7 @@ public class CustDashboardServiceImpl implements CustDashboardService {
 		double totalNetPurchase=0.0;
 		double totalNetSale=0.0;
 		List<EOCustProductStock> custProductStocks = custProductStockRepository.findAllByCustBusinessAppId(custAppId);
-		for(EOCustProductStock custProductStock : custProductStocks){
+		/*for(EOCustProductStock custProductStock : custProductStocks){
 			EOCustProductPurchaseItem custProductPurchaseItem = custProductStock.getCustProductPurchaseItem();
 			EOCustProductSaleItem custProductSaleItem = custProductStock.getCustProductSaleItem();
 			if(custProductPurchaseItem !=null && custProductSaleItem!=null) {
@@ -37,7 +35,7 @@ public class CustDashboardServiceImpl implements CustDashboardService {
 			}
 			totalGrossPurchase+=custProductPurchaseItem!=null && custProductPurchaseItem.getPurchasePrice() !=null? custProductPurchaseItem.getPurchasePrice().getPrice():0;
 			totalGrossSale+=custProductSaleItem!=null && custProductSaleItem.getSalePrice()!=null? custProductSaleItem.getSalePrice().getPrice():0;
-		};
+		};*/
 		custDashboardResponse.setTotalNetPurchase(totalNetPurchase);
 		custDashboardResponse.setTotalNetSale(totalNetSale);
 		custDashboardResponse.setTotalNetProfit(totalNetSale-totalNetPurchase);
@@ -56,7 +54,7 @@ public class CustDashboardServiceImpl implements CustDashboardService {
 			double totalNetProductSale=0.0;
 			double totalNetProductProfit=0.0;
 			double percentageNetProductProfit=0.0;
-			
+			/*
 			for(EOCustProductStock custProductStock : custProductStockList){
 				EOCustProductPurchaseItem custProductPurchaseItem = custProductStock.getCustProductPurchaseItem();
 				EOCustProductSaleItem custProductSaleItem = custProductStock.getCustProductSaleItem();
@@ -72,7 +70,7 @@ public class CustDashboardServiceImpl implements CustDashboardService {
 					totalStockQnt=totalStockQnt+1;
 				}
 			}
-			
+			*/
 			totalNetProductProfit=totalNetProductSale-totalNetProductPurchase;
 			
 			percentageNetProductProfit= totalNetProductSale>0 ?(totalNetProductProfit/totalNetProductSale) * 100 : 0.00;

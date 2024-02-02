@@ -5,15 +5,15 @@ import static com.brijframework.production.contants.Constants.SPRING;
 import org.mapstruct.Mapper;
 
 import com.brijframework.production.cust.entities.EOCustUnitGroup;
-import com.brijframework.production.global.entities.EOGlobalUnitGroup;
+import com.brijframework.production.global.dto.UIGlobalUnitGroup;
 import com.brijframework.production.mapper.GenericMapper;
 
 @Mapper(componentModel = SPRING, implementationPackage = COM_BRIJFRAMEWORK_CUST_PRODUCTION_MAPPER_IMPL)
-public interface CustUnitGroupGlobalUnitGroupMapper  extends GenericMapper<EOCustUnitGroup, EOGlobalUnitGroup>{
+public interface CustUnitGroupGlobalUnitGroupMapper  extends GenericMapper<EOCustUnitGroup, UIGlobalUnitGroup>{
 
 	@Override
-	EOCustUnitGroup mapToDAO(EOGlobalUnitGroup eoGlobalUnitGroup);
+	EOCustUnitGroup mapToDAO(UIGlobalUnitGroup eoGlobalUnitGroup);
 	
 	@Override
-	EOGlobalUnitGroup mapToDTO(EOCustUnitGroup eoCustUnitGroup);
+	UIGlobalUnitGroup mapToDTO(EOCustUnitGroup eoCustUnitGroup);
 }

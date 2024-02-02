@@ -2,8 +2,6 @@ package com.brijframework.production.cust.entities;
 
 import static com.brijframework.production.contants.Constants.CUST_BUSINESS_APP_ID;
 import static com.brijframework.production.contants.Constants.CUST_PRODUCT_ID;
-import static com.brijframework.production.contants.Constants.CUST_PRODUCT_PURCHASE_ID;
-import static com.brijframework.production.contants.Constants.CUST_PRODUCT_SALE_ID;
 import static com.brijframework.production.contants.Constants.EOCUST_PRODUCT_STOCK;
 import static com.brijframework.production.contants.Constants.IDEN_NO;
 import static com.brijframework.production.contants.Constants.PURCHASE_PRICE;
@@ -24,8 +22,6 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import com.brijframework.production.contants.StockStatus;
-import com.brijframework.production.cust.entities.purchases.EOCustProductPurchaseItem;
-import com.brijframework.production.cust.entities.sales.EOCustProductSaleItem;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -56,14 +52,6 @@ public class EOCustProductStock extends EOCustItem{
 	@JoinColumn(name = CUST_PRODUCT_ID)
 	private EOCustProduct custProduct;
 	
-	@ManyToOne
-	@JoinColumn(name = CUST_PRODUCT_PURCHASE_ID)
-	private EOCustProductPurchaseItem custProductPurchaseItem;
-	
-	@ManyToOne
-	@JoinColumn(name = CUST_PRODUCT_SALE_ID)
-	private EOCustProductSaleItem custProductSaleItem;
-
 	@JoinColumn(name = CUST_BUSINESS_APP_ID, nullable = false)
 	@ManyToOne
 	private EOCustBusinessApp custBusinessApp;
@@ -98,22 +86,6 @@ public class EOCustProductStock extends EOCustItem{
 
 	public void setCustProduct(EOCustProduct custProduct) {
 		this.custProduct = custProduct;
-	}
-
-	public EOCustProductPurchaseItem getCustProductPurchaseItem() {
-		return custProductPurchaseItem;
-	}
-
-	public void setCustProductPurchaseItem(EOCustProductPurchaseItem custProductPurchaseItem) {
-		this.custProductPurchaseItem = custProductPurchaseItem;
-	}
-
-	public EOCustProductSaleItem getCustProductSaleItem() {
-		return custProductSaleItem;
-	}
-
-	public void setCustProductSaleItem(EOCustProductSaleItem custProductSaleItem) {
-		this.custProductSaleItem = custProductSaleItem;
 	}
 
 	public EOCustBusinessApp getCustBusinessApp() {

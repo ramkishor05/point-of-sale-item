@@ -16,13 +16,11 @@ public interface CustCategoryMapper  extends GenericMapper<EOCustCategoryItem, U
 	
 
 	@Mapping(target=CUST_PROD_APP_ID_ENTITY, source=CUST_PROD_APP_ID_UI)
-	@Mapping(target=CUST_IMG_DETAIL_ID_ENTITY, source=CUST_IMG_DETAIL_ID_UI)
 	@Mapping(target=CUST_GROUP_ID_ENTITY, source=CUST_GROUP_ID_UI)
 	@Override
 	EOCustCategoryItem mapToDAO(UICustCategory uiCategory);
 	
 	@Mapping(source=CUST_PROD_APP_ID_ENTITY, target=CUST_PROD_APP_ID_UI)
-	@Mapping(source=CUST_IMG_DETAIL_ID_ENTITY, target=CUST_IMG_DETAIL_ID_UI)
 	@Mapping(source=CUST_GROUP_ID_ENTITY, target=CUST_GROUP_ID_UI)
 	@Override
 	UICustCategory mapToDTO(EOCustCategoryItem eoCustCategory);

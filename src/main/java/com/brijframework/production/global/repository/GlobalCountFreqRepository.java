@@ -1,17 +1,18 @@
 package com.brijframework.production.global.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import static com.brijframework.production.contants.Constants.POINT_OF_SALE_APP;
 
-import com.brijframework.production.global.entities.EOGlobalCountFreq;
+import java.util.List;
 
-@Repository
-@Transactional
-public interface GlobalCountFreqRepository extends JpaRepository<EOGlobalCountFreq, Long>{
-	
-	EOGlobalCountFreq findOneByTypeId(String typeId);
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 
-	int countByTypeId(String typeId);
+import com.brijframework.production.global.dto.UIGlobalCountFreq;
+
+@FeignClient(POINT_OF_SALE_APP)
+public interface GlobalCountFreqRepository {
+
+	@GetMapping("/api/global/categorygroup")
+	public List<UIGlobalCountFreq> findAll() ;
 
 }

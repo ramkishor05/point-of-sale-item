@@ -1,6 +1,7 @@
-package com.brijframework.production.global.rest;
+package com.brijframework.production.global.dto;
 
-public class GlobalCurrencyItemRequest {
+public class UIGlobalCurrencyItem {
+
 	public long id;
 	public String idenNo;
 	public String name;
@@ -46,5 +47,4 @@ public class GlobalCurrencyItemRequest {
 	public void setTypeId(String typeId) {
 		this.typeId = typeId;
 	}
-
 }

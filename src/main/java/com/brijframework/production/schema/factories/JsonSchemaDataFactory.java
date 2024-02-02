@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.brijframework.production.global.entities.EOGlobalUnit;
-
 public class JsonSchemaDataFactory {
 
 	final ConcurrentHashMap<String, Object> cache = new ConcurrentHashMap<String, Object>();
@@ -77,8 +75,4 @@ public class JsonSchemaDataFactory {
 		return instance;
 	}
 
-	public static void main(String[] args) {
-		JsonSchemaDataFactory instance = JsonSchemaDataFactory.getInstance();
-		System.out.println(instance.getAll(EOGlobalUnit.class));
-	}
 }

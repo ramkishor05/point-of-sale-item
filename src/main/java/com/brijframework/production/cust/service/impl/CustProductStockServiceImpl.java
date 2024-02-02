@@ -1,31 +1,22 @@
 package com.brijframework.production.cust.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.brijframework.production.contants.StockStatus;
-import com.brijframework.production.cust.entities.EOCustProductStock;
-import com.brijframework.production.cust.entities.EOCustProductStockPrice;
-import com.brijframework.production.cust.entities.purchases.EOCustProductPurchaseItem;
-import com.brijframework.production.cust.entities.purchases.EOCustProductPurchaseItemPrice;
-import com.brijframework.production.cust.entities.sales.EOCustProductSaleItem;
-import com.brijframework.production.cust.entities.sales.EOCustProductSaleItemPrice;
 import com.brijframework.production.cust.repository.CustProductStockRepository;
 import com.brijframework.production.cust.repository.CustProductStockRepository.ProductStock;
 import com.brijframework.production.cust.service.CustProductStockService;
-import com.brijframework.production.util.CommanUtil;
 
 @Service
 public class CustProductStockServiceImpl implements CustProductStockService {
-
 	private static final String STK = "STK";
 
 	@Autowired
 	private CustProductStockRepository custProductStockRepository;
+	
+/*
 	
 	@Override
 	public void saveCustProductStocksBackground(EOCustProductPurchaseItem eoCustProductSaleItem) {
@@ -35,20 +26,18 @@ public class CustProductStockServiceImpl implements CustProductStockService {
 	}
 
 	@Override
-	public void saveCustProductStocks(EOCustProductPurchaseItem eoCustProductRetailPurchase) {
-		List<EOCustProductStock> custProductPurchaseItemStockList = custProductStockRepository
-				.findAllByCustProductPurchaseItemId(eoCustProductRetailPurchase.getId());
+	public void saveCustProductStocks(long productId, long purchaseQnt) {
+		List<EOCustProductStock> custProductPurchaseItemStockList = custProductStockRepository.getAllByCustProductId(productId);
 		if (custProductPurchaseItemStockList.isEmpty()) {
-			checkAndUpdateCustProductStockList(eoCustProductRetailPurchase,
-					eoCustProductRetailPurchase.getPurchaseQnt().longValue());
+			checkAndUpdateCustProductStockList(eoCustProductRetailPurchase, purchaseQnt);
 		} else {
-			if (custProductPurchaseItemStockList.size() != eoCustProductRetailPurchase.getPurchaseQnt().intValue()) {
-				if (custProductPurchaseItemStockList.size() > eoCustProductRetailPurchase.getPurchaseQnt().intValue()) {
-					int deleteQnt = custProductPurchaseItemStockList.size()
-							- eoCustProductRetailPurchase.getPurchaseQnt().intValue();
+			if (custProductPurchaseItemStockList.size() != purchaseQnt) {
+				if (custProductPurchaseItemStockList.size() > purchaseQnt) {
+					long deleteQnt = custProductPurchaseItemStockList.size()
+							- purchaseQnt;
 					List<EOCustProductStock> nonSaleCustProductStockList = custProductPurchaseItemStockList.stream()
 							.filter(custProductPurchaseItemStock -> custProductPurchaseItemStock
-									.getCustProductSaleItem() == null)
+									.getStockStatus().equals(StockStatus.InStock))
 							.collect(Collectors.toList());
 					if (nonSaleCustProductStockList.size() >= deleteQnt) {
 						List<EOCustProductStock> deleteStocks = nonSaleCustProductStockList.stream()
@@ -57,8 +46,7 @@ public class CustProductStockServiceImpl implements CustProductStockService {
 						custProductStockRepository.deleteAll(deleteStocks);
 					}
 				} else {
-					Long newQnt = eoCustProductRetailPurchase.getPurchaseQnt().longValue()
-							- custProductPurchaseItemStockList.size();
+					Long newQnt = (long) (purchaseQnt- custProductPurchaseItemStockList.size());
 					checkAndUpdateCustProductStockList(eoCustProductRetailPurchase, newQnt);
 				}
 			}
@@ -76,7 +64,7 @@ public class CustProductStockServiceImpl implements CustProductStockService {
 			List<EOCustProductStock> addStocks = new ArrayList<EOCustProductStock>();
 			for (EOCustProductStock custProductStock : custProductStockList) {
 				custProductStock.setCustProductPurchaseItem(eoCustProductPurchaseItem);
-				custProductStock.setPurchasePrice(buildStockPrice(eoCustProductPurchaseItem.getPurchasePrice()));
+				custProductStock.setPurchasePrice(buildStockPrice(purchasePrice));
 				custProductStock.setStockStatus(
 						custProductStock.getCustProductSaleItem() != null ? StockStatus.OutStock : StockStatus.InStock);
 				count++;
@@ -237,7 +225,7 @@ public class CustProductStockServiceImpl implements CustProductStockService {
 		eoCustProductStockPrice.setCurrency(custProductSaleItemPrice.getCurrency());
 		return eoCustProductStockPrice;
 	}
-
+*/
 	@Override
 	public List<ProductStock> getProductStockList(long custAppId, Long productId) {
 		return custProductStockRepository.findAllByCustProductId(productId);
