@@ -10,7 +10,7 @@ public class CustCategoryRequest implements Serializable {
 	public String name;
 	public String desc;
 	public String typeId;
-	public long custImageDetailId;
+	public String logoUrl;
 	public long custCategoryGroupId;
 
 	public long getId() {
@@ -53,12 +53,12 @@ public class CustCategoryRequest implements Serializable {
 		this.typeId = typeId;
 	}
 
-	public long getCustImageDetailId() {
-		return custImageDetailId;
+	public String getLogoUrl() {
+		return logoUrl;
 	}
 
-	public void setCustImageDetailId(long custImageDetailId) {
-		this.custImageDetailId = custImageDetailId;
+	public void setLogoUrl(String logoUrl) {
+		this.logoUrl = logoUrl;
 	}
 
 	public long getCustCategoryGroupId() {

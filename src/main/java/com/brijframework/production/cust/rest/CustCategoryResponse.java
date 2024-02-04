@@ -13,11 +13,8 @@ public class CustCategoryResponse implements Serializable {
 	public String name;
 	public String desc;
 	public String typeId;
-	private Long custAppId;
-	
-	public UICustMediaDetail custMediaDetail;
-	public UICustCategoryGroup custCategoryGroup;
-	
+	public String logoUrl;
+	public long custCategoryGroupId;
 
 	public long getId() {
 		return id;
@@ -58,28 +55,21 @@ public class CustCategoryResponse implements Serializable {
 	public void setTypeId(String typeId) {
 		this.typeId = typeId;
 	}
-	
-	public Long getCustAppId() {
-		return custAppId;
+
+	public String getLogoUrl() {
+		return logoUrl;
 	}
 
-	public void setCustAppId(Long custAppId) {
-		this.custAppId = custAppId;
+	public void setLogoUrl(String logoUrl) {
+		this.logoUrl = logoUrl;
 	}
 
-	public UICustMediaDetail getCustMediaDetail() {
-		return custMediaDetail;
+	public long getCustCategoryGroupId() {
+		return custCategoryGroupId;
 	}
 
-	public void setCustMediaDetail(UICustMediaDetail custMediaDetail) {
-		this.custMediaDetail = custMediaDetail;
+	public void setCustCategoryGroupId(long custCategoryGroupId) {
+		this.custCategoryGroupId = custCategoryGroupId;
 	}
 
-	public UICustCategoryGroup getCustCategoryGroup() {
-		return custCategoryGroup;
-	}
-
-	public void setCustCategoryGroup(UICustCategoryGroup custCategoryGroup) {
-		this.custCategoryGroup = custCategoryGroup;
-	}
 }

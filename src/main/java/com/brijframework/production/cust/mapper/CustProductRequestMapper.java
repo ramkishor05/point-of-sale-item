@@ -16,10 +16,12 @@ import com.brijframework.production.mapper.GenericMapper;
 public interface CustProductRequestMapper  extends GenericMapper<EOCustProduct, CustProductRequest>{
 
 	@Mapping(target=CUST_PROD_APP_ID_ENTITY, source=CUST_PROD_APP_ID_UI)
+	@Mapping(target=CUST_CATEGORY_ID_ENTITY, source=CUST_CATEGORY_ID_UI)
 	@Override
 	EOCustProduct mapToDAO(CustProductRequest custProductRequest);
 	
 	@Mapping(source=CUST_PROD_APP_ID_ENTITY, target=CUST_PROD_APP_ID_UI)
+	@Mapping(source=CUST_CATEGORY_ID_ENTITY, target=CUST_CATEGORY_ID_UI)
 	@Override
 	CustProductRequest mapToDTO(EOCustProduct eoCustProduct);
 	

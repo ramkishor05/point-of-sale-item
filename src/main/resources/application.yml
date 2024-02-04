@@ -69,19 +69,13 @@ spring:
    database:
       config:
         data: true
-   cloud:
-    loadbalancer:
-      ribbon:
-        enabled: true
-    discovery:
-      client:
-        simple:
-          instances:
-            point_of_sale_app:
-              uri: http://localhost:80
 # Discovery Server Access
 eureka:
   client:
+    instance:
+      leaseRenewalIntervalInSeconds: 10
+      metadataMap:
+        instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
     serviceUrl:
       defaultZone: http://localhost:1111/eureka/
 # HTTP Server (Tomcat) Port

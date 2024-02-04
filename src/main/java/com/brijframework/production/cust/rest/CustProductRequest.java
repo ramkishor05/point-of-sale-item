@@ -21,7 +21,6 @@ public class CustProductRequest implements Serializable {
 
 	private CustProductPriceRequest wholePrice;
 
-	private Long custImgId;
 	private Long custBusinessAppId;
 	private Long custCategoryId;
 
@@ -111,14 +110,6 @@ public class CustProductRequest implements Serializable {
 
 	public void setWholePrice(CustProductPriceRequest wholePrice) {
 		this.wholePrice = wholePrice;
-	}
-
-	public Long getCustImgId() {
-		return custImgId;
-	}
-
-	public void setCustImgId(Long custImgId) {
-		this.custImgId = custImgId;
 	}
 
 	public Long getCustBusinessAppId() {

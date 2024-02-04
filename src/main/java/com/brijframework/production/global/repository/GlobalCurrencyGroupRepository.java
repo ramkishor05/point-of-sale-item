@@ -6,13 +6,15 @@ import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.brijframework.production.global.dto.UIGlobalCurrencyGroup;
 
 @FeignClient(POINT_OF_SALE_APP)
 public interface GlobalCurrencyGroupRepository {
 
-	@GetMapping("/api/global/categorygroup")
+	@RequestMapping(value = "/api/global/categorygroup/", method = RequestMethod.GET)
 	public List<UIGlobalCurrencyGroup> findAll() ;
 
 }

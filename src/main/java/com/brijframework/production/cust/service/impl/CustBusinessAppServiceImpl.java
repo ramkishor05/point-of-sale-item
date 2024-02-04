@@ -51,7 +51,7 @@ import com.brijframework.production.mapper.e2e.CustUnitGroupGlobalUnitGroupMappe
 
 @Service
 public class CustBusinessAppServiceImpl implements CustBusinessAppService {
-	
+	/*
 	@Autowired
 	private CustBusinessAppRepository custBusinessAppRepository;
 	
@@ -115,19 +115,19 @@ public class CustBusinessAppServiceImpl implements CustBusinessAppService {
 	@Autowired
 	private CustCategoryGlobalCategoryMapper custCategoryGlobalCategoryMapper;
 
-	@Autowired
-	private GlobalCurrencyGroupRepository globalCurrencyGroupRepository;
-
+	
 	@Autowired
 	private CustCurrencyGroupRepository custCurrencyGroupRepository;
+*/
+	@Autowired
+	private GlobalCurrencyGroupRepository globalCurrencyGroupRepository;
 
 	@Autowired
 	private CustCurrencyGroupGlobalCurrencyGroupMapper currencyGroupGlobalCurrencyGroupMapper;
 	
 	public void init(EOCustBusinessApp eoCustBusinessApp) {
 		new Thread(()->{
-		
-	    	List<UIGlobalCurrencyGroup> eoGlobalCurrencyGroups = globalCurrencyGroupRepository.findAll();
+			/* 	List<UIGlobalCurrencyGroup> eoGlobalCurrencyGroups = globalCurrencyGroupRepository.findAll();
 	
 			for(UIGlobalCurrencyGroup eoGlobalCurrencyGroup :  eoGlobalCurrencyGroups) {
 	    		Optional<EOCustCurrencyGroup> findCustCurrencyGroup = custCurrencyGroupRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalCurrencyGroup.getName());
@@ -199,25 +199,27 @@ public class CustBusinessAppServiceImpl implements CustBusinessAppService {
 	    			custCategoryRepository.saveAndFlush(eoCustCategory);
 	    		}
 	    	}
-    	
+    	*/
 		}).start();
 	}
 	
 	@Override
 	public UICustBusinessApp saveCustBusinessApp(UICustBusinessApp uiCustBusinessApp) {
-		EOCustBusinessApp eoCustBusinessApp=custBusinessAppRepository.findByCustIdAndAppIdAndBusinessId(uiCustBusinessApp.getCustId(), uiCustBusinessApp.getAppId(),uiCustBusinessApp.getBusinessId()).orElse(new EOCustBusinessApp());
+		return uiCustBusinessApp;
+		/*EOCustBusinessApp eoCustBusinessApp=custBusinessAppRepository.findByCustIdAndAppIdAndBusinessId(uiCustBusinessApp.getCustId(), uiCustBusinessApp.getAppId(),uiCustBusinessApp.getBusinessId()).orElse(new EOCustBusinessApp());
 		eoCustBusinessApp.setAppId(uiCustBusinessApp.getAppId());
 		eoCustBusinessApp.setCustId(uiCustBusinessApp.getCustId());
 		eoCustBusinessApp.setBusinessId(uiCustBusinessApp.getBusinessId());
 		eoCustBusinessApp=custBusinessAppRepository.save(eoCustBusinessApp);
 		init(eoCustBusinessApp);
-		return custBusinessAppMapper.mapToDTO(eoCustBusinessApp);
+		return custBusinessAppMapper.mapToDTO(eoCustBusinessApp);*/
 	}
 
 	@Override
 	public UICustBusinessApp getCustBusinessApp(long id) {
-		return custBusinessAppMapper.mapToDTO( custBusinessAppRepository.findById(id).orElseThrow(()-> new RuntimeException("Not fond")) );
-	}
+		return null;
+		/*return custBusinessAppMapper.mapToDTO( custBusinessAppRepository.findById(id).orElseThrow(()-> new RuntimeException("Not fond")) );
+	*/}
 
 	@Override
 	public boolean deleteCustBusinessApp(long id) {
@@ -231,7 +233,9 @@ public class CustBusinessAppServiceImpl implements CustBusinessAppService {
 
 	@Override
 	public UICustBusinessAppDetail getCustBusinessAppDetail(long id) {
+		return null;
+		/*
 		return custBusinessAppDetailMapper.mapToDTO( custBusinessAppRepository.findById(id).orElseThrow(()-> new RuntimeException("Not fond")) );
-
+*/
 	}
 }

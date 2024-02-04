@@ -1,7 +1,7 @@
 package com.brijframework.production.contants;
 
 public class Constants {
-	public static final String POINT_OF_SALE_APP = "point_of_sale_app";
+	public static final String POINT_OF_SALE_APP = "posapp";
 	
 	public static final String OWNER_ID_KEY = "ownerId";
 	public static final String APP_ID_KEY = "appId";

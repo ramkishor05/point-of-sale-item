@@ -14,6 +14,7 @@ import com.brijframework.production.cust.entities.EOCustProductPrice;
 import com.brijframework.production.cust.mapper.CustProductRequestMapper;
 import com.brijframework.production.cust.mapper.CustProductResponseMapper;
 import com.brijframework.production.cust.repository.CustBusinessAppRepository;
+import com.brijframework.production.cust.repository.CustCategoryItemRepository;
 import com.brijframework.production.cust.repository.CustCurrencyItemRepository;
 import com.brijframework.production.cust.repository.CustProductRepository;
 import com.brijframework.production.cust.rest.CustProductPriceRequest;
@@ -41,6 +42,10 @@ public class CustProductServiceImpl implements CustProductService {
 	
 	@Autowired
 	private CustCurrencyItemRepository custCurrencyItemRepository;
+	
+	@Autowired
+	private CustCategoryItemRepository custCategoryItemRepository;
+	
 	
 	@Override
 	public CustProductResponse saveProduct(long custAppId, CustProductRequest custProductRequest) {
@@ -84,6 +89,7 @@ public class CustProductServiceImpl implements CustProductService {
 		EOCustProduct eoGlobalProduct = findProduct.get();
 		BeanUtils.copyProperties(custProductRequest, eoGlobalProduct,"id","wholePrice","retailPrice","purchasePrice");
 		CustProductPriceRequest wholePriceRequest = custProductRequest.getWholePrice();
+		eoGlobalProduct.setCustCategory(custCategoryItemRepository.getOne(custProductRequest.getCustCategoryId()));
 		if(wholePriceRequest!=null) {
 			EOCustProductPrice wholePrice = new EOCustProductPrice();
 			wholePrice.setCurrency(wholePriceRequest.getCurrencyId()==null ? null :custCurrencyItemRepository.getOne(wholePriceRequest.getCurrencyId()));

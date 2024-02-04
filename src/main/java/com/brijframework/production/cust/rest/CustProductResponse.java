@@ -28,9 +28,7 @@ public class CustProductResponse implements Serializable {
 
 	private Long custBusinessAppId;
 
-	private UICustCategory custCategory;
-
-	private UIGlobalMediaDetail custMediaDetail;
+	private Long custCategoryId;
 
 	private UIManufacturer custManufacturer;
 
@@ -130,20 +128,12 @@ public class CustProductResponse implements Serializable {
 		this.custBusinessAppId = custBusinessAppId;
 	}
 
-	public UICustCategory getCustCategory() {
-		return custCategory;
+	public Long getCustCategoryId() {
+		return custCategoryId;
 	}
 
-	public void setCustCategory(UICustCategory custCategory) {
-		this.custCategory = custCategory;
-	}
-
-	public UIGlobalMediaDetail getCustMediaDetail() {
-		return custMediaDetail;
-	}
-
-	public void setCustMediaDetail(UIGlobalMediaDetail custMediaDetail) {
-		this.custMediaDetail = custMediaDetail;
+	public void setCustCategoryId(Long custCategoryId) {
+		this.custCategoryId = custCategoryId;
 	}
 
 	public UIManufacturer getCustManufacturer() {
