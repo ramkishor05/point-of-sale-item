@@ -48,7 +48,7 @@ spring:
    profiles:   
      active: local
    application:
-     name: point_of_sale_item
+     name: PointOfSaleItem
    main:
      allow-bean-definition-overriding: true
    sql.init.mode: always
@@ -70,6 +70,16 @@ spring:
       config:
         data: true
 # Discovery Server Access
+cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    discovery:
+      client:
+        simple:
+          instances:
+            PointOfSaleAuth[0]:
+              uri: http://localhost:2222
 eureka:
   client:
     instance:
@@ -87,6 +97,7 @@ logging.level.org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 error:
   whitelabel:
     enabled: true
+    
 ---
 spring:
    profiles: dev

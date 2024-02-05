@@ -127,8 +127,8 @@ public class CustBusinessAppServiceImpl implements CustBusinessAppService {
 	
 	public void init(EOCustBusinessApp eoCustBusinessApp) {
 		new Thread(()->{
-			/* 	List<UIGlobalCurrencyGroup> eoGlobalCurrencyGroups = globalCurrencyGroupRepository.findAll();
-	
+				List<UIGlobalCurrencyGroup> eoGlobalCurrencyGroups = globalCurrencyGroupRepository.findAll();
+				/* 
 			for(UIGlobalCurrencyGroup eoGlobalCurrencyGroup :  eoGlobalCurrencyGroups) {
 	    		Optional<EOCustCurrencyGroup> findCustCurrencyGroup = custCurrencyGroupRepository.findByCustAppAndName(eoCustBusinessApp.getId(), eoGlobalCurrencyGroup.getName());
 	    		if(!findCustCurrencyGroup.isPresent()) {

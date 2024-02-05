@@ -13,7 +13,7 @@
 	<artifactId>point-of-sale-item</artifactId>
 	<packaging>jar</packaging>
 
-	<name>project-brijframework-item</name>
+	<name>point-of-sale-item</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -32,11 +32,20 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+            <version>1.4.5.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

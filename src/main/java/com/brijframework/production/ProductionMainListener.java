@@ -17,23 +17,21 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
 	
 	@Value(value="${spring.database.config.data}")
 	private boolean default_data;
-	/*
+	
 	@Autowired
 	private CustBusinessAppRepository custBusinessAppRepository;
-	*/
+	
 	@Autowired
 	private CustBusinessAppService custBusinessAppService;
 	
     @Override
     public void onApplicationEvent(final ContextRefreshedEvent event) {
     	if(default_data) {
-    		/*
+    		
 	    	List<EOCustBusinessApp> custBusinessApps = custBusinessAppRepository.findAll();
-	    	/// 
 	    	for(EOCustBusinessApp eoCustBusinessApp :  custBusinessApps) {
 	    		custBusinessAppService.init(eoCustBusinessApp);
 	    	}
-	    	*/
 	    }
     }
 }
