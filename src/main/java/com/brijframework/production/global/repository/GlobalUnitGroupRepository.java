@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.brijframework.production.global.dto.UIGlobalUnitGroup;
 
-@FeignClient(POINT_OF_SALE_APP)
+@FeignClient(name=POINT_OF_SALE_APP)
 public interface GlobalUnitGroupRepository {
 
 	@GetMapping("/api/global/categorygroup")

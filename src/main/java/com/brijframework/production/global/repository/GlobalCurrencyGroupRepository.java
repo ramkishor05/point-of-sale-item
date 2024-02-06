@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.brijframework.production.global.dto.UIGlobalCurrencyGroup;
 
-@FeignClient(POINT_OF_SALE_APP)
+@FeignClient(name=POINT_OF_SALE_APP)
 public interface GlobalCurrencyGroupRepository {
 
 	@RequestMapping(value = "/api/global/categorygroup/", method = RequestMethod.GET)
