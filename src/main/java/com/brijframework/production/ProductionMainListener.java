@@ -27,11 +27,11 @@ public class ProductionMainListener implements ApplicationListener<ContextRefres
     @Override
     public void onApplicationEvent(final ContextRefreshedEvent event) {
     	if(default_data) {
-    		
+    		/*
 	    	List<EOCustBusinessApp> custBusinessApps = custBusinessAppRepository.findAll();
 	    	for(EOCustBusinessApp eoCustBusinessApp :  custBusinessApps) {
 	    		custBusinessAppService.init(eoCustBusinessApp);
-	    	}
+	    	}*/
 	    }
     }
 }
