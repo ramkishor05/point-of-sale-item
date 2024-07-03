@@ -1,6 +1,10 @@
 package com.brijframework.production.contants;
 
 public class Constants {
+	
+	
+    public static final String AUTHORIZATION = "Authorization";
+
 	public static final String POINT_OF_SALE_APP = "posapp";
 	
 	public static final String OWNER_ID_KEY = "ownerId";

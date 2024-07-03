@@ -6,9 +6,9 @@ import static com.brijframework.production.contants.Constants.LOGO_URL;
 import static com.brijframework.production.contants.Constants.NAME;
 import static com.brijframework.production.contants.Constants.TYPE_ID;
 
-import javax.persistence.Column;
-import javax.persistence.Lob;
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.Column;
+import jakarta.persistence.Lob;
+import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class EOCustItem extends EOCustObject{

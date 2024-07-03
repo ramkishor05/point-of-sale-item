@@ -2,9 +2,9 @@ package com.brijframework.production.cust.entities;
 
 import static com.brijframework.production.contants.Constants.ACTIVE;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PrePersist;
 
 import com.brijframework.production.entities.EOEntityObject;
 
